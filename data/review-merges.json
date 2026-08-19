@@ -1,0 +1,62 @@
+{
+  "_note": "Near-duplicate names the script would not merge on its own. Confirm each, then add the EventON ids to seed/aliases.json and re-run.",
+  "locations": [
+    {
+      "distance": 3,
+      "a": "St. Mark's Episcopal Church",
+      "b": "St. Paul's Episcopal Church",
+      "aEvents": 17,
+      "bEvents": 5
+    },
+    {
+      "distance": 4,
+      "a": "St. Mark's Episcopal Church",
+      "b": "St. Luke's Episcopal Church",
+      "aEvents": 17,
+      "bEvents": 7
+    },
+    {
+      "distance": 4,
+      "a": "St. Luke's Episcopal Church",
+      "b": "St. Paul's Episcopal Church",
+      "aEvents": 7,
+      "bEvents": 5
+    },
+    {
+      "distance": 4,
+      "a": "St. Mary's Catholic Church",
+      "b": "St. Louis Catholic Church",
+      "aEvents": 4,
+      "bEvents": 1
+    },
+    {
+      "distance": 4,
+      "a": "Shepherd King Lutheran Church",
+      "b": "Shepherd of the Hills Lutheran Church",
+      "aEvents": 2,
+      "bEvents": 1
+    },
+    {
+      "distance": 5,
+      "a": "First Presbyterian Church, Austin",
+      "b": "First Presbyterian Church Bryan",
+      "aEvents": 8,
+      "bEvents": 1
+    },
+    {
+      "distance": 5,
+      "a": "Coker United Methodist Church",
+      "b": "First United Methodist Church",
+      "aEvents": 7,
+      "bEvents": 5
+    },
+    {
+      "distance": 5,
+      "a": "Laurel Heights United Methodist Church",
+      "b": "Alamo Heights United Methodist Church",
+      "aEvents": 3,
+      "bEvents": 1
+    }
+  ],
+  "organizers": []
+}

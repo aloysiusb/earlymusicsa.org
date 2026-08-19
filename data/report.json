@@ -1,0 +1,84 @@
+{
+  "scrapedAt": "2026-08-19T22:03:24.279Z",
+  "source": "https://earlymusicsa.org",
+  "timezone": "America/Chicago",
+  "events": 419,
+  "withDates": 410,
+  "suspectedSpam": 0,
+  "locations": 83,
+  "organizers": 62,
+  "eventTypes": 113,
+  "dateRange": {
+    "earliest": "2010-04-11T15:00:00-05:00",
+    "latest": "2026-09-11T19:30:00-05:00"
+  },
+  "withImage": 402,
+  "withPerformers": 404,
+  "withTickets": 33,
+  "withWebsite": 361,
+  "problems": [
+    {
+      "id": 296,
+      "slug": "7-stages-of-renaissance-entertainment-7",
+      "title": "7 Stages of Renaissance Entertainment",
+      "issue": "no date set in EventON",
+      "url": "https://earlymusicsa.org/events/7-stages-of-renaissance-entertainment-7/"
+    },
+    {
+      "id": 1698,
+      "slug": "texas-early-music-project",
+      "title": "Texas Early Music Project",
+      "issue": "no date set in EventON",
+      "url": "https://earlymusicsa.org/events/texas-early-music-project/"
+    },
+    {
+      "id": 1740,
+      "slug": "texas-early-music-project-14",
+      "title": "Texas Early Music Project",
+      "issue": "no date set in EventON",
+      "url": "https://earlymusicsa.org/events/texas-early-music-project-14/"
+    },
+    {
+      "id": 1835,
+      "slug": "la-follia-austin-baroque-16",
+      "title": "La Follia Austin Baroque",
+      "issue": "no date set in EventON",
+      "url": "https://earlymusicsa.org/events/la-follia-austin-baroque-16/"
+    },
+    {
+      "id": 1836,
+      "slug": "la-follia-austin-baroque-17",
+      "title": "La Follia Austin Baroque",
+      "issue": "no date set in EventON",
+      "url": "https://earlymusicsa.org/events/la-follia-austin-baroque-17/"
+    },
+    {
+      "id": 1837,
+      "slug": "la-follia-austin-baroque-18",
+      "title": "La Follia Austin Baroque",
+      "issue": "no date set in EventON",
+      "url": "https://earlymusicsa.org/events/la-follia-austin-baroque-18/"
+    },
+    {
+      "id": 1864,
+      "slug": "texas-early-music-project-26",
+      "title": "Texas Early Music Project",
+      "issue": "no date set in EventON",
+      "url": "https://earlymusicsa.org/events/texas-early-music-project-26/"
+    },
+    {
+      "id": 1867,
+      "slug": "texas-early-music-project-28",
+      "title": "Texas Early Music Project",
+      "issue": "no date set in EventON",
+      "url": "https://earlymusicsa.org/events/texas-early-music-project-28/"
+    },
+    {
+      "id": 2093,
+      "slug": "world-music-symposium",
+      "title": "World Music Symposium",
+      "issue": "no date set in EventON",
+      "url": "https://earlymusicsa.org/events/world-music-symposium/"
+    }
+  ]
+}

@@ -1,0 +1,503 @@
+[
+  {
+    "name": "Meredith Ruduski",
+    "slug": "meredith-ruduski",
+    "sourceIds": [
+      "116"
+    ],
+    "eventCount": 75
+  },
+  {
+    "name": "Billy Traylor",
+    "slug": "billy-traylor",
+    "sourceIds": [
+      "8",
+      "190"
+    ],
+    "eventCount": 59
+  },
+  {
+    "name": "Hector Serna",
+    "slug": "hector-serna",
+    "sourceIds": [
+      "5"
+    ],
+    "eventCount": 20
+  },
+  {
+    "name": "Tiffany Coghill",
+    "slug": "tiffany-coghill",
+    "sourceIds": [
+      "157",
+      "161"
+    ],
+    "eventCount": 20
+  },
+  {
+    "name": "Ruth Moreland",
+    "slug": "ruth-moreland",
+    "sourceIds": [
+      "65"
+    ],
+    "eventCount": 15
+  },
+  {
+    "name": "Keith Womer",
+    "slug": "keith-womer",
+    "sourceIds": [
+      "59",
+      "84"
+    ],
+    "eventCount": 13
+  },
+  {
+    "name": "Gerald Self",
+    "slug": "gerald-self",
+    "sourceIds": [
+      "13",
+      "91"
+    ],
+    "eventCount": 9
+  },
+  {
+    "name": "Mary Ashton",
+    "slug": "mary-ashton",
+    "sourceIds": [
+      "33"
+    ],
+    "eventCount": 7
+  },
+  {
+    "name": "Sharon Garcia",
+    "slug": "sharon-garcia",
+    "sourceIds": [
+      "159"
+    ],
+    "eventCount": 7
+  },
+  {
+    "name": "Arts on Alexander",
+    "slug": "arts-on-alexander",
+    "sourceIds": [
+      "208"
+    ],
+    "eventCount": 5
+  },
+  {
+    "name": "Jennifer C Harlan",
+    "slug": "jennifer-c-harlan",
+    "sourceIds": [
+      "99"
+    ],
+    "eventCount": 4
+  },
+  {
+    "name": "Kimberly Zoeller",
+    "slug": "kimberly-zoeller",
+    "sourceIds": [
+      "164"
+    ],
+    "eventCount": 4
+  },
+  {
+    "name": "La Follia Austin Baroque",
+    "slug": "la-follia-austin-baroque",
+    "sourceIds": [
+      "199"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "Meg Meo",
+    "slug": "meg-meo",
+    "sourceIds": [
+      "89"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "Owen Duggan",
+    "slug": "owen-duggan",
+    "sourceIds": [
+      "119",
+      "178"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "St. Mark's Episcopal Church",
+    "slug": "st-marks-episcopal-church",
+    "sourceIds": [
+      "192"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "Classical Music Institute",
+    "slug": "classical-music-institute",
+    "sourceIds": [
+      "197"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Daniel Long",
+    "slug": "daniel-long",
+    "sourceIds": [
+      "57"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "George Gregory",
+    "slug": "george-gregory",
+    "sourceIds": [
+      "170"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Hal Robinson",
+    "slug": "hal-robinson",
+    "sourceIds": [
+      "29"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Joanie Christianson",
+    "slug": "joanie-christianson",
+    "sourceIds": [
+      "121"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Judith York",
+    "slug": "judith-york",
+    "sourceIds": [
+      "141"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Lindsey Vande Hey",
+    "slug": "lindsey-vande-hey",
+    "sourceIds": [
+      "167"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Mark A. Richter",
+    "slug": "mark-a-richter",
+    "sourceIds": [
+      "150"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Mary",
+    "slug": "mary",
+    "sourceIds": [
+      "113"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Miguel Fonseca",
+    "slug": "miguel-fonseca",
+    "sourceIds": [
+      "137"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Olmos Ensemble",
+    "slug": "olmos-ensemble",
+    "sourceIds": [
+      "46"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Pauline Glickman",
+    "slug": "pauline-glickman",
+    "sourceIds": [
+      "125"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Rose Zentella",
+    "slug": "rose-zentella",
+    "sourceIds": [
+      "102"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Aaron Hufty",
+    "slug": "aaron-hufty",
+    "sourceIds": [
+      "88"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Amy Lazzell",
+    "slug": "amy-lazzell",
+    "sourceIds": [
+      "171"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Andrew Davis",
+    "slug": "andrew-davis",
+    "sourceIds": [
+      "182"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Angela Malek",
+    "slug": "angela-malek",
+    "sourceIds": [
+      "158"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Anthony Blake Clark",
+    "slug": "anthony-blake-clark",
+    "sourceIds": [
+      "154"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Britt Cawthon",
+    "slug": "britt-cawthon",
+    "sourceIds": [
+      "189"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Crystal Jarrell Johnson",
+    "slug": "crystal-jarrell-johnson",
+    "sourceIds": [
+      "23"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Danny Johnson",
+    "slug": "danny-johnson",
+    "sourceIds": [
+      "67"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Dolores Schroeder",
+    "slug": "dolores-schroeder",
+    "sourceIds": [
+      "187"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Don Piper",
+    "slug": "don-piper",
+    "sourceIds": [
+      "20"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Dr. Robert Finster",
+    "slug": "dr-robert-finster",
+    "sourceIds": [
+      "100"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Ed Rieke",
+    "slug": "ed-rieke",
+    "sourceIds": [
+      "63"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Edmund Murray",
+    "slug": "edmund-murray",
+    "sourceIds": [
+      "75"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Eric Gratz",
+    "slug": "eric-gratz",
+    "sourceIds": [
+      "40"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Go Yamamoto",
+    "slug": "go-yamamoto",
+    "sourceIds": [
+      "94"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Igor Negovetic",
+    "slug": "igor-negovetic",
+    "sourceIds": [
+      "60"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "James",
+    "slug": "james",
+    "sourceIds": [
+      "145"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Jessica Haynie",
+    "slug": "jessica-haynie",
+    "sourceIds": [
+      "77"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Joan Christenson",
+    "slug": "joan-christenson",
+    "sourceIds": [
+      "184"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "John Blackburn",
+    "slug": "john-blackburn",
+    "sourceIds": [
+      "173"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Jon Johnson",
+    "slug": "jon-johnson",
+    "sourceIds": [
+      "25"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Joseph Causby",
+    "slug": "joseph-causby",
+    "sourceIds": [
+      "147"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "June or John Hayes",
+    "slug": "june-or-john-hayes",
+    "sourceIds": [
+      "136"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "LP",
+    "slug": "lp",
+    "sourceIds": [
+      "27"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Matthew Dirst",
+    "slug": "matthew-dirst",
+    "sourceIds": [
+      "43"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Paul Salazar",
+    "slug": "paul-salazar",
+    "sourceIds": [
+      "139"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Renee' Davis",
+    "slug": "renee-davis",
+    "sourceIds": [
+      "71"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Renia",
+    "slug": "renia",
+    "sourceIds": [
+      "10"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "San Antonio Chamber Music Society",
+    "slug": "san-antonio-chamber-music-society",
+    "sourceIds": [
+      "185"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Seth Nelson",
+    "slug": "seth-nelson",
+    "sourceIds": [
+      "83"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Susan Richter",
+    "slug": "susan-richter",
+    "sourceIds": [
+      "73"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Taun Ogle Miner",
+    "slug": "taun-ogle-miner",
+    "sourceIds": [
+      "68"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "The McNay",
+    "slug": "the-mcnay",
+    "sourceIds": [
+      "86"
+    ],
+    "eventCount": 1
+  }
+]

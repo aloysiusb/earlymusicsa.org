@@ -1,0 +1,11 @@
+{
+  "name": "earlymusicsa",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Static rebuild of earlymusicsa.org — no WordPress, no EventON.",
+  "scripts": {
+    "scrape": "node scrape.js",
+    "scrape:images": "node scrape.js --images"
+  }
+}

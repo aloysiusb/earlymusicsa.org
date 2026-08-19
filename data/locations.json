@@ -1,0 +1,953 @@
+[
+  {
+    "name": "First Presbyterian Church",
+    "slug": "first-presbyterian-church",
+    "sourceIds": [
+      "58"
+    ],
+    "addresses": [
+      "8001 Mesa Drive, Austin, TX"
+    ],
+    "eventCount": 61
+  },
+  {
+    "name": "Redeemer Presbyterian Church",
+    "slug": "redeemer-presbyterian-church",
+    "sourceIds": [
+      "11"
+    ],
+    "addresses": [
+      "2111 Alexander Ave., Austin, TX"
+    ],
+    "eventCount": 50
+  },
+  {
+    "name": "Mission Concepción",
+    "slug": "mission-concepcion",
+    "sourceIds": [
+      "53",
+      "41",
+      "31",
+      "151"
+    ],
+    "addresses": [
+      "807 Mission Road, San Antonio, TX"
+    ],
+    "eventCount": 17
+  },
+  {
+    "name": "St. Mark's Episcopal Church",
+    "slug": "st-marks-episcopal-church",
+    "sourceIds": [
+      "24"
+    ],
+    "addresses": [
+      "315 East Pecan St., San Antonio, TX"
+    ],
+    "eventCount": 17
+  },
+  {
+    "name": "Chapel of the Incarnate Word",
+    "slug": "chapel-of-the-incarnate-word",
+    "sourceIds": [
+      "80",
+      "103"
+    ],
+    "addresses": [
+      "4503 Broadway, San Antonio, Texas",
+      "4503 Broadway Street, San Antonio, Texas"
+    ],
+    "eventCount": 15
+  },
+  {
+    "name": "First English Lutheran Church",
+    "slug": "first-english-lutheran-church",
+    "sourceIds": [
+      "34"
+    ],
+    "addresses": [
+      "3001 Whitis Ave, Austin, TX"
+    ],
+    "eventCount": 14
+  },
+  {
+    "name": "St. John's Lutheran Church",
+    "slug": "st-johns-lutheran-church",
+    "sourceIds": [
+      "14"
+    ],
+    "addresses": [
+      "502 E. Nueva St., San Antonio, TX"
+    ],
+    "eventCount": 11
+  },
+  {
+    "name": "Bethany Congregational Church",
+    "slug": "bethany-congregational-church",
+    "sourceIds": [
+      "54"
+    ],
+    "addresses": [
+      "500 Pilgrim Dr., San Antonio, TX"
+    ],
+    "eventCount": 10
+  },
+  {
+    "name": "Christ Lutheran Church of Alamo Heights",
+    "slug": "christ-lutheran-church-of-alamo-heights",
+    "sourceIds": [
+      "12",
+      "174"
+    ],
+    "addresses": [
+      "6720 Broadway, San Antonio, TX"
+    ],
+    "eventCount": 10
+  },
+  {
+    "name": "Madison Square Presbyterian Church",
+    "slug": "madison-square-presbyterian-church",
+    "sourceIds": [
+      "6"
+    ],
+    "addresses": [
+      "319 Camden, San Antonio, TX"
+    ],
+    "eventCount": 9
+  },
+  {
+    "name": "First Presbyterian Church, Austin",
+    "slug": "first-presbyterian-church-austin",
+    "sourceIds": [
+      "143",
+      "160"
+    ],
+    "addresses": [
+      "8001 Mesa Dr., Austin, TX",
+      "8001 Mesa Drive, Austin, TX"
+    ],
+    "eventCount": 8
+  },
+  {
+    "name": "Our Lady of the Atonement Catholic Church",
+    "slug": "our-lady-of-the-atonement-catholic-church",
+    "sourceIds": [
+      "17",
+      "74",
+      "152"
+    ],
+    "addresses": [
+      "15415 Red Robin Rd., San Antonio, TX",
+      "15415 Red Robin Road, San Antonio, Texas",
+      "15415 Red Robin Road, San Antonio, TX"
+    ],
+    "eventCount": 8
+  },
+  {
+    "name": "Coker United Methodist Church",
+    "slug": "coker-united-methodist-church",
+    "sourceIds": [
+      "70",
+      "163"
+    ],
+    "addresses": [
+      "231 E. North Loop Road,, San Antonio, TX",
+      "231 East North Loop Road, San Antonio, Texas, 78216"
+    ],
+    "eventCount": 7
+  },
+  {
+    "name": "Concordia University",
+    "slug": "concordia-university",
+    "sourceIds": [
+      "66"
+    ],
+    "addresses": [
+      "11400 Concordia University Drive, Austin, TX"
+    ],
+    "eventCount": 7
+  },
+  {
+    "name": "St. Luke's Episcopal Church",
+    "slug": "st-lukes-episcopal-church",
+    "sourceIds": [
+      "78"
+    ],
+    "addresses": [
+      "11 St. Lukes Lane, San Antonio, TX"
+    ],
+    "eventCount": 7
+  },
+  {
+    "name": "St. Martin's Lutheran Church",
+    "slug": "st-martins-lutheran-church",
+    "sourceIds": [
+      "37"
+    ],
+    "addresses": [
+      "606 W. 15th St, Austin, TX"
+    ],
+    "eventCount": 7
+  },
+  {
+    "name": "UTSA Recital Hall",
+    "slug": "utsa-recital-hall",
+    "sourceIds": [
+      "146"
+    ],
+    "addresses": [
+      "UTSA Department of Music, , San Antonio, TX"
+    ],
+    "eventCount": 7
+  },
+  {
+    "name": "Basilica of the National Shrine of the Little Flower",
+    "slug": "basilica-of-the-national-shrine-of-the-little-flower",
+    "sourceIds": [
+      "61",
+      "118",
+      "126",
+      "128",
+      "130"
+    ],
+    "addresses": [
+      "1715 North Zarzamora Street, San Antonio, TX",
+      "1715 N Zarzamora, San Antonio, TX",
+      "1714 N. Zarzamora St., San Antonio, TX",
+      "1715 N. Zarzamora St., San Antonio, TX",
+      "1715 N. Zarzamora, San Antonio, TX"
+    ],
+    "eventCount": 6
+  },
+  {
+    "name": "Northwest Hills United Methodist Church",
+    "slug": "northwest-hills-united-methodist-church",
+    "sourceIds": [
+      "104"
+    ],
+    "addresses": [
+      "7050 Village Center Drive, Austin, TX"
+    ],
+    "eventCount": 6
+  },
+  {
+    "name": "San Fernando Cathedral",
+    "slug": "san-fernando-cathedral",
+    "sourceIds": [
+      "96",
+      "115"
+    ],
+    "addresses": [
+      "115 West Main Plaza, San Antonio, TX",
+      "115 Main Plaza, San Antonio, TX"
+    ],
+    "eventCount": 6
+  },
+  {
+    "name": "University Presbyterian Church",
+    "slug": "university-presbyterian-church",
+    "sourceIds": [
+      "122"
+    ],
+    "addresses": [
+      "2203 San Antonio Street, Austin, TX"
+    ],
+    "eventCount": 6
+  },
+  {
+    "name": "Zion Lutheran Church",
+    "slug": "zion-lutheran-church",
+    "sourceIds": [
+      "16"
+    ],
+    "addresses": [
+      "9944 Leslie Rd, San Antonio, TX"
+    ],
+    "eventCount": 6
+  },
+  {
+    "name": "First United Methodist Church",
+    "slug": "first-united-methodist-church",
+    "sourceIds": [
+      "72"
+    ],
+    "addresses": [
+      "205 James Street,, Boerne, TX"
+    ],
+    "eventCount": 5
+  },
+  {
+    "name": "St. Paul's Episcopal Church",
+    "slug": "st-pauls-episcopal-church",
+    "sourceIds": [
+      "7"
+    ],
+    "addresses": [
+      "1018 E Grayson, San Antonio TX"
+    ],
+    "eventCount": 5
+  },
+  {
+    "name": "Covenant Presbyterian Church",
+    "slug": "covenant-presbyterian-church",
+    "sourceIds": [
+      "36"
+    ],
+    "addresses": [
+      "211 Roleto Dr, San Antonio, TX 78213., San Antonio, TX"
+    ],
+    "eventCount": 4
+  },
+  {
+    "name": "MISSION SAN JOSE",
+    "slug": "mission-san-jose",
+    "sourceIds": [
+      "101"
+    ],
+    "addresses": [
+      "701 E. Pyron, San Antonio, TX 78214"
+    ],
+    "eventCount": 4
+  },
+  {
+    "name": "Our Lady's Chapel, University of the Incarnate Word",
+    "slug": "our-ladys-chapel-university-of-the-incarnate-word",
+    "sourceIds": [
+      "92"
+    ],
+    "addresses": [
+      "4301 Broadway, San Antonio, TX"
+    ],
+    "eventCount": 4
+  },
+  {
+    "name": "Ruth Taylor Recital Hall, Trinity University",
+    "slug": "ruth-taylor-recital-hall-trinity-university",
+    "sourceIds": [
+      "97",
+      "112"
+    ],
+    "addresses": [
+      "1 Trinity Place, San Antonio, TX",
+      "One Trinity Place, Trinity University, San Antonio, TX"
+    ],
+    "eventCount": 4
+  },
+  {
+    "name": "San Antonio Museum of Art",
+    "slug": "san-antonio-museum-of-art",
+    "sourceIds": [
+      "26"
+    ],
+    "addresses": [
+      "200 West Jones Avenue, San Antonio, TX"
+    ],
+    "eventCount": 4
+  },
+  {
+    "name": "St. Mary's Catholic Church",
+    "slug": "st-marys-catholic-church",
+    "sourceIds": [
+      "132"
+    ],
+    "addresses": [
+      "306 W. San Antonio St., Fredericksburg, TX"
+    ],
+    "eventCount": 4
+  },
+  {
+    "name": "Cathedral of St. Mary",
+    "slug": "cathedral-of-st-mary",
+    "sourceIds": [
+      "18",
+      "131"
+    ],
+    "addresses": [
+      "203 E. 10th St., Austin, TX",
+      "203 E. 10th Street, Austin, TX"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "Christ Episcopal Church",
+    "slug": "christ-episcopal-church",
+    "sourceIds": [
+      "123",
+      "156"
+    ],
+    "addresses": [
+      "510 Belknap Place, San Antonio, Tx",
+      "510 Belknap, San Antonio, Texas"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "Christ Lutheran Church",
+    "slug": "christ-lutheran-church",
+    "sourceIds": [
+      "56"
+    ],
+    "addresses": [
+      "6720 Broadway, San Antonio, TX"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "Laurel Heights United Methodist Church",
+    "slug": "laurel-heights-united-methodist-church",
+    "sourceIds": [
+      "9",
+      "39"
+    ],
+    "addresses": [
+      "227 W Woodlawn Ave, San Antonio, TX"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "Southwest School of Art",
+    "slug": "southwest-school-of-art",
+    "sourceIds": [
+      "64",
+      "87"
+    ],
+    "addresses": [
+      "300 Augusta Street, San Antonio, Texas"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "St. Matthew's Episcopal Church",
+    "slug": "st-matthews-episcopal-church",
+    "sourceIds": [
+      "32"
+    ],
+    "addresses": [
+      "8134 Mesa Dr, Austin, TX"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "Temple Beth-El",
+    "slug": "temple-beth-el",
+    "sourceIds": [
+      "124"
+    ],
+    "addresses": [
+      "211 Belknap, San Antonio, TX"
+    ],
+    "eventCount": 3
+  },
+  {
+    "name": "Alvarez Studio Theatre, Tobin Center",
+    "slug": "alvarez-studio-theatre-tobin-center",
+    "sourceIds": [
+      "140"
+    ],
+    "addresses": [
+      "100 Auditorium Circle, San Antonio, TX"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Bates Recital Hall",
+    "slug": "bates-recital-hall",
+    "sourceIds": [
+      "55",
+      "76"
+    ],
+    "addresses": [
+      "2305 Trinity St, Austin, TX",
+      "2420 Robert Dedman Drive, Austin TX 78712, Austin, TX"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Hill Country Youth Event Center",
+    "slug": "hill-country-youth-event-center",
+    "sourceIds": [
+      "28"
+    ],
+    "addresses": [
+      "3785 TX-27, Kerrville, TX"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "McAllister Auditorium",
+    "slug": "mcallister-auditorium",
+    "sourceIds": [
+      "38",
+      "165"
+    ],
+    "addresses": [
+      "San Pedro Ave and West Courtland Pl, San Antonio, TX 78212, San Antonio, Texas",
+      "1400 San Pedro, San Antonio, Texas 78212"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "McNay Art Museum",
+    "slug": "mcnay-art-museum",
+    "sourceIds": [
+      "85",
+      "148"
+    ],
+    "addresses": [
+      "6000 North New Braunfels, San Antonio, Texas",
+      "6000 N New Braunfels Ave, San Antonio, TX"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Mission San Juan Capistrano",
+    "slug": "mission-san-juan-capistrano",
+    "sourceIds": [
+      "81"
+    ],
+    "addresses": [
+      "9101 Graf Road, San Antonio, TX"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "New Braunfels Presbyterian Church",
+    "slug": "new-braunfels-presbyterian-church",
+    "sourceIds": [
+      "69"
+    ],
+    "addresses": [
+      "373 Howard Street,, New Braunfels, TX"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Shepherd King Lutheran Church",
+    "slug": "shepherd-king-lutheran-church",
+    "sourceIds": [
+      "191"
+    ],
+    "addresses": [
+      "303 West Ramsey Rd., San Antonio, TX"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "The Empire Theatre",
+    "slug": "the-empire-theatre",
+    "sourceIds": [
+      "149"
+    ],
+    "addresses": [
+      "226 N Saint Marys St, San Antonio, Texas"
+    ],
+    "eventCount": 2
+  },
+  {
+    "name": "Abiding Presence Lutheran Church",
+    "slug": "abiding-presence-lutheran-church",
+    "sourceIds": [
+      "22"
+    ],
+    "addresses": [
+      "14700 San Pedro Avenue, San Antonio, Texas"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Alamo Heights United Methodist Church",
+    "slug": "alamo-heights-united-methodist-church",
+    "sourceIds": [
+      "144"
+    ],
+    "addresses": [
+      "825 E. Basse Road, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Baroque Concerti",
+    "slug": "baroque-concerti",
+    "sourceIds": [
+      "219"
+    ],
+    "addresses": [
+      "St. Mark’s Episcopal Church, 315 East Pecan St., San Antonio, TX 78205"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Barshop Jewish Community Center",
+    "slug": "barshop-jewish-community-center",
+    "sourceIds": [
+      "114"
+    ],
+    "addresses": [
+      "12500 NW Military Hwy, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Bethany Garden United Church of Christ",
+    "slug": "bethany-garden-united-church-of-christ",
+    "sourceIds": [
+      "19"
+    ],
+    "addresses": [
+      "500 Pilgrim Drive, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Betty Kelso Center, San Antonio Botanical Garden",
+    "slug": "betty-kelso-center-san-antonio-botanical-garden",
+    "sourceIds": [
+      "198"
+    ],
+    "addresses": [
+      "555 Funston Pl, San Antonio, TX 78209"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Capital Music Center",
+    "slug": "capital-music-center",
+    "sourceIds": [
+      "188"
+    ],
+    "addresses": [
+      "6101 Burnet Rd, Austin, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Christus Heritage Hall, The Village at Incarnate Word",
+    "slug": "christus-heritage-hall-the-village-at-incarnate-word",
+    "sourceIds": [
+      "176"
+    ],
+    "addresses": [
+      "4707 Broadway, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Congregation Beth Israel",
+    "slug": "congregation-beth-israel",
+    "sourceIds": [
+      "134"
+    ],
+    "addresses": [
+      "3901 Shoal Creek Boulevard, Austin, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Ducloux Hall at Austin Lyric Opera",
+    "slug": "ducloux-hall-at-austin-lyric-opera",
+    "sourceIds": [
+      "62"
+    ],
+    "addresses": [
+      "901 Barton Springs Road, Austin, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Estate Sale Gallery at Los Patios",
+    "slug": "estate-sale-gallery-at-los-patios",
+    "sourceIds": [
+      "135"
+    ],
+    "addresses": [
+      "2015 NE Loop 410, San Antonio, Texas 78217"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "First Baptist Church,<br>Unity Hall",
+    "slug": "first-baptist-churchbrunity-hall",
+    "sourceIds": [
+      "82"
+    ],
+    "addresses": [
+      "515 McCullough , San Antonio, Texas"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "First Presbyterian Church Bryan",
+    "slug": "first-presbyterian-church-bryan",
+    "sourceIds": [
+      "166"
+    ],
+    "addresses": [
+      "1100 Carter Creek Parkway, Bryan, Texas"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Gethsemane Lutheran Church",
+    "slug": "gethsemane-lutheran-church",
+    "sourceIds": [
+      "175"
+    ],
+    "addresses": [
+      "200 West Anderson Lane, Austin, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Guadalupe Chapel at St. Mary's University",
+    "slug": "guadalupe-chapel-at-st-marys-university",
+    "sourceIds": [
+      "15"
+    ],
+    "addresses": [
+      "252, 522 Fordham Avenue, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Huebner Oaks 14, Cielo Vista 18, Cinemark McCreless",
+    "slug": "huebner-oaks-14-cielo-vista-18-cinemark-mccreless",
+    "sourceIds": [
+      "180"
+    ],
+    "addresses": [
+      ", San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Immaculate Conception Chapel at the Oblate School of Theology",
+    "slug": "immaculate-conception-chapel-at-the-oblate-school-of-theology",
+    "sourceIds": [
+      "169"
+    ],
+    "addresses": [
+      "285 Oblate Drive, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Incarnate Word Motherhouse Chapel",
+    "slug": "incarnate-word-motherhouse-chapel",
+    "sourceIds": [
+      "153"
+    ],
+    "addresses": [
+      "4301 Broadway St, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Online at Filmed at Mission Concepcien",
+    "slug": "online-at-filmed-at-mission-concepcien",
+    "sourceIds": [
+      "21"
+    ],
+    "addresses": [
+      "807 Mission Rd, San Antonio, TX 78210, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "San Antonio Museum of Art - Great Hall",
+    "slug": "san-antonio-museum-of-art-great-hall",
+    "sourceIds": [
+      "120"
+    ],
+    "addresses": [
+      "200 West Jones Avenue, San Antonio, Tx"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "San Antonio Museum of Art, Greek and Roman Galleries",
+    "slug": "san-antonio-museum-of-art-greek-and-roman-galleries",
+    "sourceIds": [
+      "183"
+    ],
+    "addresses": [
+      "200 West Jones Avenue, San Antonio, Texas"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "San Antonio Museum of Art, Vice-Regal Gallery",
+    "slug": "san-antonio-museum-of-art-vice-regal-gallery",
+    "sourceIds": [
+      "138"
+    ],
+    "addresses": [
+      "200 W Jones Ave, San Antonio, TX 78215, San Antonio, Texas"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Shepherd of the Hills Lutheran Church",
+    "slug": "shepherd-of-the-hills-lutheran-church",
+    "sourceIds": [
+      "45"
+    ],
+    "addresses": [
+      "303 W Ramsey Rd San Antonio, TX 78216"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "St. Alphonsus Catholic Church",
+    "slug": "st-alphonsus-catholic-church",
+    "sourceIds": [
+      "129"
+    ],
+    "addresses": [
+      "1202 Zarzamora Street, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "St. Austin Catholic Church",
+    "slug": "st-austin-catholic-church",
+    "sourceIds": [
+      "93"
+    ],
+    "addresses": [
+      "2026 Guadalupe Street, Austin, Texas"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "St. John's United Methodist Church",
+    "slug": "st-johns-united-methodist-church",
+    "sourceIds": [
+      "35"
+    ],
+    "addresses": [
+      "2140 Allendale Rd, Austin, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "St. Louis Catholic Church",
+    "slug": "st-louis-catholic-church",
+    "sourceIds": [
+      "98"
+    ],
+    "addresses": [
+      "7601 Burnet Road, Austin, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "St. Mark the Evangelist Catholic Church",
+    "slug": "st-mark-the-evangelist-catholic-church",
+    "sourceIds": [
+      "111"
+    ],
+    "addresses": [
+      "1602 Thousand Oaks,, San Antonio, Texas"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "St. Mary's University (Treadaway Hall)",
+    "slug": "st-marys-university-treadaway-hall",
+    "sourceIds": [
+      "127"
+    ],
+    "addresses": [
+      "1 Camino Santa Maria St., San Antonio, Tx"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "The Little Church of La Villita",
+    "slug": "the-little-church-of-la-villita",
+    "sourceIds": [
+      "95"
+    ],
+    "addresses": [
+      "508 Villita Street, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "The Union Church Building",
+    "slug": "the-union-church-building",
+    "sourceIds": [
+      "79"
+    ],
+    "addresses": [
+      "Broadway and Travis St., Kerrville, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Tobin Center for the Performing Arts",
+    "slug": "tobin-center-for-the-performing-arts",
+    "sourceIds": [
+      "196"
+    ],
+    "addresses": [
+      "100 Auditorium Circle, San Antonio, TX 78205"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Travis Park United Methodist Church",
+    "slug": "travis-park-united-methodist-church",
+    "sourceIds": [
+      "172"
+    ],
+    "addresses": [
+      "230 E. Travis St., San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Trinity University - Ruth Taylor Recital Hall, Parker Chapel",
+    "slug": "trinity-university-ruth-taylor-recital-hall-parker-chapel",
+    "sourceIds": [
+      "162"
+    ],
+    "addresses": [
+      "One Trinity Place, San Antonio, Texas"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Tuesday Musical Club",
+    "slug": "tuesday-musical-club",
+    "sourceIds": [
+      "168"
+    ],
+    "addresses": [
+      "3755 N. St. Mary’s Street, San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "Ursuline Chapel at the Southwest School of Art",
+    "slug": "ursuline-chapel-at-the-southwest-school-of-art",
+    "sourceIds": [
+      "142"
+    ],
+    "addresses": [
+      "300 Augusta St., San Antonio, TX"
+    ],
+    "eventCount": 1
+  },
+  {
+    "name": "UTSA Music Department Recital Hall",
+    "slug": "utsa-music-department-recital-hall",
+    "sourceIds": [
+      "133"
+    ],
+    "addresses": [
+      "1 UTSA Cir., San Antonio, TX"
+    ],
+    "eventCount": 1
+  }
+]

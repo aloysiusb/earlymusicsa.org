@@ -1,0 +1,94 @@
+{
+  "_note": "Hand-curated merges for EventON duplicate records. Keys are EventON term ids; the value is the canonical display name. Only unambiguous duplicates are listed here — anything uncertain is left alone and reported in data/review-merges.json instead.",
+
+  "locations": {
+    "31":  "Mission Concepción",
+    "53":  "Mission Concepción",
+    "4":   "Mission Concepción",
+    "41":  "Mission Concepción",
+    "151": "Mission Concepción",
+
+    "15":  "Guadalupe Chapel at St. Mary's University",
+    "30":  "Guadalupe Chapel at St. Mary's University",
+
+    "156": "Christ Episcopal Church",
+    "123": "Christ Episcopal Church",
+
+    "174": "Christ Lutheran Church of Alamo Heights",
+    "12":  "Christ Lutheran Church of Alamo Heights",
+
+    "163": "Coker United Methodist Church",
+    "70":  "Coker United Methodist Church",
+
+    "9":   "Laurel Heights United Methodist Church",
+    "39":  "Laurel Heights United Methodist Church",
+
+    "61":  "Basilica of the National Shrine of the Little Flower",
+    "128": "Basilica of the National Shrine of the Little Flower",
+    "130": "Basilica of the National Shrine of the Little Flower",
+    "126": "Basilica of the National Shrine of the Little Flower",
+    "118": "Basilica of the National Shrine of the Little Flower",
+
+    "165": "McAllister Auditorium",
+    "38":  "McAllister Auditorium",
+
+    "97":  "Ruth Taylor Recital Hall, Trinity University",
+    "112": "Ruth Taylor Recital Hall, Trinity University",
+
+    "160": "First Presbyterian Church, Austin",
+    "143": "First Presbyterian Church, Austin",
+
+    "74":  "Our Lady of the Atonement Catholic Church",
+    "17":  "Our Lady of the Atonement Catholic Church",
+    "152": "Our Lady of the Atonement Catholic Church",
+
+    "87":  "Southwest School of Art",
+    "64":  "Southwest School of Art",
+
+    "148": "McNay Art Museum",
+    "85":  "McNay Art Museum",
+
+    "103": "Chapel of the Incarnate Word",
+    "80":  "Chapel of the Incarnate Word",
+
+    "76":  "Bates Recital Hall",
+    "55":  "Bates Recital Hall",
+
+    "115": "San Fernando Cathedral",
+    "96":  "San Fernando Cathedral",
+
+    "131": "Cathedral of St. Mary",
+    "18":  "Cathedral of St. Mary",
+
+    "237": "London, UK",
+    "203": "London, UK",
+    "241": "London, UK"
+  },
+
+  "organizers": {
+    "59":  "Keith Womer",
+    "84":  "Keith Womer",
+
+    "13":  "Gerald Self",
+    "91":  "Gerald Self",
+
+    "119": "Owen Duggan",
+    "178": "Owen Duggan",
+
+    "161": "Tiffany Coghill",
+    "157": "Tiffany Coghill",
+
+    "8":   "Billy Traylor",
+    "190": "Billy Traylor",
+
+    "231": "Vartus Group",
+    "242": "Vartus Group",
+
+    "211": "Inovine Scientific Meetings",
+    "232": "Inovine Scientific Meetings",
+    "201": "Inovine Scientific Meetings",
+
+    "216": "Pages Conferences",
+    "218": "Pages Conferences"
+  }
+}

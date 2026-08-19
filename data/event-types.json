@@ -1,0 +1,454 @@
+[
+  {
+    "slug": "acsc",
+    "name": "ACSC"
+  },
+  {
+    "slug": "advanced-agriculture-technologies-conference-2027",
+    "name": "Advanced Agriculture Technologies Conference 2027"
+  },
+  {
+    "slug": "agri-tech-2027",
+    "name": "Agri Tech 2027"
+  },
+  {
+    "slug": "agricultural-biotechnology-conference-2027",
+    "name": "Agricultural Biotechnology Conference 2027"
+  },
+  {
+    "slug": "agricultural-biotechnology-innovations-2027",
+    "name": "Agricultural Biotechnology Innovations 2027"
+  },
+  {
+    "slug": "agricultural-carbon-sequestration-summit-2027",
+    "name": "Agricultural Carbon Sequestration Summit 2027"
+  },
+  {
+    "slug": "agricultural-climate-change-conference-2027",
+    "name": "Agricultural Climate Change Conference 2027"
+  },
+  {
+    "slug": "agricultural-data-science-summit-2027",
+    "name": "Agricultural Data Science Summit 2027"
+  },
+  {
+    "slug": "agricultural-economics-conference-2027",
+    "name": "Agricultural Economics Conference 2027"
+  },
+  {
+    "slug": "agricultural-entrepreneurship-summit-2027",
+    "name": "Agricultural Entrepreneurship Summit 2027"
+  },
+  {
+    "slug": "agricultural-extension-conference-2027",
+    "name": "Agricultural Extension Conference 2027"
+  },
+  {
+    "slug": "agricultural-genomics-conference-2027",
+    "name": "Agricultural Genomics Conference 2027"
+  },
+  {
+    "slug": "agricultural-innovation-and-sustainability-summit-2027",
+    "name": "Agricultural Innovation and Sustainability Summit 2027"
+  },
+  {
+    "slug": "agricultural-innovation-conference-2027",
+    "name": "Agricultural Innovation Conference 2027"
+  },
+  {
+    "slug": "agricultural-innovations-for-developing-countries-conference-2027",
+    "name": "Agricultural Innovations for Developing Countries Conference 2027"
+  },
+  {
+    "slug": "agricultural-investment-conference-2027",
+    "name": "Agricultural Investment Conference 2027"
+  },
+  {
+    "slug": "agricultural-policy-summit-2027",
+    "name": "Agricultural Policy Summit 2027"
+  },
+  {
+    "slug": "agricultural-productivity-conference-2027",
+    "name": "Agricultural Productivity Conference 2027"
+  },
+  {
+    "slug": "agricultural-research-and-development-conference-2027",
+    "name": "Agricultural Research and Development Conference 2027"
+  },
+  {
+    "slug": "agricultural-research-conference-2027",
+    "name": "Agricultural Research Conference 2027"
+  },
+  {
+    "slug": "agricultural-resilience-summit-2027",
+    "name": "Agricultural Resilience Summit 2027"
+  },
+  {
+    "slug": "agricultural-resource-management-summit-2027",
+    "name": "Agricultural Resource Management Summit 2027"
+  },
+  {
+    "slug": "agricultural-sustainability-summit-2027",
+    "name": "Agricultural Sustainability Summit 2027"
+  },
+  {
+    "slug": "agricultural-technology-summit-2027",
+    "name": "Agricultural Technology Summit 2027"
+  },
+  {
+    "slug": "agricultural-value-chain-summit-2027",
+    "name": "Agricultural Value Chain Summit 2027"
+  },
+  {
+    "slug": "agricultural-waste-management-conference-2027",
+    "name": "Agricultural Waste Management Conference 2027"
+  },
+  {
+    "slug": "agricultural-water-management-conference-2027",
+    "name": "Agricultural Water Management Conference 2027"
+  },
+  {
+    "slug": "agriculture-and-climate-resilience-summit-2027",
+    "name": "Agriculture and Climate Resilience Summit 2027"
+  },
+  {
+    "slug": "agriculture-and-environmental-sustainability-conference-2027",
+    "name": "Agriculture and Environmental Sustainability Conference 2027"
+  },
+  {
+    "slug": "agriculture-conference-2027",
+    "name": "Agriculture Conference 2027"
+  },
+  {
+    "slug": "agriculture-congress-2027",
+    "name": "Agriculture Congress 2027"
+  },
+  {
+    "slug": "agriculture-knowledge-exchange-2027",
+    "name": "Agriculture Knowledge Exchange 2027"
+  },
+  {
+    "slug": "agritech-conference-2027",
+    "name": "AgriTech Conference 2027"
+  },
+  {
+    "slug": "agroecology-conference-2027",
+    "name": "Agroecology Conference 2027"
+  },
+  {
+    "slug": "agroforestry-conference-2027",
+    "name": "Agroforestry Conference 2027"
+  },
+  {
+    "slug": "agronomy-conference-2027",
+    "name": "Agronomy Conference 2027"
+  },
+  {
+    "slug": "ai-in-agriculture-conference-2027",
+    "name": "AI in Agriculture Conference 2027"
+  },
+  {
+    "slug": "art",
+    "name": "Art"
+  },
+  {
+    "slug": "beer",
+    "name": "Beer"
+  },
+  {
+    "slug": "biodiversity-in-agriculture-conference-2027",
+    "name": "Biodiversity in Agriculture Conference 2027"
+  },
+  {
+    "slug": "carbon-farming-conference-2027",
+    "name": "Carbon Farming Conference 2027"
+  },
+  {
+    "slug": "circular-agriculture-conference-2027",
+    "name": "Circular Agriculture Conference 2027"
+  },
+  {
+    "slug": "classical-music",
+    "name": "Classical Music"
+  },
+  {
+    "slug": "climate-adaptation-in-agriculture-summit-2027",
+    "name": "Climate Adaptation in Agriculture Summit 2027"
+  },
+  {
+    "slug": "climate-smart-agriculture-conference-2027",
+    "name": "Climate Smart Agriculture Conference 2027"
+  },
+  {
+    "slug": "climate-resilient-agriculture-conference-2027",
+    "name": "Climate-Resilient Agriculture Conference 2027"
+  },
+  {
+    "slug": "compliance-consulting",
+    "name": "compliance consulting"
+  },
+  {
+    "slug": "concert",
+    "name": "Concert"
+  },
+  {
+    "slug": "conference",
+    "name": "Conference"
+  },
+  {
+    "slug": "conferences",
+    "name": "Conferences"
+  },
+  {
+    "slug": "controlled-environment-agriculture-conference-2027",
+    "name": "Controlled Environment Agriculture Conference 2027"
+  },
+  {
+    "slug": "crop-science-conference-2027",
+    "name": "Crop Science Conference 2027"
+  },
+  {
+    "slug": "cyber-security-framework",
+    "name": "cyber security framework"
+  },
+  {
+    "slug": "cybersecurity",
+    "name": "cybersecurity"
+  },
+  {
+    "slug": "digital-agriculture-conference-2027",
+    "name": "Digital Agriculture Conference 2027"
+  },
+  {
+    "slug": "drone-technology-for-agriculture-conference-2027",
+    "name": "Drone Technology for Agriculture Conference 2027"
+  },
+  {
+    "slug": "emerging-trends-in-agriculture-conference-2027",
+    "name": "Emerging Trends in Agriculture Conference 2027"
+  },
+  {
+    "slug": "essential-eight",
+    "name": "essential eight"
+  },
+  {
+    "slug": "event_type",
+    "name": "event_type"
+  },
+  {
+    "slug": "festival",
+    "name": "Festival"
+  },
+  {
+    "slug": "food-security-and-nutrition-conference-2027",
+    "name": "Food Security and Nutrition Conference 2027"
+  },
+  {
+    "slug": "food-security-conference-2027",
+    "name": "Food Security Conference 2027"
+  },
+  {
+    "slug": "food-supply-chain-conference-2027",
+    "name": "Food Supply Chain Conference 2027"
+  },
+  {
+    "slug": "food-systems-conference-2027",
+    "name": "Food Systems Conference 2027"
+  },
+  {
+    "slug": "future-food-systems-summit-2027",
+    "name": "Future Food Systems Summit 2027"
+  },
+  {
+    "slug": "future-of-agriculture-conference-2027",
+    "name": "Future of Agriculture Conference 2027"
+  },
+  {
+    "slug": "genome-editing-in-agriculture-conference-2027",
+    "name": "Genome Editing in Agriculture Conference 2027"
+  },
+  {
+    "slug": "global-agriculture-summit-2027",
+    "name": "Global Agriculture Summit 2027"
+  },
+  {
+    "slug": "global-food-security-summit-2027",
+    "name": "Global Food Security Summit 2027"
+  },
+  {
+    "slug": "global-sustainable-agriculture-forum-2027",
+    "name": "Global Sustainable Agriculture Forum 2027"
+  },
+  {
+    "slug": "global-sustainable-farming-congress-2027",
+    "name": "Global Sustainable Farming Congress 2027"
+  },
+  {
+    "slug": "green-agriculture-summit-2027",
+    "name": "Green Agriculture Summit 2027"
+  },
+  {
+    "slug": "horticulture-conference-2027",
+    "name": "Horticulture Conference 2027"
+  },
+  {
+    "slug": "hydroponics-conference-2027",
+    "name": "Hydroponics Conference 2027"
+  },
+  {
+    "slug": "integrated-farming-systems-conference-2027",
+    "name": "Integrated Farming Systems Conference 2027"
+  },
+  {
+    "slug": "integrated-pest-management-conference-2027",
+    "name": "Integrated Pest Management Conference 2027"
+  },
+  {
+    "slug": "international-agriculture-conference-2027",
+    "name": "International Agriculture Conference 2027"
+  },
+  {
+    "slug": "international-food-security-symposium-2027",
+    "name": "International Food Security Symposium 2027"
+  },
+  {
+    "slug": "irrigation-technologies-conference-2027",
+    "name": "Irrigation Technologies Conference 2027"
+  },
+  {
+    "slug": "it-services-provider-managed-it-services",
+    "name": "IT Services Provider / Managed IT Services"
+  },
+  {
+    "slug": "london-agriculture-conference-2027",
+    "name": "London Agriculture Conference 2027"
+  },
+  {
+    "slug": "next-generation-farming-summit-2027",
+    "name": "Next Generation Farming Summit 2027"
+  },
+  {
+    "slug": "nutrient-management-in-agriculture-conference-2027",
+    "name": "Nutrient Management in Agriculture Conference 2027"
+  },
+  {
+    "slug": "organic-farming-conference-2027",
+    "name": "Organic Farming Conference 2027"
+  },
+  {
+    "slug": "other",
+    "name": "Other"
+  },
+  {
+    "slug": "plant-and-crop-improvement-conference-2027",
+    "name": "Plant and Crop Improvement Conference 2027"
+  },
+  {
+    "slug": "post-harvest-technology-conference-2027",
+    "name": "Post-Harvest Technology Conference 2027"
+  },
+  {
+    "slug": "precision-agriculture-conference-2027",
+    "name": "Precision Agriculture Conference 2027"
+  },
+  {
+    "slug": "regenerative-agriculture-conference-2027",
+    "name": "Regenerative Agriculture Conference 2027"
+  },
+  {
+    "slug": "remote-sensing-in-agriculture-conference-2027",
+    "name": "Remote Sensing in Agriculture Conference 2027"
+  },
+  {
+    "slug": "risk-management",
+    "name": "risk management"
+  },
+  {
+    "slug": "rural-development-conference-2027",
+    "name": "Rural Development Conference 2027"
+  },
+  {
+    "slug": "service",
+    "name": "Service"
+  },
+  {
+    "slug": "smallholder-farming-conference-2027",
+    "name": "Smallholder Farming Conference 2027"
+  },
+  {
+    "slug": "smart-farming-summit-2027",
+    "name": "Smart Farming Summit 2027"
+  },
+  {
+    "slug": "soil-health-conference-2027",
+    "name": "Soil Health Conference 2027"
+  },
+  {
+    "slug": "sustainable-agriculture-and-food-security-forum-2027",
+    "name": "Sustainable Agriculture and Food Security Forum 2027"
+  },
+  {
+    "slug": "sustainable-agriculture-summit-2027",
+    "name": "Sustainable Agriculture Summit 2027"
+  },
+  {
+    "slug": "sustainable-crop-production-conference-2027",
+    "name": "Sustainable Crop Production Conference 2027"
+  },
+  {
+    "slug": "sustainable-crop-protection-conference-2027",
+    "name": "Sustainable Crop Protection Conference 2027"
+  },
+  {
+    "slug": "sustainable-development-goals-and-agriculture-conference-2027",
+    "name": "Sustainable Development Goals and Agriculture Conference 2027"
+  },
+  {
+    "slug": "sustainable-farming-conference-2027",
+    "name": "Sustainable Farming Conference 2027"
+  },
+  {
+    "slug": "sustainable-fertilizer-management-conference-2027",
+    "name": "Sustainable Fertilizer Management Conference 2027"
+  },
+  {
+    "slug": "sustainable-food-production-conference-2027",
+    "name": "Sustainable Food Production Conference 2027"
+  },
+  {
+    "slug": "sustainable-land-management-conference-2027",
+    "name": "Sustainable Land Management Conference 2027"
+  },
+  {
+    "slug": "sustainable-livestock-conference-2027",
+    "name": "Sustainable Livestock Conference 2027"
+  },
+  {
+    "slug": "sustainable-rural-livelihoods-summit-2027",
+    "name": "Sustainable Rural Livelihoods Summit 2027"
+  },
+  {
+    "slug": "sustainable-soil-management-summit-2027",
+    "name": "Sustainable Soil Management Summit 2027"
+  },
+  {
+    "slug": "uk-agriculture-conference-2027",
+    "name": "UK Agriculture Conference 2027."
+  },
+  {
+    "slug": "urban-agriculture-conference-2027",
+    "name": "Urban Agriculture Conference 2027"
+  },
+  {
+    "slug": "vertical-farming-summit-2027",
+    "name": "Vertical Farming Summit 2027"
+  },
+  {
+    "slug": "workshop",
+    "name": "Workshop"
+  },
+  {
+    "slug": "world-congress-on-agriculture-food-security-and-sustainable-farming-2027",
+    "name": "World Congress on Agriculture Food Security and Sustainable Farming 2027"
+  }
+]
