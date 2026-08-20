@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "earlymusicsa",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["serve.js", "4173"],
+      "port": 4173
+    }
+  ]
+}
