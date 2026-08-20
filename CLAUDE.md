@@ -18,30 +18,60 @@ needs that.
 
 ## Status
 
-**Phase 1 (content migration) — done.** `scrape.js` has pulled the complete
-archive. The rebuild itself has not started.
+- **Phase 1, content migration — done.** `scrape.js` pulled the complete archive.
+- **Phase 2, static site — first pass done.** `build.js` generates the whole
+  public site. Listings, calendar, archive and event pages all work.
+- **Still to do:** the submission form + moderation server, real contact
+  details, search, and filtering by type/venue/organizer.
 
 ## Layout
 
 ```
 scrape.js            one-time export from the live WordPress site
+build.js             data/events.json -> dist/  (the static site)
+serve.js             local preview server for dist/ (not part of the site)
+assets/style.css     the entire design; every value is a custom property
 seed/masters.json    EventON saved-location + saved-organizer lists, read from
                      the live /submit-your-event/ form on 2026-08-19
 seed/aliases.json    hand-curated merges for duplicate EventON records
 data/                the export (committed — this is the point of the repo)
+media/               375 mirrored featured images (committed, 23 MB)
 cache/               raw event-page HTML, gitignored, delete to re-pull
-media/               featured images, gitignored (23 MB, 375 files)
+dist/                generated output, gitignored — rebuild with `node build.js`
 ```
 
-## Running the scraper
+## Commands
 
 ```bash
-node scrape.js            # -> data/
+node scrape.js            # refresh data/ from the live site
 node scrape.js --images   # also mirror featured images -> media/
+node build.js             # data/ -> dist/
+node serve.js             # preview dist/ at http://localhost:4173
 ```
 
-Event pages are cached under `cache/`, so re-runs are free. The first full run
-takes about a minute at concurrency 4.
+Event pages are cached under `cache/`, so scraper re-runs are free. The first
+full run takes about a minute at concurrency 4.
+
+## The build
+
+The published site ships **zero JavaScript**. Index is 4 requests (HTML, one
+stylesheet, two images) against 74 requests and 50 scripts on the WordPress
+original.
+
+- Expand-in-place event cards are `<details>`/`<summary>`, not a click handler.
+- The calendar is a static `<table>` per month, generated at build time, with
+  prev/next links. Under 34rem it becomes a list of only the days that have
+  events, via CSS — no separate mobile template.
+- Every colour, size and spacing value is a custom property on `:root`, with a
+  dark theme through `prefers-color-scheme`. A future style panel should write
+  these properties and nothing else.
+- Images are rewritten to the local `media/` mirror at build time. `build.js`
+  warns if anything still points at a remote host — it should always be zero.
+- One `.ics` per event. Note EventON stores 23:59 to mean "no end time given";
+  emitting that as `DTEND` would put a four-hour block in someone's calendar,
+  so `DTEND` is omitted in that case. Same rule governs the displayed time
+  range.
+- Event pages carry schema.org JSON-LD, replacing what EventON used to emit.
 
 ## How the data was actually obtained
 
