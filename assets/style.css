@@ -1,92 +1,111 @@
 /* ============================================================================
    Early Music San Antonio
-   Every visual decision lives in a custom property so a style panel can drive
-   the whole site later without touching a rule. Layout is grid/flex; the only
-   JavaScript on the public site is none.
+   Rebuilt to match the live WordPress/EventON site's appearance exactly, but
+   as hand-written CSS with no framework, no theme and no plugin.
+
+   Every value the design depends on is a custom property in :root below, so
+   the planned style-editing page only ever has to write these — never a rule.
+   Measurements were taken from the live site's computed styles at 1280px and
+   375px wide.
    ========================================================================== */
 
 :root {
-  /* --- palette: warm paper, oxblood accent ------------------------------ */
-  --paper:        hsl(40 50% 98%);
-  --paper-sunk:   hsl(40 38% 95%);
-  --paper-raised: hsl(40 60% 100%);
-  --ink:          hsl(30 16% 16%);
-  --ink-soft:     hsl(30 10% 38%);
-  --ink-faint:    hsl(30 8% 55%);
-  --accent:       hsl(353 42% 36%);
-  --accent-soft:  hsl(353 38% 46%);
-  --accent-wash:  hsl(353 40% 96%);
-  --rule:         hsl(35 18% 87%);
-  --rule-strong:  hsl(35 16% 78%);
+  /* --- brand ------------------------------------------------------------ */
+  --gold:          #9e7e00;   /* page headings */
+  --gold-deep:     #8c7200;   /* footer bar */
+  --card-bg:       #b3d1db;   /* event card panel */
+  --card-text:     #ffffff;   /* text on the card */
+  --ink:           #000000;
+  --ink-soft:      #202124;
+  --page-bg:       #ffffff;
+
+  /* calendar greys, taken from the live widget */
+  --cal-dayname-bg:   #ececec;
+  --cal-dayname-text: #9e9e9e;
+  --cal-day-text:     #d4d4d4;
+  --cal-day-bg:       #ffffff;
+  --cal-btn-bg:       #adadad;
+  --cal-btn-text:     #ffffff;
+  --cal-accent:       var(--gold);
 
   /* --- type ------------------------------------------------------------- */
-  --font: 'Google Sans Flex', 'Google Sans Flex Placeholder',
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --size-base: 1.0625rem;
-  --size-small: 0.875rem;
-  --size-tiny: 0.75rem;
-  --leading: 1.6;
-  --tracking-caps: 0.09em;
+  --font: 'Raleway', Helvetica, Arial, sans-serif;
+  --text-size: 16px;
+  --text-leading: 1.5;
 
-  /* --- spacing & shape --------------------------------------------------- */
-  --gap: 1rem;
-  --gap-lg: 2rem;
-  --measure: 34rem;      /* readable line length */
-  --page: 60rem;         /* content column */
-  --radius: 10px;
-  --radius-sm: 6px;
-  --shadow: 0 1px 2px hsl(30 20% 50% / 0.08), 0 4px 16px hsl(30 20% 40% / 0.06);
-  --focus: 2px solid var(--accent);
-}
+  --h1-size: 43.36px;
+  --h1-size-mobile: 27.58px;
+  --h1-weight: 500;
+  --h1-color: var(--gold);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper:        hsl(30 8% 11%);
-    --paper-sunk:   hsl(30 8% 8%);
-    --paper-raised: hsl(30 8% 15%);
-    --ink:          hsl(40 22% 91%);
-    --ink-soft:     hsl(40 10% 68%);
-    --ink-faint:    hsl(40 8% 52%);
-    --accent:       hsl(353 58% 68%);
-    --accent-soft:  hsl(353 45% 60%);
-    --accent-wash:  hsl(353 25% 18%);
-    --rule:         hsl(30 8% 22%);
-    --rule-strong:  hsl(30 8% 32%);
-    --shadow: 0 1px 2px hsl(0 0% 0% / 0.3), 0 4px 16px hsl(0 0% 0% / 0.25);
-  }
+  --nav-size: 20px;
+  --nav-weight: 500;
+  --nav-color: #ffffff;
+
+  --card-title-size: 24px;
+  --card-title-weight: 800;
+  --card-day-size: 30px;
+  --card-month-size: 11px;
+  --card-year-size: 10px;
+  --card-time-size: 10px;
+
+  --cal-title-size: 28px;
+  --cal-title-weight: 800;
+  --cal-day-size: 12px;
+
+  /* --- layout ----------------------------------------------------------- */
+  --container: 1265px;
+  --container-pad: 50px;
+  --container-pad-mobile: 30px;
+  --sidebar-width: 352px;
+  --primary-width: 748px;   /* includes --column-gap of right padding */
+  --column-gap: 50px;
+  --banner-height: 155px;
+  --banner-position: 24% 42%;
+  --logo-width: 205px;
+  --logo-height: 150px;
+
+  --card-pad: 20px;
+  --card-gap: 10px;
+  --card-radius: 0px;
+  --thumb-size: 140px;
+  --thumb-radius: 10px;
+  --thumb-focus: 50% 0%;   /* which part of a wide banner survives the crop */
+  --stack-gap: 10px;
+
+  --cal-cell-height: 39px;
+  --cal-cell-height-events: 60px;
+  --cal-radius: 10px;
+
+  /* --- assets ----------------------------------------------------------- */
+  --banner-image: url('media/Giovanni_Pauolo_2000x400.jpg');
 }
 
 /* ------------------------------------------------------------------ base -- */
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
-
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--page-bg);
   color: var(--ink);
   font-family: var(--font);
-  font-size: var(--size-base);
-  line-height: var(--leading);
-  font-variant-numeric: tabular-nums;
+  font-size: var(--text-size);
+  line-height: var(--text-leading);
 }
 
-a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-a:hover { color: var(--accent-soft); }
-:focus-visible { outline: var(--focus); outline-offset: 2px; border-radius: 3px; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
 
-img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { margin: 0; font-weight: inherit; }
 
-h1, h2, h3 { line-height: 1.2; font-weight: 600; margin: 0 0 0.5em; text-wrap: balance; }
-h1 { font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem); letter-spacing: -0.015em; }
-h2 { font-size: 1.35rem; }
-h3 { font-size: 1.05rem; }
-p { margin: 0 0 1em; }
-p:last-child { margin-bottom: 0; }
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
 
-.wrap { max-width: var(--page); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2rem); }
-.measure { max-width: var(--measure); }
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip-path: inset(50%); white-space: nowrap;
@@ -94,196 +113,322 @@ p:last-child { margin-bottom: 0; }
 
 /* ---------------------------------------------------------------- header -- */
 
-.site-header {
-  border-bottom: 1px solid var(--rule);
-  background: var(--paper-raised);
-}
-.site-header .wrap {
-  display: flex; flex-wrap: wrap; align-items: baseline;
-  gap: var(--gap) var(--gap-lg);
-  padding-block: 1.15rem;
-}
-.site-title {
-  margin: 0; font-size: 1.15rem; font-weight: 600;
-  letter-spacing: var(--tracking-caps); text-transform: uppercase;
-}
-.site-title a { color: inherit; text-decoration: none; }
-.site-nav { margin-left: auto; }
-.site-nav ul {
-  display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem;
-  list-style: none; margin: 0; padding: 0;
-  font-size: var(--size-small);
-}
-.site-nav a { color: var(--ink-soft); text-decoration: none; }
-.site-nav a:hover, .site-nav a[aria-current='page'] {
-  color: var(--accent); text-decoration: underline;
+/* The banner is full-bleed; only its contents are constrained. */
+.site-banner {
+  background-image: var(--banner-image);
+  background-size: cover;
+  background-position: var(--banner-position);
+  background-repeat: no-repeat;
 }
 
-.page-head { padding-block: clamp(1.75rem, 5vw, 3rem) 1.25rem; }
-.page-head p { color: var(--ink-soft); max-width: var(--measure); }
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: var(--banner-height);
+}
+
+.site-logo img {
+  width: var(--logo-width);
+  height: var(--logo-height);
+  object-fit: contain;
+}
+
+.main-nav { margin-left: auto; }
+.main-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 26px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.main-nav a {
+  color: var(--nav-color);
+  font-size: var(--nav-size);
+  font-weight: var(--nav-weight);
+  text-decoration: none;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.45);
+}
+.main-nav a:hover,
+.main-nav a[aria-current='page'] { text-decoration: underline; }
+
+/* Mobile menu with no JavaScript: a hidden checkbox drives the panel. */
+.nav-toggle { display: none; }
+.nav-toggle-label {
+  display: none;
+  margin-left: auto;
+  padding: 8px;
+  cursor: pointer;
+}
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block; width: 26px; height: 3px;
+  background: #fff; border-radius: 2px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.45);
+}
+.nav-toggle-label span { position: relative; }
+.nav-toggle-label span::before,
+.nav-toggle-label span::after { content: ''; position: absolute; }
+.nav-toggle-label span::before { top: -8px; }
+.nav-toggle-label span::after  { top: 8px; }
+
+/* --------------------------------------------------------------- layout --- */
+
+/* The live site caps the main column and pushes the sidebar flush right,
+   leaving a little slack between them — matched here rather than stretching
+   the listings to fill the row. */
+.content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.primary {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: var(--primary-width);
+  padding-right: var(--column-gap);
+}
+.sidebar { flex: 0 0 var(--sidebar-width); width: var(--sidebar-width); }
+
+.page-title {
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  line-height: 1;
+  color: var(--h1-color);
+  text-transform: uppercase;
+  margin: 40px 0 32.52px;
+}
 
 /* ----------------------------------------------------------- event cards -- */
 
-.events { display: flex; flex-direction: column; gap: 0.75rem; padding-bottom: 3rem; }
+.event-list { display: flex; flex-direction: column; gap: var(--stack-gap); }
 
-.event {
-  background: var(--paper-raised);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
+.event-card {
+  background: var(--card-bg);
+  color: var(--card-text);
+  padding: var(--card-pad);
+  border-radius: var(--card-radius);
+}
+
+.event-title {
+  font-size: var(--card-title-size);
+  font-weight: var(--card-title-weight);
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.event-title a { text-decoration: none; }
+.event-title a:hover { text-decoration: underline; }
+
+.event-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--card-gap);
+}
+
+.event-thumb {
+  flex: 0 0 var(--thumb-size);
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: var(--thumb-radius);
   overflow: hidden;
 }
-.event[open] { border-color: var(--rule-strong); box-shadow: var(--shadow); }
-
-/* The summary row is the whole clickable header: date chip, title, meta. */
-.event > summary {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: var(--gap);
-  padding: 0.9rem 1rem;
-  cursor: pointer;
-  list-style: none;
+/* The source images are wide banners; crop to the square the design wants
+   rather than letterboxing them. Anchored to the top, as the live site does,
+   because that is where the subject usually sits. */
+.event-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--thumb-focus);
 }
-.event > summary::-webkit-details-marker { display: none; }
-.event > summary:hover { background: var(--accent-wash); }
 
-.date-chip {
-  display: grid; justify-items: center; align-content: center;
-  min-width: 3.75rem; padding: 0.4rem 0.5rem;
-  background: var(--paper-sunk);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-sm);
+.event-date {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   line-height: 1.1;
 }
-.date-chip .month {
-  font-size: var(--size-tiny); font-weight: 600;
-  text-transform: uppercase; letter-spacing: var(--tracking-caps);
-  color: var(--accent);
-}
-.date-chip .day { font-size: 1.5rem; font-weight: 600; }
-.date-chip .year { font-size: var(--size-tiny); color: var(--ink-faint); }
-.date-chip.tba .day { font-size: 1rem; color: var(--ink-faint); }
+.event-date .year  { font-size: var(--card-year-size); font-weight: 700; text-transform: uppercase; }
+.event-date .day   { font-size: var(--card-day-size); font-weight: 700; }
+.event-date .month { font-size: var(--card-month-size); text-transform: uppercase; }
 
-.event-heading { margin: 0; font-size: 1.05rem; font-weight: 600; }
-.event-meta {
-  margin: 0.15rem 0 0; font-size: var(--size-small); color: var(--ink-soft);
-  display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem;
+.event-info { flex: 1 1 200px; min-width: 0; }
+.event-time {
+  margin: 0;
+  font-size: var(--card-time-size);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
-.event-meta .sep { color: var(--ink-faint); }
+.event-venue { margin: 6px 0 0; font-size: 12px; }
+.event-summary { margin: 8px 0 0; font-size: 13px; line-height: 1.45; }
 
-/* Rotating chevron — a transform, not a swapped glyph, so it animates. */
-.chevron {
-  width: 0.7rem; height: 0.7rem; border-right: 2px solid var(--ink-faint);
-  border-bottom: 2px solid var(--ink-faint); rotate: 45deg;
-  transition: rotate 0.15s ease; justify-self: end; margin-right: 0.25rem;
+.show-more {
+  display: block;
+  margin-top: var(--stack-gap);
+  padding: 14px;
+  background: var(--card-bg);
+  color: var(--card-text);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.04em;
 }
-.event[open] .chevron { rotate: 225deg; }
-@media (prefers-reduced-motion: reduce) { .chevron { transition: none; } }
+.show-more:hover { background: var(--gold); }
 
-.event-body {
-  display: grid; gap: var(--gap-lg);
-  grid-template-columns: minmax(0, 1fr);
-  padding: 0.25rem 1rem 1.25rem;
-  border-top: 1px solid var(--rule);
-  margin-top: -1px;
-}
-@media (min-width: 46rem) {
-  .event-body.has-image { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
-  .event-body.has-image .event-figure { order: 2; }
-}
-.event-figure img { border-radius: var(--radius-sm); border: 1px solid var(--rule); }
-.event-prose { max-width: var(--measure); padding-top: 1rem; }
+/* --------------------------------------------------------- calendar box -- */
 
-.event-facts {
-  margin: 1.25rem 0 0; display: grid; gap: 0.4rem 1rem;
-  grid-template-columns: auto 1fr; font-size: var(--size-small);
-}
-.event-facts dt {
-  color: var(--ink-faint); text-transform: uppercase;
-  letter-spacing: var(--tracking-caps); font-size: var(--size-tiny);
-  padding-top: 0.2em;
-}
-.event-facts dd { margin: 0; }
+.cal-widget { margin-top: 40px; padding-bottom: 10px; }
 
-.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
-.button {
-  display: inline-block; padding: 0.45rem 0.9rem;
-  font-size: var(--size-small); font-weight: 500;
-  border-radius: var(--radius-sm); text-decoration: none;
-  border: 1px solid var(--rule-strong); color: var(--ink);
-  background: var(--paper-sunk);
-}
-.button:hover { border-color: var(--accent); color: var(--accent); }
-.button.primary {
-  background: var(--accent); border-color: var(--accent); color: var(--paper-raised);
-}
-.button.primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: var(--paper-raised); }
-
-/* ------------------------------------------------------------- calendar -- */
-
-.calendar-head {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: var(--gap); margin-bottom: 1rem;
-}
-.calendar-head h2 { margin: 0; }
-
-.calendar {
-  width: 100%; border-collapse: collapse; table-layout: fixed;
-  border: 1px solid var(--rule); background: var(--paper-raised);
-  border-radius: var(--radius); overflow: hidden;
-}
-.calendar th {
-  font-size: var(--size-tiny); font-weight: 600; color: var(--ink-faint);
-  text-transform: uppercase; letter-spacing: var(--tracking-caps);
-  padding: 0.6rem 0.35rem; border-bottom: 1px solid var(--rule);
-}
-.calendar td {
-  border: 1px solid var(--rule); vertical-align: top;
-  padding: 0.35rem; height: 5.5rem; font-size: var(--size-small);
-}
-.calendar td.empty { background: var(--paper-sunk); }
-.calendar .daynum { color: var(--ink-faint); font-size: var(--size-tiny); }
-.calendar td.has-events .daynum { color: var(--accent); font-weight: 600; }
-.calendar .day-events { list-style: none; margin: 0.15rem 0 0; padding: 0; }
-.calendar .day-events a {
-  display: block; text-decoration: none; font-size: var(--size-tiny);
-  line-height: 1.25; padding: 0.15rem 0.3rem; margin-bottom: 0.15rem;
-  border-radius: 3px; background: var(--accent-wash); color: var(--accent);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.calendar .day-events a:hover { background: var(--accent); color: var(--paper-raised); }
-
-/* On a phone the grid stops being readable — become a list instead. */
-@media (max-width: 34rem) {
-  .calendar, .calendar tbody, .calendar tr, .calendar td { display: block; width: 100%; }
-  .calendar thead { display: none; }
-  .calendar td { height: auto; border: 0; border-bottom: 1px solid var(--rule); }
-  .calendar td.empty, .calendar td:not(.has-events) { display: none; }
-  .calendar .daynum::after { content: ' ' attr(data-weekday); }
+.cal-widget-title {
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
 }
 
-/* --------------------------------------------------------------- misc ---- */
-
-.year-nav { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
-.year-nav a {
-  padding: 0.3rem 0.6rem; font-size: var(--size-small); text-decoration: none;
-  border: 1px solid var(--rule); border-radius: var(--radius-sm); color: var(--ink-soft);
+.cal-buttons { display: flex; flex-wrap: wrap; margin-bottom: 5px; }
+.cal-button {
+  font-size: 12px;
+  line-height: 25px;
+  padding-inline: 10px;
+  margin: 0 4px 5px 0;
+  border-radius: var(--cal-radius);
+  background: var(--cal-btn-bg);
+  color: var(--cal-btn-text);
+  text-transform: uppercase;
+  text-decoration: none;
 }
-.year-nav a:hover, .year-nav a[aria-current='page'] {
-  border-color: var(--accent); color: var(--accent); background: var(--accent-wash);
+.cal-button:hover { background: var(--gold); }
+
+.cal-month-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.cal-month-title {
+  font-size: var(--cal-title-size);
+  font-weight: var(--cal-title-weight);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.cal-arrows { display: flex; gap: 6px; margin-left: auto; }
+.cal-arrows a {
+  width: 25px; height: 25px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--cal-btn-bg);
+  color: var(--cal-btn-text);
+  font-size: 12px;
+  text-decoration: none;
+}
+.cal-arrows a:hover { background: var(--gold); }
+
+/* Seven equal columns for both the day names and the days themselves. */
+.cal-daynames, .cal-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
-.empty-note { color: var(--ink-soft); font-style: italic; }
+.cal-daynames div {
+  background: var(--cal-dayname-bg);
+  color: var(--cal-dayname-text);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 0;
+}
+.cal-daynames div:first-child { border-radius: var(--cal-radius) 0 0 0; }
+.cal-daynames div:last-child  { border-radius: 0 var(--cal-radius) 0 0; }
+
+.cal-days > * {
+  min-height: var(--cal-cell-height);
+  padding: 10px 0;
+  background: var(--cal-day-bg);
+  color: var(--cal-day-text);
+  font-size: var(--cal-day-size);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.5;
+}
+.cal-days .empty { background: var(--cal-day-bg); }
+
+/* A day that has something on gets the accent colour and a dot. */
+.cal-days a.has-events {
+  min-height: var(--cal-cell-height-events);
+  color: var(--cal-accent);
+  text-decoration: none;
+}
+.cal-days a.has-events::after {
+  content: '';
+  display: block;
+  width: 6px; height: 6px;
+  margin: 4px auto 0;
+  border-radius: 50%;
+  background: var(--cal-accent);
+}
+.cal-days a.has-events:hover { background: var(--cal-dayname-bg); }
+
+/* ---------------------------------------------------------------- footer -- */
 
 .site-footer {
-  border-top: 1px solid var(--rule); margin-top: 3rem;
-  padding-block: 1.5rem 2.5rem;
-  font-size: var(--size-small); color: var(--ink-faint);
+  margin-top: 50px;
+  background: var(--gold-deep);
+  color: #fff;
 }
-.site-footer a { color: var(--ink-soft); }
+.site-footer .container { padding-block: 25px; }
+.site-footer p { margin: 0; font-size: 14px; }
+.site-footer a { color: #fff; }
+
+/* ------------------------------------------------------------ responsive -- */
+
+@media (max-width: 900px) {
+  /* The sidebar drops below the listings, exactly as the live site does. */
+  .content { flex-direction: column; }
+  .primary { max-width: 100%; padding-right: 0; }
+  .sidebar { flex: 1 1 auto; width: 100%; }
+  .cal-widget { margin-top: 30px; }
+}
+
+@media (max-width: 782px) {
+  :root { --container-pad: var(--container-pad-mobile); }
+
+  .page-title { font-size: var(--h1-size-mobile); margin-top: 30px; }
+
+  .nav-toggle-label { display: block; }
+  .main-nav {
+    flex-basis: 100%;
+    margin-left: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .nav-toggle:checked ~ .main-nav { max-height: 60vh; }
+  .main-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0 20px;
+  }
+  .header-inner { flex-wrap: wrap; padding-block: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-nav { transition: none; }
+}
 
 @media print {
-  .site-nav, .actions, .chevron { display: none; }
-  .event { break-inside: avoid; border-color: #999; }
-  .event-body { display: block !important; }
+  .main-nav, .nav-toggle-label, .sidebar, .show-more { display: none; }
+  .site-banner { background: none; }
+  .event-card { border: 1px solid #999; break-inside: avoid; }
 }

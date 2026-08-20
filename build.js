@@ -2,13 +2,11 @@
 /**
  * build.js — turn data/events.json into a static site in dist/.
  *
- * Everything the old EventON install did with 50 scripts is done here at build
- * time instead: the listings, the month grids, the per-event pages and the
- * .ics files are all plain HTML written once. The published site ships no
- * JavaScript at all — expand-in-place is <details>, and the calendar is a
- * table that degrades to a list on narrow screens via CSS.
+ * Currently focused on the home page, which is being matched to the live
+ * WordPress site's appearance before the rest of the pages are styled.
  *
- *   node build.js
+ *   node build.js          # everything
+ *   node build.js --home   # just the home page (fast, for styling work)
  */
 
 import { mkdir, readFile, writeFile, copyFile, rm, readdir } from 'node:fs/promises';
@@ -17,12 +15,28 @@ import path from 'node:path';
 
 const OUT = 'dist';
 const SITE_NAME = 'Early Music San Antonio';
-const TAGLINE = "Concerts of Medieval, Renaissance and Baroque music in and around San Antonio.";
+const TAGLINE = 'The audience-based information site for San Antonio’s Early Music scene';
 const TZ = 'America/Chicago';
+const HOME_ONLY = process.argv.includes('--home');
+
+/** How many events the home page lists before "Show More Events". */
+const HOME_LIMIT = 3;
+
+/**
+ * The live EventON card shows only title, image, date and time — venue and
+ * blurb appear once the card is opened. Flip this on to surface them in the
+ * collapsed card instead.
+ */
+const CARD_DETAILS = false;
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
   'August', 'September', 'October', 'November', 'December'];
 const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+const LOGO = 'Early-Music-SA-Logo-wt.png';
+
+/** Event thumbnail box, in CSS pixels. Keep in step with --thumb-size. */
+const THUMB = 140;
 
 /* ------------------------------------------------------------------ util -- */
 
@@ -30,7 +44,6 @@ const esc = (s) => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;');
 
-/** Strip anything we did not put there ourselves out of imported description HTML. */
 const ALLOWED = /^<\/?(p|br|em|strong|i|b|ul|ol|li|a|h3|h4|blockquote)(\s[^>]*)?>$/i;
 function sanitize(html) {
   return String(html || '').replace(/<[^>]+>/g, (tag) => {
@@ -44,20 +57,62 @@ function sanitize(html) {
   });
 }
 
-/**
- * Point at the locally mirrored copy of an image rather than the WordPress
- * upload it came from — the whole point is that the new site does not depend
- * on the old one still being up. Same filename transform scrape.js used.
- * Falls back to the remote URL if the mirror is missing.
- */
-function localImage(url, depth) {
-  if (!url) return '';
-  const name = decodeURIComponent(url.split('/').pop()).replace(/[^\w.\-]/g, '_');
-  return existsSync(path.join('media', name)) ? `${'../'.repeat(depth)}media/${name}` : url;
+/** First N characters of the description, cut on a word boundary. */
+function excerpt(text, max = 150) {
+  const s = String(text || '').trim();
+  if (s.length <= max) return s;
+  return s.slice(0, s.lastIndexOf(' ', max)) + '…';
 }
 
-/** Event dates are stored as ISO with a fixed offset — read the parts directly
- *  rather than going through Date, which would re-interpret them locally. */
+/* ----------------------------------------------------------------- images -- */
+
+/** scrape.js mirrors uploads under media/ using this filename transform. */
+const mediaName = (url) =>
+  decodeURIComponent(String(url).split('/').pop()).replace(/[^\w.\-]/g, '_');
+
+const mirrored = (url) => url && existsSync(path.join('media', mediaName(url)));
+
+function localImage(url, depth) {
+  if (!url) return '';
+  return mirrored(url) ? `${'../'.repeat(depth)}media/${mediaName(url)}` : url;
+}
+
+/**
+ * Build a responsive <img>. WordPress had already generated resized copies of
+ * every upload and scrape.js mirrored them, so the browser gets a real srcset
+ * and downloads a 300px file for a 140px slot instead of a 1400px original.
+ */
+function responsiveImg(ev, { sizes, depth, className = '', square = 0, eager = false }) {
+  if (!ev.image) return '';
+  const variants = (ev.imageVariants || []).filter((v) => mirrored(v.url));
+  const src = localImage(ev.image, depth);
+
+  // Most of these uploads are wide banners (1400x400 is typical). Cropping one
+  // into a square box means the browser needs a file wide enough to cover the
+  // box's *height*, so ask for width x aspect-ratio — otherwise `sizes: 140px`
+  // picks a 300x86 file and it gets upscaled into the 140px square.
+  if (square && ev.imageWidth && ev.imageHeight) {
+    sizes = `${Math.round(square * Math.max(1, ev.imageWidth / ev.imageHeight))}px`;
+  }
+  const srcset = variants.length
+    ? ` srcset="${variants.map((v) => `${localImage(v.url, depth)} ${v.width}w`).join(', ')}"`
+    : '';
+  // For a square crop the intrinsic ratio would fight object-fit, so only
+  // publish real dimensions when the image is shown at its own aspect ratio.
+  const dims = !square && ev.imageWidth
+    ? ` width="${ev.imageWidth}" height="${ev.imageHeight}"` : '';
+  // Above-the-fold images load eagerly and get fetch priority; everything
+  // further down the page waits until it is needed.
+  const load = eager
+    ? ' fetchpriority="high" decoding="async"'
+    : ' loading="lazy" decoding="async"';
+  return `<img src="${esc(src)}"${srcset} sizes="${esc(sizes)}"`
+    + ` alt="${esc(ev.imageAlt || '')}"${load}`
+    + `${dims}${className ? ` class="${className}"` : ''}>`;
+}
+
+/* ------------------------------------------------------------------ dates -- */
+
 function parts(iso) {
   const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(iso || '');
   if (!m) return null;
@@ -72,67 +127,77 @@ function parts(iso) {
 function formatTime(p) {
   if (!p) return '';
   const h12 = p.hour % 12 === 0 ? 12 : p.hour % 12;
-  const suffix = p.hour < 12 ? 'am' : 'pm';
-  return p.minute ? `${h12}:${String(p.minute).padStart(2, '0')}${suffix}` : `${h12}${suffix}`;
+  return `${h12}:${String(p.minute).padStart(2, '0')} ${p.hour < 12 ? 'AM' : 'PM'}`;
 }
 
 function timeRange(ev) {
   const s = parts(ev.start), e = parts(ev.end);
   if (!s) return 'Date to be announced';
   if (ev.allDay) return 'All day';
-  // EventON writes 23:59 to mean "no end time given" — don't show that.
+  // EventON writes 23:59 to mean "no end time was given".
   if (!e || (e.hour === 23 && e.minute === 59)) return formatTime(s);
-  return `${formatTime(s)} – ${formatTime(e)}`;
+  return `${formatTime(s)} - ${formatTime(e)}`;
 }
 
-const longDate = (p) => p ? `${DOW[p.weekday]}, ${MONTHS[p.month - 1]} ${p.day}, ${p.year}` : 'Date to be announced';
+const longDate = (p) => p
+  ? `${DOW[p.weekday]}, ${MONTHS[p.month - 1]} ${p.day}, ${p.year}`
+  : 'Date to be announced';
 
 /* ------------------------------------------------------------------ shell -- */
 
 const NAV = [
-  ['', 'Upcoming'],
-  ['calendar/', 'Calendar'],
-  ['archive/', 'Past Events'],
-  ['submit.html', 'Submit an Event'],
+  ['', 'Home'],
   ['about.html', 'About'],
-  ['contact.html', 'Contact'],
+  ['archive/', 'Past Events'],
+  ['submit.html', 'Submit Event'],
+  ['calendar/', 'Calendar'],
+  ['contact.html', 'Contact Us'],
 ];
 
 function page({ title, current = '', depth = 0, head = '', body }) {
   const root = depth ? '../'.repeat(depth) : '';
   const nav = NAV.map(([href, label]) => {
     const to = href === '' ? root || './' : root + href;
-    const active = href === current ? ' aria-current="page"' : '';
-    return `<li><a href="${esc(to)}"${active}>${esc(label)}</a></li>`;
-  }).join('');
+    return `<li><a href="${esc(to)}"${href === current ? ' aria-current="page"' : ''}>${esc(label)}</a></li>`;
+  }).join('\n        ');
 
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)} — ${esc(SITE_NAME)}</title>
+<title>${esc(title)} &ndash; ${esc(SITE_NAME)}</title>
 <meta name="description" content="${esc(TAGLINE)}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700;800&display=swap">
 <link rel="stylesheet" href="${esc(root)}style.css">
 ${head}</head>
 <body>
-<header class="site-header">
-  <div class="wrap">
-    <p class="site-title"><a href="${esc(root || './')}">${esc(SITE_NAME)}</a></p>
-    <nav class="site-nav" aria-label="Main"><ul>${nav}</ul></nav>
+
+<header class="site-banner">
+  <div class="container header-inner">
+    <a class="site-logo" href="${esc(root || './')}">
+      <img src="${esc(root)}media/${LOGO}" alt="${esc(SITE_NAME)}" width="205" height="150">
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Menu"><span></span></label>
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        ${nav}
+      </ul>
+    </nav>
   </div>
 </header>
-<main class="wrap" id="main">
+
 ${body}
-</main>
+
 <footer class="site-footer">
-  <div class="wrap">
-    <p>${esc(SITE_NAME)} is maintained by volunteers to help audiences find early
-    music performances in the San Antonio area. Listings are free.</p>
-    <p><a href="${esc(root)}submit.html">Submit an event</a> ·
-       <a href="${esc(root)}contact.html">Contact</a></p>
+  <div class="container">
+    <p>Copyright ${new Date().getFullYear()} &mdash; ${esc(SITE_NAME)}. All rights reserved.</p>
   </div>
 </footer>
+
 </body>
 </html>
 `;
@@ -140,94 +205,79 @@ ${body}
 
 /* ------------------------------------------------------------------ cards -- */
 
-function eventCard(ev, depth, { open = false } = {}) {
+function eventCard(ev, depth, { eager = false } = {}) {
   const p = parts(ev.start);
-  const root = '../'.repeat(depth);
-  const chip = p
-    ? `<span class="month">${MONTHS[p.month - 1].slice(0, 3)}</span>
-       <span class="day">${p.day}</span>
-       <span class="year">${p.year}</span>`
-    : `<span class="month">Date</span><span class="day">TBA</span>`;
-
-  const meta = [timeRange(ev), ev.location?.name, ev.organizer?.name]
-    .filter(Boolean).map(esc).join(' <span class="sep">·</span> ');
-
-  const facts = [];
-  if (ev.performers) facts.push(['Performers', esc(ev.performers)]);
-  if (ev.location?.name) {
-    const addr = ev.location.address;
-    const maps = addr
-      ? ` <a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(`${ev.location.name} ${addr}`)}" rel="noopener">map</a>`
-      : '';
-    facts.push(['Venue', esc(ev.location.name) + (addr ? `<br>${esc(addr)}` : '') + maps]);
-  }
-  if (ev.organizer?.name) facts.push(['Presented by', esc(ev.organizer.name)]);
-  if (ev.tickets) facts.push(['Tickets', esc(ev.tickets)]);
-  if (p) facts.push(['Date', esc(longDate(p)) + (ev.allDay ? '' : `, ${esc(timeRange(ev))}`)]);
-
-  const actions = [];
-  if (ev.website) actions.push(`<a class="button primary" href="${esc(ev.website)}" rel="noopener">Event website</a>`);
-  if (p) actions.push(`<a class="button" href="${root}events/${esc(ev.slug)}.ics">Add to calendar</a>`);
-  actions.push(`<a class="button" href="${root}events/${esc(ev.slug)}.html">Details</a>`);
-
-  const figure = ev.image
-    ? `<div class="event-figure"><img src="${esc(localImage(ev.image, depth))}" alt="" loading="lazy" width="640" height="427"></div>`
+  const href = `${'../'.repeat(depth)}events/${esc(ev.slug)}.html`;
+  const thumb = ev.image
+    // `sizes` is parsed by the HTML parser, not CSS — it takes a plain length,
+    // never a var(). Keep this in step with --thumb-size in style.css.
+    ? `<div class="event-thumb">${responsiveImg(ev, { sizes: '140px', depth, square: THUMB, eager })}</div>`
     : '';
 
-  return `<details class="event"${open ? ' open' : ''}>
-  <summary>
-    <span class="date-chip${p ? '' : ' tba'}">${chip}</span>
-    <span>
-      <h2 class="event-heading">${esc(ev.title)}</h2>
-      <p class="event-meta">${meta}</p>
-    </span>
-    <span class="chevron" aria-hidden="true"></span>
-  </summary>
-  <div class="event-body${figure ? ' has-image' : ''}">
-    ${figure}
-    <div class="event-prose">
-      ${sanitize(ev.description) || '<p class="empty-note">No description was provided for this event.</p>'}
-      <dl class="event-facts">
-        ${facts.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('\n        ')}
-      </dl>
-      <div class="actions">${actions.join('\n        ')}</div>
+  const venue = [ev.location?.name, ev.organizer?.name].filter(Boolean).join(' &middot; ');
+
+  return `<article class="event-card">
+  <h2 class="event-title"><a href="${href}">${esc(ev.title)}</a></h2>
+  <div class="event-inner">
+    ${thumb}
+    <div class="event-date">
+      ${p ? `<span class="year">${p.year}</span>
+      <span class="day">${p.day}</span>
+      <span class="month">${MONTHS[p.month - 1].slice(0, 3)}</span>` : '<span class="day">TBA</span>'}
+    </div>
+    <div class="event-info">
+      <p class="event-time">${esc(timeRange(ev))}</p>
+      ${CARD_DETAILS && venue ? `<p class="event-venue">${venue}</p>` : ''}
+      ${CARD_DETAILS && ev.descriptionText ? `<p class="event-summary">${esc(excerpt(ev.descriptionText))}</p>` : ''}
     </div>
   </div>
-</details>`;
+</article>`;
 }
 
-/* -------------------------------------------------------------- calendar -- */
+/* --------------------------------------------------------- sidebar widget -- */
 
-function monthGrid(year, month, byDay, depth) {
+function calendarWidget(year, month, byDay, depth) {
   const root = '../'.repeat(depth);
   const first = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
-  const days = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const total = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const pad = (n) => String(n).padStart(2, '0');
 
   const cells = [];
-  for (let i = 0; i < first; i++) cells.push('<td class="empty"></td>');
-  for (let d = 1; d <= days; d++) {
-    const key = `${year}-${String(month).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    const list = byDay.get(key) || [];
-    const weekday = DOW[new Date(Date.UTC(year, month - 1, d)).getUTCDay()];
-    const links = list.map((ev) =>
-      `<li><a href="${root}events/${esc(ev.slug)}.html" title="${esc(ev.title)}">${esc(ev.title)}</a></li>`).join('');
-    cells.push(`<td class="${list.length ? 'has-events' : ''}">
-      <span class="daynum" data-weekday="${weekday}">${d}</span>
-      ${links ? `<ul class="day-events">${links}</ul>` : ''}
-    </td>`);
+  for (let i = 0; i < first; i++) cells.push('<div class="empty"></div>');
+  for (let d = 1; d <= total; d++) {
+    const list = byDay.get(`${year}-${pad(month)}-${pad(d)}`) || [];
+    cells.push(list.length
+      ? `<a class="has-events" href="${root}calendar/${year}-${pad(month)}.html"
+         title="${esc(list.map((e) => e.title).join(', '))}">${d}</a>`
+      : `<div>${d}</div>`);
   }
-  while (cells.length % 7) cells.push('<td class="empty"></td>');
+  while (cells.length % 7) cells.push('<div class="empty"></div>');
 
-  const rows = [];
-  for (let i = 0; i < cells.length; i += 7) {
-    rows.push(`<tr>${cells.slice(i, i + 7).join('')}</tr>`);
-  }
+  const shift = (delta) => {
+    const d = new Date(Date.UTC(year, month - 1 + delta, 1));
+    return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}`;
+  };
 
-  return `<table class="calendar">
-  <caption class="visually-hidden">Events in ${MONTHS[month - 1]} ${year}</caption>
-  <thead><tr>${DOW.map((d) => `<th scope="col">${d}</th>`).join('')}</tr></thead>
-  <tbody>${rows.join('\n')}</tbody>
-</table>`;
+  return `<div class="cal-widget">
+  <h2 class="cal-widget-title">Events Calendar</h2>
+  <div class="cal-buttons">
+    <a class="cal-button" href="${root}calendar/">Jump Months</a>
+    <a class="cal-button" href="${root}calendar/">Current Month</a>
+  </div>
+  <div class="cal-month-line">
+    <span class="cal-month-title">${MONTHS[month - 1]}, ${year}</span>
+    <span class="cal-arrows">
+      <a href="${root}calendar/${shift(-1)}.html" aria-label="Previous month">&lsaquo;</a>
+      <a href="${root}calendar/${shift(1)}.html" aria-label="Next month">&rsaquo;</a>
+    </span>
+  </div>
+  <div class="cal-daynames" aria-hidden="true">
+    ${DOW.map((d) => `<div>${d}</div>`).join('')}
+  </div>
+  <div class="cal-days">
+    ${cells.join('\n    ')}
+  </div>
+</div>`;
 }
 
 /* ------------------------------------------------------------------- ics -- */
@@ -235,23 +285,18 @@ function monthGrid(year, month, byDay, depth) {
 function icsFor(ev) {
   const stamp = (iso) => {
     const p = parts(iso);
-    if (!p) return null;
-    // Local time plus a TZID beats trying to hand-roll UTC conversion here.
-    return `${p.year}${String(p.month).padStart(2, '0')}${String(p.day).padStart(2, '0')}`
-      + `T${String(p.hour).padStart(2, '0')}${String(p.minute).padStart(2, '0')}00`;
+    return p ? `${p.year}${String(p.month).padStart(2, '0')}${String(p.day).padStart(2, '0')}`
+      + `T${String(p.hour).padStart(2, '0')}${String(p.minute).padStart(2, '0')}00` : null;
   };
   const start = stamp(ev.start);
   if (!start) return null;
-  // 23:59 is EventON's "no end time given". Emitting it would turn a recital
-  // into a four-hour block in someone's calendar, so leave DTEND off instead
-  // and let the client apply its own default length.
+
   const endParts = parts(ev.end);
-  const end = (endParts && !(endParts.hour === 23 && endParts.minute === 59))
-    ? stamp(ev.end) : null;
+  const end = (endParts && !(endParts.hour === 23 && endParts.minute === 59)) ? stamp(ev.end) : null;
   const dtstamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
 
   const fold = (line) => line.match(/.{1,73}/g).join('\r\n ');
-  const clean = (s) => String(s || '').replace(/\\/g, '\\\\').replace(/[;,]/g, (c) => '\\' + c).replace(/\n/g, '\\n');
+  const cl = (s) => String(s || '').replace(/\\/g, '\\\\').replace(/[;,]/g, (c) => '\\' + c).replace(/\n/g, '\\n');
 
   return [
     'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Early Music San Antonio//EN', 'CALSCALE:GREGORIAN',
@@ -260,9 +305,9 @@ function icsFor(ev) {
     `DTSTAMP:${dtstamp}`,
     `DTSTART;TZID=${TZ}:${start}`,
     end ? `DTEND;TZID=${TZ}:${end}` : '',
-    fold(`SUMMARY:${clean(ev.title)}`),
-    fold(`DESCRIPTION:${clean(ev.descriptionText).slice(0, 900)}`),
-    ev.location?.name ? fold(`LOCATION:${clean([ev.location.name, ev.location.address].filter(Boolean).join(', '))}`) : '',
+    fold(`SUMMARY:${cl(ev.title)}`),
+    fold(`DESCRIPTION:${cl(ev.descriptionText).slice(0, 900)}`),
+    ev.location?.name ? fold(`LOCATION:${cl([ev.location.name, ev.location.address].filter(Boolean).join(', '))}`) : '',
     ev.website ? `URL:${ev.website}` : '',
     'END:VEVENT', 'END:VCALENDAR',
   ].filter(Boolean).join('\r\n') + '\r\n';
@@ -275,13 +320,10 @@ async function main() {
   const live = events.filter((e) => !e.suspectedSpam);
 
   await rm(OUT, { recursive: true, force: true });
-  for (const d of ['', 'events', 'calendar', 'archive']) {
-    await mkdir(path.join(OUT, d), { recursive: true });
-  }
+  await mkdir(OUT, { recursive: true });
   await copyFile('assets/style.css', path.join(OUT, 'style.css'));
 
-  // Copy the mirrored images in so the built site has no dependency on the
-  // old WordPress host.
+  // Mirror the images in so nothing on the built site points at WordPress.
   let copied = 0;
   if (existsSync('media')) {
     await mkdir(path.join(OUT, 'media'), { recursive: true });
@@ -295,84 +337,116 @@ async function main() {
   const undated = live.filter((e) => !e.start);
   const now = Date.now() / 1000;
   const upcoming = dated.filter((e) => e.endUnix >= now);
-  const past = dated.filter((e) => e.endUnix < now).reverse();
+  const past = [...dated.filter((e) => e.endUnix < now)].reverse();
 
   const write = (rel, html) => writeFile(path.join(OUT, rel), html);
 
-  // --- index ------------------------------------------------------------
-  await write('index.html', page({
-    title: 'Upcoming Events', current: '',
-    body: `<div class="page-head">
-  <h1>Upcoming events</h1>
-  <p>${esc(TAGLINE)} Select any event to see full details.</p>
-</div>
-<div class="events">
-${upcoming.length
-      ? upcoming.map((e, i) => eventCard(e, 0, { open: i === 0 })).join('\n')
-      : '<p class="empty-note">No upcoming events are listed just now. Please check back soon.</p>'}
-</div>`,
-  }));
-
-  // --- month pages ------------------------------------------------------
   const byDay = new Map();
   for (const ev of dated) {
     const key = parts(ev.start).ymd;
     if (!byDay.has(key)) byDay.set(key, []);
     byDay.get(key).push(ev);
   }
-  const months = [...new Set(dated.map((e) => parts(e.start).ymd.slice(0, 7)))].sort();
 
+  // --- home page --------------------------------------------------------
+  const focusDate = parts(upcoming[0]?.start) || parts(dated[dated.length - 1]?.start);
+  const shown = upcoming.slice(0, HOME_LIMIT);
+
+  await write('index.html', page({
+    title: 'Home', current: '',
+    body: `<div class="container content">
+  <main class="primary">
+    <h1 class="page-title">Upcoming Events</h1>
+    <div class="event-list">
+${shown.length
+      ? shown.map((e, i) => eventCard(e, 0, { eager: i < 2 })).join('\n')
+      : '<p>No upcoming events are listed just now. Please check back soon.</p>'}
+    </div>
+    ${upcoming.length > HOME_LIMIT || past.length
+      ? '<a class="show-more" href="archive/">Show More Events</a>' : ''}
+  </main>
+  <aside class="sidebar">
+${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}
+  </aside>
+</div>`,
+  }));
+
+  if (HOME_ONLY) {
+    console.log(`Built ${OUT}/index.html (home only) — ${shown.length} of ${upcoming.length} upcoming shown`);
+    return;
+  }
+
+  for (const d of ['events', 'calendar', 'archive']) {
+    await mkdir(path.join(OUT, d), { recursive: true });
+  }
+
+  // --- month pages ------------------------------------------------------
+  const months = [...new Set(dated.map((e) => parts(e.start).ymd.slice(0, 7)))].sort();
   for (const [i, ym] of months.entries()) {
     const [y, m] = ym.split('-').map(Number);
     const prev = months[i - 1], next = months[i + 1];
     const label = (s) => `${MONTHS[+s.split('-')[1] - 1]} ${s.split('-')[0]}`;
+    const inMonth = dated.filter((e) => parts(e.start).ymd.startsWith(ym));
     await write(`calendar/${ym}.html`, page({
       title: `${MONTHS[m - 1]} ${y}`, current: 'calendar/', depth: 1,
-      body: `<div class="page-head"><h1>Calendar</h1></div>
-<div class="calendar-head">
-  <p>${prev ? `<a href="${prev}.html">← ${label(prev)}</a>` : ''}</p>
-  <h2>${MONTHS[m - 1]} ${y}</h2>
-  <p>${next ? `<a href="${next}.html">${label(next)} →</a>` : ''}</p>
-</div>
-${monthGrid(y, m, byDay, 1)}
-<p style="margin-top:1.5rem"><a href="../archive/">Browse the full archive by year →</a></p>`,
+      body: `<div class="container content">
+  <main class="primary">
+    <h1 class="page-title">${MONTHS[m - 1]} ${y}</h1>
+    <p style="margin:0 0 20px">
+      ${prev ? `<a href="${prev}.html">&larr; ${label(prev)}</a>` : ''}
+      ${next ? ` &nbsp; <a href="${next}.html">${label(next)} &rarr;</a>` : ''}
+    </p>
+    <div class="event-list">${inMonth.map((e) => eventCard(e, 1)).join('\n')}</div>
+  </main>
+  <aside class="sidebar">${calendarWidget(y, m, byDay, 1)}</aside>
+</div>`,
     }));
   }
 
-  // Landing page for /calendar/ — the month containing the next event.
-  const focus = (upcoming[0] && parts(upcoming[0].start).ymd.slice(0, 7))
-    || months[months.length - 1];
+  const focusYm = `${focusDate.year}-${String(focusDate.month).padStart(2, '0')}`;
+  const calLanding = months.includes(focusYm) ? focusYm : months[months.length - 1];
   await write('calendar/index.html', page({
     title: 'Calendar', current: 'calendar/', depth: 1,
-    head: `<meta http-equiv="refresh" content="0; url=${focus}.html">\n`,
-    body: `<div class="page-head"><h1>Calendar</h1>
-<p><a href="${focus}.html">Go to ${MONTHS[+focus.split('-')[1] - 1]} ${focus.split('-')[0]} →</a></p></div>`,
+    head: `<meta http-equiv="refresh" content="0; url=${calLanding}.html">\n`,
+    body: `<div class="container content"><main class="primary">
+  <h1 class="page-title">Calendar</h1>
+  <p><a href="${calLanding}.html">Go to ${MONTHS[+calLanding.split('-')[1] - 1]} ${calLanding.split('-')[0]} &rarr;</a></p>
+</main></div>`,
   }));
 
-  // --- archive by year --------------------------------------------------
+  // --- archive ----------------------------------------------------------
   const years = [...new Set(past.map((e) => parts(e.start).year))].sort((a, b) => b - a);
-  const yearNav = (cur) => `<nav class="year-nav" aria-label="Archive years">${years
-    .map((y) => `<a href="${y}.html"${y === cur ? ' aria-current="page"' : ''}>${y}</a>`).join('')}</nav>`;
+  const yearNav = (cur) => `<p style="margin:0 0 20px">${years
+    .map((y) => `<a href="${y}.html"${y === cur ? ' aria-current="page"' : ''}>${y}</a>`)
+    .join(' &nbsp; ')}</p>`;
 
   for (const y of years) {
     const list = past.filter((e) => parts(e.start).year === y);
     await write(`archive/${y}.html`, page({
       title: `${y} Events`, current: 'archive/', depth: 1,
-      body: `<div class="page-head"><h1>${y}</h1>
-<p>${list.length} event${list.length === 1 ? '' : 's'} listed in ${y}.</p></div>
-${yearNav(y)}
-<div class="events">${list.map((e) => eventCard(e, 1)).join('\n')}</div>`,
+      body: `<div class="container content">
+  <main class="primary">
+    <h1 class="page-title">${y}</h1>
+    ${yearNav(y)}
+    <div class="event-list">${list.map((e) => eventCard(e, 1)).join('\n')}</div>
+  </main>
+  <aside class="sidebar">${calendarWidget(y, 12, byDay, 1)}</aside>
+</div>`,
     }));
   }
 
   await write('archive/index.html', page({
     title: 'Past Events', current: 'archive/', depth: 1,
-    body: `<div class="page-head"><h1>Past events</h1>
-<p>${past.length} events listed since ${years[years.length - 1]}. Choose a year.</p></div>
-${yearNav(null)}
-${undated.length ? `<h2 style="margin-top:2rem">Undated listings</h2>
-<p class="empty-note">These were listed without a date.</p>
-<div class="events">${undated.map((e) => eventCard(e, 1)).join('\n')}</div>` : ''}`,
+    body: `<div class="container content">
+  <main class="primary">
+    <h1 class="page-title">Past Events</h1>
+    <p>${past.length} events listed since ${years[years.length - 1]}.</p>
+    ${yearNav(null)}
+    ${undated.length ? `<h2 class="cal-widget-title">Undated listings</h2>
+    <div class="event-list">${undated.map((e) => eventCard(e, 1)).join('\n')}</div>` : ''}
+  </main>
+  <aside class="sidebar">${calendarWidget(focusDate.year, focusDate.month, byDay, 1)}</aside>
+</div>`,
   }));
 
   // --- one page per event ----------------------------------------------
@@ -390,15 +464,35 @@ ${undated.length ? `<h2 style="margin-top:2rem">Undated listings</h2>
         : undefined,
       organizer: ev.organizer?.name ? { '@type': 'Organization', name: ev.organizer.name } : undefined,
     };
+
+    const facts = [];
+    if (ev.performers) facts.push(['Performers', esc(ev.performers)]);
+    if (ev.location?.name) {
+      const addr = ev.location.address;
+      facts.push(['Venue', esc(ev.location.name) + (addr ? `<br>${esc(addr)}` : '')
+        + (addr ? ` <a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(`${ev.location.name} ${addr}`)}" rel="noopener">map</a>` : '')]);
+    }
+    if (ev.organizer?.name) facts.push(['Presented by', esc(ev.organizer.name)]);
+    if (ev.tickets) facts.push(['Tickets', esc(ev.tickets)]);
+    if (p) facts.push(['Date', `${esc(longDate(p))}${ev.allDay ? '' : `, ${esc(timeRange(ev))}`}`]);
+
     await write(`events/${ev.slug}.html`, page({
       title: ev.title, depth: 1,
       head: `<script type="application/ld+json">${JSON.stringify(ld)}</script>\n`,
-      body: `<div class="page-head">
-  <p><a href="../">← All events</a></p>
-  <h1>${esc(ev.title)}</h1>
-  <p>${esc(longDate(p))}${p && !ev.allDay ? ` · ${esc(timeRange(ev))}` : ''}</p>
-</div>
-<div class="events">${eventCard(ev, 1, { open: true })}</div>`,
+      body: `<div class="container content">
+  <main class="primary">
+    <p style="margin:30px 0 0"><a href="../">&larr; All events</a></p>
+    <h1 class="page-title">${esc(ev.title)}</h1>
+    ${ev.image ? `<p>${responsiveImg(ev, { sizes: '(max-width: 782px) 100vw, 700px', depth: 1 })}</p>` : ''}
+    ${sanitize(ev.description) || '<p>No description was provided for this event.</p>'}
+    <dl>${facts.map(([k, v]) => `<dt><strong>${k}</strong></dt><dd style="margin:0 0 10px">${v}</dd>`).join('')}</dl>
+    <p>
+      ${ev.website ? `<a href="${esc(ev.website)}" rel="noopener">Event website</a> &nbsp; ` : ''}
+      ${p ? `<a href="${esc(ev.slug)}.ics">Add to calendar</a>` : ''}
+    </p>
+  </main>
+  <aside class="sidebar">${calendarWidget(p?.year || focusDate.year, p?.month || focusDate.month, byDay, 1)}</aside>
+</div>`,
     }));
 
     const ics = icsFor(ev);
@@ -406,46 +500,36 @@ ${undated.length ? `<h2 style="margin-top:2rem">Undated listings</h2>
   }
 
   // --- static pages -----------------------------------------------------
-  await write('about.html', page({
-    title: 'About', current: 'about.html',
-    body: `<div class="page-head"><h1>About</h1></div>
-<div class="measure">
-<p>${esc(SITE_NAME)} is maintained by volunteers who seek to expand audience
-awareness of performances in the San Antonio area. We believe many people would
-like to hear early music but have not always been aware of what is happening —
-and that the more people know, the more the audience grows, which helps
-everyone: performers, audiences, and the community.</p>
-<p>This site is free to use and free to list on. If you have an event of
-Medieval, Renaissance or Baroque music you would like listed, please
-<a href="submit.html">send it to us</a>.</p>
-<p>If you are scheduling events, you can reach a larger audience by checking
-this site for open dates.</p>
-</div>`,
+  const simplePage = (file, title, current, inner) => write(file, page({
+    title, current,
+    body: `<div class="container content"><main class="primary">
+  <h1 class="page-title">${esc(title)}</h1>
+  ${inner}
+</main></div>`,
   }));
 
-  await write('submit.html', page({
-    title: 'Submit an Event', current: 'submit.html',
-    body: `<div class="page-head"><h1>Submit an event</h1>
-<p>Listings are free. We list concerts of Medieval, Renaissance and Baroque
-music in and around San Antonio.</p></div>
-<div class="measure">
-<p class="empty-note">The submission form is not wired up yet — this page is a
-placeholder from the static build. It needs the small server described in
-CLAUDE.md (submission goes to a moderation queue, a volunteer approves it, and
-the next build picks it up).</p>
-<p>In the meantime, please <a href="contact.html">get in touch</a> with the
-event name, date and time, venue, performers, ticket details and a link.</p>
-</div>`,
-  }));
+  await simplePage('about.html', 'About', 'about.html', `
+  <p>${esc(SITE_NAME)} is maintained by volunteers who seek to expand audience
+  awareness of performances in the San Antonio area. We believe many people
+  would like to hear early music but have not always been aware of what is
+  happening &mdash; and that the more people know, the more the audience grows,
+  which helps everyone: performers, audiences, and the community.</p>
+  <p>If you have an event of Medieval, Renaissance or Baroque music you would
+  like listed, please <a href="submit.html">send it to us</a>. Listings are free.</p>
+  <p>If you are scheduling events, you can reach a larger audience by checking
+  this site for open dates.</p>`);
 
-  await write('contact.html', page({
-    title: 'Contact', current: 'contact.html',
-    body: `<div class="page-head"><h1>Contact</h1></div>
-<div class="measure">
-<p class="empty-note">Contact details still to be filled in — the old site used
-a WPForms form that posted into WordPress.</p>
-</div>`,
-  }));
+  await simplePage('submit.html', 'Submit Your Event', 'submit.html', `
+  <p>Listings are free. We list concerts of Medieval, Renaissance and Baroque
+  music in and around San Antonio.</p>
+  <p><em>The submission form is not wired up yet &mdash; it needs the small
+  moderation server described in CLAUDE.md. In the meantime please
+  <a href="contact.html">get in touch</a> with the event name, date and time,
+  venue, performers, ticket details and a link.</em></p>`);
+
+  await simplePage('contact.html', 'Contact Us', 'contact.html', `
+  <p><em>Contact details still to be filled in &mdash; the old site used a
+  WPForms form that posted into WordPress.</em></p>`);
 
   console.log(`Built ${OUT}/`);
   console.log(`  ${upcoming.length} upcoming · ${past.length} past · ${undated.length} undated`);
@@ -453,8 +537,9 @@ a WPForms form that posted into WordPress.</p>
   console.log(`  ${copied} images mirrored locally`);
 
   const remote = [...(await readFile(path.join(OUT, 'index.html'), 'utf8'))
-    .matchAll(/src="(https?:[^"]+)"/g)].length;
-  if (remote) console.warn(`  WARNING: ${remote} image(s) still point at a remote host`);
+    .matchAll(/(?:src|url\()="?(https?:[^")\s]+)/g)]
+    .filter((m) => !m[1].includes('fonts.googleapis') && !m[1].includes('fonts.gstatic'));
+  if (remote.length) console.warn(`  WARNING: ${remote.length} remote asset(s) on the home page`);
 }
 
 main().catch((err) => { console.error(err); process.exit(1); });

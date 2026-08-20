@@ -354,7 +354,7 @@ async function main() {
   // --- event records ----------------------------------------------------
   console.log('Fetching event records…');
   const records = [];
-  const fields = 'id,slug,link,title,content,date,modified,class_list,event_type,status';
+  const fields = 'id,slug,link,title,content,date,modified,class_list,event_type,status,featured_media';
   for (let page = 1; ; page++) {
     const raw = await fetchText(`${SITE}/wp-json/wp/v2/ajde_events?per_page=100&page=${page}&orderby=id&order=asc&_fields=${fields}`);
     const batch = JSON.parse(raw);
@@ -362,6 +362,40 @@ async function main() {
     if (batch.length < 100) break;
   }
   console.log(`  ${records.length} events`);
+
+  // --- featured image variants -----------------------------------------
+  // WordPress already generated a set of resized copies of every upload, so
+  // take those rather than shipping one full-size file to every screen. They
+  // become the srcset in build.js.
+  console.log('Fetching image variants…');
+  const mediaIds = [...new Set(records.map((r) => r.featured_media).filter(Boolean))];
+  const mediaById = new Map();
+  for (let i = 0; i < mediaIds.length; i += 100) {
+    const chunk = mediaIds.slice(i, i + 100).join(',');
+    const raw = await fetchText(
+      `${SITE}/wp-json/wp/v2/media?include=${chunk}&per_page=100&_fields=id,source_url,alt_text,media_details`,
+    );
+    for (const m of JSON.parse(raw)) {
+      const d = m.media_details || {};
+      const seen = new Set();
+      const variants = Object.values(d.sizes || {})
+        .filter((s) => s.source_url && s.width >= 200)
+        .filter((s) => !seen.has(s.width) && seen.add(s.width))
+        .sort((a, b) => a.width - b.width)
+        .map((s) => ({ url: s.source_url, width: s.width, height: s.height }));
+      if (d.file && d.width >= 200 && !variants.some((v) => v.width === d.width)) {
+        variants.push({ url: m.source_url, width: d.width, height: d.height });
+      }
+      mediaById.set(m.id, {
+        full: m.source_url,
+        width: d.width || null,
+        height: d.height || null,
+        alt: clean(m.alt_text || ''),
+        variants: variants.sort((a, b) => a.width - b.width),
+      });
+    }
+  }
+  console.log(`  ${mediaById.size} images, ${[...mediaById.values()].reduce((a, m) => a + m.variants.length, 0)} size variants`);
 
   // --- per-event pages --------------------------------------------------
   console.log('Fetching event pages (cached after first run)…');
@@ -409,6 +443,7 @@ async function main() {
     const allDay = inst.length > 0 && inst.every(({ start, end }) =>
       toLocalIso(start).slice(11, 16) === '00:00' && toLocalIso(end).slice(11, 16) === '23:59');
 
+    const media = mediaById.get(rec.featured_media);
     const descHtml = cleanHtml(decodeEntities(rec.content?.rendered || ''));
     const ev = {
       id: rec.id,
@@ -428,7 +463,12 @@ async function main() {
       types: (rec.event_type || []).map((id) => typeNames.get(id)).filter(Boolean),
       description: descHtml,
       descriptionText: clean(stripTags(descHtml)),
-      image: decodeEntities(html.match(/<meta property=["']og:image["'] content=["']([^"']+)["']/)?.[1] || ''),
+      image: media?.full
+        || decodeEntities(html.match(/<meta property=["']og:image["'] content=["']([^"']+)["']/)?.[1] || ''),
+      imageAlt: media?.alt || '',
+      imageWidth: media?.width ?? null,
+      imageHeight: media?.height ?? null,
+      imageVariants: media?.variants?.length ? media.variants : null,
       website: learnMoreUrl(html),
       sourceUrl: rec.link,
       publishedAt: rec.date,
@@ -531,7 +571,13 @@ async function main() {
 
   if (WANT_IMAGES) {
     await mkdir('media', { recursive: true });
-    const urls = [...new Set(events.map((e) => e.image).filter(Boolean))];
+    const urls = [...new Set([
+      ...events.flatMap((e) => [e.image, ...(e.imageVariants || []).map((v) => v.url)]),
+      // Theme assets the design depends on. The header banner lives on a
+      // leftover Bluehost staging domain, so mirroring it matters more than most.
+      'https://earlymusicsa.org/wp-content/uploads/2023/07/Early-Music-SA-Logo-wt.png',
+      'https://qtz.bhi.mybluehost.me/EarlyMusicSa/wp-content/uploads/2023/08/Giovanni_Pauolo_2000x400.jpg',
+    ].filter(Boolean))];
     console.log(`Downloading ${urls.length} images…`);
     await pool(urls, async (url) => {
       const file = `media/${decodeURIComponent(url.split('/').pop()).replace(/[^\w.\-]/g, '_')}`;

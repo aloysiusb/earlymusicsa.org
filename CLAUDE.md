@@ -67,6 +67,15 @@ original.
   these properties and nothing else.
 - Images are rewritten to the local `media/` mirror at build time. `build.js`
   warns if anything still points at a remote host — it should always be zero.
+  The header banner originally came from a leftover Bluehost staging domain
+  (`qtz.bhi.mybluehost.me`), which is exactly why it is mirrored.
+- **Responsive images.** WordPress had already generated resized copies of every
+  upload; `scrape.js` harvests those (`media_details.sizes`) and mirrors them,
+  and `build.js` emits a real `srcset`. Because the thumbnails crop a wide
+  banner into a square, `sizes` asks for `box x aspect-ratio`, not the box
+  width — otherwise the browser picks a 300x86 file and upscales it into a
+  140px square. The home page loads a 34KB 768w file rather than the 1400w
+  original, and the first two cards are `fetchpriority="high"` rather than lazy.
 - One `.ics` per event. Note EventON stores 23:59 to mean "no end time given";
   emitting that as `DTEND` would put a four-hour block in someone's calendar,
   so `DTEND` is omitted in that case. Same rule governs the displayed time
@@ -138,10 +147,49 @@ be CSS (`:has()` + inputs); the calendar grid is the one component that earns
 real JavaScript. Drop the Google Maps JS embed — a static link to Google Maps
 removes ~10 scripts and an exposed API key.
 
+## Design: match the live site
+
+The owner asked (2026-08-20) for the rebuild to look **exactly like the live
+WordPress site** — same layout, same calendar, same proportions. So this repo
+deliberately departs from two global defaults:
+
+- **Raleway, not Google Sans Flex.** The live site loads Raleway 400/500 from
+  Google Fonts and the whole design is built on it. Weights 700/800 are added
+  because EventON used them for card titles and calendar headings.
+- The colours are the live site's, not a fresh palette.
+
+Every measurement in `assets/style.css` was read off the live site's *computed*
+styles at 1280px and 375px, not eyeballed. The rebuilt home page now matches to
+within a pixel: card 698x219 desktop (live 697x219), 315x273 mobile (live
+314x272), h1 43.36px / 27.58px, thumbnail 140x140 at 20,59.
+
+Reference values, should the live site ever go away:
+
+| Thing | Value |
+| --- | --- |
+| Heading gold | `#9e7e00` |
+| Footer bar | `#8c7200` |
+| Event card panel | `#b3d1db`, white text, 20px padding |
+| Card title | 24px / 800 / uppercase |
+| Date block | day 30px/700, month 11px, year 10px/700, time 10px/700 |
+| Thumbnail | 140x140, 10px radius, `cover` from top |
+| Calendar | day names `#ececec` on `#9e9e9e`; days 12px/700 `#d4d4d4` |
+| Banner | 155px tall, `cover`, position `24% 42%` |
+| Columns | main 748px (incl. 50px gutter), sidebar 352px, container 1265px |
+| Breakpoints | 900px sidebar drops below, 782px mobile nav |
+
+Note the live site sets white text on `#b3d1db`, which is about 1.7:1 contrast —
+well below WCAG AA. Reproduced faithfully because that is what was asked for,
+but `--card-text` is a single token if it should ever be darkened.
+
 ## Conventions
 
-Per the global rules: CSS-first styling (never JS-computed), Google Sans Flex as
-the default face, and any style-editing UI should reuse the shared 🎨 Style panel
-from `The-Lemmon-Dociere` rather than a bespoke one. If a server is added, follow
-the wall-family pattern — Express + `node:sqlite`, persisted server-side, not
-`localStorage`.
+Per the global rules: CSS-first styling, never JS-computed. **Every value the
+design depends on is a custom property on `:root`** — the planned style-editing
+page should write only those properties, never rules. That page should reuse the
+shared 🎨 Style panel from `The-Lemmon-Dociere` rather than a bespoke one, and
+persist server-side (Express + `node:sqlite`), not to `localStorage`.
+
+Two constants in `build.js` deliberately mirror CSS values and must be kept in
+step: `THUMB` (matches `--thumb-size`) and the `sizes` attribute it feeds.
+`sizes` is parsed by the HTML parser, so it cannot use `var()`.
