@@ -190,6 +190,11 @@ Reference values, should the live site ever go away:
 | Columns | main 748px (incl. 50px gutter), sidebar 352px, container 1265px |
 | Breakpoints | 900px sidebar drops below, 782px mobile nav |
 
+**Deliberate deviations from the live look**, each one token: cards are rounded
+10px with a 10px gap (live: square, butted together) — asked for on 2026-08-21,
+and 10px is the radius the rest of the design already uses; the banner reserves
+its full height so the H1 is not hidden; maps come from OpenStreetMap.
+
 Note the live site sets white text on `#b3d1db`, which is about 1.7:1 contrast —
 well below WCAG AA. Reproduced faithfully because that is what was asked for,
 but `--card-text` is a single token if it should ever be darkened.

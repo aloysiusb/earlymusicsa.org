@@ -84,8 +84,12 @@
   --card-pad: 20px;
   --card-pad-sidebar: 15px;
   --card-gap: 10px;
-  --card-radius: 0px;
-  --card-stack-gap: 1px;      /* the cards butt up against each other */
+  /* The live site's cards are square and butt together. Rounded corners are a
+     deliberate change — 10px is the radius the rest of the design already uses
+     (thumbnails, buttons, calendar corners), and the gap lets the rounding
+     read. Set radius to 0 and gap to 1px to go back to the live look. */
+  --card-radius: 10px;
+  --card-stack-gap: 10px;
   --thumb-size: 140px;
   --thumb-size-sidebar: 50px; /* the sidebar card runs a smaller thumbnail */
   --thumb-radius: 10px;
