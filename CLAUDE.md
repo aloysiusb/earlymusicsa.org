@@ -8,6 +8,8 @@ The site is an audience-facing listing for Medieval / Renaissance / Baroque
 concerts in the San Antonio area, maintained by volunteers. It is not a
 ticketing system and never has been — it points people at events.
 
+Remote: **https://github.com/aloysiusb/earlymusicsa.org**
+
 ## Why this project exists
 
 The live site runs WordPress 7.0.4 + the Sinatra theme + **EventON 5.0.13** with
