@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-20T21:36:46.080Z",
+  "scrapedAt": "2026-08-21T00:04:48.116Z",
   "source": "https://earlymusicsa.org",
   "timezone": "America/Chicago",
   "events": [
@@ -13,7 +13,7 @@
       "startUnix": 1789173000,
       "endUnix": 1789189140,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -76,7 +76,20 @@
       "startUnix": 1787963400,
       "endUnix": 1787970600,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2026-08-28T19:30:00-05:00",
+          "end": "2026-08-28T21:30:00-05:00",
+          "startUnix": 1787963400,
+          "endUnix": 1787970600
+        },
+        {
+          "start": "2026-09-04T19:30:00-05:00",
+          "end": "2026-09-04T21:30:00-05:00",
+          "startUnix": 1788568200,
+          "endUnix": 1788575400
+        }
+      ],
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -139,7 +152,20 @@
       "startUnix": 1777077000,
       "endUnix": 1777084200,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2026-04-24T19:30:00-05:00",
+          "end": "2026-04-24T21:30:00-05:00",
+          "startUnix": 1777077000,
+          "endUnix": 1777084200
+        },
+        {
+          "start": "2026-05-01T19:30:00-05:00",
+          "end": "2026-05-01T21:30:00-05:00",
+          "startUnix": 1777681800,
+          "endUnix": 1777689000
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -202,7 +228,7 @@
       "startUnix": 1773563400,
       "endUnix": 1773567900,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -255,7 +281,7 @@
       "startUnix": 1768168800,
       "endUnix": 1768172400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "219",
         "name": "Baroque Concerti",
@@ -318,7 +344,20 @@
       "startUnix": 1768008600,
       "endUnix": 1768015800,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2026-01-09T19:30:00-06:00",
+          "end": "2026-01-09T21:30:00-06:00",
+          "startUnix": 1768008600,
+          "endUnix": 1768015800
+        },
+        {
+          "start": "2026-01-16T19:30:00-06:00",
+          "end": "2026-01-16T21:30:00-06:00",
+          "startUnix": 1768613400,
+          "endUnix": 1768620600
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -377,7 +416,7 @@
       "startUnix": 1766107800,
       "endUnix": 1766123940,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -430,7 +469,20 @@
       "startUnix": 1762565400,
       "endUnix": 1762529400,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2025-11-07T19:30:00-06:00",
+          "end": "2025-11-07T09:30:00-06:00",
+          "startUnix": 1762565400,
+          "endUnix": 1762529400
+        },
+        {
+          "start": "2025-11-14T19:30:00-06:00",
+          "end": "2025-11-14T19:30:00-06:00",
+          "startUnix": 1763170200,
+          "endUnix": 1763170200
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -503,7 +555,7 @@
       "startUnix": 1761870600,
       "endUnix": 1761886740,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -551,7 +603,7 @@
       "startUnix": 1761352200,
       "endUnix": 1761368340,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -599,7 +651,7 @@
       "startUnix": 1760747400,
       "endUnix": 1760763540,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -657,7 +709,7 @@
       "startUnix": 1760299200,
       "endUnix": 1760299200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "7",
         "name": "St. Paul's Episcopal Church",
@@ -706,7 +758,20 @@
       "startUnix": 1759537800,
       "endUnix": 1759545000,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2025-10-03T19:30:00-05:00",
+          "end": "2025-10-03T21:30:00-05:00",
+          "startUnix": 1759537800,
+          "endUnix": 1759545000
+        },
+        {
+          "start": "2025-10-10T19:30:00-05:00",
+          "end": "2025-10-10T21:30:00-05:00",
+          "startUnix": 1760142600,
+          "endUnix": 1760149800
+        }
+      ],
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -765,7 +830,20 @@
       "startUnix": 1757118600,
       "endUnix": 1757125800,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2025-09-05T19:30:00-05:00",
+          "end": "2025-09-05T21:30:00-05:00",
+          "startUnix": 1757118600,
+          "endUnix": 1757125800
+        },
+        {
+          "start": "2025-09-12T19:30:00-05:00",
+          "end": "2025-09-12T21:30:00-05:00",
+          "startUnix": 1757723400,
+          "endUnix": 1757730600
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -823,7 +901,20 @@
       "startUnix": 1745627400,
       "endUnix": 1745634600,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2025-04-25T19:30:00-05:00",
+          "end": "2025-04-25T21:30:00-05:00",
+          "startUnix": 1745627400,
+          "endUnix": 1745634600
+        },
+        {
+          "start": "2025-05-02T19:30:00-05:00",
+          "end": "2025-05-02T21:30:00-05:00",
+          "startUnix": 1746232200,
+          "endUnix": 1746239400
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -887,7 +978,7 @@
       "startUnix": 1745020800,
       "endUnix": 1745031600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -950,7 +1041,20 @@
       "startUnix": 1740792600,
       "endUnix": 1740799800,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2025-02-28T19:30:00-06:00",
+          "end": "2025-02-28T21:30:00-06:00",
+          "startUnix": 1740792600,
+          "endUnix": 1740799800
+        },
+        {
+          "start": "2025-03-07T19:30:00-06:00",
+          "end": "2025-03-07T21:30:00-06:00",
+          "startUnix": 1741397400,
+          "endUnix": 1741404600
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1008,7 +1112,20 @@
       "startUnix": 1738373400,
       "endUnix": 1738380600,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2025-01-31T19:30:00-06:00",
+          "end": "2025-01-31T21:30:00-06:00",
+          "startUnix": 1738373400,
+          "endUnix": 1738380600
+        },
+        {
+          "start": "2025-02-07T19:30:00-06:00",
+          "end": "2025-02-07T21:30:00-06:00",
+          "startUnix": 1738978200,
+          "endUnix": 1738985400
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1061,7 +1178,20 @@
       "startUnix": 1735954200,
       "endUnix": 1735961400,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2025-01-03T19:30:00-06:00",
+          "end": "2025-01-03T21:30:00-06:00",
+          "startUnix": 1735954200,
+          "endUnix": 1735961400
+        },
+        {
+          "start": "2025-01-10T19:30:00-06:00",
+          "end": "2025-01-10T21:30:00-06:00",
+          "startUnix": 1736559000,
+          "endUnix": 1736566200
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1124,7 +1254,7 @@
       "startUnix": 1734051600,
       "endUnix": 1734057000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "198",
         "name": "Betty Kelso Center, San Antonio Botanical Garden",
@@ -1191,7 +1321,7 @@
       "startUnix": 1733967000,
       "endUnix": 1733972400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "196",
         "name": "Tobin Center for the Performing Arts",
@@ -1259,7 +1389,7 @@
       "startUnix": 1729987200,
       "endUnix": 1729994400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -1312,7 +1442,20 @@
       "startUnix": 1729902600,
       "endUnix": 1729909800,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2024-10-25T19:30:00-05:00",
+          "end": "2024-10-25T21:30:00-05:00",
+          "startUnix": 1729902600,
+          "endUnix": 1729909800
+        },
+        {
+          "start": "2024-11-01T19:30:00-05:00",
+          "end": "2024-11-01T21:30:00-05:00",
+          "startUnix": 1730507400,
+          "endUnix": 1730514600
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1374,7 +1517,20 @@
       "startUnix": 1725669000,
       "endUnix": 1725676200,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2024-09-06T19:30:00-05:00",
+          "end": "2024-09-06T21:30:00-05:00",
+          "startUnix": 1725669000,
+          "endUnix": 1725676200
+        },
+        {
+          "start": "2024-09-13T19:30:00-05:00",
+          "end": "2024-09-13T21:30:00-05:00",
+          "startUnix": 1726273800,
+          "endUnix": 1726281000
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1433,7 +1589,7 @@
       "startUnix": 1723406400,
       "endUnix": 1723413600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "191",
         "name": "Shepherd King Lutheran Church",
@@ -1506,7 +1662,20 @@
       "startUnix": 1713573000,
       "endUnix": 1713580200,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2024-04-19T19:30:00-05:00",
+          "end": "2024-04-19T21:30:00-05:00",
+          "startUnix": 1713573000,
+          "endUnix": 1713580200
+        },
+        {
+          "start": "2024-04-26T19:30:00-05:00",
+          "end": "2024-04-26T21:30:00-05:00",
+          "startUnix": 1714177800,
+          "endUnix": 1714185000
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1569,7 +1738,7 @@
       "startUnix": 1710032400,
       "endUnix": 1710039600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -1623,7 +1792,20 @@
       "startUnix": 1708738200,
       "endUnix": 1708746300,
       "allDay": false,
-      "repeats": null,
+      "instances": [
+        {
+          "start": "2024-02-23T19:30:00-06:00",
+          "end": "2024-02-23T21:45:00-06:00",
+          "startUnix": 1708738200,
+          "endUnix": 1708746300
+        },
+        {
+          "start": "2024-03-01T19:30:00-06:00",
+          "end": "2024-03-01T21:45:00-06:00",
+          "startUnix": 1709343000,
+          "endUnix": 1709351100
+        }
+      ],
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1671,7 +1853,7 @@
       "startUnix": 1708290000,
       "endUnix": 1708297200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -1734,7 +1916,7 @@
       "startUnix": 1705269600,
       "endUnix": 1705275000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": {
         "id": "192",
@@ -1792,7 +1974,7 @@
       "startUnix": 1704056400,
       "endUnix": 1704088200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -1835,7 +2017,7 @@
       "startUnix": 1701032400,
       "endUnix": 1701064200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -1878,7 +2060,7 @@
       "startUnix": 1699826400,
       "endUnix": 1699835400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -1931,7 +2113,7 @@
       "startUnix": 1699823700,
       "endUnix": 1699831800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "191",
         "name": "Shepherd King Lutheran Church",
@@ -1999,7 +2181,7 @@
       "startUnix": 1699218000,
       "endUnix": 1699225200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -2057,7 +2239,7 @@
       "startUnix": 1698609600,
       "endUnix": 1698641400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2100,7 +2282,7 @@
       "startUnix": 1695585600,
       "endUnix": 1695617400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2143,7 +2325,7 @@
       "startUnix": 1694653680,
       "endUnix": 1694667000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [
@@ -2200,7 +2382,7 @@
       "startUnix": 1693166400,
       "endUnix": 1693198200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2253,7 +2435,7 @@
       "startUnix": 1692648000,
       "endUnix": 1692655200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "45",
         "name": "Shepherd of the Hills Lutheran Church",
@@ -2316,7 +2498,7 @@
       "startUnix": 1690747200,
       "endUnix": 1690779000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2359,7 +2541,7 @@
       "startUnix": 1689130800,
       "endUnix": 1689159000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": {
         "id": "43",
@@ -2411,7 +2593,7 @@
       "startUnix": 1687723200,
       "endUnix": 1687755000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2454,7 +2636,7 @@
       "startUnix": 1685304000,
       "endUnix": 1685335800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2497,7 +2679,7 @@
       "startUnix": 1682884800,
       "endUnix": 1682916600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2550,7 +2732,7 @@
       "startUnix": 1679860800,
       "endUnix": 1679892600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2593,7 +2775,7 @@
       "startUnix": 1677996000,
       "endUnix": 1678013400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "15",
         "name": "Guadalupe Chapel at St. Mary's University",
@@ -2640,7 +2822,7 @@
       "startUnix": 1671411600,
       "endUnix": 1671429000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "19",
         "name": "Bethany Garden United Church of Christ",
@@ -2687,7 +2869,7 @@
       "startUnix": 1669525200,
       "endUnix": 1669546200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -2734,7 +2916,7 @@
       "startUnix": 1668394800,
       "endUnix": 1668423000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -2786,7 +2968,7 @@
       "startUnix": 1664582400,
       "endUnix": 1664599800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "53",
         "name": "Mission Concepción",
@@ -2853,7 +3035,7 @@
       "startUnix": 1661716800,
       "endUnix": 1661748600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -2915,7 +3097,7 @@
       "startUnix": 1661108400,
       "endUnix": 1661143800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "9",
         "name": "Laurel Heights United Methodist Church",
@@ -2967,7 +3149,7 @@
       "startUnix": 1655668800,
       "endUnix": 1655700600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -3014,7 +3196,7 @@
       "startUnix": 1651456800,
       "endUnix": 1651488600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -3071,7 +3253,7 @@
       "startUnix": 1647741600,
       "endUnix": 1647773400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -3133,7 +3315,7 @@
       "startUnix": 1638061200,
       "endUnix": 1638078600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -3186,7 +3368,7 @@
       "startUnix": 1637506800,
       "endUnix": 1637560200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -3248,7 +3430,7 @@
       "startUnix": 1636930800,
       "endUnix": 1636955400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "22",
         "name": "Abiding Presence Lutheran Church",
@@ -3295,7 +3477,7 @@
       "startUnix": 1636930800,
       "endUnix": 1636955400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -3338,7 +3520,7 @@
       "startUnix": 1636765200,
       "endUnix": 1636782600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "26",
         "name": "San Antonio Museum of Art",
@@ -3395,7 +3577,7 @@
       "startUnix": 1636336800,
       "endUnix": 1636368600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -3452,7 +3634,7 @@
       "startUnix": 1633219200,
       "endUnix": 1633236600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -3519,7 +3701,7 @@
       "startUnix": 1606026600,
       "endUnix": 1606042200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "21",
         "name": "Online at Filmed at Mission Concepcien",
@@ -3576,7 +3758,7 @@
       "startUnix": 1600583400,
       "endUnix": 1600599000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "7",
         "name": "St. Paul's Episcopal Church",
@@ -3633,7 +3815,7 @@
       "startUnix": 1591563600,
       "endUnix": 1591591800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "7",
         "name": "St. Paul's Episcopal Church",
@@ -3695,7 +3877,7 @@
       "startUnix": 1591511400,
       "endUnix": 1591527000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -3757,7 +3939,7 @@
       "startUnix": 1587956400,
       "endUnix": 1587984600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "7",
         "name": "St. Paul's Episcopal Church",
@@ -3819,7 +4001,7 @@
       "startUnix": 1587882600,
       "endUnix": 1587898200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -3881,7 +4063,7 @@
       "startUnix": 1581904800,
       "endUnix": 1581936600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -3943,7 +4125,7 @@
       "startUnix": 1581834600,
       "endUnix": 1581850200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "18",
         "name": "Cathedral of St. Mary",
@@ -4005,7 +4187,7 @@
       "startUnix": 1581562800,
       "endUnix": 1581591000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "7",
         "name": "St. Paul's Episcopal Church",
@@ -4072,7 +4254,7 @@
       "startUnix": 1580572800,
       "endUnix": 1580622600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "28",
         "name": "Hill Country Youth Event Center",
@@ -4124,7 +4306,7 @@
       "startUnix": 1579968000,
       "endUnix": 1580017800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "28",
         "name": "Hill Country Youth Event Center",
@@ -4176,7 +4358,7 @@
       "startUnix": 1578866400,
       "endUnix": 1578894600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -4238,7 +4420,7 @@
       "startUnix": 1576443600,
       "endUnix": 1576475400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "32",
         "name": "St. Matthew's Episcopal Church",
@@ -4290,7 +4472,7 @@
       "startUnix": 1576373400,
       "endUnix": 1576389000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -4342,7 +4524,7 @@
       "startUnix": 1576287000,
       "endUnix": 1576302600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "35",
         "name": "St. John's United Methodist Church",
@@ -4394,7 +4576,7 @@
       "startUnix": 1574046000,
       "endUnix": 1574074200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -4451,7 +4633,7 @@
       "startUnix": 1573954200,
       "endUnix": 1573969800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -4508,7 +4690,7 @@
       "startUnix": 1573326000,
       "endUnix": 1573365000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "36",
         "name": "Covenant Presbyterian Church",
@@ -4560,7 +4742,7 @@
       "startUnix": 1571551200,
       "endUnix": 1571568600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -4632,7 +4814,7 @@
       "startUnix": 1569182400,
       "endUnix": 1569214200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -4679,7 +4861,7 @@
       "startUnix": 1569133800,
       "endUnix": 1569149400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -4726,7 +4908,7 @@
       "startUnix": 1568853000,
       "endUnix": 1568868600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "38",
         "name": "McAllister Auditorium",
@@ -4778,7 +4960,7 @@
       "startUnix": 1565553600,
       "endUnix": 1565585400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "39",
         "name": "Laurel Heights United Methodist Church",
@@ -4830,7 +5012,7 @@
       "startUnix": 1559509200,
       "endUnix": 1559537400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -4887,7 +5069,7 @@
       "startUnix": 1559435400,
       "endUnix": 1559435400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -4944,7 +5126,7 @@
       "startUnix": 1557597600,
       "endUnix": 1557597600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "36",
         "name": "Covenant Presbyterian Church",
@@ -5006,7 +5188,7 @@
       "startUnix": 1554670800,
       "endUnix": 1554670800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -5063,7 +5245,7 @@
       "startUnix": 1554597000,
       "endUnix": 1554597000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -5120,7 +5302,7 @@
       "startUnix": 1553385600,
       "endUnix": 1553385600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -5172,7 +5354,7 @@
       "startUnix": 1550883600,
       "endUnix": 1550883600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "111",
         "name": "St. Mark the Evangelist Catholic Church",
@@ -5219,7 +5401,7 @@
       "startUnix": 1550626200,
       "endUnix": 1550626200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "112",
         "name": "Ruth Taylor Recital Hall, Trinity University",
@@ -5257,7 +5439,7 @@
       "startUnix": 1550437200,
       "endUnix": 1550437200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -5304,7 +5486,7 @@
       "startUnix": 1550367000,
       "endUnix": 1550367000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "32",
         "name": "St. Matthew's Episcopal Church",
@@ -5356,7 +5538,7 @@
       "startUnix": 1548617400,
       "endUnix": 1548617400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "114",
         "name": "Barshop Jewish Community Center",
@@ -5403,7 +5585,7 @@
       "startUnix": 1548021600,
       "endUnix": 1548021600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -5465,7 +5647,7 @@
       "startUnix": 1547947800,
       "endUnix": 1547947800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -5522,7 +5704,7 @@
       "startUnix": 1541365200,
       "endUnix": 1541365200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -5569,7 +5751,7 @@
       "startUnix": 1541293200,
       "endUnix": 1541293200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "115",
         "name": "San Fernando Cathedral",
@@ -5626,7 +5808,7 @@
       "startUnix": 1541291400,
       "endUnix": 1541291400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -5673,7 +5855,7 @@
       "startUnix": 1541206800,
       "endUnix": 1541206800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -5730,7 +5912,7 @@
       "startUnix": 1538870400,
       "endUnix": 1538870400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -5787,7 +5969,7 @@
       "startUnix": 1537732800,
       "endUnix": 1537732800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -5834,7 +6016,7 @@
       "startUnix": 1528675200,
       "endUnix": 1528692600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [],
@@ -5876,7 +6058,7 @@
       "startUnix": 1527454800,
       "endUnix": 1527454800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -5933,7 +6115,7 @@
       "startUnix": 1527379200,
       "endUnix": 1527379200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -5995,7 +6177,7 @@
       "startUnix": 1526241600,
       "endUnix": 1526241600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -6042,7 +6224,7 @@
       "startUnix": 1526169600,
       "endUnix": 1526169600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "32",
         "name": "St. Matthew's Episcopal Church",
@@ -6094,7 +6276,7 @@
       "startUnix": 1526148000,
       "endUnix": 1526148000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "36",
         "name": "Covenant Presbyterian Church",
@@ -6146,7 +6328,7 @@
       "startUnix": 1524430800,
       "endUnix": 1524430800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "9",
         "name": "Laurel Heights United Methodist Church",
@@ -6194,7 +6376,7 @@
       "startUnix": 1524427200,
       "endUnix": 1524427200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -6246,7 +6428,7 @@
       "startUnix": 1524355200,
       "endUnix": 1524355200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -6298,7 +6480,7 @@
       "startUnix": 1523829600,
       "endUnix": 1523829600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -6336,7 +6518,7 @@
       "startUnix": 1523736000,
       "endUnix": 1523736000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -6393,7 +6575,7 @@
       "startUnix": 1523736000,
       "endUnix": 1523736000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -6450,7 +6632,7 @@
       "startUnix": 1523224800,
       "endUnix": 1523224800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "118",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -6507,7 +6689,7 @@
       "startUnix": 1523224800,
       "endUnix": 1523224800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "118",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -6564,7 +6746,7 @@
       "startUnix": 1523217600,
       "endUnix": 1523217600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -6616,7 +6798,7 @@
       "startUnix": 1523217600,
       "endUnix": 1523217600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -6668,7 +6850,7 @@
       "startUnix": 1523149200,
       "endUnix": 1523149200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -6720,7 +6902,7 @@
       "startUnix": 1523149200,
       "endUnix": 1523149200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -6772,7 +6954,7 @@
       "startUnix": 1523149200,
       "endUnix": 1523149200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -6824,7 +7006,7 @@
       "startUnix": 1521673200,
       "endUnix": 1521673200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -6867,7 +7049,7 @@
       "startUnix": 1521673200,
       "endUnix": 1521673200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -6910,7 +7092,7 @@
       "startUnix": 1521655200,
       "endUnix": 1521655200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -6953,7 +7135,7 @@
       "startUnix": 1521655200,
       "endUnix": 1521655200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -6996,7 +7178,7 @@
       "startUnix": 1521651600,
       "endUnix": 1521651600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7039,7 +7221,7 @@
       "startUnix": 1521651600,
       "endUnix": 1521651600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7082,7 +7264,7 @@
       "startUnix": 1520200800,
       "endUnix": 1520200800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "31",
         "name": "Mission Concepción",
@@ -7144,7 +7326,7 @@
       "startUnix": 1520200800,
       "endUnix": 1520200800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "31",
         "name": "Mission Concepción",
@@ -7206,7 +7388,7 @@
       "startUnix": 1520125200,
       "endUnix": 1520125200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7263,7 +7445,7 @@
       "startUnix": 1520125200,
       "endUnix": 1520125200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7320,7 +7502,7 @@
       "startUnix": 1518996600,
       "endUnix": 1518996600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "120",
         "name": "San Antonio Museum of Art - Great Hall",
@@ -7372,7 +7554,7 @@
       "startUnix": 1518987600,
       "endUnix": 1518987600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7434,7 +7616,7 @@
       "startUnix": 1518919200,
       "endUnix": 1518919200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7496,7 +7678,7 @@
       "startUnix": 1518382800,
       "endUnix": 1518382800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -7548,7 +7730,7 @@
       "startUnix": 1518310800,
       "endUnix": 1518310800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -7600,7 +7782,7 @@
       "startUnix": 1518310800,
       "endUnix": 1518310800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -7652,7 +7834,7 @@
       "startUnix": 1517778000,
       "endUnix": 1517778000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "123",
         "name": "Christ Episcopal Church",
@@ -7704,7 +7886,7 @@
       "startUnix": 1516572000,
       "endUnix": 1516572000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "31",
         "name": "Mission Concepción",
@@ -7761,7 +7943,7 @@
       "startUnix": 1516496400,
       "endUnix": 1516496400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7818,7 +8000,7 @@
       "startUnix": 1515877200,
       "endUnix": 1515877200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7856,7 +8038,7 @@
       "startUnix": 1515718800,
       "endUnix": 1515718800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7894,7 +8076,7 @@
       "startUnix": 1515456000,
       "endUnix": 1515456000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7932,7 +8114,7 @@
       "startUnix": 1515272400,
       "endUnix": 1515272400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7989,7 +8171,7 @@
       "startUnix": 1515204000,
       "endUnix": 1515204000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8046,7 +8228,7 @@
       "startUnix": 1512338400,
       "endUnix": 1512338400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "36",
         "name": "Covenant Presbyterian Church",
@@ -8098,7 +8280,7 @@
       "startUnix": 1510521300,
       "endUnix": 1510521300,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "124",
         "name": "Temple Beth-El",
@@ -8145,7 +8327,7 @@
       "startUnix": 1509310800,
       "endUnix": 1509310800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "31",
         "name": "Mission Concepción",
@@ -8202,7 +8384,7 @@
       "startUnix": 1509235200,
       "endUnix": 1509235200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8259,7 +8441,7 @@
       "startUnix": 1508097600,
       "endUnix": 1508097600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8306,7 +8488,7 @@
       "startUnix": 1508004000,
       "endUnix": 1508004000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8353,7 +8535,7 @@
       "startUnix": 1507492800,
       "endUnix": 1507492800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -8400,7 +8582,7 @@
       "startUnix": 1507420800,
       "endUnix": 1507420800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8447,7 +8629,7 @@
       "startUnix": 1506288600,
       "endUnix": 1506288600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "126",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -8504,7 +8686,7 @@
       "startUnix": 1505678400,
       "endUnix": 1505678400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -8551,7 +8733,7 @@
       "startUnix": 1505606400,
       "endUnix": 1505606400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -8598,7 +8780,7 @@
       "startUnix": 1504468800,
       "endUnix": 1504468800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8655,7 +8837,7 @@
       "startUnix": 1504400400,
       "endUnix": 1504400400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8712,7 +8894,7 @@
       "startUnix": 1503189000,
       "endUnix": 1503189000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "127",
         "name": "St. Mary's University (Treadaway Hall)",
@@ -8764,7 +8946,7 @@
       "startUnix": 1494792000,
       "endUnix": 1494792000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -8811,7 +8993,7 @@
       "startUnix": 1494720000,
       "endUnix": 1494737400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -8858,7 +9040,7 @@
       "startUnix": 1494189000,
       "endUnix": 1494189000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "128",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -8915,7 +9097,7 @@
       "startUnix": 1494118800,
       "endUnix": 1494118800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8972,7 +9154,7 @@
       "startUnix": 1493514000,
       "endUnix": 1493514000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "129",
         "name": "St. Alphonsus Catholic Church",
@@ -9010,7 +9192,7 @@
       "startUnix": 1491166800,
       "endUnix": 1491195000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9082,7 +9264,7 @@
       "startUnix": 1491094800,
       "endUnix": 1491108600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9154,7 +9336,7 @@
       "startUnix": 1490565600,
       "endUnix": 1490565600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "130",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -9197,7 +9379,7 @@
       "startUnix": 1490558400,
       "endUnix": 1490558400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9244,7 +9426,7 @@
       "startUnix": 1490490000,
       "endUnix": 1490490000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "131",
         "name": "Cathedral of St. Mary",
@@ -9291,7 +9473,7 @@
       "startUnix": 1489957200,
       "endUnix": 1489957200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "132",
         "name": "St. Mary's Catholic Church",
@@ -9348,7 +9530,7 @@
       "startUnix": 1489881600,
       "endUnix": 1489881600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -9405,7 +9587,7 @@
       "startUnix": 1488751200,
       "endUnix": 1488751200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9441,7 +9623,7 @@
       "startUnix": 1488679200,
       "endUnix": 1488679200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9477,7 +9659,7 @@
       "startUnix": 1487538000,
       "endUnix": 1487538000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9524,7 +9706,7 @@
       "startUnix": 1487469600,
       "endUnix": 1487469600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9571,7 +9753,7 @@
       "startUnix": 1485723600,
       "endUnix": 1485723600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "133",
         "name": "UTSA Music Department Recital Hall",
@@ -9628,7 +9810,7 @@
       "startUnix": 1485655200,
       "endUnix": 1485655200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -9685,7 +9867,7 @@
       "startUnix": 1483912800,
       "endUnix": 1483912800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9757,7 +9939,7 @@
       "startUnix": 1483840800,
       "endUnix": 1483840800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9829,7 +10011,7 @@
       "startUnix": 1481490000,
       "endUnix": 1481490000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9881,7 +10063,7 @@
       "startUnix": 1481421600,
       "endUnix": 1481421600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -9933,7 +10115,7 @@
       "startUnix": 1481335200,
       "endUnix": 1481335200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -9985,7 +10167,7 @@
       "startUnix": 1478469600,
       "endUnix": 1478469600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -10047,7 +10229,7 @@
       "startUnix": 1478394000,
       "endUnix": 1478394000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -10109,7 +10291,7 @@
       "startUnix": 1478046600,
       "endUnix": 1478046600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "112",
         "name": "Ruth Taylor Recital Hall, Trinity University",
@@ -10157,7 +10339,7 @@
       "startUnix": 1477857600,
       "endUnix": 1477857600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -10204,7 +10386,7 @@
       "startUnix": 1477789200,
       "endUnix": 1477789200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "134",
         "name": "Congregation Beth Israel",
@@ -10251,7 +10433,7 @@
       "startUnix": 1477774800,
       "endUnix": 1477774800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "135",
         "name": "Estate Sale Gallery at Los Patios",
@@ -10318,7 +10500,7 @@
       "startUnix": 1474502400,
       "endUnix": 1474502400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -10385,7 +10567,7 @@
       "startUnix": 1474416000,
       "endUnix": 1474416000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "138",
         "name": "San Antonio Museum of Art, Vice-Regal Gallery",
@@ -10452,7 +10634,7 @@
       "startUnix": 1473019200,
       "endUnix": 1473019200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -10499,7 +10681,7 @@
       "startUnix": 1472947200,
       "endUnix": 1472947200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -10546,7 +10728,7 @@
       "startUnix": 1472418000,
       "endUnix": 1472418000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10613,7 +10795,7 @@
       "startUnix": 1472346000,
       "endUnix": 1472346000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10680,7 +10862,7 @@
       "startUnix": 1464566400,
       "endUnix": 1464566400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "96",
         "name": "San Fernando Cathedral",
@@ -10722,7 +10904,7 @@
       "startUnix": 1462737600,
       "endUnix": 1462737600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10774,7 +10956,7 @@
       "startUnix": 1462669200,
       "endUnix": 1462669200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -10821,7 +11003,7 @@
       "startUnix": 1459713600,
       "endUnix": 1459713600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10873,7 +11055,7 @@
       "startUnix": 1459645200,
       "endUnix": 1459645200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -10925,7 +11107,7 @@
       "startUnix": 1457301600,
       "endUnix": 1457301600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10972,7 +11154,7 @@
       "startUnix": 1457298000,
       "endUnix": 1457298000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "140",
         "name": "Alvarez Studio Theatre, Tobin Center",
@@ -11019,7 +11201,7 @@
       "startUnix": 1457229600,
       "endUnix": 1457229600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11071,7 +11253,7 @@
       "startUnix": 1457227800,
       "endUnix": 1457227800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "140",
         "name": "Alvarez Studio Theatre, Tobin Center",
@@ -11118,7 +11300,7 @@
       "startUnix": 1456092000,
       "endUnix": 1456092000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "142",
         "name": "Ursuline Chapel at the Southwest School of Art",
@@ -11180,7 +11362,7 @@
       "startUnix": 1456020000,
       "endUnix": 1456020000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "143",
         "name": "First Presbyterian Church, Austin",
@@ -11237,7 +11419,7 @@
       "startUnix": 1455483600,
       "endUnix": 1455483600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11284,7 +11466,7 @@
       "startUnix": 1455390000,
       "endUnix": 1455390000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11336,7 +11518,7 @@
       "startUnix": 1455238800,
       "endUnix": 1455238800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "144",
         "name": "Alamo Heights United Methodist Church",
@@ -11384,7 +11566,7 @@
       "startUnix": 1454882400,
       "endUnix": 1454882400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -11441,7 +11623,7 @@
       "startUnix": 1454187600,
       "endUnix": 1454187600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -11489,7 +11671,7 @@
       "startUnix": 1454094000,
       "endUnix": 1454094000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -11537,7 +11719,7 @@
       "startUnix": 1454031000,
       "endUnix": 1454031000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -11585,7 +11767,7 @@
       "startUnix": 1454002200,
       "endUnix": 1454002200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -11633,7 +11815,7 @@
       "startUnix": 1453906800,
       "endUnix": 1453906800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -11676,7 +11858,7 @@
       "startUnix": 1453838400,
       "endUnix": 1453838400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -11724,7 +11906,7 @@
       "startUnix": 1453829400,
       "endUnix": 1453829400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -11767,7 +11949,7 @@
       "startUnix": 1447624800,
       "endUnix": 1447624800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -11829,7 +12011,7 @@
       "startUnix": 1447552800,
       "endUnix": 1447552800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11891,7 +12073,7 @@
       "startUnix": 1445806800,
       "endUnix": 1445806800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -11948,7 +12130,7 @@
       "startUnix": 1445734800,
       "endUnix": 1445734800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -12005,7 +12187,7 @@
       "startUnix": 1435521600,
       "endUnix": 1435521600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12052,7 +12234,7 @@
       "startUnix": 1435453200,
       "endUnix": 1435453200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12099,7 +12281,7 @@
       "startUnix": 1432501200,
       "endUnix": 1432501200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -12156,7 +12338,7 @@
       "startUnix": 1432425600,
       "endUnix": 1432425600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12218,7 +12400,7 @@
       "startUnix": 1431288000,
       "endUnix": 1431288000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12270,7 +12452,7 @@
       "startUnix": 1431219600,
       "endUnix": 1431219600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12322,7 +12504,7 @@
       "startUnix": 1430683200,
       "endUnix": 1430683200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12369,7 +12551,7 @@
       "startUnix": 1430614800,
       "endUnix": 1430614800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -12416,7 +12598,7 @@
       "startUnix": 1430085600,
       "endUnix": 1430085600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -12468,7 +12650,7 @@
       "startUnix": 1426453200,
       "endUnix": 1426453200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "132",
         "name": "St. Mary's Catholic Church",
@@ -12525,7 +12707,7 @@
       "startUnix": 1426381200,
       "endUnix": 1426381200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12582,7 +12764,7 @@
       "startUnix": 1425841200,
       "endUnix": 1425841200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "148",
         "name": "McNay Art Museum",
@@ -12634,7 +12816,7 @@
       "startUnix": 1424638800,
       "endUnix": 1424638800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12670,7 +12852,7 @@
       "startUnix": 1424637000,
       "endUnix": 1424637000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "149",
         "name": "The Empire Theatre",
@@ -12732,7 +12914,7 @@
       "startUnix": 1424570400,
       "endUnix": 1424570400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12768,7 +12950,7 @@
       "startUnix": 1424570400,
       "endUnix": 1424570400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "149",
         "name": "The Empire Theatre",
@@ -12830,7 +13012,7 @@
       "startUnix": 1423429200,
       "endUnix": 1423429200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12877,7 +13059,7 @@
       "startUnix": 1423360800,
       "endUnix": 1423360800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12924,7 +13106,7 @@
       "startUnix": 1420405200,
       "endUnix": 1420405200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12966,7 +13148,7 @@
       "startUnix": 1420336800,
       "endUnix": 1420336800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13008,7 +13190,7 @@
       "startUnix": 1418590800,
       "endUnix": 1418590800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13065,7 +13247,7 @@
       "startUnix": 1418590800,
       "endUnix": 1418590800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -13117,7 +13299,7 @@
       "startUnix": 1418522400,
       "endUnix": 1418522400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -13174,7 +13356,7 @@
       "startUnix": 1418436000,
       "endUnix": 1418436000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -13231,7 +13413,7 @@
       "startUnix": 1416618000,
       "endUnix": 1416618000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -13267,7 +13449,7 @@
       "startUnix": 1416175200,
       "endUnix": 1416175200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "151",
         "name": "Mission Concepción",
@@ -13324,7 +13506,7 @@
       "startUnix": 1416103200,
       "endUnix": 1416103200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13381,7 +13563,7 @@
       "startUnix": 1414353600,
       "endUnix": 1414353600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -13428,7 +13610,7 @@
       "startUnix": 1414285200,
       "endUnix": 1414285200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -13475,7 +13657,7 @@
       "startUnix": 1413748800,
       "endUnix": 1413748800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13517,7 +13699,7 @@
       "startUnix": 1413680400,
       "endUnix": 1413680400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13559,7 +13741,7 @@
       "startUnix": 1413147600,
       "endUnix": 1413147600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "152",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -13611,7 +13793,7 @@
       "startUnix": 1412539200,
       "endUnix": 1412539200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13668,7 +13850,7 @@
       "startUnix": 1412470800,
       "endUnix": 1412470800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13725,7 +13907,7 @@
       "startUnix": 1412380800,
       "endUnix": 1412380800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -13763,7 +13945,7 @@
       "startUnix": 1410724800,
       "endUnix": 1410724800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "153",
         "name": "Incarnate Word Motherhouse Chapel",
@@ -13830,7 +14012,7 @@
       "startUnix": 1410724800,
       "endUnix": 1410724800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -13872,7 +14054,7 @@
       "startUnix": 1410656400,
       "endUnix": 1410656400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -13914,7 +14096,7 @@
       "startUnix": 1410051600,
       "endUnix": 1410051600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13952,7 +14134,7 @@
       "startUnix": 1410051600,
       "endUnix": 1410051600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13990,7 +14172,7 @@
       "startUnix": 1408914000,
       "endUnix": 1408914000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -14047,7 +14229,7 @@
       "startUnix": 1404676800,
       "endUnix": 1404676800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "156",
         "name": "Christ Episcopal Church",
@@ -14085,7 +14267,7 @@
       "startUnix": 1404072000,
       "endUnix": 1404072000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14127,7 +14309,7 @@
       "startUnix": 1404003600,
       "endUnix": 1404003600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14169,7 +14351,7 @@
       "startUnix": 1401048000,
       "endUnix": 1401048000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -14226,7 +14408,7 @@
       "startUnix": 1399237200,
       "endUnix": 1399237200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -14273,7 +14455,7 @@
       "startUnix": 1399233600,
       "endUnix": 1399233600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -14325,7 +14507,7 @@
       "startUnix": 1398628800,
       "endUnix": 1398628800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -14382,7 +14564,7 @@
       "startUnix": 1398560400,
       "endUnix": 1398560400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -14444,7 +14626,7 @@
       "startUnix": 1396814400,
       "endUnix": 1396814400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14491,7 +14673,7 @@
       "startUnix": 1396746000,
       "endUnix": 1396746000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14538,7 +14720,7 @@
       "startUnix": 1396209600,
       "endUnix": 1396209600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14590,7 +14772,7 @@
       "startUnix": 1396141200,
       "endUnix": 1396141200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "131",
         "name": "Cathedral of St. Mary",
@@ -14642,7 +14824,7 @@
       "startUnix": 1395792000,
       "endUnix": 1395792000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -14699,7 +14881,7 @@
       "startUnix": 1395619200,
       "endUnix": 1395619200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "96",
         "name": "San Fernando Cathedral",
@@ -14736,7 +14918,7 @@
       "startUnix": 1395612000,
       "endUnix": 1395612000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -14793,7 +14975,7 @@
       "startUnix": 1394398800,
       "endUnix": 1394398800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "132",
         "name": "St. Mary's Catholic Church",
@@ -14831,7 +15013,7 @@
       "startUnix": 1394398800,
       "endUnix": 1394427000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "132",
         "name": "St. Mary's Catholic Church",
@@ -14878,7 +15060,7 @@
       "startUnix": 1394395200,
       "endUnix": 1394395200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -14935,7 +15117,7 @@
       "startUnix": 1393527600,
       "endUnix": 1393527600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "162",
         "name": "Trinity University - Ruth Taylor Recital Hall, Parker Chapel",
@@ -14976,7 +15158,7 @@
       "startUnix": 1393189200,
       "endUnix": 1393189200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "163",
         "name": "Coker United Methodist Church",
@@ -15038,7 +15220,7 @@
       "startUnix": 1393189200,
       "endUnix": 1393189200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "70",
         "name": "Coker United Methodist Church",
@@ -15095,7 +15277,7 @@
       "startUnix": 1393189200,
       "endUnix": 1393189200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "163",
         "name": "Coker United Methodist Church",
@@ -15127,7 +15309,7 @@
       "startUnix": 1391736600,
       "endUnix": 1391736600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "165",
         "name": "McAllister Auditorium",
@@ -15184,7 +15366,7 @@
       "startUnix": 1390770000,
       "endUnix": 1390770000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -15241,7 +15423,7 @@
       "startUnix": 1390701600,
       "endUnix": 1390701600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -15298,7 +15480,7 @@
       "startUnix": 1388970000,
       "endUnix": 1388970000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "166",
         "name": "First Presbyterian Church Bryan",
@@ -15345,7 +15527,7 @@
       "startUnix": 1388887200,
       "endUnix": 1388887200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -15387,7 +15569,7 @@
       "startUnix": 1388800800,
       "endUnix": 1388800800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -15434,7 +15616,7 @@
       "startUnix": 1387141200,
       "endUnix": 1387141200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -15496,7 +15678,7 @@
       "startUnix": 1387141200,
       "endUnix": 1387141200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -15558,7 +15740,7 @@
       "startUnix": 1387141200,
       "endUnix": 1387141200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -15594,7 +15776,7 @@
       "startUnix": 1387072800,
       "endUnix": 1387072800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -15656,7 +15838,7 @@
       "startUnix": 1387072800,
       "endUnix": 1387072800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "96",
         "name": "San Fernando Cathedral",
@@ -15697,7 +15879,7 @@
       "startUnix": 1386986400,
       "endUnix": 1386986400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -15759,7 +15941,7 @@
       "startUnix": 1384889400,
       "endUnix": 1384889400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "168",
         "name": "Tuesday Musical Club",
@@ -15797,7 +15979,7 @@
       "startUnix": 1384650000,
       "endUnix": 1384667400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -15859,7 +16041,7 @@
       "startUnix": 1384650000,
       "endUnix": 1384667400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -15912,7 +16094,7 @@
       "startUnix": 1384117200,
       "endUnix": 1384117200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "169",
         "name": "Immaculate Conception Chapel at the Oblate School of Theology",
@@ -15959,7 +16141,7 @@
       "startUnix": 1384117200,
       "endUnix": 1384117200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -16001,7 +16183,7 @@
       "startUnix": 1384117200,
       "endUnix": 1384117200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -16054,7 +16236,7 @@
       "startUnix": 1384048800,
       "endUnix": 1384048800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -16101,7 +16283,7 @@
       "startUnix": 1383701400,
       "endUnix": 1383701400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "97",
         "name": "Ruth Taylor Recital Hall, Trinity University",
@@ -16153,7 +16335,7 @@
       "startUnix": 1382300100,
       "endUnix": 1382300100,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "124",
         "name": "Temple Beth-El",
@@ -16196,7 +16378,7 @@
       "startUnix": 1381696200,
       "endUnix": 1381696200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "172",
         "name": "Travis Park United Methodist Church",
@@ -16232,7 +16414,7 @@
       "startUnix": 1381626000,
       "endUnix": 1381626000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "143",
         "name": "First Presbyterian Church, Austin",
@@ -16274,7 +16456,7 @@
       "startUnix": 1381593600,
       "endUnix": 1381593600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "174",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -16326,7 +16508,7 @@
       "startUnix": 1381089600,
       "endUnix": 1381089600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "175",
         "name": "Gethsemane Lutheran Church",
@@ -16373,7 +16555,7 @@
       "startUnix": 1381021200,
       "endUnix": 1381021200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -16420,7 +16602,7 @@
       "startUnix": 1380488400,
       "endUnix": 1380488400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "74",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -16472,7 +16654,7 @@
       "startUnix": 1380484800,
       "endUnix": 1380484800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -16529,7 +16711,7 @@
       "startUnix": 1379880000,
       "endUnix": 1379880000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -16570,7 +16752,7 @@
       "startUnix": 1379795400,
       "endUnix": 1379795400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "176",
         "name": "Christus Heritage Hall, The Village at Incarnate Word",
@@ -16602,7 +16784,7 @@
       "startUnix": 1378564200,
       "endUnix": 1378564200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "156",
         "name": "Christ Episcopal Church",
@@ -16643,7 +16825,7 @@
       "startUnix": 1378486800,
       "endUnix": 1378486800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -16680,7 +16862,7 @@
       "startUnix": 1373832000,
       "endUnix": 1373832000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -16717,7 +16899,7 @@
       "startUnix": 1370698200,
       "endUnix": 1370753400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -16754,7 +16936,7 @@
       "startUnix": 1370611800,
       "endUnix": 1370667000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -16791,7 +16973,7 @@
       "startUnix": 1370525400,
       "endUnix": 1370525400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -16823,7 +17005,7 @@
       "startUnix": 1370439000,
       "endUnix": 1370494200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -16860,7 +17042,7 @@
       "startUnix": 1370352600,
       "endUnix": 1370407800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -16897,7 +17079,7 @@
       "startUnix": 1370266200,
       "endUnix": 1370321400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -16934,7 +17116,7 @@
       "startUnix": 1368660600,
       "endUnix": 1368660600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "180",
         "name": "Huebner Oaks 14, Cielo Vista 18, Cinemark McCreless",
@@ -16966,7 +17148,7 @@
       "startUnix": 1365969600,
       "endUnix": 1365969600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -17018,7 +17200,7 @@
       "startUnix": 1363478400,
       "endUnix": 1363478400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -17060,7 +17242,7 @@
       "startUnix": 1361548800,
       "endUnix": 1361548800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "188",
         "name": "Capital Music Center",
@@ -17096,7 +17278,7 @@
       "startUnix": 1355688000,
       "endUnix": 1355688000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -17153,7 +17335,7 @@
       "startUnix": 1355086800,
       "endUnix": 1355086800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "101",
         "name": "MISSION SAN JOSE",
@@ -17215,7 +17397,7 @@
       "startUnix": 1354411800,
       "endUnix": 1354411800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -17247,7 +17429,7 @@
       "startUnix": 1353891600,
       "endUnix": 1353891600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "96",
         "name": "San Fernando Cathedral",
@@ -17279,7 +17461,7 @@
       "startUnix": 1353877200,
       "endUnix": 1353877200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -17317,7 +17499,7 @@
       "startUnix": 1351990800,
       "endUnix": 1351990800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -17369,7 +17551,7 @@
       "startUnix": 1348430400,
       "endUnix": 1348462200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -17431,7 +17613,7 @@
       "startUnix": 1342396800,
       "endUnix": 1342396800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "72",
         "name": "First United Methodist Church",
@@ -17469,7 +17651,7 @@
       "startUnix": 1342378800,
       "endUnix": 1342378800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "72",
         "name": "First United Methodist Church",
@@ -17507,7 +17689,7 @@
       "startUnix": 1342310400,
       "endUnix": 1342310400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "70",
         "name": "Coker United Methodist Church",
@@ -17545,7 +17727,7 @@
       "startUnix": 1342224000,
       "endUnix": 1342224000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "69",
         "name": "New Braunfels Presbyterian Church",
@@ -17583,7 +17765,7 @@
       "startUnix": 1342137600,
       "endUnix": 1342137600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "70",
         "name": "Coker United Methodist Church",
@@ -17621,7 +17803,7 @@
       "startUnix": 1341777600,
       "endUnix": 1341777600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -17673,7 +17855,7 @@
       "startUnix": 1340928000,
       "endUnix": 1340928000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -17716,7 +17898,7 @@
       "startUnix": 1337299200,
       "endUnix": 1337299200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "87",
         "name": "Southwest School of Art",
@@ -17763,7 +17945,7 @@
       "startUnix": 1332802800,
       "endUnix": 1332802800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "183",
         "name": "San Antonio Museum of Art, Greek and Roman Galleries",
@@ -17805,7 +17987,7 @@
       "startUnix": 1330895700,
       "endUnix": 1330895700,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "124",
         "name": "Temple Beth-El",
@@ -17847,7 +18029,7 @@
       "startUnix": 1330812000,
       "endUnix": 1330812000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "72",
         "name": "First United Methodist Church",
@@ -17883,7 +18065,7 @@
       "startUnix": 1330738200,
       "endUnix": 1330738200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -17925,7 +18107,7 @@
       "startUnix": 1330210800,
       "endUnix": 1330235400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -17966,7 +18148,7 @@
       "startUnix": 1329685200,
       "endUnix": 1329685200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "101",
         "name": "MISSION SAN JOSE",
@@ -18013,7 +18195,7 @@
       "startUnix": 1329685200,
       "endUnix": 1329685200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "101",
         "name": "MISSION SAN JOSE",
@@ -18060,7 +18242,7 @@
       "startUnix": 1329094800,
       "endUnix": 1329112200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -18101,7 +18283,7 @@
       "startUnix": 1329012000,
       "endUnix": 1329025800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -18142,7 +18324,7 @@
       "startUnix": 1323637200,
       "endUnix": 1323637200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -18189,7 +18371,7 @@
       "startUnix": 1323464400,
       "endUnix": 1323464400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "101",
         "name": "MISSION SAN JOSE",
@@ -18251,7 +18433,7 @@
       "startUnix": 1322431200,
       "endUnix": 1322459400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -18303,7 +18485,7 @@
       "startUnix": 1321214400,
       "endUnix": 1321249800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "26",
         "name": "San Antonio Museum of Art",
@@ -18355,7 +18537,7 @@
       "startUnix": 1320613200,
       "endUnix": 1320613200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -18402,7 +18584,7 @@
       "startUnix": 1320613200,
       "endUnix": 1320645000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -18454,7 +18636,7 @@
       "startUnix": 1320541200,
       "endUnix": 1320555000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "98",
         "name": "St. Louis Catholic Church",
@@ -18506,7 +18688,7 @@
       "startUnix": 1319329800,
       "endUnix": 1319345400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "96",
         "name": "San Fernando Cathedral",
@@ -18553,7 +18735,7 @@
       "startUnix": 1319313600,
       "endUnix": 1319313600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "97",
         "name": "Ruth Taylor Recital Hall, Trinity University",
@@ -18591,7 +18773,7 @@
       "startUnix": 1318725000,
       "endUnix": 1318725000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "95",
         "name": "The Little Church of La Villita",
@@ -18639,7 +18821,7 @@
       "startUnix": 1318638600,
       "endUnix": 1318654200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -18687,7 +18869,7 @@
       "startUnix": 1318122000,
       "endUnix": 1318135800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -18739,7 +18921,7 @@
       "startUnix": 1317688200,
       "endUnix": 1317703800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "93",
         "name": "St. Austin Catholic Church",
@@ -18791,7 +18973,7 @@
       "startUnix": 1313283600,
       "endUnix": 1313297400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
@@ -18834,7 +19016,7 @@
       "startUnix": 1312678800,
       "endUnix": 1312692600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
@@ -18881,7 +19063,7 @@
       "startUnix": 1312074000,
       "endUnix": 1312087800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
@@ -18924,7 +19106,7 @@
       "startUnix": 1311469200,
       "endUnix": 1311483000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
@@ -18967,7 +19149,7 @@
       "startUnix": 1310929200,
       "endUnix": 1310929200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "72",
         "name": "First United Methodist Church",
@@ -19010,7 +19192,7 @@
       "startUnix": 1310860800,
       "endUnix": 1310878200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "70",
         "name": "Coker United Methodist Church",
@@ -19053,7 +19235,7 @@
       "startUnix": 1310331600,
       "endUnix": 1310331600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -19091,7 +19273,7 @@
       "startUnix": 1309118400,
       "endUnix": 1309118400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -19129,7 +19311,7 @@
       "startUnix": 1305489600,
       "endUnix": 1305489600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": {
         "id": "91",
@@ -19160,7 +19342,7 @@
       "startUnix": 1305419400,
       "endUnix": 1305419400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -19202,7 +19384,7 @@
       "startUnix": 1304280000,
       "endUnix": 1304280000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -19245,7 +19427,7 @@
       "startUnix": 1304211600,
       "endUnix": 1304211600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -19288,7 +19470,7 @@
       "startUnix": 1303000200,
       "endUnix": 1303000200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -19330,7 +19512,7 @@
       "startUnix": 1301697000,
       "endUnix": 1301697000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "87",
         "name": "Southwest School of Art",
@@ -19397,7 +19579,7 @@
       "startUnix": 1300651200,
       "endUnix": 1300651200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "26",
         "name": "San Antonio Museum of Art",
@@ -19440,7 +19622,7 @@
       "startUnix": 1298595600,
       "endUnix": 1298613000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -19488,7 +19670,7 @@
       "startUnix": 1297630800,
       "endUnix": 1297630800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "85",
         "name": "McNay Art Museum",
@@ -19550,7 +19732,7 @@
       "startUnix": 1294606800,
       "endUnix": 1294606800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -19597,7 +19779,7 @@
       "startUnix": 1294538400,
       "endUnix": 1294538400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -19644,7 +19826,7 @@
       "startUnix": 1294448400,
       "endUnix": 1294465800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "82",
         "name": "First Baptist Church,<br>Unity Hall",
@@ -19696,7 +19878,7 @@
       "startUnix": 1292792400,
       "endUnix": 1292792400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -19734,7 +19916,7 @@
       "startUnix": 1292724000,
       "endUnix": 1292737800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "81",
         "name": "Mission San Juan Capistrano",
@@ -19777,7 +19959,7 @@
       "startUnix": 1292637600,
       "endUnix": 1292651400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "81",
         "name": "Mission San Juan Capistrano",
@@ -19820,7 +20002,7 @@
       "startUnix": 1292187600,
       "endUnix": 1292187600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "80",
         "name": "Chapel of the Incarnate Word",
@@ -19877,7 +20059,7 @@
       "startUnix": 1291582800,
       "endUnix": 1291582800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "79",
         "name": "The Union Church Building",
@@ -19930,7 +20112,7 @@
       "startUnix": 1289772000,
       "endUnix": 1289800200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -19978,7 +20160,7 @@
       "startUnix": 1289768400,
       "endUnix": 1289768400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "26",
         "name": "San Antonio Museum of Art",
@@ -20040,7 +20222,7 @@
       "startUnix": 1286150400,
       "endUnix": 1286167800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "76",
         "name": "Bates Recital Hall",
@@ -20081,7 +20263,7 @@
       "startUnix": 1284863400,
       "endUnix": 1284871800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -20133,7 +20315,7 @@
       "startUnix": 1284856200,
       "endUnix": 1284871800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "74",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -20200,7 +20382,7 @@
       "startUnix": 1279479600,
       "endUnix": 1279515000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "72",
         "name": "First United Methodist Church",
@@ -20247,7 +20429,7 @@
       "startUnix": 1279413000,
       "endUnix": 1279428600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "70",
         "name": "Coker United Methodist Church",
@@ -20298,7 +20480,7 @@
       "startUnix": 1279324800,
       "endUnix": 1279342200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "69",
         "name": "New Braunfels Presbyterian Church",
@@ -20345,7 +20527,7 @@
       "startUnix": 1278878400,
       "endUnix": 1278878400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "56",
         "name": "Christ Lutheran Church",
@@ -20388,7 +20570,7 @@
       "startUnix": 1277668800,
       "endUnix": 1277700600,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -20424,7 +20606,7 @@
       "startUnix": 1276459200,
       "endUnix": 1276459200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -20460,7 +20642,7 @@
       "startUnix": 1273881600,
       "endUnix": 1273899000,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "64",
         "name": "Southwest School of Art",
@@ -20517,7 +20699,7 @@
       "startUnix": 1272229200,
       "endUnix": 1272257400,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -20569,7 +20751,7 @@
       "startUnix": 1271552400,
       "endUnix": 1271566200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "62",
         "name": "Ducloux Hall at Austin Lyric Opera",
@@ -20621,7 +20803,7 @@
       "startUnix": 1271550600,
       "endUnix": 1271566200,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "61",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -20669,7 +20851,7 @@
       "startUnix": 1271466000,
       "endUnix": 1271479800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "55",
         "name": "Bates Recital Hall",
@@ -20717,7 +20899,7 @@
       "startUnix": 1271466000,
       "endUnix": 1271479800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -20769,7 +20951,7 @@
       "startUnix": 1271466000,
       "endUnix": 1271479800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "56",
         "name": "Christ Lutheran Church",
@@ -20821,7 +21003,7 @@
       "startUnix": 1271016000,
       "endUnix": 1271047800,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": {
         "id": "56",
         "name": "Christ Lutheran Church",
@@ -20868,7 +21050,7 @@
       "startUnix": null,
       "endUnix": null,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [],
@@ -20894,7 +21076,7 @@
       "startUnix": null,
       "endUnix": null,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [],
@@ -20920,7 +21102,7 @@
       "startUnix": null,
       "endUnix": null,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [],
@@ -20946,7 +21128,7 @@
       "startUnix": null,
       "endUnix": null,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [],
@@ -20972,7 +21154,7 @@
       "startUnix": null,
       "endUnix": null,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [],
@@ -20998,7 +21180,7 @@
       "startUnix": null,
       "endUnix": null,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [],
@@ -21024,7 +21206,7 @@
       "startUnix": null,
       "endUnix": null,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [],
@@ -21050,7 +21232,7 @@
       "startUnix": null,
       "endUnix": null,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [],
@@ -21076,7 +21258,7 @@
       "startUnix": null,
       "endUnix": null,
       "allDay": false,
-      "repeats": null,
+      "instances": null,
       "location": null,
       "organizer": null,
       "types": [],

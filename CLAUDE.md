@@ -35,7 +35,7 @@ seed/masters.json    EventON saved-location + saved-organizer lists, read from
                      the live /submit-your-event/ form on 2026-08-19
 seed/aliases.json    hand-curated merges for duplicate EventON records
 data/                the export (committed — this is the point of the repo)
-media/               375 mirrored featured images (committed, 23 MB)
+media/               948 mirrored images incl. every size variant (47 MB)
 cache/               raw event-page HTML, gitignored, delete to re-pull
 dist/                generated output, gitignored — rebuild with `node build.js`
 ```
@@ -54,17 +54,20 @@ full run takes about a minute at concurrency 4.
 
 ## The build
 
-The published site ships **zero JavaScript**. Index is 4 requests (HTML, one
-stylesheet, two images) against 74 requests and 50 scripts on the WordPress
-original.
+The published site ships **zero JavaScript**. The home page is 6 requests
+(HTML, the Google Fonts stylesheet, one local stylesheet, logo, banner, one
+thumbnail) against 74 requests and 50 scripts on the WordPress original.
 
-- Expand-in-place event cards are `<details>`/`<summary>`, not a click handler.
-- The calendar is a static `<table>` per month, generated at build time, with
-  prev/next links. Under 34rem it becomes a list of only the days that have
-  events, via CSS — no separate mobile template.
-- Every colour, size and spacing value is a custom property on `:root`, with a
-  dark theme through `prefers-color-scheme`. A future style panel should write
-  these properties and nothing else.
+- Event cards are plain `<article>`s matching the live collapsed card: title,
+  thumbnail, date block, time. They do not expand — the live card's expanded
+  view is what the per-event page is for.
+- The mobile menu is a hidden checkbox plus a label, so the nav still opens
+  with no script.
+- The calendar is a static grid per month, generated at build time, with
+  prev/next links and a day-level link into the month page.
+- Every colour, size and spacing value is a custom property on `:root`. A style
+  panel should write these properties and nothing else. There is deliberately
+  no dark theme — the live site has none.
 - Images are rewritten to the local `media/` mirror at build time. `build.js`
   warns if anything still points at a remote host — it should always be zero.
   The header banner originally came from a leftover Bluehost staging domain
@@ -120,6 +123,13 @@ This is the part worth not re-deriving:
   churches) — do not merge them.
 - **9 events have no date set at all** in EventON and render as 1970. They are
   exported with `start: null` and listed in `data/report.json` under `problems`.
+- **Repeating events are invisible on their own page.** 14 events recur, but the
+  single event page only ever renders the first date — the others exist only at
+  `<permalink>/var/ri-N.l-L1`, and EventON silently falls back to instance 0
+  once N runs past the last one, which is the stop signal. Missing this loses 14
+  dates from the archive and drops one card off the home page. `scrape.js`
+  probes those URLs and stores every date in `instances`; `build.js` expands one
+  card per date, which is what the live listings do.
 - **Spam in the dropdowns, not in the events.** The open submission form was
   farmed by conference spammers, leaving orphan location/organizer terms
   (Inovine Scientific Meetings, Pages Conferences, venues in Zurich/Tokyo/
@@ -129,7 +139,8 @@ This is the part worth not re-deriving:
 
 ## What the export contains
 
-419 events spanning **2010-04-11 → 2026-09-11**, 83 venues, 62 organizers,
+419 event records / 424 dates (14 events repeat) spanning **2010-04-11 →
+2026-09-11**, 83 venues, 62 organizers,
 113 event types. 402 have images, 404 list performers, 361 link out to a
 promoter site, 33 record ticket prices. Zero blog posts on the source site.
 
@@ -159,9 +170,10 @@ deliberately departs from two global defaults:
 - The colours are the live site's, not a fresh palette.
 
 Every measurement in `assets/style.css` was read off the live site's *computed*
-styles at 1280px and 375px, not eyeballed. The rebuilt home page now matches to
-within a pixel: card 698x219 desktop (live 697x219), 315x273 mobile (live
-314x272), h1 43.36px / 27.58px, thumbnail 140x140 at 20,59.
+styles at 1280px and 375px, not eyeballed, then verified the same way after
+rebuilding. The home page matches within a pixel: main card 698x219 (live
+697x219), thumbnail 140x140, "Show More Events" 160x36, sidebar thumbnail 50x50
+at 15,54, days grid 352x255, footer bar 74px.
 
 Reference values, should the live site ever go away:
 

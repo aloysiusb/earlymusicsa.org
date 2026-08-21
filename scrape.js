@@ -401,6 +401,40 @@ async function main() {
   console.log('Fetching event pages (cached after first run)…');
   const pages = await pool(records, (r) => cachedPage(r.id, r.link), 'pages');
 
+  // --- repeat instances -------------------------------------------------
+  // A repeating event is one post with several dates, and the single event
+  // page only ever renders the first of them. EventON exposes the rest at
+  // <permalink>/var/ri-N.l-L1, and quietly falls back to instance 0 once N
+  // runs past the last one — which is how we know where to stop.
+  console.log('Probing repeat instances…');
+  const MAX_REPEATS = 60;
+
+  const firstInstance = records.map((rec, i) => {
+    const html = pages[i];
+    return html && !html.__error ? instances(html, rec.id)[0] : null;
+  });
+
+  const allInstances = await pool(records, async (rec, i) => {
+    const first = firstInstance[i];
+    if (!first) return [];
+    const found = [first];
+    const seen = new Set([first.start]);
+    for (let n = 1; n <= MAX_REPEATS; n++) {
+      const html = await cachedPage(`${rec.id}-ri${n}`, `${rec.link.replace(/\/$/, '')}/var/ri-${n}.l-L1`);
+      const m = html.match(/data-time="(\d+)-(\d+)"/);
+      if (!m) break;
+      const start = Number(m[1]);
+      if (seen.has(start) || start < EPOCH_FLOOR) break;
+      seen.add(start);
+      found.push({ start, end: Number(m[2]) });
+    }
+    return found.sort((a, b) => a.start - b.start);
+  }, 'repeats');
+
+  const repeatCount = allInstances.filter((a) => Array.isArray(a) && a.length > 1).length;
+  console.log(`  ${repeatCount} repeating events, `
+    + `${allInstances.reduce((a, x) => a + (Array.isArray(x) ? x.length : 0), 0)} dates total`);
+
   // --- assemble ---------------------------------------------------------
   const events = [];
   const problems = [];
@@ -431,7 +465,7 @@ async function main() {
     const org = orgBySlug.get(orgSlug);
     const organizer = org ? { id: org.id, name: org.name, rawName: org.raw } : null;
 
-    const inst = instances(html, rec.id);
+    const inst = Array.isArray(allInstances[i]) ? allInstances[i] : [];
     if (!inst.length) {
       problems.push({
         id: rec.id, slug: rec.slug, title: clean(rec.title?.rendered || ''),
@@ -455,7 +489,9 @@ async function main() {
       startUnix: inst[0]?.start ?? null,
       endUnix: inst[0]?.end ?? null,
       allDay,
-      repeats: inst.length > 1 ? inst.map(({ start, end }) => ({
+      // Every date this event happens on. `start`/`end` above are the first;
+      // this is null unless the event actually repeats.
+      instances: inst.length > 1 ? inst.map(({ start, end }) => ({
         start: toLocalIso(start), end: toLocalIso(end), startUnix: start, endUnix: end,
       })) : null,
       location,

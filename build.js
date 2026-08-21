@@ -143,6 +143,12 @@ const longDate = (p) => p
   ? `${DOW[p.weekday]}, ${MONTHS[p.month - 1]} ${p.day}, ${p.year}`
   : 'Date to be announced';
 
+/** "(GMT-05:00)", read off the stored offset so it follows daylight saving. */
+function tzLabel(iso) {
+  const m = /([+-]\d{2}:\d{2})$/.exec(iso || '');
+  return m ? `(GMT${m[1]})` : '';
+}
+
 /* ------------------------------------------------------------------ shell -- */
 
 const NAV = [
@@ -170,7 +176,7 @@ function page({ title, current = '', depth = 0, head = '', body }) {
 <meta name="description" content="${esc(TAGLINE)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap">
 <link rel="stylesheet" href="${esc(root)}style.css">
 ${head}</head>
 <body>
@@ -190,7 +196,9 @@ ${head}</head>
   </div>
 </header>
 
+<main class="site-main">
 ${body}
+</main>
 
 <footer class="site-footer">
   <div class="container">
@@ -222,11 +230,12 @@ function eventCard(ev, depth, { eager = false } = {}) {
     ${thumb}
     <div class="event-date">
       ${p ? `<span class="year">${p.year}</span>
-      <span class="day">${p.day}</span>
+      <span class="day">${String(p.day).padStart(2, '0')}</span>
       <span class="month">${MONTHS[p.month - 1].slice(0, 3)}</span>` : '<span class="day">TBA</span>'}
     </div>
     <div class="event-info">
-      <p class="event-time">${esc(timeRange(ev))}</p>
+      <p class="event-time">${esc(timeRange(ev))}${p
+        ? `<span class="event-tz">${esc(tzLabel(ev.start))}</span>` : ''}</p>
       ${CARD_DETAILS && venue ? `<p class="event-venue">${venue}</p>` : ''}
       ${CARD_DETAILS && ev.descriptionText ? `<p class="event-summary">${esc(excerpt(ev.descriptionText))}</p>` : ''}
     </div>
@@ -236,7 +245,7 @@ function eventCard(ev, depth, { eager = false } = {}) {
 
 /* --------------------------------------------------------- sidebar widget -- */
 
-function calendarWidget(year, month, byDay, depth) {
+function calendarWidget(year, month, byDay, depth, { nextEvent = null } = {}) {
   const root = '../'.repeat(depth);
   const first = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
   const total = new Date(Date.UTC(year, month, 0)).getUTCDate();
@@ -258,11 +267,10 @@ function calendarWidget(year, month, byDay, depth) {
     return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}`;
   };
 
-  return `<div class="cal-widget">
-  <h2 class="cal-widget-title">Events Calendar</h2>
+  return `<h2 class="widget-title">Events Calendar</h2>
+<div class="cal-widget">
   <div class="cal-buttons">
     <a class="cal-button" href="${root}calendar/">Jump Months</a>
-    <a class="cal-button" href="${root}calendar/">Current Month</a>
   </div>
   <div class="cal-month-line">
     <span class="cal-month-title">${MONTHS[month - 1]}, ${year}</span>
@@ -277,7 +285,8 @@ function calendarWidget(year, month, byDay, depth) {
   <div class="cal-days">
     ${cells.join('\n    ')}
   </div>
-</div>`;
+</div>
+${nextEvent ? `<div class="event-list">${eventCard(nextEvent, depth)}</div>` : ''}`;
 }
 
 /* ------------------------------------------------------------------- ics -- */
@@ -333,7 +342,15 @@ async function main() {
     }
   }
 
-  const dated = live.filter((e) => e.start).sort((a, b) => a.startUnix - b.startUnix);
+  // A repeating event is one record with several dates, and it appears once
+  // per date in every listing — which is what the live site does.
+  const occurrencesOf = (ev) => (ev.instances || [{
+    start: ev.start, end: ev.end, startUnix: ev.startUnix, endUnix: ev.endUnix,
+  }]).map((inst, i) => ({ ...ev, ...inst, instance: i }));
+
+  const dated = live.flatMap(occurrencesOf)
+    .filter((o) => o.startUnix)
+    .sort((a, b) => a.startUnix - b.startUnix);
   const undated = live.filter((e) => !e.start);
   const now = Date.now() / 1000;
   const upcoming = dated.filter((e) => e.endUnix >= now);
@@ -355,8 +372,9 @@ async function main() {
   await write('index.html', page({
     title: 'Home', current: '',
     body: `<div class="container content">
-  <main class="primary">
-    <h1 class="page-title">Upcoming Events</h1>
+  <div class="primary">
+    <h1 class="site-heading">${esc(SITE_NAME)}</h1>
+    <h2 class="section-heading">Upcoming Events</h2>
     <div class="event-list">
 ${shown.length
       ? shown.map((e, i) => eventCard(e, 0, { eager: i < 2 })).join('\n')
@@ -364,9 +382,9 @@ ${shown.length
     </div>
     ${upcoming.length > HOME_LIMIT || past.length
       ? '<a class="show-more" href="archive/">Show More Events</a>' : ''}
-  </main>
+  </div>
   <aside class="sidebar">
-${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}
+${calendarWidget(focusDate.year, focusDate.month, byDay, 0, { nextEvent: upcoming[0] })}
   </aside>
 </div>`,
   }));
@@ -390,14 +408,14 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}
     await write(`calendar/${ym}.html`, page({
       title: `${MONTHS[m - 1]} ${y}`, current: 'calendar/', depth: 1,
       body: `<div class="container content">
-  <main class="primary">
-    <h1 class="page-title">${MONTHS[m - 1]} ${y}</h1>
+  <div class="primary">
+    <h1 class="site-heading">${MONTHS[m - 1]} ${y}</h1>
     <p style="margin:0 0 20px">
       ${prev ? `<a href="${prev}.html">&larr; ${label(prev)}</a>` : ''}
       ${next ? ` &nbsp; <a href="${next}.html">${label(next)} &rarr;</a>` : ''}
     </p>
     <div class="event-list">${inMonth.map((e) => eventCard(e, 1)).join('\n')}</div>
-  </main>
+  </div>
   <aside class="sidebar">${calendarWidget(y, m, byDay, 1)}</aside>
 </div>`,
     }));
@@ -408,10 +426,10 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}
   await write('calendar/index.html', page({
     title: 'Calendar', current: 'calendar/', depth: 1,
     head: `<meta http-equiv="refresh" content="0; url=${calLanding}.html">\n`,
-    body: `<div class="container content"><main class="primary">
-  <h1 class="page-title">Calendar</h1>
+    body: `<div class="container content"><div class="primary">
+  <h1 class="site-heading">Calendar</h1>
   <p><a href="${calLanding}.html">Go to ${MONTHS[+calLanding.split('-')[1] - 1]} ${calLanding.split('-')[0]} &rarr;</a></p>
-</main></div>`,
+</div></div>`,
   }));
 
   // --- archive ----------------------------------------------------------
@@ -425,11 +443,11 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}
     await write(`archive/${y}.html`, page({
       title: `${y} Events`, current: 'archive/', depth: 1,
       body: `<div class="container content">
-  <main class="primary">
-    <h1 class="page-title">${y}</h1>
+  <div class="primary">
+    <h1 class="site-heading">${y}</h1>
     ${yearNav(y)}
     <div class="event-list">${list.map((e) => eventCard(e, 1)).join('\n')}</div>
-  </main>
+  </div>
   <aside class="sidebar">${calendarWidget(y, 12, byDay, 1)}</aside>
 </div>`,
     }));
@@ -438,13 +456,13 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}
   await write('archive/index.html', page({
     title: 'Past Events', current: 'archive/', depth: 1,
     body: `<div class="container content">
-  <main class="primary">
-    <h1 class="page-title">Past Events</h1>
+  <div class="primary">
+    <h1 class="site-heading">Past Events</h1>
     <p>${past.length} events listed since ${years[years.length - 1]}.</p>
     ${yearNav(null)}
-    ${undated.length ? `<h2 class="cal-widget-title">Undated listings</h2>
+    ${undated.length ? `<h2 class="section-heading">Undated listings</h2>
     <div class="event-list">${undated.map((e) => eventCard(e, 1)).join('\n')}</div>` : ''}
-  </main>
+  </div>
   <aside class="sidebar">${calendarWidget(focusDate.year, focusDate.month, byDay, 1)}</aside>
 </div>`,
   }));
@@ -480,9 +498,9 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}
       title: ev.title, depth: 1,
       head: `<script type="application/ld+json">${JSON.stringify(ld)}</script>\n`,
       body: `<div class="container content">
-  <main class="primary">
+  <div class="primary">
     <p style="margin:30px 0 0"><a href="../">&larr; All events</a></p>
-    <h1 class="page-title">${esc(ev.title)}</h1>
+    <h1 class="site-heading">${esc(ev.title)}</h1>
     ${ev.image ? `<p>${responsiveImg(ev, { sizes: '(max-width: 782px) 100vw, 700px', depth: 1 })}</p>` : ''}
     ${sanitize(ev.description) || '<p>No description was provided for this event.</p>'}
     <dl>${facts.map(([k, v]) => `<dt><strong>${k}</strong></dt><dd style="margin:0 0 10px">${v}</dd>`).join('')}</dl>
@@ -490,7 +508,7 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}
       ${ev.website ? `<a href="${esc(ev.website)}" rel="noopener">Event website</a> &nbsp; ` : ''}
       ${p ? `<a href="${esc(ev.slug)}.ics">Add to calendar</a>` : ''}
     </p>
-  </main>
+  </div>
   <aside class="sidebar">${calendarWidget(p?.year || focusDate.year, p?.month || focusDate.month, byDay, 1)}</aside>
 </div>`,
     }));
@@ -502,10 +520,10 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}
   // --- static pages -----------------------------------------------------
   const simplePage = (file, title, current, inner) => write(file, page({
     title, current,
-    body: `<div class="container content"><main class="primary">
-  <h1 class="page-title">${esc(title)}</h1>
+    body: `<div class="container content"><div class="primary">
+  <h1 class="site-heading">${esc(title)}</h1>
   ${inner}
-</main></div>`,
+</div></div>`,
   }));
 
   await simplePage('about.html', 'About', 'about.html', `

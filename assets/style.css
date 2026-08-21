@@ -1,31 +1,33 @@
 /* ============================================================================
    Early Music San Antonio
-   Rebuilt to match the live WordPress/EventON site's appearance exactly, but
-   as hand-written CSS with no framework, no theme and no plugin.
+   Hand-written CSS matching the live WordPress/EventON site: no framework,
+   no theme, no plugin, no JavaScript.
 
-   Every value the design depends on is a custom property in :root below, so
-   the planned style-editing page only ever has to write these — never a rule.
-   Measurements were taken from the live site's computed styles at 1280px and
-   375px wide.
+   Every value the design depends on is a custom property in :root, so the
+   planned style-editing page only ever writes properties, never rules.
+   All measurements were read from the live site's computed styles at 1280px
+   and 375px wide.
    ========================================================================== */
 
 :root {
   /* --- brand ------------------------------------------------------------ */
-  --gold:          #9e7e00;   /* page headings */
+  --gold:          #9e7e00;   /* headings */
   --gold-deep:     #8c7200;   /* footer bar */
   --card-bg:       #b3d1db;   /* event card panel */
-  --card-text:     #ffffff;   /* text on the card */
+  --card-text:     #ffffff;
   --ink:           #000000;
-  --ink-soft:      #202124;
+  --ink-soft:      #202124;   /* calendar month title */
   --page-bg:       #ffffff;
 
-  /* calendar greys, taken from the live widget */
+  --btn-bg:        #656565;   /* "Jump Months" */
+  --btn-text:      #ffffff;
+  --more-bg:       #b4b4b4;   /* "Show More Events" */
+  --more-text:     #ffffff;
+
   --cal-dayname-bg:   #ececec;
   --cal-dayname-text: #9e9e9e;
   --cal-day-text:     #d4d4d4;
   --cal-day-bg:       #ffffff;
-  --cal-btn-bg:       #adadad;
-  --cal-btn-text:     #ffffff;
   --cal-accent:       var(--gold);
 
   /* --- type ------------------------------------------------------------- */
@@ -36,48 +38,66 @@
   --h1-size: 43.36px;
   --h1-size-mobile: 27.58px;
   --h1-weight: 500;
-  --h1-color: var(--gold);
+
+  --h2-size: 28.64px;
+  --h2-size-mobile: 22px;
+  --h2-weight: 300;           /* section headings are light */
+  --widget-title-weight: 400; /* the sidebar title is a touch heavier */
 
   --nav-size: 20px;
   --nav-weight: 500;
-  --nav-color: #ffffff;
 
   --card-title-size: 24px;
   --card-title-weight: 800;
   --card-day-size: 30px;
   --card-month-size: 11px;
   --card-year-size: 10px;
-  --card-time-size: 10px;
+  --card-time-size: 12px;
 
-  --cal-title-size: 28px;
-  --cal-title-weight: 800;
+  --month-title-size: 20px;
+  --month-title-weight: 800;
   --cal-day-size: 12px;
 
+  --more-size: 14px;
+  --footer-size: 16px;
+
   /* --- layout ----------------------------------------------------------- */
-  --container: 1265px;
+  --container: 1200px;        /* content column incl. padding */
   --container-pad: 50px;
   --container-pad-mobile: 30px;
+
+  --primary-ratio: 68%;       /* main column share of the row */
   --sidebar-width: 352px;
-  --primary-width: 748px;   /* includes --column-gap of right padding */
-  --column-gap: 50px;
+  --column-gap: 50px;         /* lives as padding on the main column */
+  --content-top: 50px;
+  --content-bottom: 70px;
+
   --banner-height: 155px;
   --banner-position: 24% 42%;
+  /* The live site reserves only 65px for its 155px fixed banner, which leaves
+     its own <h1> hidden underneath. Reserving the full height keeps the
+     heading visible; set this to 65px to reproduce the overlap exactly. */
+  --banner-reserve: var(--banner-height);
   --logo-width: 205px;
   --logo-height: 150px;
 
   --card-pad: 20px;
+  --card-pad-sidebar: 15px;
   --card-gap: 10px;
   --card-radius: 0px;
+  --card-stack-gap: 1px;      /* the cards butt up against each other */
   --thumb-size: 140px;
+  --thumb-size-sidebar: 50px; /* the sidebar card runs a smaller thumbnail */
   --thumb-radius: 10px;
-  --thumb-focus: 50% 0%;   /* which part of a wide banner survives the crop */
-  --stack-gap: 10px;
+  --thumb-focus: 50% 0%;      /* which part of a wide banner survives the crop */
+
+  --more-radius: 10px;
+  --more-leading: 16px;
 
   --cal-cell-height: 39px;
   --cal-cell-height-events: 60px;
   --cal-radius: 10px;
 
-  /* --- assets ----------------------------------------------------------- */
   --banner-image: url('media/Giovanni_Pauolo_2000x400.jpg');
 }
 
@@ -96,7 +116,6 @@ body {
 
 img { max-width: 100%; display: block; }
 a { color: inherit; }
-
 h1, h2, h3 { margin: 0; font-weight: inherit; }
 
 .container {
@@ -113,19 +132,25 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 
 /* ---------------------------------------------------------------- header -- */
 
-/* The banner is full-bleed; only its contents are constrained. */
+/* Pinned to the top, full width, with only its contents constrained. */
 .site-banner {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+  height: var(--banner-height);
   background-image: var(--banner-image);
   background-size: cover;
   background-position: var(--banner-position);
   background-repeat: no-repeat;
 }
+/* The header container spans the full width, unlike the content below it. */
+.site-banner .header-inner { max-width: none; }
 
 .header-inner {
   display: flex;
   align-items: center;
   gap: 20px;
-  min-height: var(--banner-height);
+  height: 100%;
 }
 
 .site-logo img {
@@ -139,13 +164,13 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 26px;
+  gap: 24px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .main-nav a {
-  color: var(--nav-color);
+  color: var(--card-text);
   font-size: var(--nav-size);
   font-weight: var(--nav-weight);
   text-decoration: none;
@@ -156,12 +181,7 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 
 /* Mobile menu with no JavaScript: a hidden checkbox drives the panel. */
 .nav-toggle { display: none; }
-.nav-toggle-label {
-  display: none;
-  margin-left: auto;
-  padding: 8px;
-  cursor: pointer;
-}
+.nav-toggle-label { display: none; margin-left: auto; padding: 8px; cursor: pointer; }
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
@@ -177,34 +197,49 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 
 /* --------------------------------------------------------------- layout --- */
 
-/* The live site caps the main column and pushes the sidebar flush right,
-   leaving a little slack between them — matched here rather than stretching
-   the listings to fill the row. */
-.content {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
+.site-main { padding-top: var(--banner-reserve); }
+
+.content { display: flex; align-items: flex-start; }
+
 .primary {
   flex: 1 1 auto;
   min-width: 0;
-  max-width: var(--primary-width);
+  max-width: var(--primary-ratio);
   padding-right: var(--column-gap);
+  margin-block: var(--content-top) var(--content-bottom);
 }
-.sidebar { flex: 0 0 var(--sidebar-width); width: var(--sidebar-width); }
 
-.page-title {
+.sidebar {
+  flex: 0 0 var(--sidebar-width);
+  width: var(--sidebar-width);
+  margin-block: var(--content-top) var(--content-bottom);
+}
+
+/* ------------------------------------------------------------- headings -- */
+
+.site-heading {
   font-size: var(--h1-size);
   font-weight: var(--h1-weight);
   line-height: 1;
-  color: var(--h1-color);
+  color: var(--gold);
   text-transform: uppercase;
-  margin: 40px 0 32.52px;
+  margin-bottom: 32.52px;
 }
+
+.section-heading,
+.widget-title {
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  line-height: 1;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.widget-title { font-weight: var(--widget-title-weight); margin-bottom: 20px; }
 
 /* ----------------------------------------------------------- event cards -- */
 
-.event-list { display: flex; flex-direction: column; gap: var(--stack-gap); }
+.event-list { display: flex; flex-direction: column; gap: var(--card-stack-gap); }
 
 .event-card {
   background: var(--card-bg);
@@ -223,11 +258,7 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 .event-title a { text-decoration: none; }
 .event-title a:hover { text-decoration: underline; }
 
-.event-inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--card-gap);
-}
+.event-inner { display: flex; flex-wrap: wrap; gap: var(--card-gap); }
 
 .event-thumb {
   flex: 0 0 var(--thumb-size);
@@ -236,12 +267,10 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   border-radius: var(--thumb-radius);
   overflow: hidden;
 }
-/* The source images are wide banners; crop to the square the design wants
-   rather than letterboxing them. Anchored to the top, as the live site does,
-   because that is where the subject usually sits. */
+/* The uploads are wide banners; crop to the square the design wants, anchored
+   to the top, rather than letterboxing them. */
 .event-thumb img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
   object-position: var(--thumb-focus);
 }
@@ -252,92 +281,81 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   flex-direction: column;
   align-items: flex-start;
   line-height: 1.1;
+  text-transform: uppercase;
 }
-.event-date .year  { font-size: var(--card-year-size); font-weight: 700; text-transform: uppercase; }
+.event-date .year  { font-size: var(--card-year-size); font-weight: 700; }
 .event-date .day   { font-size: var(--card-day-size); font-weight: 700; }
-.event-date .month { font-size: var(--card-month-size); text-transform: uppercase; }
+.event-date .month { font-size: var(--card-month-size); font-weight: 400; }
 
 .event-info { flex: 1 1 200px; min-width: 0; }
-.event-time {
-  margin: 0;
-  font-size: var(--card-time-size);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+.event-time { margin: 0; font-size: var(--card-time-size); font-weight: 400; }
+.event-tz { margin-left: 5px; }
+
+/* The sidebar runs the same card, tighter, with a smaller thumbnail. The extra
+   right margin reproduces the 60px column the live layout leaves for it. */
+.sidebar .event-card { padding: var(--card-pad-sidebar); }
+.sidebar .event-list { margin-top: 10px; }
+.sidebar .event-thumb {
+  flex-basis: var(--thumb-size-sidebar);
+  width: var(--thumb-size-sidebar);
+  height: var(--thumb-size-sidebar);
+  margin-right: var(--card-gap);
 }
-.event-venue { margin: 6px 0 0; font-size: 12px; }
-.event-summary { margin: 8px 0 0; font-size: 13px; line-height: 1.45; }
+/* In the narrow column the time drops to its own row, as it does on the live
+   site, rather than squeezing in beside the date. */
+.sidebar .event-info { flex-basis: 100%; }
 
 .show-more {
-  display: block;
-  margin-top: var(--stack-gap);
-  padding: 14px;
-  background: var(--card-bg);
-  color: var(--card-text);
-  font-size: 13px;
-  font-weight: 700;
+  display: inline-block;
+  padding: 10px;
+  min-width: 160px;
+  border-radius: var(--more-radius);
+  background: var(--more-bg);
+  color: var(--more-text);
+  font-size: var(--more-size);
+  line-height: var(--more-leading);
   text-align: center;
-  text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.04em;
 }
 .show-more:hover { background: var(--gold); }
 
 /* --------------------------------------------------------- calendar box -- */
 
-.cal-widget { margin-top: 40px; padding-bottom: 10px; }
-
-.cal-widget-title {
-  font-size: 18px;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 10px;
-}
-
-.cal-buttons { display: flex; flex-wrap: wrap; margin-bottom: 5px; }
+.cal-buttons { display: flex; flex-wrap: wrap; }
 .cal-button {
   font-size: 12px;
   line-height: 25px;
   padding-inline: 10px;
   margin: 0 4px 5px 0;
   border-radius: var(--cal-radius);
-  background: var(--cal-btn-bg);
-  color: var(--cal-btn-text);
+  background: var(--btn-bg);
+  color: var(--btn-text);
   text-transform: uppercase;
   text-decoration: none;
 }
 .cal-button:hover { background: var(--gold); }
 
-.cal-month-line {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
+.cal-month-line { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 .cal-month-title {
-  font-size: var(--cal-title-size);
-  font-weight: var(--cal-title-weight);
+  font-size: var(--month-title-size);
+  font-weight: var(--month-title-weight);
   text-transform: uppercase;
   color: var(--ink-soft);
+  padding-right: 10px;
 }
 .cal-arrows { display: flex; gap: 6px; margin-left: auto; }
 .cal-arrows a {
   width: 25px; height: 25px;
   display: grid; place-items: center;
   border-radius: 50%;
-  background: var(--cal-btn-bg);
-  color: var(--cal-btn-text);
+  background: var(--btn-bg);
+  color: var(--btn-text);
   font-size: 12px;
   text-decoration: none;
 }
 .cal-arrows a:hover { background: var(--gold); }
 
-/* Seven equal columns for both the day names and the days themselves. */
-.cal-daynames, .cal-days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-}
+.cal-daynames, .cal-days { display: grid; grid-template-columns: repeat(7, 1fr); }
 
 .cal-daynames div {
   background: var(--cal-dayname-bg);
@@ -361,9 +379,9 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   text-align: center;
   line-height: 1.5;
 }
-.cal-days .empty { background: var(--cal-day-bg); }
 
-/* A day that has something on gets the accent colour and a dot. */
+/* A day with something on gets the accent colour and grows, as on the live
+   calendar where the event title appears inside the cell. */
 .cal-days a.has-events {
   min-height: var(--cal-cell-height-events);
   color: var(--cal-accent);
@@ -381,29 +399,29 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 
 /* ---------------------------------------------------------------- footer -- */
 
-.site-footer {
-  margin-top: 50px;
-  background: var(--gold-deep);
-  color: #fff;
-}
+.site-footer { background: var(--gold-deep); color: #fff; }
 .site-footer .container { padding-block: 25px; }
-.site-footer p { margin: 0; font-size: 14px; }
+.site-footer p { margin: 0; font-size: var(--footer-size); text-align: center; }
 .site-footer a { color: #fff; }
 
 /* ------------------------------------------------------------ responsive -- */
 
 @media (max-width: 900px) {
-  /* The sidebar drops below the listings, exactly as the live site does. */
+  /* The sidebar drops below the listings, as the live site does. */
   .content { flex-direction: column; }
-  .primary { max-width: 100%; padding-right: 0; }
-  .sidebar { flex: 1 1 auto; width: 100%; }
-  .cal-widget { margin-top: 30px; }
+  .primary {
+    max-width: 100%;
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+  .sidebar { flex: 1 1 auto; width: 100%; margin-top: 0; }
 }
 
 @media (max-width: 782px) {
   :root { --container-pad: var(--container-pad-mobile); }
 
-  .page-title { font-size: var(--h1-size-mobile); margin-top: 30px; }
+  .site-heading { font-size: var(--h1-size-mobile); }
+  .section-heading, .widget-title { font-size: var(--h2-size-mobile); }
 
   .nav-toggle-label { display: block; }
   .main-nav {
@@ -420,7 +438,10 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
     gap: 10px;
     padding: 10px 0 20px;
   }
-  .header-inner { flex-wrap: wrap; padding-block: 15px; }
+  /* Once the menu can open, the banner has to grow with it. */
+  .site-banner { position: static; height: auto; }
+  .site-main { padding-top: 0; }
+  .header-inner { flex-wrap: wrap; height: auto; min-height: var(--banner-height); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -429,6 +450,7 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 
 @media print {
   .main-nav, .nav-toggle-label, .sidebar, .show-more { display: none; }
-  .site-banner { background: none; }
+  .site-banner { position: static; background: none; }
+  .site-main { padding-top: 0; }
   .event-card { border: 1px solid #999; break-inside: avoid; }
 }
