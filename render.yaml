@@ -1,0 +1,45 @@
+# Render blueprint — https://render.com/docs/blueprint-spec
+#
+# The site is fully static: Render clones the repo, runs `node build.js` to
+# turn data/events.json into dist/, and serves that. Nothing runs at request
+# time, so this is Render's free static-site tier, not a web service.
+#
+# dist/ is deliberately gitignored — it is generated on every deploy from
+# data/ and media/, both of which are committed.
+
+services:
+  - type: web
+    name: earlymusicsa
+    runtime: static
+    buildCommand: node build.js
+    staticPublishPath: ./dist
+    # Every push to main redeploys.
+    autoDeploy: true
+    pullRequestPreviewsEnabled: false
+
+    headers:
+      # Images and their size variants are content-addressed by filename and
+      # never change in place, so they can be cached hard.
+      - path: /media/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+
+      # HTML is regenerated on every build; always revalidate so a new event
+      # shows up immediately rather than after a cache expiry.
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+
+    routes:
+      # Old WordPress permalinks kept the same /events/<slug>/ shape, so send
+      # them to the generated page rather than a 404.
+      - type: rewrite
+        source: /events/:slug/
+        destination: /events/:slug.html
