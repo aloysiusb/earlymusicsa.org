@@ -200,6 +200,29 @@ ${head}</head>
 ${body}
 </main>
 
+<script>
+/* The detail panel opens, closes and locks page scrolling entirely in CSS,
+   through :target and :has(). This handles the two things CSS cannot: closing
+   on Escape, and loading a panel's map only once that panel is opened. */
+(function () {
+  function loadMap() {
+    var open = document.querySelector('.event-modal:target');
+    if (!open) return;
+    open.querySelectorAll('iframe[data-src]').forEach(function (f) {
+      f.src = f.getAttribute('data-src');
+      f.removeAttribute('data-src');
+    });
+  }
+  addEventListener('hashchange', loadMap);
+  loadMap();
+  addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && location.hash) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+  });
+})();
+</script>
+
 <footer class="site-footer">
   <div class="container">
     <p>Copyright ${new Date().getFullYear()} &mdash; ${esc(SITE_NAME)}. All rights reserved.</p>
@@ -213,9 +236,13 @@ ${body}
 
 /* ------------------------------------------------------------------ cards -- */
 
-function eventCard(ev, depth, { eager = false } = {}) {
+function eventCard(ev, depth, { eager = false, modal = true } = {}) {
   const p = parts(ev.start);
-  const href = `${'../'.repeat(depth)}events/${esc(ev.slug)}.html`;
+  // Opening the detail panel is a link to its :target id, so it works with
+  // JavaScript off, gets a shareable URL, and Back closes it.
+  const href = modal
+    ? `#${modalId(ev)}`
+    : `${'../'.repeat(depth)}events/${esc(ev.slug)}.html`;
   const thumb = ev.image
     // `sizes` is parsed by the HTML parser, not CSS — it takes a plain length,
     // never a var(). Keep this in step with --thumb-size in style.css.
@@ -225,6 +252,7 @@ function eventCard(ev, depth, { eager = false } = {}) {
   const venue = [ev.location?.name, ev.organizer?.name].filter(Boolean).join(' &middot; ');
 
   return `<article class="event-card">
+  <a class="card-hit" href="${href}" aria-label="${esc(ev.title)} &mdash; details"></a>
   <h2 class="event-title"><a href="${href}">${esc(ev.title)}</a></h2>
   <div class="event-inner">
     ${thumb}
@@ -242,6 +270,117 @@ function eventCard(ev, depth, { eager = false } = {}) {
   </div>
 </article>`;
 }
+
+/* ------------------------------------------------------------------ modal -- */
+
+/** Small inline icons, so the panel headings read like the live card's. */
+const ICON = {
+  details: '<path d="M4 4h16v16H4z" fill="none"/><path d="M6 7h12M6 12h12M6 17h8"/>',
+  location: '<path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+  performers: '<path d="M9 18V6l10-2v12"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="16" r="2"/>',
+  link: '<path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/>',
+  ticket: '<path d="M3 9V7h18v2a2 2 0 0 0 0 4v2H3v-2a2 2 0 0 0 0-4z"/>',
+};
+
+const icon = (name) => `<svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"`
+  + ` stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[name]}</svg>`;
+
+const panel = (name, heading, inner, cls = '') =>
+  `<section class="panel ${cls}">
+      <h3 class="panel-title">${icon(name)}${esc(heading)}</h3>
+      ${inner}
+    </section>`;
+
+/**
+ * A map that works without an API key. The live site's Google embed is
+ * currently erroring ("This page didn't load Google Maps correctly"), which
+ * needs a key with billing enabled; OpenStreetMap needs neither, and EventON
+ * already geocoded every venue so the coordinates come free.
+ */
+function mapPanel(loc) {
+  if (!loc?.lat) return '';
+  const d = 0.005;
+  const bbox = [loc.lon - d, loc.lat - d, loc.lon + d, loc.lat + d].map((n) => n.toFixed(6)).join(',');
+  const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${loc.lat},${loc.lon}`;
+  // Held in data-src so a page full of closed panels makes no map requests at
+  // all — `loading="lazy"` does not help here, because a hidden iframe still
+  // fetches. The script swaps it in when its panel opens. Without JavaScript
+  // the map is skipped and the "Get directions" link carries the same info.
+  return `<section class="panel panel-map">
+      <iframe data-src="${esc(src)}" title="Map showing ${esc(loc.name)}"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>`;
+}
+
+const directionsUrl = (loc) => loc?.lat
+  ? `https://www.google.com/maps/dir/?api=1&destination=${loc.lat},${loc.lon}`
+  : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([loc?.name, loc?.address].filter(Boolean).join(' '))}`;
+
+/** The expanded card, shown by :target — no JavaScript required to open it. */
+function eventModal(ev, depth) {
+  const p = parts(ev.start);
+  const id = modalId(ev);
+  const loc = ev.location;
+
+  const figure = ev.image
+    ? `<section class="panel panel-figure">${responsiveImg(ev, {
+        sizes: '(max-width: 820px) 92vw, 460px', depth })}</section>`
+    : '';
+
+  const details = ev.description || ev.descriptionText
+    ? panel('details', 'Details', `<div class="panel-prose">${sanitize(ev.description)
+        || `<p>${esc(ev.descriptionText)}</p>`}</div>`)
+    : '';
+
+  const location = loc?.name
+    ? panel('location', 'Location', `<p class="venue-name">${esc(loc.name)}</p>
+      ${loc.address ? `<p class="venue-address">${esc(loc.address)}</p>` : ''}
+      <p class="panel-actions">
+        <a class="pill" href="${esc(directionsUrl(loc))}" target="_blank" rel="noopener">Get directions</a>
+        <a class="pill" href="${'../'.repeat(depth)}events/${esc(ev.slug)}.html">Event page</a>
+      </p>`)
+    : '';
+
+  const performers = ev.performers ? panel('performers', 'Performers', `<p>${esc(ev.performers)}</p>`) : '';
+  const learnMore = ev.website
+    ? panel('link', 'Learn More',
+      `<p><a href="${esc(ev.website)}" target="_blank" rel="noopener">Visit the event website</a></p>`)
+    : '';
+  const tickets = ev.tickets ? panel('ticket', 'Ticket Information', `<p>${esc(ev.tickets)}</p>`) : '';
+
+  const pair = (a, b) => (a && b) ? `<div class="panel-row">${a}${b}</div>` : (a || b);
+
+  return `<div class="event-modal" id="${id}" role="dialog" aria-modal="true" aria-labelledby="${id}-t">
+  <a class="modal-scrim" href="#" tabindex="-1" aria-label="Close"></a>
+  <div class="modal-panel">
+    <div class="modal-head">
+      <h2 class="modal-title" id="${id}-t">${esc(ev.title)}</h2>
+      <div class="event-inner">
+        ${ev.image ? `<div class="event-thumb">${responsiveImg(ev, { sizes: '140px', depth, square: THUMB })}</div>` : ''}
+        <div class="event-date">
+          ${p ? `<span class="year">${p.year}</span>
+          <span class="day">${String(p.day).padStart(2, '0')}</span>
+          <span class="month">${MONTHS[p.month - 1].slice(0, 3)}</span>` : '<span class="day">TBA</span>'}
+        </div>
+        <div class="event-info">
+          <p class="event-time">${esc(timeRange(ev))}${p
+            ? `<span class="event-tz">${esc(tzLabel(ev.start))}</span>` : ''}</p>
+        </div>
+      </div>
+      <a class="modal-close" href="#" aria-label="Close">&times;</a>
+    </div>
+    <div class="modal-body">
+      ${pair(figure, details)}
+      ${mapPanel(loc)}
+      ${location}
+      ${pair(performers, learnMore)}
+      ${tickets}
+    </div>
+  </div>
+</div>`;
+}
+
+const modalId = (ev) => `ev-${ev.id}-${ev.instance || 0}`;
 
 /* --------------------------------------------------------- sidebar widget -- */
 
@@ -380,6 +519,7 @@ ${shown.length
       ? shown.map((e, i) => eventCard(e, 0, { eager: i < 2 })).join('\n')
       : '<p>No upcoming events are listed just now. Please check back soon.</p>'}
     </div>
+${shown.map((e) => eventModal(e, 0)).join('\n')}
     ${upcoming.length > HOME_LIMIT || past.length
       ? '<a class="show-more" href="archive/">Show More Events</a>' : ''}
   </div>
@@ -554,10 +694,18 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0, { nextEvent: upcomin
   console.log(`  ${months.length} month pages · ${years.length} archive years · ${live.length} event pages`);
   console.log(`  ${copied} images mirrored locally`);
 
-  const remote = [...(await readFile(path.join(OUT, 'index.html'), 'utf8'))
-    .matchAll(/(?:src|url\()="?(https?:[^")\s]+)/g)]
-    .filter((m) => !m[1].includes('fonts.googleapis') && !m[1].includes('fonts.gstatic'));
-  if (remote.length) console.warn(`  WARNING: ${remote.length} remote asset(s) on the home page`);
+  // Guard against images silently reverting to the old WordPress host. Google
+  // Fonts and the OpenStreetMap embeds are meant to be remote, so skip those.
+  const home = await readFile(path.join(OUT, 'index.html'), 'utf8');
+  const remote = [...home.matchAll(/<img\b[^>]*?\ssrc="(https?:[^"]+)"/g)]
+    .map((m) => m[1])
+    .filter((u) => !u.includes('fonts.g'));
+  if (remote.length) {
+    console.warn(`  WARNING: ${remote.length} image(s) still load from a remote host`);
+    remote.slice(0, 3).forEach((u) => console.warn(`    ${u}`));
+  } else {
+    console.log('  no images load from earlymusicsa.org');
+  }
 }
 
 main().catch((err) => { console.error(err); process.exit(1); });

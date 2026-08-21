@@ -455,11 +455,17 @@ async function main() {
     const locid = attr(html, 'locid');
     const locNameRaw = clean(stripTags(attr(html, 'location_name')));
     const master = locBySlug.get(locSlug);
+    // EventON geocoded every venue once and left the result in the markup, so
+    // the rebuild can map venues without paying for a geocoding API.
+    const latlng = attr(html, 'latlng').split(',').map(Number);
+    const hasCoords = latlng.length === 2 && latlng.every((n) => Number.isFinite(n) && n !== 0);
     const location = (locid || locNameRaw || master) ? {
       id: locid || master?.id || null,
       name: aliases.locations[locid] || master?.name || locNameRaw,
       rawName: locNameRaw || master?.raw || '',
       address: clean(stripTags(attr(html, 'location_address'))),
+      lat: hasCoords ? latlng[0] : null,
+      lon: hasCoords ? latlng[1] : null,
     } : null;
 
     const org = orgBySlug.get(orgSlug);

@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-21T00:04:48.116Z",
+  "scrapedAt": "2026-08-21T00:18:48.706Z",
   "source": "https://earlymusicsa.org",
   "timezone": "America/Chicago",
   "events": [
@@ -18,7 +18,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "208",
@@ -94,7 +96,9 @@
         "id": "160",
         "name": "First Presbyterian Church, Austin",
         "rawName": "First Presbyterian Church Austin",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "199",
@@ -170,7 +174,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "199",
@@ -233,7 +239,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": {
         "id": "192",
@@ -286,7 +294,9 @@
         "id": "219",
         "name": "Baroque Concerti",
         "rawName": "Baroque Concerti",
-        "address": "St. Mark’s Episcopal Church, 315 East Pecan St., San Antonio, TX 78205"
+        "address": "St. Mark’s Episcopal Church, 315 East Pecan St., San Antonio, TX 78205",
+        "lat": 29.4289367,
+        "lon": -98.48883
       },
       "organizer": {
         "id": "192",
@@ -362,7 +372,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": null,
       "types": [
@@ -421,7 +433,9 @@
         "id": "37",
         "name": "St. Martin's Lutheran Church",
         "rawName": "St. Martin's Lutheran Church",
-        "address": "606 W. 15th St, Austin, TX"
+        "address": "606 W. 15th St, Austin, TX",
+        "lat": 30.2792222,
+        "lon": -97.7454985
       },
       "organizer": {
         "id": "208",
@@ -487,7 +501,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "84",
@@ -560,7 +576,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "208",
@@ -608,7 +626,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "208",
@@ -656,7 +676,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "208",
@@ -714,7 +736,9 @@
         "id": "7",
         "name": "St. Paul's Episcopal Church",
         "rawName": "St. Paul's Episcopal Church",
-        "address": "1018 E Grayson, San Antonio TX"
+        "address": "1018 E Grayson, San Antonio TX",
+        "lat": 29.4427986,
+        "lon": -98.4677364
       },
       "organizer": null,
       "types": [
@@ -776,7 +800,9 @@
         "id": "122",
         "name": "University Presbyterian Church",
         "rawName": "University Presbyterian Church",
-        "address": "2203 San Antonio Street, Austin, TX"
+        "address": "2203 San Antonio Street, Austin, TX",
+        "lat": 30.2855286,
+        "lon": -97.7424766
       },
       "organizer": null,
       "types": [
@@ -848,7 +874,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": null,
       "types": [
@@ -919,7 +947,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": null,
       "types": [
@@ -983,7 +1013,9 @@
         "id": "16",
         "name": "Zion Lutheran Church",
         "rawName": "Zion Lutheran Church",
-        "address": "9944 Leslie Rd, San Antonio, TX"
+        "address": "9944 Leslie Rd, San Antonio, TX",
+        "lat": 29.5360738,
+        "lon": -98.6840839
       },
       "organizer": null,
       "types": [
@@ -1059,7 +1091,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": null,
       "types": [
@@ -1130,7 +1164,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "59",
@@ -1196,7 +1232,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "199",
@@ -1259,7 +1297,9 @@
         "id": "198",
         "name": "Betty Kelso Center, San Antonio Botanical Garden",
         "rawName": "Betty Kelso Center, San Antonio Botanical Garden",
-        "address": "555 Funston Pl, San Antonio, TX 78209"
+        "address": "555 Funston Pl, San Antonio, TX 78209",
+        "lat": 29.4588656,
+        "lon": -98.4587271
       },
       "organizer": {
         "id": "197",
@@ -1326,7 +1366,9 @@
         "id": "196",
         "name": "Tobin Center for the Performing Arts",
         "rawName": "Tobin Center for the Performing Arts",
-        "address": "100 Auditorium Circle, San Antonio, TX 78205"
+        "address": "100 Auditorium Circle, San Antonio, TX 78205",
+        "lat": 29.4307443,
+        "lon": -98.4886197
       },
       "organizer": {
         "id": "197",
@@ -1394,7 +1436,9 @@
         "id": "16",
         "name": "Zion Lutheran Church",
         "rawName": "Zion Lutheran Church",
-        "address": "9944 Leslie Rd, San Antonio, TX"
+        "address": "9944 Leslie Rd, San Antonio, TX",
+        "lat": 29.5360738,
+        "lon": -98.6840839
       },
       "organizer": {
         "id": "5",
@@ -1460,7 +1504,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "59",
@@ -1535,7 +1581,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": null,
       "types": [
@@ -1594,7 +1642,9 @@
         "id": "191",
         "name": "Shepherd King Lutheran Church",
         "rawName": "Shepherd King Lutheran Church",
-        "address": "303 West Ramsey Rd., San Antonio, TX"
+        "address": "303 West Ramsey Rd., San Antonio, TX",
+        "lat": 29.5334517,
+        "lon": -98.4983546
       },
       "organizer": {
         "id": "46",
@@ -1680,7 +1730,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "59",
@@ -1743,7 +1795,9 @@
         "id": "6",
         "name": "Madison Square Presbyterian Church",
         "rawName": "Madison Square Presbyterian Church",
-        "address": "319 Camden, San Antonio, TX"
+        "address": "319 Camden, San Antonio, TX",
+        "lat": 29.434997,
+        "lon": -98.4919385
       },
       "organizer": null,
       "types": [
@@ -1810,7 +1864,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "59",
@@ -1858,7 +1914,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": {
         "id": "8",
@@ -1979,7 +2037,9 @@
         "id": "54",
         "name": "Bethany Congregational Church",
         "rawName": "Bethany Congregational Church",
-        "address": "500 Pilgrim Dr., San Antonio, TX"
+        "address": "500 Pilgrim Dr., San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": null,
       "types": [],
@@ -2022,7 +2082,9 @@
         "id": "54",
         "name": "Bethany Congregational Church",
         "rawName": "Bethany Congregational Church",
-        "address": "500 Pilgrim Dr., San Antonio, TX"
+        "address": "500 Pilgrim Dr., San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": null,
       "types": [],
@@ -2065,7 +2127,9 @@
         "id": "16",
         "name": "Zion Lutheran Church",
         "rawName": "Zion Lutheran Church",
-        "address": "9944 Leslie Rd, San Antonio, TX"
+        "address": "9944 Leslie Rd, San Antonio, TX",
+        "lat": 29.5360738,
+        "lon": -98.6840839
       },
       "organizer": {
         "id": "5",
@@ -2118,7 +2182,9 @@
         "id": "191",
         "name": "Shepherd King Lutheran Church",
         "rawName": "Shepherd King Lutheran Church",
-        "address": "303 West Ramsey Rd., San Antonio, TX"
+        "address": "303 West Ramsey Rd., San Antonio, TX",
+        "lat": 29.5334517,
+        "lon": -98.4983546
       },
       "organizer": {
         "id": "125",
@@ -2186,7 +2252,9 @@
         "id": "6",
         "name": "Madison Square Presbyterian Church",
         "rawName": "Madison Square Presbyterian Church",
-        "address": "319 Camden, San Antonio, TX"
+        "address": "319 Camden, San Antonio, TX",
+        "lat": 29.434997,
+        "lon": -98.4919385
       },
       "organizer": {
         "id": "8",
@@ -2244,7 +2312,9 @@
         "id": "54",
         "name": "Bethany Congregational Church",
         "rawName": "Bethany Congregational Church",
-        "address": "500 Pilgrim Dr., San Antonio, TX"
+        "address": "500 Pilgrim Dr., San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": null,
       "types": [],
@@ -2287,7 +2357,9 @@
         "id": "54",
         "name": "Bethany Congregational Church",
         "rawName": "Bethany Congregational Church",
-        "address": "500 Pilgrim Dr., San Antonio, TX"
+        "address": "500 Pilgrim Dr., San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": null,
       "types": [],
@@ -2387,7 +2459,9 @@
         "id": "54",
         "name": "Bethany Congregational Church",
         "rawName": "Bethany Congregational Church",
-        "address": "500 Pilgrim Dr., San Antonio, TX"
+        "address": "500 Pilgrim Dr., San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": null,
       "types": [],
@@ -2440,7 +2514,9 @@
         "id": "45",
         "name": "Shepherd of the Hills Lutheran Church",
         "rawName": "Shepherd of the Hills Lutheran Church",
-        "address": "303 W Ramsey Rd San Antonio, TX 78216"
+        "address": "303 W Ramsey Rd San Antonio, TX 78216",
+        "lat": 29.5334517,
+        "lon": -98.4983546
       },
       "organizer": {
         "id": "46",
@@ -2503,7 +2579,9 @@
         "id": "54",
         "name": "Bethany Congregational Church",
         "rawName": "Bethany Congregational Church",
-        "address": "500 Pilgrim Dr., San Antonio, TX"
+        "address": "500 Pilgrim Dr., San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": null,
       "types": [],
@@ -2598,7 +2676,9 @@
         "id": "54",
         "name": "Bethany Congregational Church",
         "rawName": "Bethany Congregational Church",
-        "address": "500 Pilgrim Dr., San Antonio, TX"
+        "address": "500 Pilgrim Dr., San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": null,
       "types": [],
@@ -2641,7 +2721,9 @@
         "id": "54",
         "name": "Bethany Congregational Church",
         "rawName": "Bethany Congregational Church",
-        "address": "500 Pilgrim Dr., San Antonio, TX"
+        "address": "500 Pilgrim Dr., San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": null,
       "types": [],
@@ -2684,7 +2766,9 @@
         "id": "54",
         "name": "Bethany Congregational Church",
         "rawName": "Bethany Congregational Church",
-        "address": "500 Pilgrim Dr., San Antonio, TX"
+        "address": "500 Pilgrim Dr., San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": null,
       "types": [],
@@ -2737,7 +2821,9 @@
         "id": "54",
         "name": "Bethany Congregational Church",
         "rawName": "Bethany Congregational Church",
-        "address": "500 Pilgrim Dr., San Antonio, TX"
+        "address": "500 Pilgrim Dr., San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": null,
       "types": [],
@@ -2780,7 +2866,9 @@
         "id": "15",
         "name": "Guadalupe Chapel at St. Mary's University",
         "rawName": "Guadalupe Chapel at St. Mary's University",
-        "address": "252, 522 Fordham Avenue, San Antonio, TX"
+        "address": "252, 522 Fordham Avenue, San Antonio, TX",
+        "lat": 29.4545317,
+        "lon": -98.5627535
       },
       "organizer": {
         "id": "5",
@@ -2827,7 +2915,9 @@
         "id": "19",
         "name": "Bethany Garden United Church of Christ",
         "rawName": "Bethany Garden United Church of Christ",
-        "address": "500 Pilgrim Drive, San Antonio, TX"
+        "address": "500 Pilgrim Drive, San Antonio, TX",
+        "lat": 29.5041327,
+        "lon": -98.5389295
       },
       "organizer": {
         "id": "20",
@@ -2874,7 +2964,9 @@
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
         "rawName": "Christ Lutheran Church of Alamo Heights",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": {
         "id": "13",
@@ -2921,7 +3013,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": {
         "id": "25",
@@ -2973,7 +3067,9 @@
         "id": "53",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcian",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "5",
@@ -3040,7 +3136,9 @@
         "id": "6",
         "name": "Madison Square Presbyterian Church",
         "rawName": "Madison Square Presbyterian Church",
-        "address": "319 Camden, San Antonio, TX"
+        "address": "319 Camden, San Antonio, TX",
+        "lat": 29.434997,
+        "lon": -98.4919385
       },
       "organizer": {
         "id": "5",
@@ -3102,7 +3200,9 @@
         "id": "9",
         "name": "Laurel Heights United Methodist Church",
         "rawName": "Laurel Heights Methodist Church",
-        "address": "227 W Woodlawn Ave, San Antonio, TX"
+        "address": "227 W Woodlawn Ave, San Antonio, TX",
+        "lat": 29.4532146,
+        "lon": -98.4968094
       },
       "organizer": {
         "id": "10",
@@ -3154,7 +3254,9 @@
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
         "rawName": "Christ Lutheran Church of Alamo Heights",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": {
         "id": "13",
@@ -3201,7 +3303,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": {
         "id": "8",
@@ -3258,7 +3362,9 @@
         "id": "16",
         "name": "Zion Lutheran Church",
         "rawName": "Zion Lutheran Church",
-        "address": "9944 Leslie Rd, San Antonio, TX"
+        "address": "9944 Leslie Rd, San Antonio, TX",
+        "lat": 29.5360738,
+        "lon": -98.6840839
       },
       "organizer": {
         "id": "5",
@@ -3320,7 +3426,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": null,
       "types": [],
@@ -3373,7 +3481,9 @@
         "id": "16",
         "name": "Zion Lutheran Church",
         "rawName": "Zion Lutheran Church",
-        "address": "9944 Leslie Rd, San Antonio, TX"
+        "address": "9944 Leslie Rd, San Antonio, TX",
+        "lat": 29.5360738,
+        "lon": -98.6840839
       },
       "organizer": {
         "id": "5",
@@ -3435,7 +3545,9 @@
         "id": "22",
         "name": "Abiding Presence Lutheran Church",
         "rawName": "Abiding Presence Lutheran Church",
-        "address": "14700 San Pedro Avenue, San Antonio, Texas"
+        "address": "14700 San Pedro Avenue, San Antonio, Texas",
+        "lat": 29.5753202,
+        "lon": -98.4778587
       },
       "organizer": {
         "id": "23",
@@ -3482,7 +3594,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [],
@@ -3525,7 +3639,9 @@
         "id": "26",
         "name": "San Antonio Museum of Art",
         "rawName": "San Antonio Museum of Art",
-        "address": "200 West Jones Avenue, San Antonio, TX"
+        "address": "200 West Jones Avenue, San Antonio, TX",
+        "lat": 29.4376093,
+        "lon": -98.4820694
       },
       "organizer": {
         "id": "27",
@@ -3582,7 +3698,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": {
         "id": "8",
@@ -3639,7 +3757,9 @@
         "id": "16",
         "name": "Zion Lutheran Church",
         "rawName": "Zion Lutheran Church",
-        "address": "9944 Leslie Rd, San Antonio, TX"
+        "address": "9944 Leslie Rd, San Antonio, TX",
+        "lat": 29.5360738,
+        "lon": -98.6840839
       },
       "organizer": {
         "id": "5",
@@ -3706,7 +3826,9 @@
         "id": "21",
         "name": "Online at Filmed at Mission Concepcien",
         "rawName": "Online at Filmed at Mission Concepcien",
-        "address": "807 Mission Rd, San Antonio, TX 78210, San Antonio, TX"
+        "address": "807 Mission Rd, San Antonio, TX 78210, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "8",
@@ -3763,7 +3885,9 @@
         "id": "7",
         "name": "St. Paul's Episcopal Church",
         "rawName": "St. Paul's Episcopal Church",
-        "address": "1018 E Grayson, San Antonio TX"
+        "address": "1018 E Grayson, San Antonio TX",
+        "lat": 29.4427986,
+        "lon": -98.4677364
       },
       "organizer": {
         "id": "8",
@@ -3820,7 +3944,9 @@
         "id": "7",
         "name": "St. Paul's Episcopal Church",
         "rawName": "St. Paul's Episcopal Church",
-        "address": "1018 E Grayson, San Antonio TX"
+        "address": "1018 E Grayson, San Antonio TX",
+        "lat": 29.4427986,
+        "lon": -98.4677364
       },
       "organizer": {
         "id": "8",
@@ -3882,7 +4008,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -3944,7 +4072,9 @@
         "id": "7",
         "name": "St. Paul's Episcopal Church",
         "rawName": "St. Paul's Episcopal Church",
-        "address": "1018 E Grayson, San Antonio TX"
+        "address": "1018 E Grayson, San Antonio TX",
+        "lat": 29.4427986,
+        "lon": -98.4677364
       },
       "organizer": {
         "id": "8",
@@ -4006,7 +4136,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -4068,7 +4200,9 @@
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
         "rawName": "Our Lady of the Atonement Catholic Church",
-        "address": "15415 Red Robin Rd., San Antonio, TX"
+        "address": "15415 Red Robin Rd., San Antonio, TX",
+        "lat": 29.5875748,
+        "lon": -98.6450197
       },
       "organizer": {
         "id": "8",
@@ -4130,7 +4264,9 @@
         "id": "18",
         "name": "Cathedral of St. Mary",
         "rawName": "Cathedral of St. Mary",
-        "address": "203 E. 10th St., Austin, TX"
+        "address": "203 E. 10th St., Austin, TX",
+        "lat": 30.2710747,
+        "lon": -97.7400152
       },
       "organizer": {
         "id": "8",
@@ -4192,7 +4328,9 @@
         "id": "7",
         "name": "St. Paul's Episcopal Church",
         "rawName": "St. Paul's Episcopal Church",
-        "address": "1018 E Grayson, San Antonio TX"
+        "address": "1018 E Grayson, San Antonio TX",
+        "lat": 29.4427986,
+        "lon": -98.4677364
       },
       "organizer": {
         "id": "5",
@@ -4259,7 +4397,9 @@
         "id": "28",
         "name": "Hill Country Youth Event Center",
         "rawName": "Hill Country Youth Event Center",
-        "address": "3785 TX-27, Kerrville, TX"
+        "address": "3785 TX-27, Kerrville, TX",
+        "lat": 30.0118202,
+        "lon": -99.11263
       },
       "organizer": {
         "id": "29",
@@ -4311,7 +4451,9 @@
         "id": "28",
         "name": "Hill Country Youth Event Center",
         "rawName": "Hill Country Youth Event Center",
-        "address": "3785 TX-27, Kerrville, TX"
+        "address": "3785 TX-27, Kerrville, TX",
+        "lat": 30.0118202,
+        "lon": -99.11263
       },
       "organizer": {
         "id": "29",
@@ -4363,7 +4505,9 @@
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
         "rawName": "Our Lady of the Atonement Catholic Church",
-        "address": "15415 Red Robin Rd., San Antonio, TX"
+        "address": "15415 Red Robin Rd., San Antonio, TX",
+        "lat": 29.5875748,
+        "lon": -98.6450197
       },
       "organizer": {
         "id": "5",
@@ -4425,7 +4569,9 @@
         "id": "32",
         "name": "St. Matthew's Episcopal Church",
         "rawName": "St. Matthew's Episcopal Church",
-        "address": "8134 Mesa Dr, Austin, TX"
+        "address": "8134 Mesa Dr, Austin, TX",
+        "lat": 30.3746769,
+        "lon": -97.7564827
       },
       "organizer": {
         "id": "33",
@@ -4477,7 +4623,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "33",
@@ -4529,7 +4677,9 @@
         "id": "35",
         "name": "St. John's United Methodist Church",
         "rawName": "St. John's United Methodist Church",
-        "address": "2140 Allendale Rd, Austin, TX"
+        "address": "2140 Allendale Rd, Austin, TX",
+        "lat": 30.3354609,
+        "lon": -97.7415429
       },
       "organizer": {
         "id": "33",
@@ -4581,7 +4731,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "8",
@@ -4638,7 +4790,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -4695,7 +4849,9 @@
         "id": "36",
         "name": "Covenant Presbyterian Church",
         "rawName": "Covenant Presbyterian Church",
-        "address": "211 Roleto Dr, San Antonio, TX 78213., San Antonio, TX"
+        "address": "211 Roleto Dr, San Antonio, TX 78213., San Antonio, TX",
+        "lat": 29.5213733,
+        "lon": -98.5183492
       },
       "organizer": {
         "id": "13",
@@ -4747,7 +4903,9 @@
         "id": "6",
         "name": "Madison Square Presbyterian Church",
         "rawName": "Madison Square Presbyterian Church",
-        "address": "319 Camden, San Antonio, TX"
+        "address": "319 Camden, San Antonio, TX",
+        "lat": 29.434997,
+        "lon": -98.4919385
       },
       "organizer": {
         "id": "5",
@@ -4819,7 +4977,9 @@
         "id": "37",
         "name": "St. Martin's Lutheran Church",
         "rawName": "St. Martin's Lutheran Church",
-        "address": "606 W. 15th St, Austin, TX"
+        "address": "606 W. 15th St, Austin, TX",
+        "lat": 30.2792222,
+        "lon": -97.7454985
       },
       "organizer": {
         "id": "33",
@@ -4866,7 +5026,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "33",
@@ -4913,7 +5075,9 @@
         "id": "38",
         "name": "McAllister Auditorium",
         "rawName": "McAllister Auditorium on the campus of San Antonio College.",
-        "address": "San Pedro Ave and West Courtland Pl, San Antonio, TX 78212, San Antonio, Texas"
+        "address": "San Pedro Ave and West Courtland Pl, San Antonio, TX 78212, San Antonio, Texas",
+        "lat": 29.4480851,
+        "lon": -98.499345
       },
       "organizer": {
         "id": "13",
@@ -4965,7 +5129,9 @@
         "id": "39",
         "name": "Laurel Heights United Methodist Church",
         "rawName": "Laurel Heights United Methodist Church",
-        "address": "227 W Woodlawn Ave, San Antonio, TX"
+        "address": "227 W Woodlawn Ave, San Antonio, TX",
+        "lat": 29.4532146,
+        "lon": -98.4968094
       },
       "organizer": {
         "id": "40",
@@ -5017,7 +5183,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "8",
@@ -5074,7 +5242,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -5131,7 +5301,9 @@
         "id": "36",
         "name": "Covenant Presbyterian Church",
         "rawName": "Covenant Presbyterian Church",
-        "address": "211 Roleto Dr, San Antonio, TX 78213., San Antonio, TX"
+        "address": "211 Roleto Dr, San Antonio, TX 78213., San Antonio, TX",
+        "lat": 29.5213733,
+        "lon": -98.5183492
       },
       "organizer": {
         "id": "5",
@@ -5193,7 +5365,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "8",
@@ -5250,7 +5424,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -5307,7 +5483,9 @@
         "id": "6",
         "name": "Madison Square Presbyterian Church",
         "rawName": "Madison Square Presbyterian Church",
-        "address": "319 Camden, San Antonio, TX"
+        "address": "319 Camden, San Antonio, TX",
+        "lat": 29.434997,
+        "lon": -98.4919385
       },
       "organizer": {
         "id": "5",
@@ -5359,7 +5537,9 @@
         "id": "111",
         "name": "St. Mark the Evangelist Catholic Church",
         "rawName": "St. Mark the Evangelist Catholic Church",
-        "address": "1602 Thousand Oaks,, San Antonio, Texas"
+        "address": "1602 Thousand Oaks,, San Antonio, Texas",
+        "lat": 29.5892963,
+        "lon": -98.4689746
       },
       "organizer": {
         "id": "13",
@@ -5406,7 +5586,9 @@
         "id": "112",
         "name": "Ruth Taylor Recital Hall, Trinity University",
         "rawName": "Ruth Taylor Recital Hall, Trinity University",
-        "address": "One Trinity Place, Trinity University, San Antonio, TX"
+        "address": "One Trinity Place, Trinity University, San Antonio, TX",
+        "lat": 29.4618769,
+        "lon": -98.4833382
       },
       "organizer": null,
       "types": [],
@@ -5444,7 +5626,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "113",
@@ -5491,7 +5675,9 @@
         "id": "32",
         "name": "St. Matthew's Episcopal Church",
         "rawName": "St. Matthew's Episcopal Church",
-        "address": "8134 Mesa Dr, Austin, TX"
+        "address": "8134 Mesa Dr, Austin, TX",
+        "lat": 30.3746769,
+        "lon": -97.7564827
       },
       "organizer": {
         "id": "113",
@@ -5543,7 +5729,9 @@
         "id": "114",
         "name": "Barshop Jewish Community Center",
         "rawName": "Barshop Jewish Community Center",
-        "address": "12500 NW Military Hwy, San Antonio, TX"
+        "address": "12500 NW Military Hwy, San Antonio, TX",
+        "lat": 29.5572451,
+        "lon": -98.5332228
       },
       "organizer": {
         "id": "5",
@@ -5590,7 +5778,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "8",
@@ -5652,7 +5842,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -5709,7 +5901,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "33",
@@ -5756,7 +5950,9 @@
         "id": "115",
         "name": "San Fernando Cathedral",
         "rawName": "Cathedral of San Fernando",
-        "address": "115 Main Plaza, San Antonio, TX"
+        "address": "115 Main Plaza, San Antonio, TX",
+        "lat": 29.4248097,
+        "lon": -98.4937274
       },
       "organizer": {
         "id": "8",
@@ -5813,7 +6009,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "33",
@@ -5860,7 +6058,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -5917,7 +6117,9 @@
         "id": "6",
         "name": "Madison Square Presbyterian Church",
         "rawName": "Madison Square Presbyterian Church",
-        "address": "319 Camden, San Antonio, TX"
+        "address": "319 Camden, San Antonio, TX",
+        "lat": 29.434997,
+        "lon": -98.4919385
       },
       "organizer": {
         "id": "5",
@@ -5974,7 +6176,9 @@
         "id": "37",
         "name": "St. Martin's Lutheran Church",
         "rawName": "St. Martin's Lutheran Church",
-        "address": "606 W. 15th St, Austin, TX"
+        "address": "606 W. 15th St, Austin, TX",
+        "lat": 30.2792222,
+        "lon": -97.7454985
       },
       "organizer": {
         "id": "116",
@@ -6063,7 +6267,9 @@
         "id": "6",
         "name": "Madison Square Presbyterian Church",
         "rawName": "Madison Square Presbyterian Church",
-        "address": "319 Camden, San Antonio, TX"
+        "address": "319 Camden, San Antonio, TX",
+        "lat": 29.434997,
+        "lon": -98.4919385
       },
       "organizer": {
         "id": "8",
@@ -6120,7 +6326,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -6182,7 +6390,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -6229,7 +6439,9 @@
         "id": "32",
         "name": "St. Matthew's Episcopal Church",
         "rawName": "St. Matthew's Episcopal Church",
-        "address": "8134 Mesa Dr, Austin, TX"
+        "address": "8134 Mesa Dr, Austin, TX",
+        "lat": 30.3746769,
+        "lon": -97.7564827
       },
       "organizer": {
         "id": "116",
@@ -6281,7 +6493,9 @@
         "id": "36",
         "name": "Covenant Presbyterian Church",
         "rawName": "Covenant Presbyterian Church",
-        "address": "211 Roleto Dr, San Antonio, TX 78213., San Antonio, TX"
+        "address": "211 Roleto Dr, San Antonio, TX 78213., San Antonio, TX",
+        "lat": 29.5213733,
+        "lon": -98.5183492
       },
       "organizer": {
         "id": "5",
@@ -6333,7 +6547,9 @@
         "id": "9",
         "name": "Laurel Heights United Methodist Church",
         "rawName": "Laurel Heights Methodist Church",
-        "address": "227 W Woodlawn Ave, San Antonio, TX"
+        "address": "227 W Woodlawn Ave, San Antonio, TX",
+        "lat": 29.4532146,
+        "lon": -98.4968094
       },
       "organizer": null,
       "types": [
@@ -6381,7 +6597,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -6433,7 +6651,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -6485,7 +6705,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [],
@@ -6523,7 +6745,9 @@
         "id": "6",
         "name": "Madison Square Presbyterian Church",
         "rawName": "Madison Square Presbyterian Church",
-        "address": "319 Camden, San Antonio, TX"
+        "address": "319 Camden, San Antonio, TX",
+        "lat": 29.434997,
+        "lon": -98.4919385
       },
       "organizer": {
         "id": "5",
@@ -6580,7 +6804,9 @@
         "id": "6",
         "name": "Madison Square Presbyterian Church",
         "rawName": "Madison Square Presbyterian Church",
-        "address": "319 Camden, San Antonio, TX"
+        "address": "319 Camden, San Antonio, TX",
+        "lat": 29.434997,
+        "lon": -98.4919385
       },
       "organizer": {
         "id": "5",
@@ -6637,7 +6863,9 @@
         "id": "118",
         "name": "Basilica of the National Shrine of the Little Flower",
         "rawName": "Little Flower Basilica",
-        "address": "1715 N Zarzamora, San Antonio, TX"
+        "address": "1715 N Zarzamora, San Antonio, TX",
+        "lat": 29.4462203,
+        "lon": -98.526617
       },
       "organizer": {
         "id": "119",
@@ -6694,7 +6922,9 @@
         "id": "118",
         "name": "Basilica of the National Shrine of the Little Flower",
         "rawName": "Little Flower Basilica",
-        "address": "1715 N Zarzamora, San Antonio, TX"
+        "address": "1715 N Zarzamora, San Antonio, TX",
+        "lat": 29.4462203,
+        "lon": -98.526617
       },
       "organizer": {
         "id": "119",
@@ -6751,7 +6981,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -6803,7 +7035,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -6855,7 +7089,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -6907,7 +7143,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -6959,7 +7197,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -7011,7 +7251,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [
@@ -7054,7 +7296,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [
@@ -7097,7 +7341,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [
@@ -7140,7 +7386,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [
@@ -7183,7 +7431,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [
@@ -7226,7 +7476,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [
@@ -7269,7 +7521,9 @@
         "id": "31",
         "name": "Mission Concepción",
         "rawName": "Mission Concepción",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "8",
@@ -7331,7 +7585,9 @@
         "id": "31",
         "name": "Mission Concepción",
         "rawName": "Mission Concepción",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "8",
@@ -7393,7 +7649,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -7450,7 +7708,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -7507,7 +7767,9 @@
         "id": "120",
         "name": "San Antonio Museum of Art - Great Hall",
         "rawName": "San Antonio Museum of Art - Great Hall",
-        "address": "200 West Jones Avenue, San Antonio, Tx"
+        "address": "200 West Jones Avenue, San Antonio, Tx",
+        "lat": 29.4376093,
+        "lon": -98.4820694
       },
       "organizer": {
         "id": "121",
@@ -7559,7 +7821,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -7621,7 +7885,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -7683,7 +7949,9 @@
         "id": "122",
         "name": "University Presbyterian Church",
         "rawName": "University Presbyterian Church",
-        "address": "2203 San Antonio Street, Austin, TX"
+        "address": "2203 San Antonio Street, Austin, TX",
+        "lat": 30.2855286,
+        "lon": -97.7424766
       },
       "organizer": {
         "id": "116",
@@ -7735,7 +8003,9 @@
         "id": "122",
         "name": "University Presbyterian Church",
         "rawName": "University Presbyterian Church",
-        "address": "2203 San Antonio Street, Austin, TX"
+        "address": "2203 San Antonio Street, Austin, TX",
+        "lat": 30.2855286,
+        "lon": -97.7424766
       },
       "organizer": {
         "id": "116",
@@ -7787,7 +8057,9 @@
         "id": "122",
         "name": "University Presbyterian Church",
         "rawName": "University Presbyterian Church",
-        "address": "2203 San Antonio Street, Austin, TX"
+        "address": "2203 San Antonio Street, Austin, TX",
+        "lat": 30.2855286,
+        "lon": -97.7424766
       },
       "organizer": {
         "id": "116",
@@ -7839,7 +8111,9 @@
         "id": "123",
         "name": "Christ Episcopal Church",
         "rawName": "Christ Episcopal Church",
-        "address": "510 Belknap Place, San Antonio, Tx"
+        "address": "510 Belknap Place, San Antonio, Tx",
+        "lat": 29.4513686,
+        "lon": -98.4961233
       },
       "organizer": {
         "id": "121",
@@ -7891,7 +8165,9 @@
         "id": "31",
         "name": "Mission Concepción",
         "rawName": "Mission Concepción",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "8",
@@ -7948,7 +8224,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -8005,7 +8283,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [],
@@ -8043,7 +8323,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [],
@@ -8081,7 +8363,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [],
@@ -8119,7 +8403,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -8176,7 +8462,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -8233,7 +8521,9 @@
         "id": "36",
         "name": "Covenant Presbyterian Church",
         "rawName": "Covenant Presbyterian Church",
-        "address": "211 Roleto Dr, San Antonio, TX 78213., San Antonio, TX"
+        "address": "211 Roleto Dr, San Antonio, TX 78213., San Antonio, TX",
+        "lat": 29.5213733,
+        "lon": -98.5183492
       },
       "organizer": {
         "id": "5",
@@ -8285,7 +8575,9 @@
         "id": "124",
         "name": "Temple Beth-El",
         "rawName": "Temple Beth-El",
-        "address": "211 Belknap, San Antonio, TX"
+        "address": "211 Belknap, San Antonio, TX",
+        "lat": 29.4485362,
+        "lon": -98.4976811
       },
       "organizer": {
         "id": "125",
@@ -8332,7 +8624,9 @@
         "id": "31",
         "name": "Mission Concepción",
         "rawName": "Mission Concepción",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "8",
@@ -8389,7 +8683,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -8446,7 +8742,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -8493,7 +8791,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -8540,7 +8840,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -8587,7 +8889,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -8634,7 +8938,9 @@
         "id": "126",
         "name": "Basilica of the National Shrine of the Little Flower",
         "rawName": "Basilica of the Little Flower",
-        "address": "1714 N. Zarzamora St., San Antonio, TX"
+        "address": "1714 N. Zarzamora St., San Antonio, TX",
+        "lat": 29.4456599,
+        "lon": -98.5247316
       },
       "organizer": {
         "id": "8",
@@ -8691,7 +8997,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -8738,7 +9046,9 @@
         "id": "37",
         "name": "St. Martin's Lutheran Church",
         "rawName": "St. Martin's Lutheran Church",
-        "address": "606 W. 15th St, Austin, TX"
+        "address": "606 W. 15th St, Austin, TX",
+        "lat": 30.2792222,
+        "lon": -97.7454985
       },
       "organizer": {
         "id": "116",
@@ -8785,7 +9095,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -8842,7 +9154,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -8899,7 +9213,9 @@
         "id": "127",
         "name": "St. Mary's University (Treadaway Hall)",
         "rawName": "St. Mary's University (Treadaway Hall)",
-        "address": "1 Camino Santa Maria St., San Antonio, Tx"
+        "address": "1 Camino Santa Maria St., San Antonio, Tx",
+        "lat": 29.4534451,
+        "lon": -98.564117
       },
       "organizer": {
         "id": "5",
@@ -8951,7 +9267,9 @@
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
         "rawName": "Northwest Hills United Methodist Church",
-        "address": "7050 Village Center Drive, Austin, TX"
+        "address": "7050 Village Center Drive, Austin, TX",
+        "lat": 30.3537625,
+        "lon": -97.7559733
       },
       "organizer": {
         "id": "116",
@@ -8998,7 +9316,9 @@
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
         "rawName": "Northwest Hills United Methodist Church",
-        "address": "7050 Village Center Drive, Austin, TX"
+        "address": "7050 Village Center Drive, Austin, TX",
+        "lat": 30.3537625,
+        "lon": -97.7559733
       },
       "organizer": {
         "id": "116",
@@ -9045,7 +9365,9 @@
         "id": "128",
         "name": "Basilica of the National Shrine of the Little Flower",
         "rawName": "The Basilica of the National Shrine of the Little Flower",
-        "address": "1715 N. Zarzamora St., San Antonio, TX"
+        "address": "1715 N. Zarzamora St., San Antonio, TX",
+        "lat": 29.4462203,
+        "lon": -98.526617
       },
       "organizer": {
         "id": "8",
@@ -9102,7 +9424,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -9159,7 +9483,9 @@
         "id": "129",
         "name": "St. Alphonsus Catholic Church",
         "rawName": "St. Alphonsus Catholic Church",
-        "address": "1202 Zarzamora Street, San Antonio, TX"
+        "address": "1202 Zarzamora Street, San Antonio, TX",
+        "lat": 29.41622,
+        "lon": -98.5283899
       },
       "organizer": null,
       "types": [],
@@ -9197,7 +9523,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -9269,7 +9597,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -9341,7 +9671,9 @@
         "id": "130",
         "name": "Basilica of the National Shrine of the Little Flower",
         "rawName": "National Shrine of the Basilica of the Little Flower",
-        "address": "1715 N. Zarzamora, San Antonio, TX"
+        "address": "1715 N. Zarzamora, San Antonio, TX",
+        "lat": 29.4462203,
+        "lon": -98.526617
       },
       "organizer": null,
       "types": [
@@ -9384,7 +9716,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -9431,7 +9765,9 @@
         "id": "131",
         "name": "Cathedral of St. Mary",
         "rawName": "St. Mary Cathedral",
-        "address": "203 E. 10th Street, Austin, TX"
+        "address": "203 E. 10th Street, Austin, TX",
+        "lat": 30.2710747,
+        "lon": -97.7400152
       },
       "organizer": {
         "id": "116",
@@ -9478,7 +9814,9 @@
         "id": "132",
         "name": "St. Mary's Catholic Church",
         "rawName": "St. Mary's Catholic Church",
-        "address": "306 W. San Antonio St., Fredericksburg, TX"
+        "address": "306 W. San Antonio St., Fredericksburg, TX",
+        "lat": 30.2769765,
+        "lon": -98.8770312
       },
       "organizer": {
         "id": "8",
@@ -9535,7 +9873,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "8",
@@ -9592,7 +9932,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -9628,7 +9970,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -9664,7 +10008,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -9711,7 +10057,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -9758,7 +10106,9 @@
         "id": "133",
         "name": "UTSA Music Department Recital Hall",
         "rawName": "UTSA Music Department Recital Hall",
-        "address": "1 UTSA Cir., San Antonio, TX"
+        "address": "1 UTSA Cir., San Antonio, TX",
+        "lat": 29.5837663,
+        "lon": -98.6205407
       },
       "organizer": {
         "id": "8",
@@ -9815,7 +10165,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "8",
@@ -9872,7 +10224,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -9944,7 +10298,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -10016,7 +10372,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -10068,7 +10426,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "116",
@@ -10120,7 +10480,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "116",
@@ -10172,7 +10534,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "8",
@@ -10234,7 +10598,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "8",
@@ -10296,7 +10662,9 @@
         "id": "112",
         "name": "Ruth Taylor Recital Hall, Trinity University",
         "rawName": "Ruth Taylor Recital Hall, Trinity University",
-        "address": "One Trinity Place, Trinity University, San Antonio, TX"
+        "address": "One Trinity Place, Trinity University, San Antonio, TX",
+        "lat": 29.4618769,
+        "lon": -98.4833382
       },
       "organizer": null,
       "types": [
@@ -10344,7 +10712,9 @@
         "id": "37",
         "name": "St. Martin's Lutheran Church",
         "rawName": "St. Martin's Lutheran Church",
-        "address": "606 W. 15th St, Austin, TX"
+        "address": "606 W. 15th St, Austin, TX",
+        "lat": 30.2792222,
+        "lon": -97.7454985
       },
       "organizer": {
         "id": "116",
@@ -10391,7 +10761,9 @@
         "id": "134",
         "name": "Congregation Beth Israel",
         "rawName": "Congregation Beth Israel",
-        "address": "3901 Shoal Creek Boulevard, Austin, TX"
+        "address": "3901 Shoal Creek Boulevard, Austin, TX",
+        "lat": 30.3082224,
+        "lon": -97.7475017
       },
       "organizer": {
         "id": "116",
@@ -10438,7 +10810,9 @@
         "id": "135",
         "name": "Estate Sale Gallery at Los Patios",
         "rawName": "Estate Sale Gallery at Los Patios",
-        "address": "2015 NE Loop 410, San Antonio, Texas 78217"
+        "address": "2015 NE Loop 410, San Antonio, Texas 78217",
+        "lat": 29.518696,
+        "lon": -98.4310117
       },
       "organizer": {
         "id": "136",
@@ -10505,7 +10879,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "137",
@@ -10572,7 +10948,9 @@
         "id": "138",
         "name": "San Antonio Museum of Art, Vice-Regal Gallery",
         "rawName": "San Antonio Museum of Art, Vice-Regal Gallery",
-        "address": "200 W Jones Ave, San Antonio, TX 78215, San Antonio, Texas"
+        "address": "200 W Jones Ave, San Antonio, TX 78215, San Antonio, Texas",
+        "lat": 29.4376093,
+        "lon": -98.4820694
       },
       "organizer": {
         "id": "137",
@@ -10639,7 +11017,9 @@
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
         "rawName": "Northwest Hills United Methodist Church",
-        "address": "7050 Village Center Drive, Austin, TX"
+        "address": "7050 Village Center Drive, Austin, TX",
+        "lat": 30.3537625,
+        "lon": -97.7559733
       },
       "organizer": {
         "id": "116",
@@ -10686,7 +11066,9 @@
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
         "rawName": "Northwest Hills United Methodist Church",
-        "address": "7050 Village Center Drive, Austin, TX"
+        "address": "7050 Village Center Drive, Austin, TX",
+        "lat": 30.3537625,
+        "lon": -97.7559733
       },
       "organizer": {
         "id": "116",
@@ -10733,7 +11115,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -10800,7 +11184,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -10867,7 +11253,9 @@
         "id": "96",
         "name": "San Fernando Cathedral",
         "rawName": "San Fernando Cathedral",
-        "address": "115 West Main Plaza, San Antonio, TX"
+        "address": "115 West Main Plaza, San Antonio, TX",
+        "lat": 29.4248097,
+        "lon": -98.4937274
       },
       "organizer": {
         "id": "139",
@@ -10909,7 +11297,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -10961,7 +11351,9 @@
         "id": "122",
         "name": "University Presbyterian Church",
         "rawName": "University Presbyterian Church",
-        "address": "2203 San Antonio Street, Austin, TX"
+        "address": "2203 San Antonio Street, Austin, TX",
+        "lat": 30.2855286,
+        "lon": -97.7424766
       },
       "organizer": {
         "id": "116",
@@ -11008,7 +11400,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -11060,7 +11454,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "116",
@@ -11112,7 +11508,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -11159,7 +11557,9 @@
         "id": "140",
         "name": "Alvarez Studio Theatre, Tobin Center",
         "rawName": "Alvarez Studio Theatre, Tobin Center",
-        "address": "100 Auditorium Circle, San Antonio, TX"
+        "address": "100 Auditorium Circle, San Antonio, TX",
+        "lat": 29.4307443,
+        "lon": -98.4886197
       },
       "organizer": {
         "id": "141",
@@ -11206,7 +11606,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -11258,7 +11660,9 @@
         "id": "140",
         "name": "Alvarez Studio Theatre, Tobin Center",
         "rawName": "Alvarez Studio Theatre, Tobin Center",
-        "address": "100 Auditorium Circle, San Antonio, TX"
+        "address": "100 Auditorium Circle, San Antonio, TX",
+        "lat": 29.4307443,
+        "lon": -98.4886197
       },
       "organizer": {
         "id": "141",
@@ -11305,7 +11709,9 @@
         "id": "142",
         "name": "Ursuline Chapel at the Southwest School of Art",
         "rawName": "Ursuline Chapel at the Southwest School of Art",
-        "address": "300 Augusta St., San Antonio, TX"
+        "address": "300 Augusta St., San Antonio, TX",
+        "lat": 29.4311607,
+        "lon": -98.4919641
       },
       "organizer": {
         "id": "8",
@@ -11367,7 +11773,9 @@
         "id": "143",
         "name": "First Presbyterian Church, Austin",
         "rawName": "First Presbyterian Church of Austin",
-        "address": "8001 Mesa Dr., Austin, TX"
+        "address": "8001 Mesa Dr., Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "8",
@@ -11424,7 +11832,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -11471,7 +11881,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -11523,7 +11935,9 @@
         "id": "144",
         "name": "Alamo Heights United Methodist Church",
         "rawName": "Alamo Heights United Methodist Church",
-        "address": "825 E. Basse Road, San Antonio, TX"
+        "address": "825 E. Basse Road, San Antonio, TX",
+        "lat": 29.4988675,
+        "lon": -98.4730146
       },
       "organizer": null,
       "types": [],
@@ -11571,7 +11985,9 @@
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
         "rawName": "Our Lady of the Atonement Catholic Church",
-        "address": "15415 Red Robin Rd., San Antonio, TX"
+        "address": "15415 Red Robin Rd., San Antonio, TX",
+        "lat": 29.5875748,
+        "lon": -98.6450197
       },
       "organizer": {
         "id": "145",
@@ -11628,7 +12044,9 @@
         "id": "146",
         "name": "UTSA Recital Hall",
         "rawName": "UTSA Recital Hall",
-        "address": "UTSA Department of Music, , San Antonio, TX"
+        "address": "UTSA Department of Music, , San Antonio, TX",
+        "lat": 29.5830733,
+        "lon": -98.6198779
       },
       "organizer": null,
       "types": [
@@ -11676,7 +12094,9 @@
         "id": "146",
         "name": "UTSA Recital Hall",
         "rawName": "UTSA Recital Hall",
-        "address": "UTSA Department of Music, , San Antonio, TX"
+        "address": "UTSA Department of Music, , San Antonio, TX",
+        "lat": 29.5830733,
+        "lon": -98.6198779
       },
       "organizer": null,
       "types": [
@@ -11724,7 +12144,9 @@
         "id": "146",
         "name": "UTSA Recital Hall",
         "rawName": "UTSA Recital Hall",
-        "address": "UTSA Department of Music, , San Antonio, TX"
+        "address": "UTSA Department of Music, , San Antonio, TX",
+        "lat": 29.5830733,
+        "lon": -98.6198779
       },
       "organizer": null,
       "types": [
@@ -11772,7 +12194,9 @@
         "id": "146",
         "name": "UTSA Recital Hall",
         "rawName": "UTSA Recital Hall",
-        "address": "UTSA Department of Music, , San Antonio, TX"
+        "address": "UTSA Department of Music, , San Antonio, TX",
+        "lat": 29.5830733,
+        "lon": -98.6198779
       },
       "organizer": null,
       "types": [
@@ -11820,7 +12244,9 @@
         "id": "146",
         "name": "UTSA Recital Hall",
         "rawName": "UTSA Recital Hall",
-        "address": "UTSA Department of Music, , San Antonio, TX"
+        "address": "UTSA Department of Music, , San Antonio, TX",
+        "lat": 29.5830733,
+        "lon": -98.6198779
       },
       "organizer": null,
       "types": [],
@@ -11863,7 +12289,9 @@
         "id": "146",
         "name": "UTSA Recital Hall",
         "rawName": "UTSA Recital Hall",
-        "address": "UTSA Department of Music, , San Antonio, TX"
+        "address": "UTSA Department of Music, , San Antonio, TX",
+        "lat": 29.5830733,
+        "lon": -98.6198779
       },
       "organizer": null,
       "types": [
@@ -11911,7 +12339,9 @@
         "id": "146",
         "name": "UTSA Recital Hall",
         "rawName": "UTSA Recital Hall",
-        "address": "UTSA Department of Music, , San Antonio, TX"
+        "address": "UTSA Department of Music, , San Antonio, TX",
+        "lat": 29.5830733,
+        "lon": -98.6198779
       },
       "organizer": null,
       "types": [],
@@ -11954,7 +12384,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "8",
@@ -12016,7 +12448,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "8",
@@ -12078,7 +12512,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -12135,7 +12571,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "116",
@@ -12192,7 +12630,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -12239,7 +12679,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -12286,7 +12728,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": {
         "id": "8",
@@ -12343,7 +12787,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "8",
@@ -12405,7 +12851,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -12457,7 +12905,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -12509,7 +12959,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -12556,7 +13008,9 @@
         "id": "122",
         "name": "University Presbyterian Church",
         "rawName": "University Presbyterian Church",
-        "address": "2203 San Antonio Street, Austin, TX"
+        "address": "2203 San Antonio Street, Austin, TX",
+        "lat": 30.2855286,
+        "lon": -97.7424766
       },
       "organizer": {
         "id": "116",
@@ -12603,7 +13057,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": {
         "id": "147",
@@ -12655,7 +13111,9 @@
         "id": "132",
         "name": "St. Mary's Catholic Church",
         "rawName": "St. Mary's Catholic Church",
-        "address": "306 W. San Antonio St., Fredericksburg, TX"
+        "address": "306 W. San Antonio St., Fredericksburg, TX",
+        "lat": 30.2769765,
+        "lon": -98.8770312
       },
       "organizer": {
         "id": "8",
@@ -12712,7 +13170,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "8",
@@ -12769,7 +13229,9 @@
         "id": "148",
         "name": "McNay Art Museum",
         "rawName": "McNay Art Museum",
-        "address": "6000 N New Braunfels Ave, San Antonio, TX"
+        "address": "6000 N New Braunfels Ave, San Antonio, TX",
+        "lat": 29.4858517,
+        "lon": -98.4563609
       },
       "organizer": {
         "id": "65",
@@ -12821,7 +13283,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -12857,7 +13321,9 @@
         "id": "149",
         "name": "The Empire Theatre",
         "rawName": "The Empire Theatre",
-        "address": "226 N Saint Marys St, San Antonio, Texas"
+        "address": "226 N Saint Marys St, San Antonio, Texas",
+        "lat": 29.4260499,
+        "lon": -98.4912646
       },
       "organizer": {
         "id": "150",
@@ -12919,7 +13385,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -12955,7 +13423,9 @@
         "id": "149",
         "name": "The Empire Theatre",
         "rawName": "The Empire Theatre",
-        "address": "226 N Saint Marys St, San Antonio, Texas"
+        "address": "226 N Saint Marys St, San Antonio, Texas",
+        "lat": 29.4260499,
+        "lon": -98.4912646
       },
       "organizer": {
         "id": "150",
@@ -13017,7 +13487,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -13064,7 +13536,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -13111,7 +13585,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -13153,7 +13629,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -13195,7 +13673,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "116",
@@ -13252,7 +13732,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "65",
@@ -13304,7 +13786,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "116",
@@ -13361,7 +13845,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "116",
@@ -13418,7 +13904,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "59",
@@ -13454,7 +13942,9 @@
         "id": "151",
         "name": "Mission Concepción",
         "rawName": "Mission Concpeción",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "8",
@@ -13511,7 +14001,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "8",
@@ -13568,7 +14060,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "116",
@@ -13615,7 +14109,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "116",
@@ -13662,7 +14158,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "59",
@@ -13704,7 +14202,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "59",
@@ -13746,7 +14246,9 @@
         "id": "152",
         "name": "Our Lady of the Atonement Catholic Church",
         "rawName": "Our Lady of the Atonement Church",
-        "address": "15415 Red Robin Road, San Antonio, TX"
+        "address": "15415 Red Robin Road, San Antonio, TX",
+        "lat": 29.5875748,
+        "lon": -98.6450197
       },
       "organizer": {
         "id": "65",
@@ -13798,7 +14300,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "8",
@@ -13855,7 +14359,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "8",
@@ -13912,7 +14418,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": null,
       "types": [],
@@ -13950,7 +14458,9 @@
         "id": "153",
         "name": "Incarnate Word Motherhouse Chapel",
         "rawName": "Incarnate Word Motherhouse Chapel",
-        "address": "4301 Broadway St, San Antonio, TX"
+        "address": "4301 Broadway St, San Antonio, TX",
+        "lat": 29.4671902,
+        "lon": -98.4670141
       },
       "organizer": {
         "id": "154",
@@ -14017,7 +14527,9 @@
         "id": "37",
         "name": "St. Martin's Lutheran Church",
         "rawName": "St. Martin's Lutheran Church",
-        "address": "606 W. 15th St, Austin, TX"
+        "address": "606 W. 15th St, Austin, TX",
+        "lat": 30.2792222,
+        "lon": -97.7454985
       },
       "organizer": {
         "id": "116",
@@ -14059,7 +14571,9 @@
         "id": "37",
         "name": "St. Martin's Lutheran Church",
         "rawName": "St. Martin's Lutheran Church",
-        "address": "606 W. 15th St, Austin, TX"
+        "address": "606 W. 15th St, Austin, TX",
+        "lat": 30.2792222,
+        "lon": -97.7454985
       },
       "organizer": {
         "id": "116",
@@ -14101,7 +14615,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": null,
       "types": [],
@@ -14139,7 +14655,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": null,
       "types": [],
@@ -14177,7 +14695,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": {
         "id": "8",
@@ -14234,7 +14754,9 @@
         "id": "156",
         "name": "Christ Episcopal Church",
         "rawName": "Christ Episcopal Church",
-        "address": "510 Belknap, San Antonio, Texas"
+        "address": "510 Belknap, San Antonio, Texas",
+        "lat": 29.4511809,
+        "lon": -98.4968817
       },
       "organizer": null,
       "types": [],
@@ -14272,7 +14794,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "157",
@@ -14314,7 +14838,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "157",
@@ -14356,7 +14882,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": {
         "id": "8",
@@ -14413,7 +14941,9 @@
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
         "rawName": "Our Lady of the Atonement Catholic Church",
-        "address": "15415 Red Robin Rd., San Antonio, TX"
+        "address": "15415 Red Robin Rd., San Antonio, TX",
+        "lat": 29.5875748,
+        "lon": -98.6450197
       },
       "organizer": {
         "id": "158",
@@ -14460,7 +14990,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "159",
@@ -14512,7 +15044,9 @@
         "id": "160",
         "name": "First Presbyterian Church, Austin",
         "rawName": "First Presbyterian Church Austin",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "161",
@@ -14569,7 +15103,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "161",
@@ -14631,7 +15167,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "157",
@@ -14678,7 +15216,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "157",
@@ -14725,7 +15265,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "157",
@@ -14777,7 +15319,9 @@
         "id": "131",
         "name": "Cathedral of St. Mary",
         "rawName": "St. Mary Cathedral",
-        "address": "203 E. 10th Street, Austin, TX"
+        "address": "203 E. 10th Street, Austin, TX",
+        "lat": 30.2710747,
+        "lon": -97.7400152
       },
       "organizer": {
         "id": "157",
@@ -14829,7 +15373,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "159",
@@ -14886,7 +15432,9 @@
         "id": "96",
         "name": "San Fernando Cathedral",
         "rawName": "San Fernando Cathedral",
-        "address": "115 West Main Plaza, San Antonio, TX"
+        "address": "115 West Main Plaza, San Antonio, TX",
+        "lat": 29.4248097,
+        "lon": -98.4937274
       },
       "organizer": null,
       "types": [
@@ -14923,7 +15471,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": {
         "id": "159",
@@ -14980,7 +15530,9 @@
         "id": "132",
         "name": "St. Mary's Catholic Church",
         "rawName": "St. Mary's Catholic Church",
-        "address": "306 W. San Antonio St., Fredericksburg, TX"
+        "address": "306 W. San Antonio St., Fredericksburg, TX",
+        "lat": 30.2769765,
+        "lon": -98.8770312
       },
       "organizer": null,
       "types": [],
@@ -15018,7 +15570,9 @@
         "id": "132",
         "name": "St. Mary's Catholic Church",
         "rawName": "St. Mary's Catholic Church",
-        "address": "306 W. San Antonio St., Fredericksburg, TX"
+        "address": "306 W. San Antonio St., Fredericksburg, TX",
+        "lat": 30.2769765,
+        "lon": -98.8770312
       },
       "organizer": {
         "id": "8",
@@ -15065,7 +15619,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "159",
@@ -15122,7 +15678,9 @@
         "id": "162",
         "name": "Trinity University - Ruth Taylor Recital Hall, Parker Chapel",
         "rawName": "Trinity University - Ruth Taylor Recital Hall, Parker Chapel",
-        "address": "One Trinity Place, San Antonio, Texas"
+        "address": "One Trinity Place, San Antonio, Texas",
+        "lat": 29.461527,
+        "lon": -98.4825736
       },
       "organizer": {
         "id": "159",
@@ -15163,7 +15721,9 @@
         "id": "163",
         "name": "Coker United Methodist Church",
         "rawName": "Coker Methodist Church",
-        "address": "231 East North Loop Road, San Antonio, Texas, 78216"
+        "address": "231 East North Loop Road, San Antonio, Texas, 78216",
+        "lat": 29.5554377,
+        "lon": -98.4913638
       },
       "organizer": {
         "id": "164",
@@ -15225,7 +15785,9 @@
         "id": "70",
         "name": "Coker United Methodist Church",
         "rawName": "Coker United Methodist Church",
-        "address": "231 E. North Loop Road,, San Antonio, TX"
+        "address": "231 E. North Loop Road,, San Antonio, TX",
+        "lat": 29.5554377,
+        "lon": -98.4913638
       },
       "organizer": {
         "id": "164",
@@ -15282,7 +15844,9 @@
         "id": "163",
         "name": "Coker United Methodist Church",
         "rawName": "Coker Methodist Church",
-        "address": "231 East North Loop Road, San Antonio, Texas, 78216"
+        "address": "231 East North Loop Road, San Antonio, Texas, 78216",
+        "lat": 29.5554377,
+        "lon": -98.4913638
       },
       "organizer": null,
       "types": [],
@@ -15314,7 +15878,9 @@
         "id": "165",
         "name": "McAllister Auditorium",
         "rawName": "McAllister Auditorium",
-        "address": "1400 San Pedro, San Antonio, Texas 78212"
+        "address": "1400 San Pedro, San Antonio, Texas 78212",
+        "lat": 29.4458629,
+        "lon": -98.4993398
       },
       "organizer": {
         "id": "164",
@@ -15371,7 +15937,9 @@
         "id": "160",
         "name": "First Presbyterian Church, Austin",
         "rawName": "First Presbyterian Church Austin",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "157",
@@ -15428,7 +15996,9 @@
         "id": "160",
         "name": "First Presbyterian Church, Austin",
         "rawName": "First Presbyterian Church Austin",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "157",
@@ -15485,7 +16055,9 @@
         "id": "166",
         "name": "First Presbyterian Church Bryan",
         "rawName": "First Presbyterian Church Bryan",
-        "address": "1100 Carter Creek Parkway, Bryan, Texas"
+        "address": "1100 Carter Creek Parkway, Bryan, Texas",
+        "lat": 30.6610213,
+        "lon": -96.3633661
       },
       "organizer": {
         "id": "161",
@@ -15532,7 +16104,9 @@
         "id": "160",
         "name": "First Presbyterian Church, Austin",
         "rawName": "First Presbyterian Church Austin",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "161",
@@ -15574,7 +16148,9 @@
         "id": "160",
         "name": "First Presbyterian Church, Austin",
         "rawName": "First Presbyterian Church Austin",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "161",
@@ -15621,7 +16197,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "159",
@@ -15683,7 +16261,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "161",
@@ -15745,7 +16325,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": {
         "id": "167",
@@ -15781,7 +16363,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": {
         "id": "161",
@@ -15843,7 +16427,9 @@
         "id": "96",
         "name": "San Fernando Cathedral",
         "rawName": "San Fernando Cathedral",
-        "address": "115 West Main Plaza, San Antonio, TX"
+        "address": "115 West Main Plaza, San Antonio, TX",
+        "lat": 29.4248097,
+        "lon": -98.4937274
       },
       "organizer": {
         "id": "167",
@@ -15884,7 +16470,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "161",
@@ -15946,7 +16534,9 @@
         "id": "168",
         "name": "Tuesday Musical Club",
         "rawName": "Tuesday Musical Club",
-        "address": "3755 N. St. Mary’s Street, San Antonio, TX"
+        "address": "3755 N. St. Mary’s Street, San Antonio, TX",
+        "lat": 29.4595784,
+        "lon": -98.4778373
       },
       "organizer": null,
       "types": [],
@@ -15984,7 +16574,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "8",
@@ -16046,7 +16638,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": null,
       "types": [
@@ -16099,7 +16693,9 @@
         "id": "169",
         "name": "Immaculate Conception Chapel at the Oblate School of Theology",
         "rawName": "Immaculate Conception Chapel at the Oblate School of Theology",
-        "address": "285 Oblate Drive, San Antonio, TX"
+        "address": "285 Oblate Drive, San Antonio, TX",
+        "lat": 29.5051987,
+        "lon": -98.5041095
       },
       "organizer": {
         "id": "170",
@@ -16146,7 +16742,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "161",
@@ -16188,7 +16786,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": null,
       "types": [
@@ -16241,7 +16841,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "161",
@@ -16288,7 +16890,9 @@
         "id": "97",
         "name": "Ruth Taylor Recital Hall, Trinity University",
         "rawName": "Ruth Taylor Recital Hall",
-        "address": "1 Trinity Place, San Antonio, TX"
+        "address": "1 Trinity Place, San Antonio, TX",
+        "lat": 29.462637,
+        "lon": -98.4818289
       },
       "organizer": {
         "id": "171",
@@ -16340,7 +16944,9 @@
         "id": "124",
         "name": "Temple Beth-El",
         "rawName": "Temple Beth-El",
-        "address": "211 Belknap, San Antonio, TX"
+        "address": "211 Belknap, San Antonio, TX",
+        "lat": 29.4485362,
+        "lon": -98.4976811
       },
       "organizer": null,
       "types": [
@@ -16383,7 +16989,9 @@
         "id": "172",
         "name": "Travis Park United Methodist Church",
         "rawName": "Travis Park United Methodist Church",
-        "address": "230 E. Travis St., San Antonio, TX"
+        "address": "230 E. Travis St., San Antonio, TX",
+        "lat": 29.4272679,
+        "lon": -98.4902061
       },
       "organizer": {
         "id": "173",
@@ -16419,7 +17027,9 @@
         "id": "143",
         "name": "First Presbyterian Church, Austin",
         "rawName": "First Presbyterian Church of Austin",
-        "address": "8001 Mesa Dr., Austin, TX"
+        "address": "8001 Mesa Dr., Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "8",
@@ -16461,7 +17071,9 @@
         "id": "174",
         "name": "Christ Lutheran Church of Alamo Heights",
         "rawName": "Christ Lutheran Church Alamo Heights",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": {
         "id": "57",
@@ -16513,7 +17125,9 @@
         "id": "175",
         "name": "Gethsemane Lutheran Church",
         "rawName": "Gethsemane Lutheran Church",
-        "address": "200 West Anderson Lane, Austin, TX"
+        "address": "200 West Anderson Lane, Austin, TX",
+        "lat": 30.3456607,
+        "lon": -97.7053103
       },
       "organizer": {
         "id": "161",
@@ -16560,7 +17174,9 @@
         "id": "11",
         "name": "Redeemer Presbyterian Church",
         "rawName": "Redeemer Presbyterian Church",
-        "address": "2111 Alexander Ave., Austin, TX"
+        "address": "2111 Alexander Ave., Austin, TX",
+        "lat": 30.2842544,
+        "lon": -97.7094672
       },
       "organizer": {
         "id": "161",
@@ -16607,7 +17223,9 @@
         "id": "74",
         "name": "Our Lady of the Atonement Catholic Church",
         "rawName": "Our Lady of Atonement Catholic Church",
-        "address": "15415 Red Robin Road, San Antonio, Texas"
+        "address": "15415 Red Robin Road, San Antonio, Texas",
+        "lat": 29.5875748,
+        "lon": -98.6450197
       },
       "organizer": {
         "id": "164",
@@ -16659,7 +17277,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "159",
@@ -16716,7 +17336,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": {
         "id": "170",
@@ -16757,7 +17379,9 @@
         "id": "176",
         "name": "Christus Heritage Hall, The Village at Incarnate Word",
         "rawName": "Christus Heritage Hall, The Village at Incarnate Word",
-        "address": "4707 Broadway, San Antonio, TX"
+        "address": "4707 Broadway, San Antonio, TX",
+        "lat": 29.4693156,
+        "lon": -98.4673136
       },
       "organizer": null,
       "types": [],
@@ -16789,7 +17413,9 @@
         "id": "156",
         "name": "Christ Episcopal Church",
         "rawName": "Christ Episcopal Church",
-        "address": "510 Belknap, San Antonio, Texas"
+        "address": "510 Belknap, San Antonio, Texas",
+        "lat": 29.4511809,
+        "lon": -98.4968817
       },
       "organizer": {
         "id": "178",
@@ -16830,7 +17456,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": null,
       "types": [
@@ -16867,7 +17495,9 @@
         "id": "78",
         "name": "St. Luke's Episcopal Church",
         "rawName": "St. Luke's Episcopal Church",
-        "address": "11 St. Lukes Lane, San Antonio, TX"
+        "address": "11 St. Lukes Lane, San Antonio, TX",
+        "lat": 29.4856314,
+        "lon": -98.4798324
       },
       "organizer": null,
       "types": [
@@ -16904,7 +17534,9 @@
         "id": "66",
         "name": "Concordia University",
         "rawName": "Concordia University",
-        "address": "11400 Concordia University Drive, Austin, TX"
+        "address": "11400 Concordia University Drive, Austin, TX",
+        "lat": 30.4210274,
+        "lon": -97.8361609
       },
       "organizer": null,
       "types": [
@@ -16941,7 +17573,9 @@
         "id": "66",
         "name": "Concordia University",
         "rawName": "Concordia University",
-        "address": "11400 Concordia University Drive, Austin, TX"
+        "address": "11400 Concordia University Drive, Austin, TX",
+        "lat": 30.4210274,
+        "lon": -97.8361609
       },
       "organizer": null,
       "types": [
@@ -16978,7 +17612,9 @@
         "id": "66",
         "name": "Concordia University",
         "rawName": "Concordia University",
-        "address": "11400 Concordia University Drive, Austin, TX"
+        "address": "11400 Concordia University Drive, Austin, TX",
+        "lat": 30.4210274,
+        "lon": -97.8361609
       },
       "organizer": null,
       "types": [],
@@ -17010,7 +17646,9 @@
         "id": "66",
         "name": "Concordia University",
         "rawName": "Concordia University",
-        "address": "11400 Concordia University Drive, Austin, TX"
+        "address": "11400 Concordia University Drive, Austin, TX",
+        "lat": 30.4210274,
+        "lon": -97.8361609
       },
       "organizer": null,
       "types": [
@@ -17047,7 +17685,9 @@
         "id": "66",
         "name": "Concordia University",
         "rawName": "Concordia University",
-        "address": "11400 Concordia University Drive, Austin, TX"
+        "address": "11400 Concordia University Drive, Austin, TX",
+        "lat": 30.4210274,
+        "lon": -97.8361609
       },
       "organizer": null,
       "types": [
@@ -17084,7 +17724,9 @@
         "id": "66",
         "name": "Concordia University",
         "rawName": "Concordia University",
-        "address": "11400 Concordia University Drive, Austin, TX"
+        "address": "11400 Concordia University Drive, Austin, TX",
+        "lat": 30.4210274,
+        "lon": -97.8361609
       },
       "organizer": null,
       "types": [
@@ -17121,7 +17763,9 @@
         "id": "180",
         "name": "Huebner Oaks 14, Cielo Vista 18, Cinemark McCreless",
         "rawName": "Huebner Oaks 14, Cielo Vista 18, Cinemark McCreless",
-        "address": ", San Antonio, TX"
+        "address": ", San Antonio, TX",
+        "lat": 29.4251905,
+        "lon": -98.4945922
       },
       "organizer": null,
       "types": [],
@@ -17153,7 +17797,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "65",
@@ -17205,7 +17851,9 @@
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
         "rawName": "Christ Lutheran Church of Alamo Heights",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": {
         "id": "190",
@@ -17247,7 +17895,9 @@
         "id": "188",
         "name": "Capital Music Center",
         "rawName": "Capital Music Center",
-        "address": "6101 Burnet Rd, Austin, TX"
+        "address": "6101 Burnet Rd, Austin, TX",
+        "lat": 30.3360781,
+        "lon": -97.7390604
       },
       "organizer": {
         "id": "189",
@@ -17283,7 +17933,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "65",
@@ -17340,7 +17992,9 @@
         "id": "101",
         "name": "MISSION SAN JOSE",
         "rawName": "MISSION SAN JOSE",
-        "address": "701 E. Pyron, San Antonio, TX 78214"
+        "address": "701 E. Pyron, San Antonio, TX 78214",
+        "lat": 29.362068,
+        "lon": -98.478909
       },
       "organizer": {
         "id": "102",
@@ -17402,7 +18056,9 @@
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
         "rawName": "Christ Lutheran Church of Alamo Heights",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": null,
       "types": [],
@@ -17434,7 +18090,9 @@
         "id": "96",
         "name": "San Fernando Cathedral",
         "rawName": "San Fernando Cathedral",
-        "address": "115 West Main Plaza, San Antonio, TX"
+        "address": "115 West Main Plaza, San Antonio, TX",
+        "lat": 29.4248097,
+        "lon": -98.4937274
       },
       "organizer": null,
       "types": [],
@@ -17466,7 +18124,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": null,
       "types": [],
@@ -17504,7 +18164,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "182",
@@ -17556,7 +18218,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "65",
@@ -17618,7 +18282,9 @@
         "id": "72",
         "name": "First United Methodist Church",
         "rawName": "First United Methodist Church",
-        "address": "205 James Street,, Boerne, TX"
+        "address": "205 James Street,, Boerne, TX",
+        "lat": 29.7920045,
+        "lon": -98.7286303
       },
       "organizer": null,
       "types": [],
@@ -17656,7 +18322,9 @@
         "id": "72",
         "name": "First United Methodist Church",
         "rawName": "First United Methodist Church",
-        "address": "205 James Street,, Boerne, TX"
+        "address": "205 James Street,, Boerne, TX",
+        "lat": 29.7920045,
+        "lon": -98.7286303
       },
       "organizer": null,
       "types": [],
@@ -17694,7 +18362,9 @@
         "id": "70",
         "name": "Coker United Methodist Church",
         "rawName": "Coker United Methodist Church",
-        "address": "231 E. North Loop Road,, San Antonio, TX"
+        "address": "231 E. North Loop Road,, San Antonio, TX",
+        "lat": 29.5554377,
+        "lon": -98.4913638
       },
       "organizer": null,
       "types": [],
@@ -17732,7 +18402,9 @@
         "id": "69",
         "name": "New Braunfels Presbyterian Church",
         "rawName": "New Braunfels Presbyterian Church",
-        "address": "373 Howard Street,, New Braunfels, TX"
+        "address": "373 Howard Street,, New Braunfels, TX",
+        "lat": 29.7078157,
+        "lon": -98.1372269
       },
       "organizer": null,
       "types": [],
@@ -17770,7 +18442,9 @@
         "id": "70",
         "name": "Coker United Methodist Church",
         "rawName": "Coker United Methodist Church",
-        "address": "231 E. North Loop Road,, San Antonio, TX"
+        "address": "231 E. North Loop Road,, San Antonio, TX",
+        "lat": 29.5554377,
+        "lon": -98.4913638
       },
       "organizer": null,
       "types": [],
@@ -17808,7 +18482,9 @@
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
         "rawName": "Christ Lutheran Church of Alamo Heights",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": {
         "id": "13",
@@ -17860,7 +18536,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": null,
       "types": [],
@@ -17903,7 +18581,9 @@
         "id": "87",
         "name": "Southwest School of Art",
         "rawName": "Southwest School of Art",
-        "address": "300 Augusta Street, San Antonio, Texas"
+        "address": "300 Augusta Street, San Antonio, Texas",
+        "lat": 29.4311607,
+        "lon": -98.4919641
       },
       "organizer": {
         "id": "65",
@@ -17950,7 +18630,9 @@
         "id": "183",
         "name": "San Antonio Museum of Art, Greek and Roman Galleries",
         "rawName": "San Antonio Museum of Art, Greek and Roman Galleries",
-        "address": "200 West Jones Avenue, San Antonio, Texas"
+        "address": "200 West Jones Avenue, San Antonio, Texas",
+        "lat": 29.4376093,
+        "lon": -98.4820694
       },
       "organizer": {
         "id": "184",
@@ -17992,7 +18674,9 @@
         "id": "124",
         "name": "Temple Beth-El",
         "rawName": "Temple Beth-El",
-        "address": "211 Belknap, San Antonio, TX"
+        "address": "211 Belknap, San Antonio, TX",
+        "lat": 29.4485362,
+        "lon": -98.4976811
       },
       "organizer": {
         "id": "185",
@@ -18034,7 +18718,9 @@
         "id": "72",
         "name": "First United Methodist Church",
         "rawName": "First United Methodist Church",
-        "address": "205 James Street,, Boerne, TX"
+        "address": "205 James Street,, Boerne, TX",
+        "lat": 29.7920045,
+        "lon": -98.7286303
       },
       "organizer": {
         "id": "187",
@@ -18070,7 +18756,9 @@
         "id": "78",
         "name": "St. Luke's Episcopal Church",
         "rawName": "St. Luke's Episcopal Church",
-        "address": "11 St. Lukes Lane, San Antonio, TX"
+        "address": "11 St. Lukes Lane, San Antonio, TX",
+        "lat": 29.4856314,
+        "lon": -98.4798324
       },
       "organizer": {
         "id": "89",
@@ -18112,7 +18800,9 @@
         "id": "78",
         "name": "St. Luke's Episcopal Church",
         "rawName": "St. Luke's Episcopal Church",
-        "address": "11 St. Lukes Lane, San Antonio, TX"
+        "address": "11 St. Lukes Lane, San Antonio, TX",
+        "lat": 29.4856314,
+        "lon": -98.4798324
       },
       "organizer": {
         "id": "13",
@@ -18153,7 +18843,9 @@
         "id": "101",
         "name": "MISSION SAN JOSE",
         "rawName": "MISSION SAN JOSE",
-        "address": "701 E. Pyron, San Antonio, TX 78214"
+        "address": "701 E. Pyron, San Antonio, TX 78214",
+        "lat": 29.362068,
+        "lon": -98.478909
       },
       "organizer": {
         "id": "65",
@@ -18200,7 +18892,9 @@
         "id": "101",
         "name": "MISSION SAN JOSE",
         "rawName": "MISSION SAN JOSE",
-        "address": "701 E. Pyron, San Antonio, TX 78214"
+        "address": "701 E. Pyron, San Antonio, TX 78214",
+        "lat": 29.362068,
+        "lon": -98.478909
       },
       "organizer": {
         "id": "65",
@@ -18247,7 +18941,9 @@
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
         "rawName": "Northwest Hills United Methodist Church",
-        "address": "7050 Village Center Drive, Austin, TX"
+        "address": "7050 Village Center Drive, Austin, TX",
+        "lat": 30.3537625,
+        "lon": -97.7559733
       },
       "organizer": {
         "id": "99",
@@ -18288,7 +18984,9 @@
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
         "rawName": "Northwest Hills United Methodist Church",
-        "address": "7050 Village Center Drive, Austin, TX"
+        "address": "7050 Village Center Drive, Austin, TX",
+        "lat": 30.3537625,
+        "lon": -97.7559733
       },
       "organizer": {
         "id": "99",
@@ -18329,7 +19027,9 @@
         "id": "103",
         "name": "Chapel of the Incarnate Word",
         "rawName": "Chapel of the Incarnate Word",
-        "address": "4503 Broadway Street, San Antonio, Texas"
+        "address": "4503 Broadway Street, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "65",
@@ -18376,7 +19076,9 @@
         "id": "101",
         "name": "MISSION SAN JOSE",
         "rawName": "MISSION SAN JOSE",
-        "address": "701 E. Pyron, San Antonio, TX 78214"
+        "address": "701 E. Pyron, San Antonio, TX 78214",
+        "lat": 29.362068,
+        "lon": -98.478909
       },
       "organizer": {
         "id": "102",
@@ -18438,7 +19140,9 @@
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
         "rawName": "Our Lady of the Atonement Catholic Church",
-        "address": "15415 Red Robin Rd., San Antonio, TX"
+        "address": "15415 Red Robin Rd., San Antonio, TX",
+        "lat": 29.5875748,
+        "lon": -98.6450197
       },
       "organizer": {
         "id": "100",
@@ -18490,7 +19194,9 @@
         "id": "26",
         "name": "San Antonio Museum of Art",
         "rawName": "San Antonio Museum of Art",
-        "address": "200 West Jones Avenue, San Antonio, TX"
+        "address": "200 West Jones Avenue, San Antonio, TX",
+        "lat": 29.4376093,
+        "lon": -98.4820694
       },
       "organizer": {
         "id": "65",
@@ -18542,7 +19248,9 @@
         "id": "78",
         "name": "St. Luke's Episcopal Church",
         "rawName": "St. Luke's Episcopal Church",
-        "address": "11 St. Lukes Lane, San Antonio, TX"
+        "address": "11 St. Lukes Lane, San Antonio, TX",
+        "lat": 29.4856314,
+        "lon": -98.4798324
       },
       "organizer": {
         "id": "13",
@@ -18589,7 +19297,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "99",
@@ -18641,7 +19351,9 @@
         "id": "98",
         "name": "St. Louis Catholic Church",
         "rawName": "St. Louis Catholic Church",
-        "address": "7601 Burnet Road, Austin, TX"
+        "address": "7601 Burnet Road, Austin, TX",
+        "lat": 30.3520446,
+        "lon": -97.7305948
       },
       "organizer": {
         "id": "99",
@@ -18693,7 +19405,9 @@
         "id": "96",
         "name": "San Fernando Cathedral",
         "rawName": "San Fernando Cathedral",
-        "address": "115 West Main Plaza, San Antonio, TX"
+        "address": "115 West Main Plaza, San Antonio, TX",
+        "lat": 29.4248097,
+        "lon": -98.4937274
       },
       "organizer": {
         "id": "89",
@@ -18740,7 +19454,9 @@
         "id": "97",
         "name": "Ruth Taylor Recital Hall, Trinity University",
         "rawName": "Ruth Taylor Recital Hall",
-        "address": "1 Trinity Place, San Antonio, TX"
+        "address": "1 Trinity Place, San Antonio, TX",
+        "lat": 29.462637,
+        "lon": -98.4818289
       },
       "organizer": null,
       "types": [],
@@ -18778,7 +19494,9 @@
         "id": "95",
         "name": "The Little Church of La Villita",
         "rawName": "The Little Church of La Villita",
-        "address": "508 Villita Street, San Antonio, TX"
+        "address": "508 Villita Street, San Antonio, TX",
+        "lat": 29.4216327,
+        "lon": -98.4885983
       },
       "organizer": null,
       "types": [
@@ -18826,7 +19544,9 @@
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
         "rawName": "Christ Lutheran Church of Alamo Heights",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": null,
       "types": [
@@ -18874,7 +19594,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "94",
@@ -18926,7 +19648,9 @@
         "id": "93",
         "name": "St. Austin Catholic Church",
         "rawName": "St. Austin Catholic Church",
-        "address": "2026 Guadalupe Street, Austin, Texas"
+        "address": "2026 Guadalupe Street, Austin, Texas",
+        "lat": 30.2834837,
+        "lon": -97.742222
       },
       "organizer": {
         "id": "84",
@@ -18978,7 +19702,9 @@
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
         "rawName": "Our Lady's Chapel, University of the Incarnate Word",
-        "address": "4301 Broadway, San Antonio, TX"
+        "address": "4301 Broadway, San Antonio, TX",
+        "lat": 29.4671902,
+        "lon": -98.4670141
       },
       "organizer": null,
       "types": [
@@ -19021,7 +19747,9 @@
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
         "rawName": "Our Lady's Chapel, University of the Incarnate Word",
-        "address": "4301 Broadway, San Antonio, TX"
+        "address": "4301 Broadway, San Antonio, TX",
+        "lat": 29.4671902,
+        "lon": -98.4670141
       },
       "organizer": null,
       "types": [
@@ -19068,7 +19796,9 @@
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
         "rawName": "Our Lady's Chapel, University of the Incarnate Word",
-        "address": "4301 Broadway, San Antonio, TX"
+        "address": "4301 Broadway, San Antonio, TX",
+        "lat": 29.4671902,
+        "lon": -98.4670141
       },
       "organizer": null,
       "types": [
@@ -19111,7 +19841,9 @@
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
         "rawName": "Our Lady's Chapel, University of the Incarnate Word",
-        "address": "4301 Broadway, San Antonio, TX"
+        "address": "4301 Broadway, San Antonio, TX",
+        "lat": 29.4671902,
+        "lon": -98.4670141
       },
       "organizer": null,
       "types": [
@@ -19154,7 +19886,9 @@
         "id": "72",
         "name": "First United Methodist Church",
         "rawName": "First United Methodist Church",
-        "address": "205 James Street,, Boerne, TX"
+        "address": "205 James Street,, Boerne, TX",
+        "lat": 29.7920045,
+        "lon": -98.7286303
       },
       "organizer": null,
       "types": [
@@ -19197,7 +19931,9 @@
         "id": "70",
         "name": "Coker United Methodist Church",
         "rawName": "Coker United Methodist Church",
-        "address": "231 E. North Loop Road,, San Antonio, TX"
+        "address": "231 E. North Loop Road,, San Antonio, TX",
+        "lat": 29.5554377,
+        "lon": -98.4913638
       },
       "organizer": null,
       "types": [
@@ -19240,7 +19976,9 @@
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
         "rawName": "Christ Lutheran Church of Alamo Heights",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": null,
       "types": [],
@@ -19278,7 +20016,9 @@
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
         "rawName": "Christ Lutheran Church of Alamo Heights",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": null,
       "types": [],
@@ -19347,7 +20087,9 @@
         "id": "78",
         "name": "St. Luke's Episcopal Church",
         "rawName": "St. Luke's Episcopal Church",
-        "address": "11 St. Lukes Lane, San Antonio, TX"
+        "address": "11 St. Lukes Lane, San Antonio, TX",
+        "lat": 29.4856314,
+        "lon": -98.4798324
       },
       "organizer": {
         "id": "89",
@@ -19389,7 +20131,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": null,
       "types": [],
@@ -19432,7 +20176,9 @@
         "id": "34",
         "name": "First English Lutheran Church",
         "rawName": "First English Lutheran Church",
-        "address": "3001 Whitis Ave, Austin, TX"
+        "address": "3001 Whitis Ave, Austin, TX",
+        "lat": 30.2955117,
+        "lon": -97.7387421
       },
       "organizer": null,
       "types": [
@@ -19475,7 +20221,9 @@
         "id": "41",
         "name": "Mission Concepción",
         "rawName": "Mission Concepcion",
-        "address": "807 Mission Road, San Antonio, TX"
+        "address": "807 Mission Road, San Antonio, TX",
+        "lat": 29.3911352,
+        "lon": -98.4900775
       },
       "organizer": {
         "id": "88",
@@ -19517,7 +20265,9 @@
         "id": "87",
         "name": "Southwest School of Art",
         "rawName": "Southwest School of Art",
-        "address": "300 Augusta Street, San Antonio, Texas"
+        "address": "300 Augusta Street, San Antonio, Texas",
+        "lat": 29.4311607,
+        "lon": -98.4919641
       },
       "organizer": {
         "id": "65",
@@ -19584,7 +20334,9 @@
         "id": "26",
         "name": "San Antonio Museum of Art",
         "rawName": "San Antonio Museum of Art",
-        "address": "200 West Jones Avenue, San Antonio, TX"
+        "address": "200 West Jones Avenue, San Antonio, TX",
+        "lat": 29.4376093,
+        "lon": -98.4820694
       },
       "organizer": null,
       "types": [
@@ -19627,7 +20379,9 @@
         "id": "78",
         "name": "St. Luke's Episcopal Church",
         "rawName": "St. Luke's Episcopal Church",
-        "address": "11 St. Lukes Lane, San Antonio, TX"
+        "address": "11 St. Lukes Lane, San Antonio, TX",
+        "lat": 29.4856314,
+        "lon": -98.4798324
       },
       "organizer": null,
       "types": [
@@ -19675,7 +20429,9 @@
         "id": "85",
         "name": "McNay Art Museum",
         "rawName": "The McNay Art Museum",
-        "address": "6000 North New Braunfels, San Antonio, Texas"
+        "address": "6000 North New Braunfels, San Antonio, Texas",
+        "lat": 29.4858517,
+        "lon": -98.4563609
       },
       "organizer": {
         "id": "86",
@@ -19737,7 +20493,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "84",
@@ -19784,7 +20542,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "84",
@@ -19831,7 +20591,9 @@
         "id": "82",
         "name": "First Baptist Church,<br>Unity Hall",
         "rawName": "First Baptist Church,<br>Unity Hall",
-        "address": "515 McCullough , San Antonio, Texas"
+        "address": "515 McCullough , San Antonio, Texas",
+        "lat": 29.4313757,
+        "lon": -98.4872568
       },
       "organizer": {
         "id": "83",
@@ -19883,7 +20645,9 @@
         "id": "14",
         "name": "St. John's Lutheran Church",
         "rawName": "St. John's Lutheran Church",
-        "address": "502 E. Nueva St., San Antonio, TX"
+        "address": "502 E. Nueva St., San Antonio, TX",
+        "lat": 29.4203703,
+        "lon": -98.4896916
       },
       "organizer": null,
       "types": [],
@@ -19921,7 +20685,9 @@
         "id": "81",
         "name": "Mission San Juan Capistrano",
         "rawName": "Mission San Juan Capistrano",
-        "address": "9101 Graf Road, San Antonio, TX"
+        "address": "9101 Graf Road, San Antonio, TX",
+        "lat": 29.3324027,
+        "lon": -98.4554466
       },
       "organizer": null,
       "types": [
@@ -19964,7 +20730,9 @@
         "id": "81",
         "name": "Mission San Juan Capistrano",
         "rawName": "Mission San Juan Capistrano",
-        "address": "9101 Graf Road, San Antonio, TX"
+        "address": "9101 Graf Road, San Antonio, TX",
+        "lat": 29.3324027,
+        "lon": -98.4554466
       },
       "organizer": null,
       "types": [
@@ -20007,7 +20775,9 @@
         "id": "80",
         "name": "Chapel of the Incarnate Word",
         "rawName": "The Chapel of the Incarnate Word",
-        "address": "4503 Broadway, San Antonio, Texas"
+        "address": "4503 Broadway, San Antonio, Texas",
+        "lat": 29.4619195,
+        "lon": -98.466782
       },
       "organizer": {
         "id": "65",
@@ -20064,7 +20834,9 @@
         "id": "79",
         "name": "The Union Church Building",
         "rawName": "The Union Church Building",
-        "address": "Broadway and Travis St., Kerrville, TX"
+        "address": "Broadway and Travis St., Kerrville, TX",
+        "lat": 30.0383701,
+        "lon": -99.1300669
       },
       "organizer": null,
       "types": [],
@@ -20117,7 +20889,9 @@
         "id": "78",
         "name": "St. Luke's Episcopal Church",
         "rawName": "St. Luke's Episcopal Church",
-        "address": "11 St. Lukes Lane, San Antonio, TX"
+        "address": "11 St. Lukes Lane, San Antonio, TX",
+        "lat": 29.4856314,
+        "lon": -98.4798324
       },
       "organizer": null,
       "types": [
@@ -20165,7 +20939,9 @@
         "id": "26",
         "name": "San Antonio Museum of Art",
         "rawName": "San Antonio Museum of Art",
-        "address": "200 West Jones Avenue, San Antonio, TX"
+        "address": "200 West Jones Avenue, San Antonio, TX",
+        "lat": 29.4376093,
+        "lon": -98.4820694
       },
       "organizer": {
         "id": "65",
@@ -20227,7 +21003,9 @@
         "id": "76",
         "name": "Bates Recital Hall",
         "rawName": "Bates Recital Hall",
-        "address": "2420 Robert Dedman Drive, Austin TX 78712, Austin, TX"
+        "address": "2420 Robert Dedman Drive, Austin TX 78712, Austin, TX",
+        "lat": 30.287291,
+        "lon": -97.730714
       },
       "organizer": {
         "id": "77",
@@ -20268,7 +21046,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "73",
@@ -20320,7 +21100,9 @@
         "id": "74",
         "name": "Our Lady of the Atonement Catholic Church",
         "rawName": "Our Lady of Atonement Catholic Church",
-        "address": "15415 Red Robin Road, San Antonio, Texas"
+        "address": "15415 Red Robin Road, San Antonio, Texas",
+        "lat": 29.5875748,
+        "lon": -98.6450197
       },
       "organizer": {
         "id": "75",
@@ -20387,7 +21169,9 @@
         "id": "72",
         "name": "First United Methodist Church",
         "rawName": "First United Methodist Church",
-        "address": "205 James Street,, Boerne, TX"
+        "address": "205 James Street,, Boerne, TX",
+        "lat": 29.7920045,
+        "lon": -98.7286303
       },
       "organizer": null,
       "types": [
@@ -20434,7 +21218,9 @@
         "id": "70",
         "name": "Coker United Methodist Church",
         "rawName": "Coker United Methodist Church",
-        "address": "231 E. North Loop Road,, San Antonio, TX"
+        "address": "231 E. North Loop Road,, San Antonio, TX",
+        "lat": 29.5554377,
+        "lon": -98.4913638
       },
       "organizer": {
         "id": "71",
@@ -20485,7 +21271,9 @@
         "id": "69",
         "name": "New Braunfels Presbyterian Church",
         "rawName": "New Braunfels Presbyterian Church",
-        "address": "373 Howard Street,, New Braunfels, TX"
+        "address": "373 Howard Street,, New Braunfels, TX",
+        "lat": 29.7078157,
+        "lon": -98.1372269
       },
       "organizer": null,
       "types": [
@@ -20532,7 +21320,9 @@
         "id": "56",
         "name": "Christ Lutheran Church",
         "rawName": "Christ Lutheran Church",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": null,
       "types": [],
@@ -20575,7 +21365,9 @@
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
         "rawName": "Christ Lutheran Church of Alamo Heights",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": {
         "id": "68",
@@ -20611,7 +21403,9 @@
         "id": "66",
         "name": "Concordia University",
         "rawName": "Concordia University",
-        "address": "11400 Concordia University Drive, Austin, TX"
+        "address": "11400 Concordia University Drive, Austin, TX",
+        "lat": 30.4210274,
+        "lon": -97.8361609
       },
       "organizer": {
         "id": "67",
@@ -20647,7 +21441,9 @@
         "id": "64",
         "name": "Southwest School of Art",
         "rawName": "Southwest School of Art & Craft",
-        "address": "300 Augusta Street, San Antonio, Texas"
+        "address": "300 Augusta Street, San Antonio, Texas",
+        "lat": 29.4311607,
+        "lon": -98.4919641
       },
       "organizer": {
         "id": "65",
@@ -20704,7 +21500,9 @@
         "id": "24",
         "name": "St. Mark's Episcopal Church",
         "rawName": "St. Mark's Episcopal Church",
-        "address": "315 East Pecan St., San Antonio, TX"
+        "address": "315 East Pecan St., San Antonio, TX",
+        "lat": 29.4288946,
+        "lon": -98.4888472
       },
       "organizer": {
         "id": "63",
@@ -20756,7 +21554,9 @@
         "id": "62",
         "name": "Ducloux Hall at Austin Lyric Opera",
         "rawName": "Ducloux Hall at Austin Lyric Opera",
-        "address": "901 Barton Springs Road, Austin, TX"
+        "address": "901 Barton Springs Road, Austin, TX",
+        "lat": 30.2594053,
+        "lon": -97.7541256
       },
       "organizer": {
         "id": "59",
@@ -20808,7 +21608,9 @@
         "id": "61",
         "name": "Basilica of the National Shrine of the Little Flower",
         "rawName": "Basilica of the National Shrine of the Little Flower",
-        "address": "1715 North Zarzamora Street, San Antonio, TX"
+        "address": "1715 North Zarzamora Street, San Antonio, TX",
+        "lat": 29.4462203,
+        "lon": -98.526617
       },
       "organizer": null,
       "types": [
@@ -20856,7 +21658,9 @@
         "id": "55",
         "name": "Bates Recital Hall",
         "rawName": "Bates Recital Hall, parking in San Jacinto Garage.",
-        "address": "2305 Trinity St, Austin, TX"
+        "address": "2305 Trinity St, Austin, TX",
+        "lat": 30.2864565,
+        "lon": -97.7320337
       },
       "organizer": null,
       "types": [
@@ -20904,7 +21708,9 @@
         "id": "58",
         "name": "First Presbyterian Church",
         "rawName": "First Presbyterian Church",
-        "address": "8001 Mesa Drive, Austin, TX"
+        "address": "8001 Mesa Drive, Austin, TX",
+        "lat": 30.3694,
+        "lon": -97.7579259
       },
       "organizer": {
         "id": "59",
@@ -20956,7 +21762,9 @@
         "id": "56",
         "name": "Christ Lutheran Church",
         "rawName": "Christ Lutheran Church",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": {
         "id": "60",
@@ -21008,7 +21816,9 @@
         "id": "56",
         "name": "Christ Lutheran Church",
         "rawName": "Christ Lutheran Church",
-        "address": "6720 Broadway, San Antonio, TX"
+        "address": "6720 Broadway, San Antonio, TX",
+        "lat": 29.4899229,
+        "lon": -98.4658562
       },
       "organizer": {
         "id": "57",

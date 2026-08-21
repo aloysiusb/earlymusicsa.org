@@ -98,6 +98,20 @@
   --cal-cell-height-events: 60px;
   --cal-radius: 10px;
 
+  /* --- expanded detail panel -------------------------------------------- */
+  --card-bg-hover: #a9c9d4;
+  --modal-width: 1000px;
+  --modal-inset: 24px;
+  --modal-radius: 12px;
+  --modal-scrim: rgb(0 0 0 / 0.55);
+  --modal-close-bg: #2b2b2b;
+  --panel-bg: #f5f6f7;
+  --panel-radius: 10px;
+  --panel-pad: 18px;
+  --panel-gap: 14px;
+  --map-height: 260px;
+  --rule: #e2e4e6;
+
   --banner-image: url('media/Giovanni_Pauolo_2000x400.jpg');
 }
 
@@ -318,6 +332,143 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   text-decoration: none;
 }
 .show-more:hover { background: var(--gold); }
+
+/* ------------------------------------------------------ expanded details -- */
+
+/* The whole card is clickable, with the title still a real link on top. */
+.event-card { position: relative; }
+.card-hit { position: absolute; inset: 0; z-index: 1; }
+.event-card > :not(.card-hit) { position: relative; z-index: 2; pointer-events: none; }
+.event-card a:not(.card-hit) { pointer-events: auto; }
+.event-card:hover { background: var(--card-bg-hover); }
+
+/* Opened by :target — the URL carries which panel is showing, so Back closes
+   it and a link to an open panel can be shared. */
+.event-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+  padding: var(--modal-inset);
+  place-items: center;
+}
+.event-modal:target { display: grid; }
+
+/* Freeze the page behind the panel without a line of script. */
+body:has(.event-modal:target) { overflow: hidden; }
+
+.modal-scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--modal-scrim);
+}
+
+.modal-panel {
+  position: relative;
+  width: min(var(--modal-width), 100%);
+  max-height: calc(100vh - var(--modal-inset) * 2);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: var(--modal-radius);
+  background: var(--page-bg);
+  box-shadow: 0 20px 60px rgb(0 0 0 / 0.35);
+}
+
+.modal-head {
+  position: relative;
+  padding: var(--card-pad);
+  background: var(--card-bg);
+  color: var(--card-text);
+}
+.modal-title {
+  font-size: var(--card-title-size);
+  font-weight: var(--card-title-weight);
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding-right: 50px;
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--card-pad);
+  right: var(--card-pad);
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--modal-close-bg);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  text-decoration: none;
+}
+.modal-close:hover { background: var(--gold); }
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--panel-gap);
+  padding: var(--panel-gap);
+}
+
+.panel-row {
+  display: grid;
+  gap: var(--panel-gap);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 700px) {
+  .panel-row { grid-template-columns: 1fr 1fr; }
+}
+
+.panel {
+  background: var(--panel-bg);
+  border-radius: var(--panel-radius);
+  padding: var(--panel-pad);
+  color: var(--ink);
+}
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+.panel-icon { width: 20px; height: 20px; flex: none; color: var(--ink-soft); }
+.panel p { margin: 0 0 0.75em; }
+.panel p:last-child { margin-bottom: 0; }
+.panel-prose { font-size: 15px; }
+
+.panel-figure { padding: 0; overflow: hidden; display: grid; }
+.panel-figure img { width: 100%; height: 100%; object-fit: cover; }
+
+.venue-name { font-weight: 700; }
+.venue-address { color: var(--ink-soft); }
+
+.panel-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--page-bg);
+  border: 1px solid var(--rule, #ddd);
+  font-size: 13px;
+  text-decoration: none;
+}
+.pill:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+/* Map comes from OpenStreetMap: no API key, no billing, nothing to renew. */
+.panel-map { padding: 0; overflow: hidden; }
+.panel-map iframe {
+  display: block;
+  width: 100%;
+  height: var(--map-height);
+  border: 0;
+}
 
 /* --------------------------------------------------------- calendar box -- */
 
