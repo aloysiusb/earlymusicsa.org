@@ -24,6 +24,10 @@ needs that.
 - **Phase 2, static site — first pass done.** `build.js` generates the whole
   public site. Listings, calendar, archive and event pages all work.
 - **About page done** (2026-08-21), matched to the live one.
+- **Past Events done** (2026-08-21). Note it uses a *different card* from the
+  home page: a full-width three-column grid of 366x446 tiles, 20px radius,
+  image filling the tile with the text over it, and no sidebar. Paginated 12
+  per page to match the live rhythm, with a year jump row added on top.
 - **Deploy:** `render.yaml` is in place. One-click blueprint link:
   https://render.com/deploy?repo=https://github.com/aloysiusb/earlymusicsa.org
   Render runs `node build.js` and serves `dist/` on the free static tier;

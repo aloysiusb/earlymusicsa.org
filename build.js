@@ -38,6 +38,10 @@ const LOGO = 'Early-Music-SA-Logo-wt.png';
 /** Event thumbnail box, in CSS pixels. Keep in step with --thumb-size. */
 const THUMB = 140;
 
+/** Past-events tile box. Keep in step with --tile-height and the column count. */
+const TILE_W = 357;
+const TILE_H = 436;
+
 /* ------------------------------------------------------------------ util -- */
 
 const esc = (s) => String(s ?? '')
@@ -82,24 +86,26 @@ function localImage(url, depth) {
  * every upload and scrape.js mirrored them, so the browser gets a real srcset
  * and downloads a 300px file for a 140px slot instead of a 1400px original.
  */
-function responsiveImg(ev, { sizes, depth, className = '', square = 0, eager = false }) {
+function responsiveImg(ev, { sizes, depth, className = '', cover = null, eager = false }) {
   if (!ev.image) return '';
   const variants = (ev.imageVariants || []).filter((v) => mirrored(v.url));
   const src = localImage(ev.image, depth);
 
-  // Most of these uploads are wide banners (1400x400 is typical). Cropping one
-  // into a square box means the browser needs a file wide enough to cover the
-  // box's *height*, so ask for width x aspect-ratio — otherwise `sizes: 140px`
-  // picks a 300x86 file and it gets upscaled into the 140px square.
-  if (square && ev.imageWidth && ev.imageHeight) {
-    sizes = `${Math.round(square * Math.max(1, ev.imageWidth / ev.imageHeight))}px`;
+  // Most of these uploads are wide banners — 1400x400 is typical. When one is
+  // cropped to `cover` a box that is squarer or taller than it, the file has to
+  // be wide enough to cover the box's *height*, not its width. Asking for the
+  // box width alone picks a 400x127 file for a 436px-tall tile and stretches it
+  // four times over.
+  if (cover && ev.imageWidth && ev.imageHeight) {
+    const [boxW, boxH] = cover;
+    sizes = `${Math.round(Math.max(boxW, boxH * (ev.imageWidth / ev.imageHeight)))}px`;
   }
   const srcset = variants.length
     ? ` srcset="${variants.map((v) => `${localImage(v.url, depth)} ${v.width}w`).join(', ')}"`
     : '';
   // For a square crop the intrinsic ratio would fight object-fit, so only
   // publish real dimensions when the image is shown at its own aspect ratio.
-  const dims = !square && ev.imageWidth
+  const dims = !cover && ev.imageWidth
     ? ` width="${ev.imageWidth}" height="${ev.imageHeight}"` : '';
   // Above-the-fold images load eagerly and get fetch priority; everything
   // further down the page waits until it is needed.
@@ -246,7 +252,7 @@ function eventCard(ev, depth, { eager = false, modal = true } = {}) {
   const thumb = ev.image
     // `sizes` is parsed by the HTML parser, not CSS — it takes a plain length,
     // never a var(). Keep this in step with --thumb-size in style.css.
-    ? `<div class="event-thumb">${responsiveImg(ev, { sizes: '140px', depth, square: THUMB, eager })}</div>`
+    ? `<div class="event-thumb">${responsiveImg(ev, { sizes: '140px', depth, cover: [THUMB, THUMB], eager })}</div>`
     : '';
 
   const venue = [ev.location?.name, ev.organizer?.name].filter(Boolean).join(' &middot; ');
@@ -268,6 +274,34 @@ function eventCard(ev, depth, { eager = false, modal = true } = {}) {
       ${CARD_DETAILS && ev.descriptionText ? `<p class="event-summary">${esc(excerpt(ev.descriptionText))}</p>` : ''}
     </div>
   </div>
+</article>`;
+}
+
+/**
+ * The Past Events card: a tall tile with the image filling it and the text
+ * over the top. Same data as eventCard, different shape.
+ */
+function eventTile(ev, depth, { eager = false } = {}) {
+  const p = parts(ev.start);
+  const img = ev.image
+    ? responsiveImg(ev, { depth, cover: [TILE_W, TILE_H], eager })
+    : '';
+
+  return `<article class="event-tile">
+  <a class="tile-inner" href="#${modalId(ev)}">
+    ${img}
+    <div class="tile-body">
+      <h2 class="tile-title">${esc(ev.title)}</h2>
+      <div class="tile-meta">
+        <span class="event-date">
+          ${p ? `<span class="year">${p.year}</span>
+          <span class="day">${String(p.day).padStart(2, '0')}</span>
+          <span class="month">${MONTHS[p.month - 1].slice(0, 3)}</span>` : '<span class="day">TBA</span>'}
+        </span>
+        <span class="event-time">${esc(timeRange(ev))}</span>
+      </div>
+    </div>
+  </a>
 </article>`;
 }
 
@@ -356,7 +390,7 @@ function eventModal(ev, depth) {
     <div class="modal-head">
       <h2 class="modal-title" id="${id}-t">${esc(ev.title)}</h2>
       <div class="event-inner">
-        ${ev.image ? `<div class="event-thumb">${responsiveImg(ev, { sizes: '140px', depth, square: THUMB })}</div>` : ''}
+        ${ev.image ? `<div class="event-thumb">${responsiveImg(ev, { sizes: '140px', depth, cover: [THUMB, THUMB] })}</div>` : ''}
         <div class="event-date">
           ${p ? `<span class="year">${p.year}</span>
           <span class="day">${String(p.day).padStart(2, '0')}</span>
@@ -572,40 +606,78 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0, { nextEvent: upcomin
 </div></div>`,
   }));
 
-  // --- archive ----------------------------------------------------------
+  // --- past events ------------------------------------------------------
+  // Full width, no sidebar, a grid of tiles newest-first — matching the live
+  // page. It loads 12 at a time there; here "Show More Events" is a link to
+  // the next page, which needs no script and gives every page a real URL.
   const years = [...new Set(past.map((e) => parts(e.start).year))].sort((a, b) => b - a);
-  const yearNav = (cur) => `<p style="margin:0 0 20px">${years
-    .map((y) => `<a href="${y}.html"${y === cur ? ' aria-current="page"' : ''}>${y}</a>`)
-    .join(' &nbsp; ')}</p>`;
+
+  const yearJump = (cur) => `<nav class="year-jump" aria-label="Jump to a year">
+      ${years.map((y) => `<a href="${y}.html"${y === cur ? ' aria-current="page"' : ''}>${y}</a>`).join('\n      ')}
+      ${undated.length ? `<a href="undated.html"${cur === 'undated' ? ' aria-current="page"' : ''}>Undated</a>` : ''}
+    </nav>`;
+
+  /** One past-events page: tiles, their detail panels, and the pager. */
+  const pastPage = ({ file, title, list, intro, jump, pager }) => write(file, page({
+    title, current: 'archive/', depth: 1,
+    body: `<div class="container page-header">
+  <h1 class="page-title">${esc(title)}</h1>
+</div>
+<div class="container content">
+  <div class="primary wide">
+    ${intro ? `<p class="pager-note" style="text-align:left">${intro}</p>` : ''}
+    ${jump}
+    <div class="event-tiles">
+${list.map((e, i) => eventTile(e, 1, { eager: i < 3 })).join('\n')}
+    </div>
+    ${pager || ''}
+  </div>
+</div>
+${list.map((e) => eventModal(e, 1)).join('\n')}`,
+  }));
+
+  const PER_PAGE = 12;
+  const pageCount = Math.max(1, Math.ceil(past.length / PER_PAGE));
+  const pageFile = (n) => (n === 1 ? 'index.html' : `page-${n}.html`);
+
+  for (let n = 1; n <= pageCount; n++) {
+    const list = past.slice((n - 1) * PER_PAGE, n * PER_PAGE);
+    const prev = n > 1 ? `<a class="show-more" href="${pageFile(n - 1)}">&larr; Newer</a>` : '';
+    const next = n < pageCount ? `<a class="show-more" href="${pageFile(n + 1)}">Show More Events</a>` : '';
+    await pastPage({
+      file: `archive/${pageFile(n)}`,
+      title: 'Past Events',
+      list,
+      intro: n === 1
+        ? `${past.length} events listed since ${years[years.length - 1]}.` : '',
+      jump: yearJump(null),
+      pager: `<div class="pager">${prev}${next}</div>
+    <p class="pager-note">Page ${n} of ${pageCount}</p>`,
+    });
+  }
 
   for (const y of years) {
     const list = past.filter((e) => parts(e.start).year === y);
-    await write(`archive/${y}.html`, page({
-      title: `${y} Events`, current: 'archive/', depth: 1,
-      body: `<div class="container content">
-  <div class="primary">
-    <h1 class="site-heading">${y}</h1>
-    ${yearNav(y)}
-    <div class="event-list">${list.map((e) => eventCard(e, 1)).join('\n')}</div>
-  </div>
-  <aside class="sidebar">${calendarWidget(y, 12, byDay, 1)}</aside>
-</div>`,
-    }));
+    await pastPage({
+      file: `archive/${y}.html`,
+      title: `${y} Events`,
+      list,
+      intro: `${list.length} event${list.length === 1 ? '' : 's'} in ${y}.`,
+      jump: yearJump(y),
+      pager: `<div class="pager"><a class="show-more" href="./">All past events</a></div>`,
+    });
   }
 
-  await write('archive/index.html', page({
-    title: 'Past Events', current: 'archive/', depth: 1,
-    body: `<div class="container content">
-  <div class="primary">
-    <h1 class="site-heading">Past Events</h1>
-    <p>${past.length} events listed since ${years[years.length - 1]}.</p>
-    ${yearNav(null)}
-    ${undated.length ? `<h2 class="section-heading">Undated listings</h2>
-    <div class="event-list">${undated.map((e) => eventCard(e, 1)).join('\n')}</div>` : ''}
-  </div>
-  <aside class="sidebar">${calendarWidget(focusDate.year, focusDate.month, byDay, 1)}</aside>
-</div>`,
-  }));
+  if (undated.length) {
+    await pastPage({
+      file: 'archive/undated.html',
+      title: 'Undated Listings',
+      list: undated,
+      intro: 'These events were listed without a date.',
+      jump: yearJump('undated'),
+      pager: `<div class="pager"><a class="show-more" href="./">All past events</a></div>`,
+    });
+  }
 
   // --- one page per event ----------------------------------------------
   for (const ev of live) {
