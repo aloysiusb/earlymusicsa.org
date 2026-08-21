@@ -1,0 +1,27 @@
+{
+  "_note": "Copy and hero images for the pages that are not generated from event data. Edit the text here — build.js renders it, no code change needed. Paragraphs are separate strings. Hero images are mirrored by scrape.js --images along with the theme assets.",
+
+  "about": {
+    "slug": "about.html",
+    "title": "About Early Music San Antonio",
+    "navLabel": "About",
+    "hero": {
+      "alt": "Early Music San Antonio",
+      "full": "https://earlymusicsa.org/wp-content/uploads/2023/07/Music-school-Edinburgh-3.jpg",
+      "width": 1400,
+      "height": 400,
+      "variants": [
+        { "url": "https://earlymusicsa.org/wp-content/uploads/2023/07/Music-school-Edinburgh-3-300x86.jpg", "width": 300, "height": 86 },
+        { "url": "https://earlymusicsa.org/wp-content/uploads/2023/07/Music-school-Edinburgh-3-768x219.jpg", "width": 768, "height": 219 },
+        { "url": "https://earlymusicsa.org/wp-content/uploads/2023/07/Music-school-Edinburgh-3-1024x293.jpg", "width": 1024, "height": 293 },
+        { "url": "https://earlymusicsa.org/wp-content/uploads/2023/07/Music-school-Edinburgh-3.jpg", "width": 1400, "height": 400 }
+      ]
+    },
+    "body": [
+      "Early Music San Antonio is a website maintained by volunteers who seek to expand audience awareness of performances in the San Antonio area. We believe that many people would like to hear Early Music, but have sometimes not been aware of what is happening. We believe the more people become aware, the more the audience will grow, and that will help everyone: the performers, audiences, and the community.",
+      "This accessible site can help everyone find information about attending the events that are listed. That helps both the music community and the community at large.",
+      "We hope you will visit regularly to learn about upcoming events, and spread the word. If you have an event of Medieval, Renaissance, or Baroque music that you would like to see listed, you can submit it through <a href=\"submit.html\">our form</a>.",
+      "If you are scheduling events, you can gain a larger audience by using this site to look for open dates."
+    ]
+  }
+}

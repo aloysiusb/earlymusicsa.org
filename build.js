@@ -658,24 +658,40 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0, { nextEvent: upcomin
   }
 
   // --- static pages -----------------------------------------------------
+  // Interior pages keep the sidebar calendar, as the live site does.
+  // The page title sits in its own row spanning the container, not inside the
+  // article column — which is how the live site fits a long title on one line.
   const simplePage = (file, title, current, inner) => write(file, page({
     title, current,
-    body: `<div class="container content"><div class="primary">
-  <h1 class="site-heading">${esc(title)}</h1>
-  ${inner}
-</div></div>`,
+    body: `<div class="container page-header">
+  <h1 class="page-title">${esc(title)}</h1>
+</div>
+<div class="container content">
+  <div class="primary">
+    ${inner}
+  </div>
+  <aside class="sidebar">${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}</aside>
+</div>`,
   }));
 
-  await simplePage('about.html', 'About', 'about.html', `
-  <p>${esc(SITE_NAME)} is maintained by volunteers who seek to expand audience
-  awareness of performances in the San Antonio area. We believe many people
-  would like to hear early music but have not always been aware of what is
-  happening &mdash; and that the more people know, the more the audience grows,
-  which helps everyone: performers, audiences, and the community.</p>
-  <p>If you have an event of Medieval, Renaissance or Baroque music you would
-  like listed, please <a href="submit.html">send it to us</a>. Listings are free.</p>
-  <p>If you are scheduling events, you can reach a larger audience by checking
-  this site for open dates.</p>`);
+  // Copy lives in seed/pages.json so it can be edited without touching code.
+  const pages = JSON.parse(await readFile('seed/pages.json', 'utf8'));
+  const about = pages.about;
+
+  const hero = about.hero && {
+    image: about.hero.full,
+    imageAlt: about.hero.alt,
+    imageWidth: about.hero.width,
+    imageHeight: about.hero.height,
+    imageVariants: about.hero.variants,
+  };
+
+  await simplePage('about.html', about.title, 'about.html',
+    `${hero ? `<div class="page-hero">${responsiveImg(hero, {
+      sizes: '(max-width: 900px) 92vw, 698px', depth: 0, eager: true })}</div>` : ''}
+    <div class="page-prose">
+      ${about.body.map((p) => `<p>${p}</p>`).join('\n      ')}
+    </div>`);
 
   await simplePage('submit.html', 'Submit Your Event', 'submit.html', `
   <p>Listings are free. We list concerts of Medieval, Renaissance and Baroque

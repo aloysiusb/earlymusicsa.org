@@ -39,6 +39,12 @@
   --h1-size-mobile: 27.58px;
   --h1-weight: 500;
 
+  /* Interior pages use the theme's page title, which is larger and a shade
+     lighter than the gold used for headings inside the home page content. */
+  --page-title-size: 47.68px;
+  --page-title-size-mobile: 30px;
+  --page-title-color: #aa8b00;
+
   --h2-size: 28.64px;
   --h2-size-mobile: 22px;
   --h2-weight: 300;           /* section headings are light */
@@ -80,6 +86,9 @@
   --banner-reserve: var(--banner-height);
   --logo-width: 205px;
   --logo-height: 150px;
+
+  --hero-radius: 3px;
+  --measure: 62ch;
 
   --card-pad: 20px;
   --card-pad-sidebar: 15px;
@@ -243,6 +252,36 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   text-transform: uppercase;
   margin-bottom: 32.52px;
 }
+
+/* Its own row above the two columns, so a long title still sets on one line. */
+.page-header { padding-top: var(--content-top); }
+
+.page-title {
+  font-size: var(--page-title-size);
+  font-weight: var(--h1-weight);
+  line-height: 1;
+  color: var(--page-title-color);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+/* The title row already provides the top spacing on these pages. */
+.page-header + .content .primary,
+.page-header + .content .sidebar { margin-top: 30px; }
+
+.page-hero {
+  margin-bottom: 26px;
+  border-radius: var(--hero-radius);
+  overflow: hidden;
+}
+.page-hero img { width: 100%; height: auto; }
+
+/* Body copy on the hand-written pages, kept to a readable measure. */
+.page-prose { max-width: var(--measure); }
+.page-prose p { margin: 0 0 1.1em; }
+.page-prose p:last-child { margin-bottom: 0; }
+.page-prose a { color: var(--gold); }
+.page-prose a:hover { color: var(--gold-deep); }
 
 .section-heading,
 .widget-title {
@@ -576,6 +615,7 @@ body:has(.event-modal:target) { overflow: hidden; }
   :root { --container-pad: var(--container-pad-mobile); }
 
   .site-heading { font-size: var(--h1-size-mobile); }
+  .page-title { font-size: var(--page-title-size-mobile); }
   .section-heading, .widget-title { font-size: var(--h2-size-mobile); }
 
   .nav-toggle-label { display: block; }

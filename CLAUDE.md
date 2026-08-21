@@ -23,6 +23,11 @@ needs that.
 - **Phase 1, content migration — done.** `scrape.js` pulled the complete archive.
 - **Phase 2, static site — first pass done.** `build.js` generates the whole
   public site. Listings, calendar, archive and event pages all work.
+- **About page done** (2026-08-21), matched to the live one.
+- **Deploy:** `render.yaml` is in place. One-click blueprint link:
+  https://render.com/deploy?repo=https://github.com/aloysiusb/earlymusicsa.org
+  Render runs `node build.js` and serves `dist/` on the free static tier;
+  every push to `main` redeploys. Verified to build from a clean clone.
 - **Still to do:** the submission form + moderation server, real contact
   details, search, and filtering by type/venue/organizer.
 
@@ -36,6 +41,8 @@ assets/style.css     the entire design; every value is a custom property
 seed/masters.json    EventON saved-location + saved-organizer lists, read from
                      the live /submit-your-event/ form on 2026-08-19
 seed/aliases.json    hand-curated merges for duplicate EventON records
+seed/pages.json      copy + hero images for hand-written pages (About, etc.)
+render.yaml          Render blueprint: build to dist/, serve as a static site
 data/                the export (committed — this is the point of the repo)
 media/               948 mirrored images incl. every size variant (47 MB)
 cache/               raw event-page HTML, gitignored, delete to re-pull

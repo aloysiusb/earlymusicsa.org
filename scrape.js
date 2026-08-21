@@ -613,8 +613,15 @@ async function main() {
 
   if (WANT_IMAGES) {
     await mkdir('media', { recursive: true });
+    // Hero images for the hand-written pages, listed in seed/pages.json.
+    const pages = JSON.parse(await readFile('seed/pages.json', 'utf8'));
+    const heroUrls = Object.entries(pages)
+      .filter(([k]) => !k.startsWith('_'))
+      .flatMap(([, p]) => p.hero ? [p.hero.full, ...(p.hero.variants || []).map((v) => v.url)] : []);
+
     const urls = [...new Set([
       ...events.flatMap((e) => [e.image, ...(e.imageVariants || []).map((v) => v.url)]),
+      ...heroUrls,
       // Theme assets the design depends on. The header banner lives on a
       // leftover Bluehost staging domain, so mirroring it matters more than most.
       'https://earlymusicsa.org/wp-content/uploads/2023/07/Early-Music-SA-Logo-wt.png',
