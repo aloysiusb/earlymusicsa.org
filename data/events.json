@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-21T01:03:03.392Z",
+  "scrapedAt": "2026-08-22T16:51:40.422Z",
   "source": "https://earlymusicsa.org",
   "timezone": "America/Chicago",
   "events": [
@@ -14,6 +14,8 @@
       "endUnix": 1789189140,
       "allDay": false,
       "instances": null,
+      "color": "#4809e6",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -92,6 +94,8 @@
           "endUnix": 1788575400
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -170,6 +174,8 @@
           "endUnix": 1777689000
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -235,6 +241,8 @@
       "endUnix": 1773567900,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -290,6 +298,8 @@
       "endUnix": 1768172400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "219",
         "name": "Baroque Concerti",
@@ -368,6 +378,8 @@
           "endUnix": 1768620600
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -429,6 +441,8 @@
       "endUnix": 1766123940,
       "allDay": false,
       "instances": null,
+      "color": "#28ab2a",
+      "textTone": "dark",
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -497,6 +511,8 @@
           "endUnix": 1763170200
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -572,6 +588,8 @@
       "endUnix": 1761886740,
       "allDay": false,
       "instances": null,
+      "color": "#862bad",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -622,6 +640,8 @@
       "endUnix": 1761368340,
       "allDay": false,
       "instances": null,
+      "color": "#8330ad",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -672,6 +692,8 @@
       "endUnix": 1760763540,
       "allDay": false,
       "instances": null,
+      "color": "#7e37db",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -732,6 +754,8 @@
       "endUnix": 1760299200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "7",
         "name": "St. Paul's Episcopal Church",
@@ -796,6 +820,8 @@
           "endUnix": 1760149800
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -870,6 +896,8 @@
           "endUnix": 1757730600
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -943,6 +971,8 @@
           "endUnix": 1746239400
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1009,6 +1039,8 @@
       "endUnix": 1745031600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -1087,6 +1119,8 @@
           "endUnix": 1741404600
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1160,6 +1194,8 @@
           "endUnix": 1738985400
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1228,6 +1264,8 @@
           "endUnix": 1736566200
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1293,6 +1331,8 @@
       "endUnix": 1734057000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "198",
         "name": "Betty Kelso Center, San Antonio Botanical Garden",
@@ -1362,6 +1402,8 @@
       "endUnix": 1733972400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "196",
         "name": "Tobin Center for the Performing Arts",
@@ -1432,6 +1474,8 @@
       "endUnix": 1729994400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -1500,6 +1544,8 @@
           "endUnix": 1730514600
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1577,6 +1623,8 @@
           "endUnix": 1726281000
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1638,6 +1686,8 @@
       "endUnix": 1723413600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "191",
         "name": "Shepherd King Lutheran Church",
@@ -1726,6 +1776,8 @@
           "endUnix": 1714185000
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1791,6 +1843,8 @@
       "endUnix": 1710039600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -1860,6 +1914,8 @@
           "endUnix": 1709351100
         }
       ],
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -1910,6 +1966,8 @@
       "endUnix": 1708297200,
       "allDay": false,
       "instances": null,
+      "color": "#0223b5",
+      "textTone": "dark",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -1975,6 +2033,8 @@
       "endUnix": 1705275000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": null,
       "organizer": {
         "id": "192",
@@ -2033,6 +2093,8 @@
       "endUnix": 1704088200,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2078,6 +2140,8 @@
       "endUnix": 1701064200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2123,6 +2187,8 @@
       "endUnix": 1699835400,
       "allDay": false,
       "instances": null,
+      "color": "#605506",
+      "textTone": "dark",
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -2178,6 +2244,8 @@
       "endUnix": 1699831800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "191",
         "name": "Shepherd King Lutheran Church",
@@ -2248,6 +2316,8 @@
       "endUnix": 1699225200,
       "allDay": false,
       "instances": null,
+      "color": "#f7d366",
+      "textTone": "light",
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -2308,6 +2378,8 @@
       "endUnix": 1698641400,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2353,6 +2425,8 @@
       "endUnix": 1695617400,
       "allDay": false,
       "instances": null,
+      "color": "#a5bdbc",
+      "textTone": "light",
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2398,6 +2472,8 @@
       "endUnix": 1694667000,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": null,
       "organizer": null,
       "types": [
@@ -2455,6 +2531,8 @@
       "endUnix": 1693198200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2510,6 +2588,8 @@
       "endUnix": 1692655200,
       "allDay": false,
       "instances": null,
+      "color": "#a1b7bd",
+      "textTone": "light",
       "location": {
         "id": "45",
         "name": "Shepherd of the Hills Lutheran Church",
@@ -2575,6 +2655,8 @@
       "endUnix": 1690779000,
       "allDay": false,
       "instances": null,
+      "color": "#a5bdbc",
+      "textTone": "light",
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2620,6 +2702,8 @@
       "endUnix": 1689159000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": null,
       "organizer": {
         "id": "43",
@@ -2672,6 +2756,8 @@
       "endUnix": 1687755000,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2717,6 +2803,8 @@
       "endUnix": 1685335800,
       "allDay": false,
       "instances": null,
+      "color": "#a5bdbc",
+      "textTone": "light",
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2762,6 +2850,8 @@
       "endUnix": 1682916600,
       "allDay": false,
       "instances": null,
+      "color": "#a5bdbc",
+      "textTone": "light",
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2817,6 +2907,8 @@
       "endUnix": 1679892600,
       "allDay": false,
       "instances": null,
+      "color": "#a5bdbc",
+      "textTone": "light",
       "location": {
         "id": "54",
         "name": "Bethany Congregational Church",
@@ -2862,6 +2954,8 @@
       "endUnix": 1678013400,
       "allDay": false,
       "instances": null,
+      "color": "#9ba89e",
+      "textTone": "light",
       "location": {
         "id": "15",
         "name": "Guadalupe Chapel at St. Mary's University",
@@ -2911,6 +3005,8 @@
       "endUnix": 1671429000,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "19",
         "name": "Bethany Garden United Church of Christ",
@@ -2960,6 +3056,8 @@
       "endUnix": 1669546200,
       "allDay": false,
       "instances": null,
+      "color": "#c0c4c0",
+      "textTone": "light",
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -3009,6 +3107,8 @@
       "endUnix": 1668423000,
       "allDay": false,
       "instances": null,
+      "color": "#bbc6c7",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -3063,6 +3163,8 @@
       "endUnix": 1664599800,
       "allDay": false,
       "instances": null,
+      "color": "#90c6c7",
+      "textTone": "light",
       "location": {
         "id": "53",
         "name": "Mission Concepción",
@@ -3132,6 +3234,8 @@
       "endUnix": 1661748600,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -3196,6 +3300,8 @@
       "endUnix": 1661143800,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "9",
         "name": "Laurel Heights United Methodist Church",
@@ -3250,6 +3356,8 @@
       "endUnix": 1655700600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -3299,6 +3407,8 @@
       "endUnix": 1651488600,
       "allDay": false,
       "instances": null,
+      "color": "#4bb5d8",
+      "textTone": "light",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -3358,6 +3468,8 @@
       "endUnix": 1647773400,
       "allDay": false,
       "instances": null,
+      "color": "#4bb5d8",
+      "textTone": "light",
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -3422,6 +3534,8 @@
       "endUnix": 1638078600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -3477,6 +3591,8 @@
       "endUnix": 1637560200,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -3541,6 +3657,8 @@
       "endUnix": 1636955400,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "22",
         "name": "Abiding Presence Lutheran Church",
@@ -3590,6 +3708,8 @@
       "endUnix": 1636955400,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -3635,6 +3755,8 @@
       "endUnix": 1636782600,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "26",
         "name": "San Antonio Museum of Art",
@@ -3694,6 +3816,8 @@
       "endUnix": 1636368600,
       "allDay": false,
       "instances": null,
+      "color": "#4bb5d8",
+      "textTone": "light",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -3753,6 +3877,8 @@
       "endUnix": 1633236600,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "16",
         "name": "Zion Lutheran Church",
@@ -3822,6 +3948,8 @@
       "endUnix": 1606042200,
       "allDay": false,
       "instances": null,
+      "color": "#8f8a2b",
+      "textTone": "light",
       "location": {
         "id": "21",
         "name": "Online at Filmed at Mission Concepcien",
@@ -3881,6 +4009,8 @@
       "endUnix": 1600599000,
       "allDay": false,
       "instances": null,
+      "color": "#8f8a2b",
+      "textTone": "light",
       "location": {
         "id": "7",
         "name": "St. Paul's Episcopal Church",
@@ -3940,6 +4070,8 @@
       "endUnix": 1591591800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "7",
         "name": "St. Paul's Episcopal Church",
@@ -4004,6 +4136,8 @@
       "endUnix": 1591527000,
       "allDay": false,
       "instances": null,
+      "color": "#4bb5d8",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -4068,6 +4202,8 @@
       "endUnix": 1587984600,
       "allDay": false,
       "instances": null,
+      "color": "#4bb5d8",
+      "textTone": "light",
       "location": {
         "id": "7",
         "name": "St. Paul's Episcopal Church",
@@ -4132,6 +4268,8 @@
       "endUnix": 1587898200,
       "allDay": false,
       "instances": null,
+      "color": "#4bb5d8",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -4196,6 +4334,8 @@
       "endUnix": 1581936600,
       "allDay": false,
       "instances": null,
+      "color": "#4bb5d8",
+      "textTone": "light",
       "location": {
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -4260,6 +4400,8 @@
       "endUnix": 1581850200,
       "allDay": false,
       "instances": null,
+      "color": "#4bb5d8",
+      "textTone": "light",
       "location": {
         "id": "18",
         "name": "Cathedral of St. Mary",
@@ -4324,6 +4466,8 @@
       "endUnix": 1581591000,
       "allDay": false,
       "instances": null,
+      "color": "#4bb5d8",
+      "textTone": "light",
       "location": {
         "id": "7",
         "name": "St. Paul's Episcopal Church",
@@ -4393,6 +4537,8 @@
       "endUnix": 1580622600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "28",
         "name": "Hill Country Youth Event Center",
@@ -4447,6 +4593,8 @@
       "endUnix": 1580017800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "28",
         "name": "Hill Country Youth Event Center",
@@ -4501,6 +4649,8 @@
       "endUnix": 1578894600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -4565,6 +4715,8 @@
       "endUnix": 1576475400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "32",
         "name": "St. Matthew's Episcopal Church",
@@ -4619,6 +4771,8 @@
       "endUnix": 1576389000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -4673,6 +4827,8 @@
       "endUnix": 1576302600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "35",
         "name": "St. John's United Methodist Church",
@@ -4727,6 +4883,8 @@
       "endUnix": 1574074200,
       "allDay": false,
       "instances": null,
+      "color": "#90c6c7",
+      "textTone": "light",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -4786,6 +4944,8 @@
       "endUnix": 1573969800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -4845,6 +5005,8 @@
       "endUnix": 1573365000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "36",
         "name": "Covenant Presbyterian Church",
@@ -4899,6 +5061,8 @@
       "endUnix": 1571568600,
       "allDay": false,
       "instances": null,
+      "color": "#dae3e2",
+      "textTone": "light",
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -4973,6 +5137,8 @@
       "endUnix": 1569214200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -5022,6 +5188,8 @@
       "endUnix": 1569149400,
       "allDay": false,
       "instances": null,
+      "color": "#a3c8cf",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -5071,6 +5239,8 @@
       "endUnix": 1568868600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "38",
         "name": "McAllister Auditorium",
@@ -5125,6 +5295,8 @@
       "endUnix": 1565585400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "39",
         "name": "Laurel Heights United Methodist Church",
@@ -5179,6 +5351,8 @@
       "endUnix": 1559537400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -5238,6 +5412,8 @@
       "endUnix": 1559435400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -5297,6 +5473,8 @@
       "endUnix": 1557597600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "36",
         "name": "Covenant Presbyterian Church",
@@ -5361,6 +5539,8 @@
       "endUnix": 1554670800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -5420,6 +5600,8 @@
       "endUnix": 1554597000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -5479,6 +5661,8 @@
       "endUnix": 1553385600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -5533,6 +5717,8 @@
       "endUnix": 1550883600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "111",
         "name": "St. Mark the Evangelist Catholic Church",
@@ -5582,6 +5768,8 @@
       "endUnix": 1550626200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "112",
         "name": "Ruth Taylor Recital Hall, Trinity University",
@@ -5622,6 +5810,8 @@
       "endUnix": 1550437200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -5671,6 +5861,8 @@
       "endUnix": 1550367000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "32",
         "name": "St. Matthew's Episcopal Church",
@@ -5725,6 +5917,8 @@
       "endUnix": 1548617400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "114",
         "name": "Barshop Jewish Community Center",
@@ -5774,6 +5968,8 @@
       "endUnix": 1548021600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -5838,6 +6034,8 @@
       "endUnix": 1547947800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -5897,6 +6095,8 @@
       "endUnix": 1541365200,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -5946,6 +6146,8 @@
       "endUnix": 1541293200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "115",
         "name": "San Fernando Cathedral",
@@ -6005,6 +6207,8 @@
       "endUnix": 1541291400,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -6054,6 +6258,8 @@
       "endUnix": 1541206800,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -6113,6 +6319,8 @@
       "endUnix": 1538870400,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -6172,6 +6380,8 @@
       "endUnix": 1537732800,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -6221,6 +6431,8 @@
       "endUnix": 1528692600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": null,
       "organizer": null,
       "types": [],
@@ -6263,6 +6475,8 @@
       "endUnix": 1527454800,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -6322,6 +6536,8 @@
       "endUnix": 1527379200,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -6386,6 +6602,8 @@
       "endUnix": 1526241600,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -6435,6 +6653,8 @@
       "endUnix": 1526169600,
       "allDay": false,
       "instances": null,
+      "color": "#fd9826",
+      "textTone": "light",
       "location": {
         "id": "32",
         "name": "St. Matthew's Episcopal Church",
@@ -6489,6 +6709,8 @@
       "endUnix": 1526148000,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "36",
         "name": "Covenant Presbyterian Church",
@@ -6543,6 +6765,8 @@
       "endUnix": 1524430800,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "9",
         "name": "Laurel Heights United Methodist Church",
@@ -6593,6 +6817,8 @@
       "endUnix": 1524427200,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -6647,6 +6873,8 @@
       "endUnix": 1524355200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -6701,6 +6929,8 @@
       "endUnix": 1523829600,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -6741,6 +6971,8 @@
       "endUnix": 1523736000,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -6800,6 +7032,8 @@
       "endUnix": 1523736000,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "6",
         "name": "Madison Square Presbyterian Church",
@@ -6859,6 +7093,8 @@
       "endUnix": 1523224800,
       "allDay": false,
       "instances": null,
+      "color": "#605506",
+      "textTone": "dark",
       "location": {
         "id": "118",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -6918,6 +7154,8 @@
       "endUnix": 1523224800,
       "allDay": false,
       "instances": null,
+      "color": "#605506",
+      "textTone": "dark",
       "location": {
         "id": "118",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -6977,6 +7215,8 @@
       "endUnix": 1523217600,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7031,6 +7271,8 @@
       "endUnix": 1523217600,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7085,6 +7327,8 @@
       "endUnix": 1523149200,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7139,6 +7383,8 @@
       "endUnix": 1523149200,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7193,6 +7439,8 @@
       "endUnix": 1523149200,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7247,6 +7495,8 @@
       "endUnix": 1521673200,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7292,6 +7542,8 @@
       "endUnix": 1521673200,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7337,6 +7589,8 @@
       "endUnix": 1521655200,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7382,6 +7636,8 @@
       "endUnix": 1521655200,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7427,6 +7683,8 @@
       "endUnix": 1521651600,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7472,6 +7730,8 @@
       "endUnix": 1521651600,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -7517,6 +7777,8 @@
       "endUnix": 1520200800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "31",
         "name": "Mission Concepción",
@@ -7581,6 +7843,8 @@
       "endUnix": 1520200800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "31",
         "name": "Mission Concepción",
@@ -7645,6 +7909,8 @@
       "endUnix": 1520125200,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7704,6 +7970,8 @@
       "endUnix": 1520125200,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7763,6 +8031,8 @@
       "endUnix": 1518996600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "120",
         "name": "San Antonio Museum of Art - Great Hall",
@@ -7817,6 +8087,8 @@
       "endUnix": 1518987600,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7881,6 +8153,8 @@
       "endUnix": 1518919200,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -7945,6 +8219,8 @@
       "endUnix": 1518382800,
       "allDay": false,
       "instances": null,
+      "color": "#605506",
+      "textTone": "dark",
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -7999,6 +8275,8 @@
       "endUnix": 1518310800,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -8053,6 +8331,8 @@
       "endUnix": 1518310800,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -8107,6 +8387,8 @@
       "endUnix": 1517778000,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "123",
         "name": "Christ Episcopal Church",
@@ -8161,6 +8443,8 @@
       "endUnix": 1516572000,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "31",
         "name": "Mission Concepción",
@@ -8220,6 +8504,8 @@
       "endUnix": 1516496400,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8279,6 +8565,8 @@
       "endUnix": 1515877200,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -8319,6 +8607,8 @@
       "endUnix": 1515718800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -8359,6 +8649,8 @@
       "endUnix": 1515456000,
       "allDay": false,
       "instances": null,
+      "color": "#8f892b",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -8399,6 +8691,8 @@
       "endUnix": 1515272400,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8458,6 +8752,8 @@
       "endUnix": 1515204000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8517,6 +8813,8 @@
       "endUnix": 1512338400,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "36",
         "name": "Covenant Presbyterian Church",
@@ -8571,6 +8869,8 @@
       "endUnix": 1510521300,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "124",
         "name": "Temple Beth-El",
@@ -8620,6 +8920,8 @@
       "endUnix": 1509310800,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "31",
         "name": "Mission Concepción",
@@ -8679,6 +8981,8 @@
       "endUnix": 1509235200,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8738,6 +9042,8 @@
       "endUnix": 1508097600,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8787,6 +9093,8 @@
       "endUnix": 1508004000,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8836,6 +9144,8 @@
       "endUnix": 1507492800,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -8885,6 +9195,8 @@
       "endUnix": 1507420800,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -8934,6 +9246,8 @@
       "endUnix": 1506288600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "126",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -8993,6 +9307,8 @@
       "endUnix": 1505678400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9042,6 +9358,8 @@
       "endUnix": 1505606400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -9091,6 +9409,8 @@
       "endUnix": 1504468800,
       "allDay": false,
       "instances": null,
+      "color": "#8f892b",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -9150,6 +9470,8 @@
       "endUnix": 1504400400,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -9209,6 +9531,8 @@
       "endUnix": 1503189000,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "127",
         "name": "St. Mary's University (Treadaway Hall)",
@@ -9263,6 +9587,8 @@
       "endUnix": 1494792000,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -9312,6 +9638,8 @@
       "endUnix": 1494737400,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -9361,6 +9689,8 @@
       "endUnix": 1494189000,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "128",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -9420,6 +9750,8 @@
       "endUnix": 1494118800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -9479,6 +9811,8 @@
       "endUnix": 1493514000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "129",
         "name": "St. Alphonsus Catholic Church",
@@ -9519,6 +9853,8 @@
       "endUnix": 1491195000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9593,6 +9929,8 @@
       "endUnix": 1491108600,
       "allDay": false,
       "instances": null,
+      "color": "#8c7200",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9667,6 +10005,8 @@
       "endUnix": 1490565600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "130",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -9712,6 +10052,8 @@
       "endUnix": 1490558400,
       "allDay": false,
       "instances": null,
+      "color": "#8c7200",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9761,6 +10103,8 @@
       "endUnix": 1490490000,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "131",
         "name": "Cathedral of St. Mary",
@@ -9810,6 +10154,8 @@
       "endUnix": 1489957200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "132",
         "name": "St. Mary's Catholic Church",
@@ -9869,6 +10215,8 @@
       "endUnix": 1489881600,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -9928,6 +10276,8 @@
       "endUnix": 1488751200,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -9966,6 +10316,8 @@
       "endUnix": 1488679200,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10004,6 +10356,8 @@
       "endUnix": 1487538000,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10053,6 +10407,8 @@
       "endUnix": 1487469600,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10102,6 +10458,8 @@
       "endUnix": 1485723600,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "133",
         "name": "UTSA Music Department Recital Hall",
@@ -10161,6 +10519,8 @@
       "endUnix": 1485655200,
       "allDay": false,
       "instances": null,
+      "color": "#fd9826",
+      "textTone": "light",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -10220,6 +10580,8 @@
       "endUnix": 1483912800,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10294,6 +10656,8 @@
       "endUnix": 1483840800,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10368,6 +10732,8 @@
       "endUnix": 1481490000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -10422,6 +10788,8 @@
       "endUnix": 1481421600,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -10476,6 +10844,8 @@
       "endUnix": 1481335200,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -10530,6 +10900,8 @@
       "endUnix": 1478469600,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -10594,6 +10966,8 @@
       "endUnix": 1478394000,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -10658,6 +11032,8 @@
       "endUnix": 1478046600,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "112",
         "name": "Ruth Taylor Recital Hall, Trinity University",
@@ -10708,6 +11084,8 @@
       "endUnix": 1477857600,
       "allDay": false,
       "instances": null,
+      "color": "#fd9826",
+      "textTone": "light",
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -10757,6 +11135,8 @@
       "endUnix": 1477789200,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "134",
         "name": "Congregation Beth Israel",
@@ -10806,6 +11186,8 @@
       "endUnix": 1477774800,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "135",
         "name": "Estate Sale Gallery at Los Patios",
@@ -10875,6 +11257,8 @@
       "endUnix": 1474502400,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -10944,6 +11328,8 @@
       "endUnix": 1474416000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "138",
         "name": "San Antonio Museum of Art, Vice-Regal Gallery",
@@ -11013,6 +11399,8 @@
       "endUnix": 1473019200,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -11062,6 +11450,8 @@
       "endUnix": 1472947200,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -11111,6 +11501,8 @@
       "endUnix": 1472418000,
       "allDay": false,
       "instances": null,
+      "color": "#605506",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11180,6 +11572,8 @@
       "endUnix": 1472346000,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11249,6 +11643,8 @@
       "endUnix": 1464566400,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "96",
         "name": "San Fernando Cathedral",
@@ -11293,6 +11689,8 @@
       "endUnix": 1462737600,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11347,6 +11745,8 @@
       "endUnix": 1462669200,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -11396,6 +11796,8 @@
       "endUnix": 1459713600,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11450,6 +11852,8 @@
       "endUnix": 1459645200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -11504,6 +11908,8 @@
       "endUnix": 1457301600,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11553,6 +11959,8 @@
       "endUnix": 1457298000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "140",
         "name": "Alvarez Studio Theatre, Tobin Center",
@@ -11602,6 +12010,8 @@
       "endUnix": 1457229600,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11656,6 +12066,8 @@
       "endUnix": 1457227800,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "140",
         "name": "Alvarez Studio Theatre, Tobin Center",
@@ -11705,6 +12117,8 @@
       "endUnix": 1456092000,
       "allDay": false,
       "instances": null,
+      "color": "#605506",
+      "textTone": "dark",
       "location": {
         "id": "142",
         "name": "Ursuline Chapel at the Southwest School of Art",
@@ -11769,6 +12183,8 @@
       "endUnix": 1456020000,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "143",
         "name": "First Presbyterian Church, Austin",
@@ -11828,6 +12244,8 @@
       "endUnix": 1455483600,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11877,6 +12295,8 @@
       "endUnix": 1455390000,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -11931,6 +12351,8 @@
       "endUnix": 1455238800,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "144",
         "name": "Alamo Heights United Methodist Church",
@@ -11981,6 +12403,8 @@
       "endUnix": 1454882400,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -12040,6 +12464,8 @@
       "endUnix": 1454187600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -12090,6 +12516,8 @@
       "endUnix": 1454094000,
       "allDay": false,
       "instances": null,
+      "color": "#8f892b",
+      "textTone": "light",
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -12140,6 +12568,8 @@
       "endUnix": 1454031000,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -12190,6 +12620,8 @@
       "endUnix": 1454002200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -12240,6 +12672,8 @@
       "endUnix": 1453906800,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -12285,6 +12719,8 @@
       "endUnix": 1453838400,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -12335,6 +12771,8 @@
       "endUnix": 1453829400,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "146",
         "name": "UTSA Recital Hall",
@@ -12380,6 +12818,8 @@
       "endUnix": 1447624800,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -12444,6 +12884,8 @@
       "endUnix": 1447552800,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12508,6 +12950,8 @@
       "endUnix": 1445806800,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -12567,6 +13011,8 @@
       "endUnix": 1445734800,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -12626,6 +13072,8 @@
       "endUnix": 1435521600,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12675,6 +13123,8 @@
       "endUnix": 1435453200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12724,6 +13174,8 @@
       "endUnix": 1432501200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -12783,6 +13235,8 @@
       "endUnix": 1432425600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12847,6 +13301,8 @@
       "endUnix": 1431288000,
       "allDay": false,
       "instances": null,
+      "color": "#8f892b",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12901,6 +13357,8 @@
       "endUnix": 1431219600,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -12955,6 +13413,8 @@
       "endUnix": 1430683200,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13004,6 +13464,8 @@
       "endUnix": 1430614800,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "122",
         "name": "University Presbyterian Church",
@@ -13053,6 +13515,8 @@
       "endUnix": 1430085600,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -13107,6 +13571,8 @@
       "endUnix": 1426453200,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "132",
         "name": "St. Mary's Catholic Church",
@@ -13166,6 +13632,8 @@
       "endUnix": 1426381200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13225,6 +13693,8 @@
       "endUnix": 1425841200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "148",
         "name": "McNay Art Museum",
@@ -13279,6 +13749,8 @@
       "endUnix": 1424638800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13317,6 +13789,8 @@
       "endUnix": 1424637000,
       "allDay": false,
       "instances": null,
+      "color": "#8c7200",
+      "textTone": "dark",
       "location": {
         "id": "149",
         "name": "The Empire Theatre",
@@ -13381,6 +13855,8 @@
       "endUnix": 1424570400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13419,6 +13895,8 @@
       "endUnix": 1424570400,
       "allDay": false,
       "instances": null,
+      "color": "#8c7200",
+      "textTone": "dark",
       "location": {
         "id": "149",
         "name": "The Empire Theatre",
@@ -13483,6 +13961,8 @@
       "endUnix": 1423429200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13532,6 +14012,8 @@
       "endUnix": 1423360800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13581,6 +14063,8 @@
       "endUnix": 1420405200,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13625,6 +14109,8 @@
       "endUnix": 1420336800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13669,6 +14155,8 @@
       "endUnix": 1418590800,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -13728,6 +14216,8 @@
       "endUnix": 1418590800,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -13782,6 +14272,8 @@
       "endUnix": 1418522400,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -13841,6 +14333,8 @@
       "endUnix": 1418436000,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -13900,6 +14394,8 @@
       "endUnix": 1416618000,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -13938,6 +14434,8 @@
       "endUnix": 1416175200,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "151",
         "name": "Mission Concepción",
@@ -13997,6 +14495,8 @@
       "endUnix": 1416103200,
       "allDay": false,
       "instances": null,
+      "color": "#fd9826",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14056,6 +14556,8 @@
       "endUnix": 1414353600,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -14105,6 +14607,8 @@
       "endUnix": 1414285200,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -14154,6 +14658,8 @@
       "endUnix": 1413748800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14198,6 +14704,8 @@
       "endUnix": 1413680400,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14242,6 +14750,8 @@
       "endUnix": 1413147600,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "152",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -14296,6 +14806,8 @@
       "endUnix": 1412539200,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14355,6 +14867,8 @@
       "endUnix": 1412470800,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14414,6 +14928,8 @@
       "endUnix": 1412380800,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -14454,6 +14970,8 @@
       "endUnix": 1410724800,
       "allDay": false,
       "instances": null,
+      "color": "#fd9826",
+      "textTone": "light",
       "location": {
         "id": "153",
         "name": "Incarnate Word Motherhouse Chapel",
@@ -14523,6 +15041,8 @@
       "endUnix": 1410724800,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -14567,6 +15087,8 @@
       "endUnix": 1410656400,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "37",
         "name": "St. Martin's Lutheran Church",
@@ -14611,6 +15133,8 @@
       "endUnix": 1410051600,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14651,6 +15175,8 @@
       "endUnix": 1410051600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14691,6 +15217,8 @@
       "endUnix": 1408914000,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -14750,6 +15278,8 @@
       "endUnix": 1404676800,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "156",
         "name": "Christ Episcopal Church",
@@ -14790,6 +15320,8 @@
       "endUnix": 1404072000,
       "allDay": false,
       "instances": null,
+      "color": "#605506",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14834,6 +15366,8 @@
       "endUnix": 1404003600,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -14878,6 +15412,8 @@
       "endUnix": 1401048000,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -14937,6 +15473,8 @@
       "endUnix": 1399237200,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -14986,6 +15524,8 @@
       "endUnix": 1399233600,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -15040,6 +15580,8 @@
       "endUnix": 1398628800,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -15099,6 +15641,8 @@
       "endUnix": 1398560400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -15163,6 +15707,8 @@
       "endUnix": 1396814400,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -15212,6 +15758,8 @@
       "endUnix": 1396746000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -15261,6 +15809,8 @@
       "endUnix": 1396209600,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -15315,6 +15865,8 @@
       "endUnix": 1396141200,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "131",
         "name": "Cathedral of St. Mary",
@@ -15369,6 +15921,8 @@
       "endUnix": 1395792000,
       "allDay": false,
       "instances": null,
+      "color": "#605506",
+      "textTone": "dark",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -15428,6 +15982,8 @@
       "endUnix": 1395619200,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "96",
         "name": "San Fernando Cathedral",
@@ -15467,6 +16023,8 @@
       "endUnix": 1395612000,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -15526,6 +16084,8 @@
       "endUnix": 1394398800,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "132",
         "name": "St. Mary's Catholic Church",
@@ -15566,6 +16126,8 @@
       "endUnix": 1394427000,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "132",
         "name": "St. Mary's Catholic Church",
@@ -15615,6 +16177,8 @@
       "endUnix": 1394395200,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -15674,6 +16238,8 @@
       "endUnix": 1393527600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "162",
         "name": "Trinity University - Ruth Taylor Recital Hall, Parker Chapel",
@@ -15717,6 +16283,8 @@
       "endUnix": 1393189200,
       "allDay": false,
       "instances": null,
+      "color": "#8f892b",
+      "textTone": "light",
       "location": {
         "id": "163",
         "name": "Coker United Methodist Church",
@@ -15781,6 +16349,8 @@
       "endUnix": 1393189200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "70",
         "name": "Coker United Methodist Church",
@@ -15840,6 +16410,8 @@
       "endUnix": 1393189200,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "163",
         "name": "Coker United Methodist Church",
@@ -15874,6 +16446,8 @@
       "endUnix": 1391736600,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "165",
         "name": "McAllister Auditorium",
@@ -15933,6 +16507,8 @@
       "endUnix": 1390770000,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -15992,6 +16568,8 @@
       "endUnix": 1390701600,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -16051,6 +16629,8 @@
       "endUnix": 1388970000,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "166",
         "name": "First Presbyterian Church Bryan",
@@ -16100,6 +16680,8 @@
       "endUnix": 1388887200,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -16144,6 +16726,8 @@
       "endUnix": 1388800800,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "160",
         "name": "First Presbyterian Church, Austin",
@@ -16193,6 +16777,8 @@
       "endUnix": 1387141200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -16257,6 +16843,8 @@
       "endUnix": 1387141200,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -16321,6 +16909,8 @@
       "endUnix": 1387141200,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -16359,6 +16949,8 @@
       "endUnix": 1387072800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -16423,6 +17015,8 @@
       "endUnix": 1387072800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "96",
         "name": "San Fernando Cathedral",
@@ -16466,6 +17060,8 @@
       "endUnix": 1386986400,
       "allDay": false,
       "instances": null,
+      "color": "#8f892b",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -16530,6 +17126,8 @@
       "endUnix": 1384889400,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "168",
         "name": "Tuesday Musical Club",
@@ -16570,6 +17168,8 @@
       "endUnix": 1384667400,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -16634,6 +17234,8 @@
       "endUnix": 1384667400,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -16689,6 +17291,8 @@
       "endUnix": 1384117200,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "169",
         "name": "Immaculate Conception Chapel at the Oblate School of Theology",
@@ -16738,6 +17342,8 @@
       "endUnix": 1384117200,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -16782,6 +17388,8 @@
       "endUnix": 1384117200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -16837,6 +17445,8 @@
       "endUnix": 1384048800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -16886,6 +17496,8 @@
       "endUnix": 1383701400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "97",
         "name": "Ruth Taylor Recital Hall, Trinity University",
@@ -16940,6 +17552,8 @@
       "endUnix": 1382300100,
       "allDay": false,
       "instances": null,
+      "color": "#8c7200",
+      "textTone": "dark",
       "location": {
         "id": "124",
         "name": "Temple Beth-El",
@@ -16985,6 +17599,8 @@
       "endUnix": 1381696200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "172",
         "name": "Travis Park United Methodist Church",
@@ -17023,6 +17639,8 @@
       "endUnix": 1381626000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "143",
         "name": "First Presbyterian Church, Austin",
@@ -17067,6 +17685,8 @@
       "endUnix": 1381593600,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "174",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -17121,6 +17741,8 @@
       "endUnix": 1381089600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "175",
         "name": "Gethsemane Lutheran Church",
@@ -17170,6 +17792,8 @@
       "endUnix": 1381021200,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "11",
         "name": "Redeemer Presbyterian Church",
@@ -17219,6 +17843,8 @@
       "endUnix": 1380488400,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "74",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -17273,6 +17899,8 @@
       "endUnix": 1380484800,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -17332,6 +17960,8 @@
       "endUnix": 1379880000,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -17375,6 +18005,8 @@
       "endUnix": 1379795400,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "176",
         "name": "Christus Heritage Hall, The Village at Incarnate Word",
@@ -17409,6 +18041,8 @@
       "endUnix": 1378564200,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "156",
         "name": "Christ Episcopal Church",
@@ -17452,6 +18086,8 @@
       "endUnix": 1378486800,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -17491,6 +18127,8 @@
       "endUnix": 1373832000,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -17530,6 +18168,8 @@
       "endUnix": 1370753400,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -17569,6 +18209,8 @@
       "endUnix": 1370667000,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -17608,6 +18250,8 @@
       "endUnix": 1370525400,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -17642,6 +18286,8 @@
       "endUnix": 1370494200,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -17681,6 +18327,8 @@
       "endUnix": 1370407800,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -17720,6 +18368,8 @@
       "endUnix": 1370321400,
       "allDay": false,
       "instances": null,
+      "color": "#fd9826",
+      "textTone": "light",
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -17759,6 +18409,8 @@
       "endUnix": 1368660600,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "180",
         "name": "Huebner Oaks 14, Cielo Vista 18, Cinemark McCreless",
@@ -17793,6 +18445,8 @@
       "endUnix": 1365969600,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -17847,6 +18501,8 @@
       "endUnix": 1363478400,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -17891,6 +18547,8 @@
       "endUnix": 1361548800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "188",
         "name": "Capital Music Center",
@@ -17929,6 +18587,8 @@
       "endUnix": 1355688000,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -17988,6 +18648,8 @@
       "endUnix": 1355086800,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "101",
         "name": "MISSION SAN JOSE",
@@ -18052,6 +18714,8 @@
       "endUnix": 1354411800,
       "allDay": false,
       "instances": null,
+      "color": "#605506",
+      "textTone": "dark",
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -18086,6 +18750,8 @@
       "endUnix": 1353891600,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "96",
         "name": "San Fernando Cathedral",
@@ -18120,6 +18786,8 @@
       "endUnix": 1353877200,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -18160,6 +18828,8 @@
       "endUnix": 1351990800,
       "allDay": false,
       "instances": null,
+      "color": "#a6bcbc",
+      "textTone": "light",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -18214,6 +18884,8 @@
       "endUnix": 1348462200,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -18278,6 +18950,8 @@
       "endUnix": 1342396800,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "72",
         "name": "First United Methodist Church",
@@ -18318,6 +18992,8 @@
       "endUnix": 1342378800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "72",
         "name": "First United Methodist Church",
@@ -18358,6 +19034,8 @@
       "endUnix": 1342310400,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "70",
         "name": "Coker United Methodist Church",
@@ -18398,6 +19076,8 @@
       "endUnix": 1342224000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "69",
         "name": "New Braunfels Presbyterian Church",
@@ -18438,6 +19118,8 @@
       "endUnix": 1342137600,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "70",
         "name": "Coker United Methodist Church",
@@ -18478,6 +19160,8 @@
       "endUnix": 1341777600,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -18532,6 +19216,8 @@
       "endUnix": 1340928000,
       "allDay": false,
       "instances": null,
+      "color": "#605506",
+      "textTone": "dark",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -18577,6 +19263,8 @@
       "endUnix": 1337299200,
       "allDay": false,
       "instances": null,
+      "color": "#0b2328",
+      "textTone": "dark",
       "location": {
         "id": "87",
         "name": "Southwest School of Art",
@@ -18626,6 +19314,8 @@
       "endUnix": 1332802800,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "183",
         "name": "San Antonio Museum of Art, Greek and Roman Galleries",
@@ -18670,6 +19360,8 @@
       "endUnix": 1330895700,
       "allDay": false,
       "instances": null,
+      "color": "#0a2228",
+      "textTone": "dark",
       "location": {
         "id": "124",
         "name": "Temple Beth-El",
@@ -18714,6 +19406,8 @@
       "endUnix": 1330812000,
       "allDay": false,
       "instances": null,
+      "color": "#05364d",
+      "textTone": "dark",
       "location": {
         "id": "72",
         "name": "First United Methodist Church",
@@ -18752,6 +19446,8 @@
       "endUnix": 1330738200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -18796,6 +19492,8 @@
       "endUnix": 1330235400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -18839,6 +19537,8 @@
       "endUnix": 1329685200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "101",
         "name": "MISSION SAN JOSE",
@@ -18888,6 +19588,8 @@
       "endUnix": 1329685200,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "101",
         "name": "MISSION SAN JOSE",
@@ -18937,6 +19639,8 @@
       "endUnix": 1329112200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -18980,6 +19684,8 @@
       "endUnix": 1329025800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "104",
         "name": "Northwest Hills United Methodist Church",
@@ -19023,6 +19729,8 @@
       "endUnix": 1323637200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "103",
         "name": "Chapel of the Incarnate Word",
@@ -19072,6 +19780,8 @@
       "endUnix": 1323464400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "101",
         "name": "MISSION SAN JOSE",
@@ -19136,6 +19846,8 @@
       "endUnix": 1322459400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "17",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -19190,6 +19902,8 @@
       "endUnix": 1321249800,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "26",
         "name": "San Antonio Museum of Art",
@@ -19244,6 +19958,8 @@
       "endUnix": 1320613200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -19293,6 +20009,8 @@
       "endUnix": 1320645000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -19347,6 +20065,8 @@
       "endUnix": 1320555000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "98",
         "name": "St. Louis Catholic Church",
@@ -19401,6 +20121,8 @@
       "endUnix": 1319345400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "96",
         "name": "San Fernando Cathedral",
@@ -19450,6 +20172,8 @@
       "endUnix": 1319313600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "97",
         "name": "Ruth Taylor Recital Hall, Trinity University",
@@ -19490,6 +20214,8 @@
       "endUnix": 1318725000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "95",
         "name": "The Little Church of La Villita",
@@ -19540,6 +20266,8 @@
       "endUnix": 1318654200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -19590,6 +20318,8 @@
       "endUnix": 1318135800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -19644,6 +20374,8 @@
       "endUnix": 1317703800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "93",
         "name": "St. Austin Catholic Church",
@@ -19698,6 +20430,8 @@
       "endUnix": 1313297400,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
@@ -19743,6 +20477,8 @@
       "endUnix": 1312692600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
@@ -19792,6 +20528,8 @@
       "endUnix": 1312087800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
@@ -19837,6 +20575,8 @@
       "endUnix": 1311483000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "92",
         "name": "Our Lady's Chapel, University of the Incarnate Word",
@@ -19882,6 +20622,8 @@
       "endUnix": 1310929200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "72",
         "name": "First United Methodist Church",
@@ -19927,6 +20669,8 @@
       "endUnix": 1310878200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "70",
         "name": "Coker United Methodist Church",
@@ -19972,6 +20716,8 @@
       "endUnix": 1310331600,
       "allDay": false,
       "instances": null,
+      "color": "#8c7200",
+      "textTone": "dark",
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -20012,6 +20758,8 @@
       "endUnix": 1309118400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -20052,6 +20800,8 @@
       "endUnix": 1305489600,
       "allDay": false,
       "instances": null,
+      "color": "#8c7200",
+      "textTone": "dark",
       "location": null,
       "organizer": {
         "id": "91",
@@ -20083,6 +20833,8 @@
       "endUnix": 1305419400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -20127,6 +20879,8 @@
       "endUnix": 1304280000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -20172,6 +20926,8 @@
       "endUnix": 1304211600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "34",
         "name": "First English Lutheran Church",
@@ -20217,6 +20973,8 @@
       "endUnix": 1303000200,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": {
         "id": "41",
         "name": "Mission Concepción",
@@ -20261,6 +21019,8 @@
       "endUnix": 1301697000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "87",
         "name": "Southwest School of Art",
@@ -20330,6 +21090,8 @@
       "endUnix": 1300651200,
       "allDay": false,
       "instances": null,
+      "color": "#b6ccc4",
+      "textTone": "light",
       "location": {
         "id": "26",
         "name": "San Antonio Museum of Art",
@@ -20375,6 +21137,8 @@
       "endUnix": 1298613000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -20425,6 +21189,8 @@
       "endUnix": 1297630800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "85",
         "name": "McNay Art Museum",
@@ -20489,6 +21255,8 @@
       "endUnix": 1294606800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -20538,6 +21306,8 @@
       "endUnix": 1294538400,
       "allDay": false,
       "instances": null,
+      "color": "#b4d0db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -20587,6 +21357,8 @@
       "endUnix": 1294465800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "82",
         "name": "First Baptist Church,<br>Unity Hall",
@@ -20641,6 +21413,8 @@
       "endUnix": 1292792400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "14",
         "name": "St. John's Lutheran Church",
@@ -20681,6 +21455,8 @@
       "endUnix": 1292737800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "81",
         "name": "Mission San Juan Capistrano",
@@ -20726,6 +21502,8 @@
       "endUnix": 1292651400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "81",
         "name": "Mission San Juan Capistrano",
@@ -20771,6 +21549,8 @@
       "endUnix": 1292187600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "80",
         "name": "Chapel of the Incarnate Word",
@@ -20830,6 +21610,8 @@
       "endUnix": 1291582800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "79",
         "name": "The Union Church Building",
@@ -20885,6 +21667,8 @@
       "endUnix": 1289800200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "78",
         "name": "St. Luke's Episcopal Church",
@@ -20935,6 +21719,8 @@
       "endUnix": 1289768400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "26",
         "name": "San Antonio Museum of Art",
@@ -20999,6 +21785,8 @@
       "endUnix": 1286167800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "76",
         "name": "Bates Recital Hall",
@@ -21042,6 +21830,8 @@
       "endUnix": 1284871800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -21096,6 +21886,8 @@
       "endUnix": 1284871800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "74",
         "name": "Our Lady of the Atonement Catholic Church",
@@ -21165,6 +21957,8 @@
       "endUnix": 1279515000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "72",
         "name": "First United Methodist Church",
@@ -21214,6 +22008,8 @@
       "endUnix": 1279428600,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "70",
         "name": "Coker United Methodist Church",
@@ -21267,6 +22063,8 @@
       "endUnix": 1279342200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "69",
         "name": "New Braunfels Presbyterian Church",
@@ -21316,6 +22114,8 @@
       "endUnix": 1278878400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "56",
         "name": "Christ Lutheran Church",
@@ -21361,6 +22161,8 @@
       "endUnix": 1277700600,
       "allDay": false,
       "instances": null,
+      "color": "#9bb0ad",
+      "textTone": "light",
       "location": {
         "id": "12",
         "name": "Christ Lutheran Church of Alamo Heights",
@@ -21399,6 +22201,8 @@
       "endUnix": 1276459200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "66",
         "name": "Concordia University",
@@ -21437,6 +22241,8 @@
       "endUnix": 1273899000,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "64",
         "name": "Southwest School of Art",
@@ -21496,6 +22302,8 @@
       "endUnix": 1272257400,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "24",
         "name": "St. Mark's Episcopal Church",
@@ -21550,6 +22358,8 @@
       "endUnix": 1271566200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "62",
         "name": "Ducloux Hall at Austin Lyric Opera",
@@ -21604,6 +22414,8 @@
       "endUnix": 1271566200,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "61",
         "name": "Basilica of the National Shrine of the Little Flower",
@@ -21654,6 +22466,8 @@
       "endUnix": 1271479800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "55",
         "name": "Bates Recital Hall",
@@ -21704,6 +22518,8 @@
       "endUnix": 1271479800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "58",
         "name": "First Presbyterian Church",
@@ -21758,6 +22574,8 @@
       "endUnix": 1271479800,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": {
         "id": "56",
         "name": "Christ Lutheran Church",
@@ -21812,6 +22630,8 @@
       "endUnix": 1271047800,
       "allDay": false,
       "instances": null,
+      "color": "#97bfbe",
+      "textTone": "light",
       "location": {
         "id": "56",
         "name": "Christ Lutheran Church",
@@ -21861,6 +22681,8 @@
       "endUnix": null,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": null,
       "organizer": null,
       "types": [],
@@ -21887,6 +22709,8 @@
       "endUnix": null,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": null,
       "organizer": null,
       "types": [],
@@ -21913,6 +22737,8 @@
       "endUnix": null,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": null,
       "organizer": null,
       "types": [],
@@ -21939,6 +22765,8 @@
       "endUnix": null,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": null,
       "organizer": null,
       "types": [],
@@ -21965,6 +22793,8 @@
       "endUnix": null,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": null,
       "organizer": null,
       "types": [],
@@ -21991,6 +22821,8 @@
       "endUnix": null,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": null,
       "organizer": null,
       "types": [],
@@ -22017,6 +22849,8 @@
       "endUnix": null,
       "allDay": false,
       "instances": null,
+      "color": "#8c7200",
+      "textTone": "dark",
       "location": null,
       "organizer": null,
       "types": [],
@@ -22043,6 +22877,8 @@
       "endUnix": null,
       "allDay": false,
       "instances": null,
+      "color": "#4a035c",
+      "textTone": "dark",
       "location": null,
       "organizer": null,
       "types": [],
@@ -22069,6 +22905,8 @@
       "endUnix": null,
       "allDay": false,
       "instances": null,
+      "color": "#b3d1db",
+      "textTone": "light",
       "location": null,
       "organizer": null,
       "types": [],

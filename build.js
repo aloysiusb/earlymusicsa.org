@@ -149,6 +149,25 @@ const longDate = (p) => p
   ? `${DOW[p.weekday]}, ${MONTHS[p.month - 1]} ${p.day}, ${p.year}`
   : 'Date to be announced';
 
+/**
+ * Each event carries its own card colour, which rides in as a custom property
+ * so it is a local override of the same token the rest of the design uses.
+ *
+ * The text stays white. EventON's clrW/clrD classes only choose a text colour
+ * when the calendar runs in `etttc_auto` mode; this site runs `etttc_custom`,
+ * which pins every card's text to white regardless. `textTone` is still
+ * exported in the data — set CARD_TEXT_AUTO to honour it and get dark text on
+ * the pale cards, at the cost of not matching the live site.
+ */
+const CARD_TEXT_AUTO = false;
+
+function cardVars(ev) {
+  const bits = [];
+  if (ev.color) bits.push(`--card-bg:${ev.color}`);
+  if (CARD_TEXT_AUTO && ev.textTone === 'dark') bits.push('--card-text:var(--card-text-dark)');
+  return bits.length ? ` style="${bits.join(';')}"` : '';
+}
+
 /** "(GMT-05:00)", read off the stored offset so it follows daylight saving. */
 function tzLabel(iso) {
   const m = /([+-]\d{2}:\d{2})$/.exec(iso || '');
@@ -257,7 +276,7 @@ function eventCard(ev, depth, { eager = false, modal = true } = {}) {
 
   const venue = [ev.location?.name, ev.organizer?.name].filter(Boolean).join(' &middot; ');
 
-  return `<article class="event-card">
+  return `<article class="event-card"${cardVars(ev)}>
   <a class="card-hit" href="${href}" aria-label="${esc(ev.title)} &mdash; details"></a>
   <h2 class="event-title"><a href="${href}">${esc(ev.title)}</a></h2>
   <div class="event-inner">
@@ -283,13 +302,22 @@ function eventCard(ev, depth, { eager = false, modal = true } = {}) {
  */
 function eventTile(ev, depth, { eager = false } = {}) {
   const p = parts(ev.start);
-  const img = ev.image
-    ? responsiveImg(ev, { depth, cover: [TILE_W, TILE_H], eager })
+
+  // These are wide banners (1400x400 is typical) going into a tall tile, so
+  // cropping to fill would throw away most of each picture. Show the whole
+  // image instead, over a blurred, enlarged copy of itself — the surround
+  // takes its colour from the photo, and nothing is cut off. Both layers are
+  // the same file, so it is still one request.
+  const photo = ev.image
+    ? `<span class="tile-photo">
+      ${responsiveImg(ev, { depth, cover: [TILE_W, TILE_H], eager, className: 'tile-photo-back' })}
+      ${responsiveImg(ev, { depth, cover: [TILE_W, TILE_H], eager, className: 'tile-photo-front' })}
+    </span>`
     : '';
 
   return `<article class="event-tile">
-  <a class="tile-inner" href="#${modalId(ev)}">
-    ${img}
+  <a class="tile-inner" href="#${modalId(ev)}"${cardVars(ev)}>
+    ${photo}
     <div class="tile-body">
       <h2 class="tile-title">${esc(ev.title)}</h2>
       <div class="tile-meta">
@@ -387,7 +415,7 @@ function eventModal(ev, depth) {
   return `<div class="event-modal" id="${id}" role="dialog" aria-modal="true" aria-labelledby="${id}-t">
   <a class="modal-scrim" href="#" tabindex="-1" aria-label="Close"></a>
   <div class="modal-panel">
-    <div class="modal-head">
+    <div class="modal-head"${cardVars(ev)}>
       <h2 class="modal-title" id="${id}-t">${esc(ev.title)}</h2>
       <div class="event-inner">
         ${ev.image ? `<div class="event-thumb">${responsiveImg(ev, { sizes: '140px', depth, cover: [THUMB, THUMB] })}</div>` : ''}
@@ -591,7 +619,8 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0, { nextEvent: upcomin
     <div class="event-list">${inMonth.map((e) => eventCard(e, 1)).join('\n')}</div>
   </div>
   <aside class="sidebar">${calendarWidget(y, m, byDay, 1)}</aside>
-</div>`,
+</div>
+${inMonth.map((e) => eventModal(e, 1)).join('\n')}`,
     }));
   }
 
@@ -793,6 +822,39 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
     remote.slice(0, 3).forEach((u) => console.warn(`    ${u}`));
   } else {
     console.log('  no images load from earlymusicsa.org');
+  }
+
+  // A card opens its detail panel by :target, so the panel has to be on the
+  // same page. Linking to one that was never rendered fails silently — the
+  // click just does nothing — so check every page rather than trust it.
+  const walk = async (dir) => {
+    const found = [];
+    for (const entry of await readdir(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) found.push(...await walk(full));
+      else if (entry.name.endsWith('.html')) found.push(full);
+    }
+    return found;
+  };
+
+  let dead = 0;
+  const offenders = [];
+  for (const file of await walk(OUT)) {
+    const html = await readFile(file, 'utf8');
+    const links = [...new Set([...html.matchAll(/href="#(ev-[\d-]+)"/g)].map((m) => m[1]))];
+    if (!links.length) continue;
+    const ids = new Set([...html.matchAll(/id="(ev-[\d-]+)"/g)].map((m) => m[1]));
+    const missing = links.filter((l) => !ids.has(l));
+    if (missing.length) {
+      dead += missing.length;
+      offenders.push(`${path.relative(OUT, file)} (${missing.length})`);
+    }
+  }
+  if (dead) {
+    console.warn(`  WARNING: ${dead} card(s) link to a detail panel that is not on the page`);
+    offenders.slice(0, 5).forEach((o) => console.warn(`    ${o}`));
+  } else {
+    console.log('  every card opens a panel that exists');
   }
 }
 

@@ -485,6 +485,13 @@ async function main() {
 
     const media = mediaById.get(rec.featured_media);
     const descHtml = cleanHtml(decodeEntities(rec.content?.rendered || ''));
+
+    // Each event carries its own card colour, and EventON works out whether
+    // that colour wants white or dark text and says so with a clrW / clrD
+    // class. Take both rather than recomputing the contrast ourselves.
+    const ownCard = html.match(new RegExp(`class="[^"]*event_${rec.id}_0[^"]*"`))?.[0] || '';
+    const color = html.match(/data-colr=["'](#[0-9a-fA-F]{3,8})["']/)?.[1]?.toLowerCase() || null;
+    const textTone = /\bclrD\b/.test(ownCard) ? 'dark' : 'light';
     const ev = {
       id: rec.id,
       slug: rec.slug,
@@ -500,6 +507,8 @@ async function main() {
       instances: inst.length > 1 ? inst.map(({ start, end }) => ({
         start: toLocalIso(start), end: toLocalIso(end), startUnix: start, endUnix: end,
       })) : null,
+      color,
+      textTone,
       location,
       organizer,
       types: (rec.event_type || []).map((id) => typeNames.get(id)).filter(Boolean),
