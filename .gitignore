@@ -1,3 +1,8 @@
 cache/
 node_modules/
 dist/
+
+# runtime data: holds submitter names and email addresses
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm

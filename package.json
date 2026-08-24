@@ -8,7 +8,9 @@
     "scrape": "node scrape.js",
     "scrape:images": "node scrape.js --images",
     "build": "node build.js",
-    "start": "node serve.js"
+    "start": "node server.js",
+    "test": "node test-db.mjs",
+    "audit": "node audit.js"
   },
   "engines": {
     "node": ">=18"

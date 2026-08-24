@@ -527,7 +527,24 @@ function icsFor(ev) {
 
 async function main() {
   const { events } = JSON.parse(await readFile('data/events.json', 'utf8'));
-  const live = events.filter((e) => !e.suspectedSpam);
+
+  // Events approved through the moderation queue join the archive at build
+  // time. The database is optional — without it the site still builds, which
+  // is what lets Render deploy the public pages as a plain static site.
+  let approved = [];
+  const dbFile = process.env.DB_PATH || 'earlymusicsa.sqlite';
+  if (existsSync(dbFile)) {
+    try {
+      const { openDb, approvedEvents } = await import('./db.js');
+      const db = openDb(dbFile);
+      approved = approvedEvents(db);
+      db.close();
+    } catch (err) {
+      console.warn(`  note: could not read ${dbFile} (${err.message}); building without it`);
+    }
+  }
+
+  const live = [...events, ...approved].filter((e) => !e.suspectedSpam);
 
   await rm(OUT, { recursive: true, force: true });
   await mkdir(OUT, { recursive: true });

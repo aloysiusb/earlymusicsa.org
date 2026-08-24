@@ -32,15 +32,21 @@ needs that.
   https://render.com/deploy?repo=https://github.com/aloysiusb/earlymusicsa.org
   Render runs `node build.js` and serves `dist/` on the free static tier;
   every push to `main` redeploys. Verified to build from a clean clone.
-- **Still to do:** the submission form + moderation server, real contact
-  details, search, and filtering by type/venue/organizer.
+- **Database in place** (2026-08-22): submissions + style tokens, tested.
+  Still needed on top of it: the submit form UI, the moderation screen, the
+  style-editing page, and a decision on how to deploy the server.
+- **Still to do:** real contact details, search, filtering by
+  type/venue/organizer, and the Calendar and Contact pages.
 
 ## Layout
 
 ```
 scrape.js            one-time export from the live WordPress site
 build.js             data/events.json -> dist/  (the static site)
-serve.js             local preview server for dist/ (not part of the site)
+server.js            serves dist/ + the submissions and style API (node:http)
+db.js                SQLite schema and helpers (node:sqlite, no deps)
+audit.js             finds EventON fields the export is dropping
+test-db.mjs          32 checks over storage, validation and the routes
 assets/style.css     the entire design; every value is a custom property
 seed/masters.json    EventON saved-location + saved-organizer lists, read from
                      the live /submit-your-event/ form on 2026-08-19
@@ -97,6 +103,58 @@ thumbnail) against 74 requests and 50 scripts on the WordPress original.
   so `DTEND` is omitted in that case. Same rule governs the displayed time
   range.
 - Event pages carry schema.org JSON-LD, replacing what EventON used to emit.
+
+## The database
+
+`db.js` + `server.js`, using `node:sqlite` and `node:http` with **no
+dependencies**, following the wall-family pattern (see `C:\Users\xnytr\Claude\server.js`).
+
+```bash
+npm start          # serve dist/ + the API on :4173
+npm test           # 32 checks over storage, validation and the HTTP routes
+```
+
+Two tables, and deliberately only two:
+
+- **`submissions`** — events sent through the public form, awaiting moderation.
+  Approved rows are merged into the listings by `build.js` at build time.
+- **`style_settings`** (+ `style_history`) — the design tokens the style-editing
+  page will write. Every change is kept, so a bad edit can be walked back.
+
+The event archive stays in `data/events.json`. It is the export of a site that
+no longer changes, and belongs in git where it is diffable and backed up —
+only things that change at runtime need a database.
+
+**The database file is gitignored.** It holds submitter names and email
+addresses; that must not go into a public repo.
+
+Routes: `POST /api/submit` and `GET /style-overrides.css` are public;
+everything else needs `ADMIN_TOKEN` set on the server and sent as an
+`X-Admin-Token` header. With no `ADMIN_TOKEN` set, admin routes refuse every
+request rather than falling open. The submit form carries a honeypot field —
+anything filling it gets a cheerful 200 and is not stored.
+
+`build.js` reads the database **if it is there** and merges approved events; if
+it is absent the site still builds, which is what keeps a plain static deploy
+working.
+
+### Deploying it — unresolved, needs a decision
+
+The current `render.yaml` is a **static site**: free, always on, no server. That
+cannot serve the API. The options, with the catch on each:
+
+1. **Static site + a separate web service for submissions/admin.** Public pages
+   stay free and fast. But Render's free web services sleep after inactivity and
+   have **no persistent disk**, so a SQLite file is wiped on redeploy — usable
+   for testing, not for real submissions.
+2. **One web service serving everything, with a Render persistent disk.** Simple
+   and correct, and the disk is a **paid** add-on. Still likely far cheaper than
+   the EventON licences.
+3. **Static site, with the admin service committing back to git.** Approved
+   events and style tokens get written into the repo, which triggers a rebuild.
+   Keeps everything free, but is the most moving parts.
+
+Not chosen yet. Nothing about the local setup depends on which is picked.
 
 ## How the data was actually obtained
 
