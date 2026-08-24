@@ -158,6 +158,12 @@ cannot serve the API. The options, with the catch on each:
 
 Not chosen yet. Nothing about the local setup depends on which is picked.
 
+**Parked until Thursday 2026-08-27**, when the owner expects to have the right
+Render service sorted. Do not pick one before then, and do not create any paid
+resource on their account. The submit form, moderation screen and style-editing
+page can all be built and tested locally in the meantime — none of them depends
+on where the server ends up running.
+
 ## How the data was actually obtained
 
 This is the part worth not re-deriving:
