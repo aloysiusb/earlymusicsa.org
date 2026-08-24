@@ -65,7 +65,9 @@ dist/                generated output, gitignored — rebuild with `node build.j
 node scrape.js            # refresh data/ from the live site
 node scrape.js --images   # also mirror featured images -> media/
 node build.js             # data/ -> dist/
-node serve.js             # preview dist/ at http://localhost:4173
+npm start                 # serve dist/ + the API at http://localhost:4173
+npm test                  # storage, validation and route checks
+node audit.js --values    # what EventON data the export is dropping
 ```
 
 Event pages are cached under `cache/`, so scraper re-runs are free. The first
