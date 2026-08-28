@@ -42,8 +42,18 @@ const TYPES = {
   '.gif': 'image/gif', '.svg': 'image/svg+xml', '.webp': 'image/webp',
 };
 
+/**
+ * Set on every response. Render only applies a blueprint `headers:` block to
+ * static sites, so a web service has to send its own.
+ */
+const BASE_HEADERS = {
+  'x-content-type-options': 'nosniff',
+  'referrer-policy': 'strict-origin-when-cross-origin',
+  'x-frame-options': 'SAMEORIGIN',
+};
+
 const json = (res, status, body) => {
-  res.writeHead(status, { 'content-type': 'application/json; charset=utf-8' });
+  res.writeHead(status, { ...BASE_HEADERS, 'content-type': 'application/json; charset=utf-8' });
   res.end(JSON.stringify(body));
 };
 
@@ -119,6 +129,7 @@ async function handleApi(req, res, url) {
   // --- public: the style tokens the pages apply ------------------------
   if (req.method === 'GET' && pathname === '/style-overrides.css') {
     res.writeHead(200, {
+      ...BASE_HEADERS,
       'content-type': 'text/css; charset=utf-8',
       'cache-control': 'no-cache',
     });
@@ -224,18 +235,19 @@ async function handleApi(req, res, url) {
 
 async function serveStatic(req, res, url) {
   let file = path.join(ROOT, decodeURIComponent(url.pathname));
-  if (!file.startsWith(ROOT)) { res.writeHead(403).end('Forbidden'); return; }
+  if (!file.startsWith(ROOT)) { res.writeHead(403, BASE_HEADERS).end('Forbidden'); return; }
 
   try {
     if ((await stat(file)).isDirectory()) file = path.join(file, 'index.html');
   } catch {
-    res.writeHead(404, { 'content-type': 'text/html; charset=utf-8' })
+    res.writeHead(404, { ...BASE_HEADERS, 'content-type': 'text/html; charset=utf-8' })
       .end('<h1>Page not found</h1><p><a href="/">Back to the events</a></p>');
     return;
   }
 
   const ext = path.extname(file);
   res.writeHead(200, {
+    ...BASE_HEADERS,
     'content-type': TYPES[ext] || 'application/octet-stream',
     'cache-control': file.includes(`${path.sep}media${path.sep}`)
       ? 'public, max-age=31536000, immutable'
