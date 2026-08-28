@@ -19,6 +19,13 @@ const TAGLINE = 'The audience-based information site for San Antonio’s Early M
 const TZ = 'America/Chicago';
 const HOME_ONLY = process.argv.includes('--home');
 
+/**
+ * Skip re-copying the 952 mirrored images when they are already in place.
+ * Used for the rebuild that runs after a submission is approved — the pages
+ * change, the images do not, and copying 47 MB again would be most of the work.
+ */
+const SKIP_MEDIA = process.argv.includes('--skip-media');
+
 /** How many events the home page lists before "Show More Events". */
 const HOME_LIMIT = 3;
 
@@ -546,13 +553,26 @@ async function main() {
 
   const live = [...events, ...approved].filter((e) => !e.suspectedSpam);
 
-  await rm(OUT, { recursive: true, force: true });
+  const keepMedia = SKIP_MEDIA && existsSync(path.join(OUT, 'media'));
+
+  // Clear the generated pages but leave the copied images where they are when
+  // this is a quick rebuild.
+  if (keepMedia) {
+    for (const entry of await readdir(OUT, { withFileTypes: true })) {
+      if (entry.name === 'media') continue;
+      await rm(path.join(OUT, entry.name), { recursive: true, force: true });
+    }
+  } else {
+    await rm(OUT, { recursive: true, force: true });
+  }
   await mkdir(OUT, { recursive: true });
   await copyFile('assets/style.css', path.join(OUT, 'style.css'));
 
   // Mirror the images in so nothing on the built site points at WordPress.
   let copied = 0;
-  if (existsSync('media')) {
+  if (keepMedia) {
+    copied = (await readdir(path.join(OUT, 'media'))).length;
+  } else if (existsSync('media')) {
     await mkdir(path.join(OUT, 'media'), { recursive: true });
     for (const name of await readdir('media')) {
       await copyFile(path.join('media', name), path.join(OUT, 'media', name));

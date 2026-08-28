@@ -15,9 +15,10 @@
  */
 
 import { createServer } from 'node:http';
-import { createReadStream } from 'node:fs';
+import { createReadStream, existsSync } from 'node:fs';
 import { stat } from 'node:fs/promises';
 import { timingSafeEqual, randomUUID } from 'node:crypto';
+import { execFile } from 'node:child_process';
 import path from 'node:path';
 import {
   openDb, validateSubmission, insertSubmission, listSubmissions,
@@ -59,6 +60,34 @@ function tokenOk(supplied) {
 }
 
 const isAdmin = (req) => tokenOk(req.headers['x-admin-token']);
+
+/* --------------------------------------------------------------- rebuild -- */
+
+/**
+ * Regenerate the static pages.
+ *
+ * This matters on a host where the database lives on a disk that is only
+ * mounted at run time: the deploy-time build cannot see it, so an approved
+ * event would never reach a page. Rebuilding here closes that gap. Images are
+ * left alone, which is most of the build time.
+ *
+ * Runs are serialised, and a request arriving mid-build queues exactly one
+ * more rather than piling up.
+ */
+let building = false;
+let queued = false;
+
+function rebuild(reason = '') {
+  if (building) { queued = true; return; }
+  building = true;
+  const started = Date.now();
+  execFile(process.execPath, ['build.js', '--skip-media'], { cwd: process.cwd() }, (err, stdout) => {
+    building = false;
+    if (err) console.error(`rebuild failed${reason ? ` (${reason})` : ''}:`, err.message);
+    else console.log(`rebuilt in ${Date.now() - started}ms${reason ? ` — ${reason}` : ''}`);
+    if (queued) { queued = false; rebuild('queued'); }
+  });
+}
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
@@ -160,8 +189,10 @@ async function handleApi(req, res, url) {
     const body = parseBody(await readBody(req), req.headers['content-type'] || '') || {};
     const status = review[2] === 'approve' ? 'approved' : 'rejected';
     const ok = reviewSubmission(db, Number(review[1]), status, body.note || null);
+    // An approval changes what the listings should show, so regenerate them.
+    if (ok && status === 'approved') rebuild(`approved submission ${review[1]}`);
     json(res, ok ? 200 : 404, ok
-      ? { ok: true, id: Number(review[1]), status }
+      ? { ok: true, id: Number(review[1]), status, rebuilding: status === 'approved' }
       : { ok: false, errors: ['No submission with that id.'] });
     return true;
   }
@@ -236,4 +267,9 @@ createServer(async (req, res) => {
   console.log(ADMIN_TOKEN
     ? '  admin routes enabled'
     : '  admin routes CLOSED — set ADMIN_TOKEN to enable them');
+
+  // The deploy-time build runs before the disk is mounted, so anything already
+  // approved is missing from the pages this process is about to serve.
+  if (!existsSync(ROOT)) rebuild('no dist/ yet');
+  else if (listSubmissions(db, 'approved').length) rebuild('approved events on disk');
 });
