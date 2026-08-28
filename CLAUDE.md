@@ -158,6 +158,14 @@ A disk requires a **paid** instance type. That is the whole reason this is not
 on the free tier: without a disk, SQLite is wiped on every deploy and every
 submission is lost.
 
+**Render warns "Scaling is not supported for servers with disks". Keep the disk
+— do not delete it.** The warning only means the service cannot run as multiple
+instances, which this site neither needs nor wants: each instance would have its
+own `dist/`, so approving an event would rebuild the pages on one copy and leave
+the others stale, and a visitor would see the new event or not depending which
+they hit. A single instance is the correct shape for this design, not a
+compromise. Asked and answered 2026-08-22.
+
 **The catch that shapes this design:** Render mounts the disk at *run* time, not
 during the build, so the deploy-time build cannot see the database and an
 approved event would never reach a page. The server therefore rebuilds itself —
