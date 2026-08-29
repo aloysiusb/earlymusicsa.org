@@ -10,6 +10,25 @@ ticketing system and never has been — it points people at events.
 
 Remote: **https://github.com/aloysiusb/earlymusicsa.org**
 
+## The old site went down on 2026-08-22
+
+Part-way through that day's work `earlymusicsa.org` stopped serving. Measured
+over ten attempts: **zero** returned the real site — four returned a 195-byte
+hosting error page ("Please contact your service provider"), six timed out. Note
+the error page comes back with **HTTP 200**, so any check that only looks at
+status codes will report the site as healthy.
+
+It was working earlier the same day; the scrape and the stylesheet fetches all
+succeeded. So this is recent, and it means:
+
+- **The live site can no longer be measured.** Design values still needed are in
+  the reference table below — use those rather than trying to re-scrape.
+- **Nothing was lost.** The export had already mirrored all 419 events, 424
+  dates and 948 images, and they are in git and deployed. This is precisely the
+  failure the migration was meant to survive.
+- Visitors to `earlymusicsa.org` are currently seeing an error page, which makes
+  pointing DNS at Render an improvement rather than a risk.
+
 ## Why this project exists
 
 The live site runs WordPress 7.0.4 + the Sinatra theme + **EventON 5.0.13** with
