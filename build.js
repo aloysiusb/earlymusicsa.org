@@ -451,6 +451,64 @@ function eventModal(ev, depth) {
 
 const modalId = (ev) => `ev-${ev.id}-${ev.instance || 0}`;
 
+/* ---------------------------------------------------------- month grid -- */
+
+/**
+ * The big calendar on the Calendar page — full width, seven columns, with each
+ * event showing in its day as a small chip in that event's own colour. The
+ * sidebar widget is a different, smaller thing; see calendarWidget.
+ */
+function monthGrid(year, month, byDay, depth) {
+  const root = '../'.repeat(depth);
+  const first = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
+  const total = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const pad = (n) => String(n).padStart(2, '0');
+
+  const cells = [];
+  for (let i = 0; i < first; i++) cells.push('<p class="calday empty"></p>');
+
+  for (let d = 1; d <= total; d++) {
+    const list = byDay.get(`${year}-${pad(month)}-${pad(d)}`) || [];
+    const chips = list.map((ev) =>
+      `<a class="calday-event" href="#${modalId(ev)}"${cardVars(ev)}
+         title="${esc(ev.title)} — ${esc(timeRange(ev))}">${esc(ev.title)}</a>`).join('');
+    cells.push(`<p class="calday${list.length ? ' has-events' : ''}">
+      <span class="calday-num" data-label="${MONTHS[month-1].slice(0,3)}">${d}</span>
+      ${chips ? `<span class="calday-events">${chips}</span>` : ''}
+    </p>`);
+  }
+
+  return `<div class="cal-daynames cal-daynames-lg" aria-hidden="true">
+    ${DOW.map((d) => `<div>${d}</div>`).join('')}
+  </div>
+  <div class="cal-days-lg">
+    ${cells.join('\n    ')}
+  </div>`;
+}
+
+/** "Jump Months" — every month that has something on, as links. */
+function monthJump(months, current, depth) {
+  const root = '../'.repeat(depth);
+  const byYear = new Map();
+  for (const ym of months) {
+    const [y, m] = ym.split('-');
+    if (!byYear.has(y)) byYear.set(y, []);
+    byYear.get(y).push(m);
+  }
+  const years = [...byYear.entries()].sort((a, b) => b[0].localeCompare(a[0]));
+
+  return `<details class="cal-jump">
+    <summary class="cal-button">Jump Months</summary>
+    <div class="cal-jump-panel">
+      ${years.map(([y, ms]) => `<div class="cal-jump-year">
+        <span class="cal-jump-label">${y}</span>
+        ${ms.sort().map((m) => `<a href="${root}calendar/${y}-${m}.html"${
+          `${y}-${m}` === current ? ' aria-current="page"' : ''}>${MONTHS[+m - 1].slice(0, 3)}</a>`).join('')}
+      </div>`).join('\n      ')}
+    </div>
+  </details>`;
+}
+
 /* --------------------------------------------------------- sidebar widget -- */
 
 function calendarWidget(year, month, byDay, depth, { nextEvent = null } = {}) {
@@ -639,30 +697,44 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0, { nextEvent: upcomin
 
   // --- month pages ------------------------------------------------------
   const months = [...new Set(dated.map((e) => parts(e.start).ymd.slice(0, 7)))].sort();
+
+  // The month the Current Month button goes to: the one holding the next event,
+  // or the most recent month if nothing is upcoming.
+  const focusYm = `${focusDate.year}-${String(focusDate.month).padStart(2, '0')}`;
+  const calLanding = months.includes(focusYm) ? focusYm : months[months.length - 1];
   for (const [i, ym] of months.entries()) {
     const [y, m] = ym.split('-').map(Number);
     const prev = months[i - 1], next = months[i + 1];
     const label = (s) => `${MONTHS[+s.split('-')[1] - 1]} ${s.split('-')[0]}`;
     const inMonth = dated.filter((e) => parts(e.start).ymd.startsWith(ym));
     await write(`calendar/${ym}.html`, page({
-      title: `${MONTHS[m - 1]} ${y}`, current: 'calendar/', depth: 1,
-      body: `<div class="container content">
-  <div class="primary">
-    <h1 class="site-heading">${MONTHS[m - 1]} ${y}</h1>
-    <p style="margin:0 0 20px">
-      ${prev ? `<a href="${prev}.html">&larr; ${label(prev)}</a>` : ''}
-      ${next ? ` &nbsp; <a href="${next}.html">${label(next)} &rarr;</a>` : ''}
-    </p>
-    <div class="event-list">${inMonth.map((e) => eventCard(e, 1)).join('\n')}</div>
+      title: 'Calendar of Events', current: 'calendar/', depth: 1,
+      body: `<div class="container page-header">
+  <h1 class="page-title">Calendar of Events</h1>
+</div>
+<div class="container content">
+  <div class="primary wide">
+    <div class="cal-buttons">
+      ${monthJump(months, ym, 1)}
+      <a class="cal-button" href="${calLanding}.html">Current Month</a>
+    </div>
+    <div class="cal-month-line cal-month-line-lg">
+      <span class="cal-month-title">${MONTHS[m - 1]}, ${y}</span>
+      <span class="cal-arrows">
+        ${prev ? `<a href="${prev}.html" title="${esc(label(prev))}" aria-label="Previous month">&lsaquo;</a>` : ''}
+        ${next ? `<a href="${next}.html" title="${esc(label(next))}" aria-label="Next month">&rsaquo;</a>` : ''}
+      </span>
+    </div>
+    ${monthGrid(y, m, byDay, 1)}
+    ${inMonth.length ? `<div class="event-list cal-month-list">
+      ${inMonth.map((e) => eventCard(e, 1)).join('\n')}
+    </div>` : '<p class="pager-note">Nothing listed this month.</p>'}
   </div>
-  <aside class="sidebar">${calendarWidget(y, m, byDay, 1)}</aside>
 </div>
 ${inMonth.map((e) => eventModal(e, 1)).join('\n')}`,
     }));
   }
 
-  const focusYm = `${focusDate.year}-${String(focusDate.month).padStart(2, '0')}`;
-  const calLanding = months.includes(focusYm) ? focusYm : months[months.length - 1];
   await write('calendar/index.html', page({
     title: 'Calendar', current: 'calendar/', depth: 1,
     head: `<meta http-equiv="refresh" content="0; url=${calLanding}.html">\n`,

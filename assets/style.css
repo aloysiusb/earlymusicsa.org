@@ -121,6 +121,15 @@
   --cal-cell-height-events: 60px;
   --cal-radius: 10px;
 
+  /* --- calendar page, the full-width grid -------------------------------- */
+  --calpage-cell: 45px;
+  --calpage-cell-events: 66px;
+  --calpage-day-size: 16px;
+  --calpage-dayname-size: 14px;
+  --calpage-chip-size: 10px;
+  --calpage-month-size: 28px;
+  --cal-hairline: #f0f0f0;
+
   /* --- expanded detail panel -------------------------------------------- */
   --card-bg-hover: #a9c9d4;
   --modal-width: 1000px;
@@ -385,6 +394,121 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   text-decoration: none;
 }
 .show-more:hover { background: var(--gold); }
+
+/* ------------------------------------------------- calendar page (large) -- */
+
+/* The full-width calendar. Seven equal columns; each event shows in its day as
+   a small chip carrying that event's own colour. Distinct from the sidebar
+   widget, which is the same idea at a much smaller size. */
+/* Doubled-up class so these beat the sidebar widget's rules regardless of
+   which block comes first in the file. */
+.cal-daynames.cal-daynames-lg { border-radius: var(--cal-radius) var(--cal-radius) 0 0; overflow: hidden; }
+.cal-daynames.cal-daynames-lg div {
+  font-size: var(--calpage-dayname-size);
+  font-weight: 400;
+  padding: 10px 0;
+}
+
+.cal-month-line.cal-month-line-lg .cal-month-title {
+  font-size: var(--calpage-month-size);
+}
+
+.cal-days-lg {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  border-radius: 0 0 var(--cal-radius) var(--cal-radius);
+  overflow: hidden;
+}
+
+.calday {
+  margin: 0;
+  min-height: var(--calpage-cell);
+  padding: 10px 6px;
+  background: var(--cal-day-bg);
+  color: var(--cal-day-text);
+  font-size: var(--calpage-day-size);
+  line-height: 1.2;
+  border: 1px solid var(--cal-hairline);
+  border-width: 0 1px 1px 0;
+}
+.calday.empty { background: var(--cal-day-bg); }
+.calday.has-events { min-height: var(--calpage-cell-events); }
+.calday-num { display: block; }
+
+.calday-events { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
+.calday-event {
+  display: block;
+  background: var(--card-bg);
+  color: var(--card-text);
+  font-size: var(--calpage-chip-size);
+  line-height: 1.5;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.calday-event:hover { filter: brightness(1.12); }
+
+.cal-month-list { margin-top: 30px; }
+
+/* "Jump Months" opens a panel of every month that has something on — a
+   <details>, so it needs no script. */
+.cal-jump { position: relative; }
+.cal-jump > summary { list-style: none; cursor: pointer; }
+.cal-jump > summary::-webkit-details-marker { display: none; }
+.cal-jump-panel {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  left: 0;
+  width: max(320px, 34vw);
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 12px 14px;
+  background: var(--page-bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--cal-radius);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.15);
+}
+.cal-jump-year {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px;
+  padding: 3px 0;
+}
+.cal-jump-label {
+  width: 3.2em;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.cal-jump-year a {
+  padding: 2px 7px;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  color: var(--ink-soft);
+}
+.cal-jump-year a:hover,
+.cal-jump-year a[aria-current='page'] { background: var(--gold); color: #fff; }
+
+@media (max-width: 700px) {
+  /* Seven columns stop being readable; show the days that have something on
+     as a list instead, which is what a phone visitor actually wants. */
+  .cal-daynames.cal-daynames-lg { display: none; }
+  .cal-days-lg { grid-template-columns: 1fr; border-radius: var(--cal-radius); }
+  .calday { border-width: 0 0 1px; min-height: 0; }
+  .calday.empty, .calday:not(.has-events) { display: none; }
+  /* With the weekday header gone, each row has to name its own date. */
+  .calday .calday-num { font-weight: 700; color: var(--ink-soft); }
+  .calday .calday-num::before { content: attr(data-label) ' '; }
+  .calday-event { white-space: normal; font-size: 13px; }
+  .cal-jump-panel { width: min(90vw, 320px); }
+}
 
 /* ----------------------------------------------------------- event tiles -- */
 

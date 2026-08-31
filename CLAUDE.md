@@ -55,8 +55,12 @@ needs that.
   the Render blueprint switched to a web service with a persistent disk.
   Still needed on top of it: the submit form UI, the moderation screen, the
   style-editing page, and a decision on how to deploy the server.
+- **Calendar done** (2026-08-30), matched to the live page: full width, no
+  sidebar, seven columns of 157px cells (45px, 66px when a day has something
+  on), and each event shown in its day as a 10px chip in that event own
+  colour. Jump Months is a <details> panel of every month that has events.
 - **Still to do:** real contact details, search, filtering by
-  type/venue/organizer, and the Calendar and Contact pages.
+  type/venue/organizer, the Contact page, and the submit/moderation/style UIs.
 
 ## Layout
 
