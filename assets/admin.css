@@ -1,0 +1,185 @@
+/* Volunteer tools. Deliberately plainer than the public site: this is a
+   working screen, so it favours legibility and obvious controls over styling.
+   It still uses the site's tokens, so a style change is visible here too. */
+
+body.admin {
+  background: var(--admin-bg);
+  padding-bottom: 60px;
+}
+
+.admin-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px clamp(16px, 4vw, 40px);
+  background: var(--gold-deep);
+  color: #fff;
+}
+.admin-bar h1 { font-size: 17px; font-weight: 700; margin: 0; }
+.admin-who { margin-left: auto; font-size: 13px; opacity: 0.85; }
+
+.panel-card,
+.admin-panel {
+  max-width: 900px;
+  margin: 26px auto;
+  padding: clamp(18px, 3vw, 28px);
+  background: var(--page-bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--panel-radius);
+}
+.panel-card h2 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+
+.muted { color: var(--ink-soft); font-size: 14px; }
+.error { color: var(--form-required); font-weight: 500; }
+.remember { font-size: 14px; margin-left: 12px; }
+
+/* --- tabs ----------------------------------------------------------------- */
+
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 900px;
+  margin: 22px auto 0;
+  padding-inline: clamp(16px, 4vw, 40px);
+}
+.admin-tabs button {
+  font: inherit;
+  font-size: 15px;
+  padding: 9px 16px;
+  border: 1px solid var(--rule);
+  border-radius: var(--cal-radius) var(--cal-radius) 0 0;
+  background: var(--admin-bg);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.admin-tabs button[aria-selected='true'] {
+  background: var(--page-bg);
+  color: var(--ink);
+  font-weight: 700;
+  border-bottom-color: var(--page-bg);
+}
+.count {
+  display: inline-block;
+  min-width: 20px;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* --- queues --------------------------------------------------------------- */
+
+.queue { display: flex; flex-direction: column; gap: 16px; }
+
+.queue-item {
+  padding: 18px;
+  border: 1px solid var(--rule);
+  border-radius: var(--panel-radius);
+  background: var(--panel-bg);
+}
+.queue-item h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+.queue-item.done { opacity: 0.5; }
+
+.rows { margin: 0 0 14px; display: grid; gap: 6px; }
+.rows .row { display: grid; grid-template-columns: 9.5rem 1fr; gap: 12px; font-size: 14px; }
+.rows dt { color: var(--ink-soft); }
+.rows dd { margin: 0; overflow-wrap: anywhere; }
+
+.flag {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #fff4e5;
+  border: 1px solid #f0c48a;
+  font-size: 14px;
+}
+
+.when { font-size: 13px; color: var(--ink-soft); margin-bottom: 10px; }
+.message-body {
+  padding: 12px 14px;
+  background: var(--page-bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.queue-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 14px 0 0; }
+.status { font-size: 14px; color: var(--ink-soft); }
+
+.ghost {
+  font: inherit;
+  font-size: 15px;
+  padding: 9px 16px;
+  border: 1px solid var(--rule-strong, var(--rule));
+  border-radius: var(--field-radius);
+  background: var(--page-bg);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+}
+.ghost:hover { border-color: var(--ink-soft); }
+.ghost.danger { color: var(--form-required); border-color: currentColor; }
+
+button:disabled { opacity: 0.5; cursor: default; }
+
+/* --- style editor --------------------------------------------------------- */
+
+.style-group { margin-bottom: 26px; }
+.style-group h3 {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.style-row {
+  display: grid;
+  grid-template-columns: 1fr 46px 8.5rem auto;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: 15px;
+}
+/* Rows without a colour swatch keep the same columns, so labels stay aligned. */
+.style-row:not(:has(input[type='color'])) { grid-template-columns: 1fr 8.5rem auto; }
+
+.style-row input[type='color'] {
+  width: 46px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--field-border);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+}
+.style-row input[type='text'] {
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 9px;
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+}
+.style-row code { font-size: 12px; color: var(--ink-faint, var(--ink-soft)); }
+
+.style-actions { display: flex; align-items: center; gap: 12px; }
+.saved { color: #1a7f37; font-weight: 600; font-size: 14px; }
+
+@media (max-width: 640px) {
+  .style-row,
+  .style-row:not(:has(input[type='color'])) {
+    grid-template-columns: 1fr auto;
+    grid-auto-flow: dense;
+  }
+  .style-row code { grid-column: 1 / -1; }
+  .rows .row { grid-template-columns: 1fr; gap: 2px; }
+}

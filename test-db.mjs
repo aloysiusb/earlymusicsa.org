@@ -12,7 +12,7 @@ import { spawn } from 'node:child_process';
 import {
   openDb, validateSubmission, insertSubmission, listSubmissions,
   reviewSubmission, approvedEvents, validateStyle, setStyle, getStyles, stylesAsCss,
-  validateMessage, insertMessage, listMessages, markMessageHandled,
+  validateMessage, insertMessage, listMessages, markMessageHandled, withSiteOffset,
 } from './db.js';
 
 let passed = 0, failed = 0;
@@ -101,6 +101,22 @@ check('history keeps both values',
 
 const css = stylesAsCss(db);
 check('emits a stylesheet', css.includes(':root{') && css.includes('--gold: #a07800;'), css);
+
+// --- submitted times keep the meaning the submitter intended ---
+// A datetime-local field sends no offset; stored raw, Date.parse would read it
+// in the server's zone (UTC on Render) and shift every event by five or six hours.
+check('stamps the winter offset on a bare local time',
+  withSiteOffset('2026-12-05T19:30') === '2026-12-05T19:30:00-06:00', withSiteOffset('2026-12-05T19:30'));
+check('stamps the summer offset on a bare local time',
+  withSiteOffset('2026-07-05T19:30') === '2026-07-05T19:30:00-05:00', withSiteOffset('2026-07-05T19:30'));
+check('leaves an offset that is already there alone',
+  withSiteOffset('2026-07-05T19:30:00-05:00') === '2026-07-05T19:30:00-05:00');
+check('a submitted 7:30pm still reads as 7:30pm',
+  new Date(withSiteOffset('2026-12-05T19:30')).toLocaleString('en-US',
+    { timeZone: 'America/Chicago', hour: 'numeric', minute: '2-digit' }) === '7:30 PM');
+check('rejects an end time before the start',
+  validateSubmission({ title: 'X', start_local: '2026-12-05T20:00', end_local: '2026-12-05T19:00' })
+    .errors.some((e) => /before the start/.test(e)));
 
 // --- contact messages ---
 check('a message needs an email', validateMessage({ message: 'hi' }).errors.length > 0);

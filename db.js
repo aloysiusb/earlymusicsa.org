@@ -118,6 +118,26 @@ export function spamReasons(sub) {
   return out;
 }
 
+const SITE_TZ = 'America/Chicago';
+
+/**
+ * A browser's datetime-local field gives "2026-09-11T19:30" with no offset.
+ * Stored as-is, Date.parse would read it in the server's zone — UTC on Render —
+ * putting every submitted event five or six hours out. Stamp the offset San
+ * Antonio actually had on that date, so the stored value means what the person
+ * typed.
+ */
+export function withSiteOffset(local) {
+  if (!local) return local;
+  if (/[+-]\d{2}:\d{2}$/.test(local)) return local;
+  const m = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2})(:\d{2})?$/.exec(local);
+  if (!m) return local;
+  const approx = new Date(`${m[1]}:00Z`);
+  const name = new Intl.DateTimeFormat('en-US', { timeZone: SITE_TZ, timeZoneName: 'longOffset' })
+    .formatToParts(approx).find((p) => p.type === 'timeZoneName').value;
+  return `${m[1]}:00${name.replace('GMT', '') || '+00:00'}`;
+}
+
 /** Trim, cap, and reject anything that is not a real submission. */
 export function validateSubmission(raw) {
   const clean = {};
@@ -146,6 +166,12 @@ export function validateSubmission(raw) {
   }
   if (clean.submitter_email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(clean.submitter_email)) {
     errors.push('That email address does not look right.');
+  }
+
+  clean.start_local = withSiteOffset(clean.start_local);
+  clean.end_local = withSiteOffset(clean.end_local);
+  if (clean.end_local && Date.parse(clean.end_local) < Date.parse(clean.start_local)) {
+    errors.push('The end time is before the start time.');
   }
   return { clean, errors };
 }

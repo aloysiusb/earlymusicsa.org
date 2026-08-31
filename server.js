@@ -115,7 +115,7 @@ const sendPage = (res, status, html) => {
  * JavaScript off, which means the server owes the browser a real page rather
  * than a JSON blob.
  */
-function thanksPage(errors = []) {
+function thanksPage(errors = [], kind = 'message') {
   const ok = errors.length === 0;
   return `<!doctype html>
 <html lang="en">
@@ -139,8 +139,11 @@ function thanksPage(errors = []) {
     <div class="primary wide">
       <div class="page-prose">
         ${ok
-          ? '<p>Your message has been sent to the volunteers who look after this site. '
-            + 'We read everything, though it may take a few days to reply.</p>'
+          ? (kind === 'event'
+            ? '<p>Thank you — your event has been sent for review. A volunteer will '
+              + 'check it over, and once approved it will appear in the listings.</p>'
+            : '<p>Your message has been sent to the volunteers who look after this site. '
+              + 'We read everything, though it may take a few days to reply.</p>')
           : `<ul>${errors.map((e) => `<li>${escHtml(e)}</li>`).join('')}</ul>`}
         <p><a href="/contact.html">Back to the contact page</a> &nbsp;
            <a href="/">Back to the events</a></p>
@@ -212,14 +215,24 @@ async function handleApi(req, res, url) {
     // Honeypot: a field no person sees, so anything filling it is a bot.
     // Accepted silently, so the bot has nothing to learn from the response.
     if (String(body.website_url || '').trim()) {
+      if (!(req.headers['content-type'] || '').includes('application/json')) {
+        sendPage(res, 200, thanksPage([], 'event'));
+        return true;
+      }
       json(res, 200, { ok: true, id: null });
       return true;
     }
 
+    const wantsHtml = !(req.headers['content-type'] || '').includes('application/json');
     const { clean, errors } = validateSubmission(body);
-    if (errors.length) { json(res, 400, { ok: false, errors }); return true; }
+    if (errors.length) {
+      if (wantsHtml) { sendPage(res, 400, thanksPage(errors)); return true; }
+      json(res, 400, { ok: false, errors });
+      return true;
+    }
 
     const { id, spamReasons } = insertSubmission(db, clean);
+    if (wantsHtml) { sendPage(res, 200, thanksPage([], 'event')); return true; }
     json(res, 201, {
       ok: true,
       id,

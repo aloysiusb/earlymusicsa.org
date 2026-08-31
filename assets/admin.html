@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Volunteer tools &ndash; Early Music San Antonio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+
+<header class="admin-bar">
+  <h1>Early Music San Antonio &mdash; volunteer tools</h1>
+  <span class="admin-who" id="who"></span>
+  <button type="button" id="signout" class="ghost" hidden>Sign out</button>
+</header>
+
+<!-- Sign-in. The token is Render's ADMIN_TOKEN; it is kept in this tab only. -->
+<section class="panel-card" id="signin">
+  <h2>Sign in</h2>
+  <p class="muted">Paste the admin token from Render (your service &rarr; Environment
+  &rarr; <code>ADMIN_TOKEN</code>). It is kept for this browser tab only and is
+  never written to the page or the repository.</p>
+  <form id="signin-form" class="site-form">
+    <p class="field">
+      <label for="token">Admin token</label>
+      <input id="token" type="password" autocomplete="current-password" required>
+    </p>
+    <p>
+      <button class="form-submit" type="submit">Sign in</button>
+      <label class="remember"><input type="checkbox" id="remember"> Keep me signed in on this device</label>
+    </p>
+  </form>
+  <p class="error" id="signin-error" hidden></p>
+</section>
+
+<main id="tools" hidden>
+  <nav class="admin-tabs" role="tablist">
+    <button role="tab" aria-selected="true"  data-panel="p-events">Events awaiting review <span class="count" id="c-events">0</span></button>
+    <button role="tab" aria-selected="false" data-panel="p-messages">Messages <span class="count" id="c-messages">0</span></button>
+    <button role="tab" aria-selected="false" data-panel="p-style">Style</button>
+  </nav>
+
+  <section id="p-events" class="admin-panel">
+    <p class="muted">Approving an event rebuilds the site straight away, so it
+    appears in the listings within a few seconds.</p>
+    <div id="events-list" class="queue"></div>
+  </section>
+
+  <section id="p-messages" class="admin-panel" hidden>
+    <div id="messages-list" class="queue"></div>
+  </section>
+
+  <section id="p-style" class="admin-panel" hidden>
+    <p class="muted">These change the look of the whole site. Each one is a single
+    design value &mdash; nothing here can break the layout. Changes save
+    to the server, so they follow you between browsers and devices.</p>
+    <div id="style-groups"></div>
+    <p class="style-actions">
+      <button class="form-submit" type="button" id="style-save">Save changes</button>
+      <button class="ghost" type="button" id="style-reset">Undo my unsaved edits</button>
+      <span class="saved" id="style-saved" hidden>Saved</span>
+    </p>
+  </section>
+</main>
+
+<script src="admin.js"></script>
+</body>
+</html>

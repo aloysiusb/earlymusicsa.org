@@ -210,6 +210,9 @@ function page({ title, current = '', depth = 0, head = '', body }) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap">
 <link rel="stylesheet" href="${esc(root)}style.css">
+<!-- Design tokens saved from the style editor. Served by the server; harmless
+     404 on a purely static deploy, where the defaults simply stand. -->
+<link rel="stylesheet" href="/style-overrides.css">
 ${head}</head>
 <body>
 
@@ -625,6 +628,10 @@ async function main() {
   }
   await mkdir(OUT, { recursive: true });
   await copyFile('assets/style.css', path.join(OUT, 'style.css'));
+  // The volunteer tools: not linked from the public nav, but served alongside.
+  for (const f of ['admin.html', 'admin.css', 'admin.js']) {
+    await copyFile(path.join('assets', f), path.join(OUT, f));
+  }
 
   // Mirror the images in so nothing on the built site points at WordPress.
   let copied = 0;
@@ -903,13 +910,103 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
       ${about.body.map((p) => `<p>${p}</p>`).join('\n      ')}
     </div>`);
 
+  // Venue and organiser suggestions come from the real archive, so a submitter
+  // picking an existing one spells it the way every other listing does.
+  const venueList = JSON.parse(await readFile('data/locations.json', 'utf8'))
+    .map((l) => l.name).sort();
+  const organiserList = JSON.parse(await readFile('data/organizers.json', 'utf8'))
+    .map((o) => o.name).filter((n) => !n.includes('@')).sort();
+  const datalist = (id, items) =>
+    `<datalist id="${id}">${items.map((v) => `<option value="${esc(v)}"></option>`).join('')}</datalist>`;
+
   await simplePage('submit.html', 'Submit Your Event', 'submit.html', `
-  <p>Listings are free. We list concerts of Medieval, Renaissance and Baroque
-  music in and around San Antonio.</p>
-  <p><em>The submission form is not wired up yet &mdash; it needs the small
-  moderation server described in CLAUDE.md. In the meantime please
-  <a href="contact.html">get in touch</a> with the event name, date and time,
-  venue, performers, ticket details and a link.</em></p>`);
+    <div class="page-prose">
+      <p>Listings are free. We list concerts of Medieval, Renaissance and
+      Baroque music in and around San Antonio.</p>
+      <p>Send it in and a volunteer will check it over before it appears.
+      Fields marked <span class="req">*</span> are the ones we cannot do without.</p>
+    </div>
+    <form class="site-form" method="post" action="/api/submit">
+      <p class="field">
+        <label for="title">Event name <span class="req">*</span></label>
+        <input id="title" name="title" type="text" required maxlength="200">
+      </p>
+      <div class="field-row">
+        <p class="field">
+          <label for="start_local">Starts <span class="req">*</span></label>
+          <input id="start_local" name="start_local" type="datetime-local" required>
+        </p>
+        <p class="field">
+          <label for="end_local">Ends</label>
+          <input id="end_local" name="end_local" type="datetime-local">
+          <span class="field-hint">Leave blank if there is no set end time.</span>
+        </p>
+      </div>
+      <p class="field checkbox">
+        <input id="all_day" name="all_day" type="checkbox" value="1">
+        <label for="all_day">This runs all day</label>
+      </p>
+      <p class="field">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="5" maxlength="5000"></textarea>
+      </p>
+      <p class="field">
+        <label for="performers">Performers</label>
+        <input id="performers" name="performers" type="text" maxlength="1000">
+      </p>
+      <div class="field-row">
+        <p class="field">
+          <label for="location_name">Venue</label>
+          <input id="location_name" name="location_name" type="text" list="venues" maxlength="200">
+          <span class="field-hint">Start typing &mdash; venues we already list will suggest themselves.</span>
+        </p>
+        <p class="field">
+          <label for="location_address">Venue address</label>
+          <input id="location_address" name="location_address" type="text" maxlength="300">
+        </p>
+      </div>
+      <div class="field-row">
+        <p class="field">
+          <label for="organizer_name">Presented by</label>
+          <input id="organizer_name" name="organizer_name" type="text" list="organisers" maxlength="200">
+        </p>
+        <p class="field">
+          <label for="tickets">Ticket information</label>
+          <input id="tickets" name="tickets" type="text" maxlength="300"
+                 placeholder="e.g. $30 general, $10 student, or Free">
+        </p>
+      </div>
+      <div class="field-row">
+        <p class="field">
+          <label for="website">Event website</label>
+          <input id="website" name="website" type="url" maxlength="500" placeholder="https://">
+        </p>
+        <p class="field">
+          <label for="image_url">Poster or photo (link)</label>
+          <input id="image_url" name="image_url" type="url" maxlength="500" placeholder="https://">
+        </p>
+      </div>
+
+      <h2 class="section-heading form-section">About you</h2>
+      <div class="field-row">
+        <p class="field">
+          <label for="submitter_name">Your name</label>
+          <input id="submitter_name" name="submitter_name" type="text" maxlength="120">
+        </p>
+        <p class="field">
+          <label for="submitter_email">Your email</label>
+          <input id="submitter_email" name="submitter_email" type="email" maxlength="200">
+          <span class="field-hint">Only so we can ask if something is unclear.</span>
+        </p>
+      </div>
+      <p class="field honeypot" aria-hidden="true">
+        <label for="website_url">Leave this field empty</label>
+        <input id="website_url" name="website_url" type="text" tabindex="-1" autocomplete="off">
+      </p>
+      <p><button class="form-submit" type="submit">Submit event</button></p>
+      ${datalist('venues', venueList)}
+      ${datalist('organisers', organiserList)}
+    </form>`);
 
   // The form posts to the server and works with JavaScript off. The honeypot
   // is a real input, hidden from people but not from bots.

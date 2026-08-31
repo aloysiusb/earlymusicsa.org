@@ -141,6 +141,9 @@
   --form-accent: #066aab;      /* the live submit button */
   --form-submit-size: 17px;
   --form-required: #b3261e;
+  --admin-bg: #f2f3f5;
+  --rule-strong: #cfd3d7;
+  --ink-faint: #6b7075;
 
   /* --- expanded detail panel -------------------------------------------- */
   --card-bg-hover: #a9c9d4;
@@ -435,6 +438,12 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   border-radius: var(--field-radius);
   padding: var(--field-pad);
 }
+.field-hint { display: block; margin-top: 5px; font-size: 13px; color: var(--ink-soft); }
+.field.checkbox { display: flex; align-items: center; gap: 9px; }
+.field.checkbox input { width: auto; }
+.field.checkbox label { margin: 0; }
+.form-section { margin: 34px 0 4px; }
+
 .field textarea { min-height: var(--field-textarea-height); padding: 14px; resize: vertical; }
 .field input:focus-visible,
 .field textarea:focus-visible {

@@ -70,8 +70,10 @@ needs that.
   server, stores into a messages table, and returns a real thank-you page so it
   functions with JavaScript off. Honeypot included. Volunteers read the queue at
   GET /api/messages (admin token).
-- **Still to do:** search, filtering by type/venue/organizer, and the
-  submit-form, moderation and style-editing screens.
+- **Submit form, moderation and style editor done** (2026-08-30). The public
+  submit form needs no JavaScript; the volunteer tools at /admin.html do, which
+  is the one place on the site that is true.
+- **Still to do:** search, and filtering by type/venue/organizer.
 
 ## Layout
 
@@ -84,6 +86,7 @@ audit.js             finds EventON fields the export is dropping
 test-db.mjs          32 checks over storage, validation and the routes
 test-deploy.mjs      rehearses the Render setup: disk-mounted DB, rebuilds
 assets/style.css     the entire design; every value is a custom property
+assets/admin.*       volunteer tools: moderation, messages, style editor
 seed/masters.json    EventON saved-location + saved-organizer lists, read from
                      the live /submit-your-event/ form on 2026-08-19
 seed/aliases.json    hand-curated merges for duplicate EventON records
@@ -175,6 +178,34 @@ anything filling it gets a cheerful 200 and is not stored.
 `build.js` reads the database **if it is there** and merges approved events; if
 it is absent the site still builds, which is what keeps a plain static deploy
 working.
+
+### The volunteer tools — /admin.html
+
+Not linked from the public nav, and `noindex`. Sign in with the `ADMIN_TOKEN`
+Render generated (service → Environment). The token is held in `sessionStorage`
+for that tab, or `localStorage` if "keep me signed in" is ticked, and is never
+written into the page.
+
+Three tabs:
+
+- **Events awaiting review** — the full submission, with anything the spam
+  heuristics flagged called out. Approving rebuilds the site immediately, so the
+  event is live within seconds.
+- **Messages** — what the Contact form collected, with a reply-by-email link and
+  a "dealt with" button.
+- **Style** — the design tokens, grouped as Colours / Type / Layout. Native
+  `<input type="color">` swatches beside a text field, following the reference
+  panel in `The-Lemmon-Dociere`; no raw HSL sliders. Typing previews live on the
+  page; Save persists to the server, so it follows the volunteer between devices.
+
+Public pages link `/style-overrides.css`, which the server renders from those
+saved tokens. On a purely static deploy that 404s harmlessly and the defaults
+stand.
+
+**This admin page is the only part of the site that needs JavaScript.** It is a
+tool being operated rather than a page being read, so the CSS-first rule does
+not fit it — but it should eventually be unified with the shared 🎨 Style panel
+rather than staying a second implementation.
 
 ### Deploying it
 
