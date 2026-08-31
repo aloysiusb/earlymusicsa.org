@@ -10,7 +10,14 @@ ticketing system and never has been — it points people at events.
 
 Remote: **https://github.com/aloysiusb/earlymusicsa.org**
 
-## The old site went down on 2026-08-22
+## The old site went down on 2026-08-22 — and came back on 2026-08-30
+
+**Resolved.** Eight of eight probes returned the real WordPress site again on
+2026-08-30, so it can be measured once more. The account of the outage below is
+kept because the lesson stands: this host has failed once, without warning, and
+its error page returns HTTP 200 so uptime checks will not catch it.
+
+### What happened
 
 Part-way through that day's work `earlymusicsa.org` stopped serving. Measured
 over ten attempts: **zero** returned the real site — four returned a 195-byte
@@ -21,8 +28,8 @@ status codes will report the site as healthy.
 It was working earlier the same day; the scrape and the stylesheet fetches all
 succeeded. So this is recent, and it means:
 
-- **The live site can no longer be measured.** Design values still needed are in
-  the reference table below — use those rather than trying to re-scrape.
+- Design values captured while it was up are in the reference table below; use
+  those first, and only re-measure if the host is answering.
 - **Nothing was lost.** The export had already mirrored all 419 events, 424
   dates and 948 images, and they are in git and deployed. This is precisely the
   failure the migration was meant to survive.
