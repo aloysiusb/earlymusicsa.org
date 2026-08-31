@@ -66,8 +66,12 @@ needs that.
   sidebar, seven columns of 157px cells (45px, 66px when a day has something
   on), and each event shown in its day as a 10px chip in that event own
   colour. Jump Months is a <details> panel of every month that has events.
-- **Still to do:** real contact details, search, filtering by
-  type/venue/organizer, the Contact page, and the submit/moderation/style UIs.
+- **Contact done** (2026-08-30) and the form actually works: it posts to the
+  server, stores into a messages table, and returns a real thank-you page so it
+  functions with JavaScript off. Honeypot included. Volunteers read the queue at
+  GET /api/messages (admin token).
+- **Still to do:** search, filtering by type/venue/organizer, and the
+  submit-form, moderation and style-editing screens.
 
 ## Layout
 

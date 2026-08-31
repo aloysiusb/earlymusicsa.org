@@ -54,6 +54,21 @@ export function openDb(file = DB_PATH) {
     CREATE INDEX IF NOT EXISTS idx_submissions_status
       ON submissions(status, start_local);
 
+    -- Messages from the Contact page. Kept rather than emailed onward: the
+    -- site has no mail credentials, and a volunteer reading a queue is the
+    -- same job as reading an inbox.
+    CREATE TABLE IF NOT EXISTS messages (
+      id          INTEGER PRIMARY KEY AUTOINCREMENT,
+      created_at  TEXT NOT NULL,
+      first_name  TEXT,
+      last_name   TEXT,
+      email       TEXT NOT NULL,
+      message     TEXT,
+      handled     INTEGER NOT NULL DEFAULT 0
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_messages_handled ON messages(handled, created_at);
+
     CREATE TABLE IF NOT EXISTS style_settings (
       key        TEXT PRIMARY KEY,
       value      TEXT NOT NULL,
@@ -207,6 +222,41 @@ const escapeHtml = (s) => String(s)
 const slugify = (s) => String(s).normalize('NFKD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/[^a-z0-9 _-]/g, '').trim()
   .replace(/[\s_]+/g, '-').replace(/-+/g, '-').replace(/^-+|-+$/g, '');
+
+/* --------------------------------------------------------------- messages -- */
+
+const MESSAGE_LIMITS = { first_name: 120, last_name: 120, email: 200, message: 5000 };
+
+export function validateMessage(raw) {
+  const clean = {};
+  for (const f of Object.keys(MESSAGE_LIMITS)) {
+    clean[f] = String(raw[f] ?? '').replace(/\s+/g, ' ').trim().slice(0, MESSAGE_LIMITS[f]);
+  }
+  // The message keeps its line breaks; only the single-line fields collapse.
+  clean.message = String(raw.message ?? '').replace(/\r\n/g, '\n').trim().slice(0, MESSAGE_LIMITS.message);
+
+  const errors = [];
+  if (!clean.email) errors.push('An email address is required, so we can reply.');
+  else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(clean.email)) {
+    errors.push('That email address does not look right.');
+  }
+  if (!clean.message) errors.push('Please write a message.');
+  return { clean, errors };
+}
+
+export function insertMessage(db, clean) {
+  const info = db.prepare(
+    `INSERT INTO messages (created_at, first_name, last_name, email, message)
+     VALUES (?, ?, ?, ?, ?)`,
+  ).run(new Date().toISOString(), clean.first_name, clean.last_name, clean.email, clean.message);
+  return Number(info.lastInsertRowid);
+}
+
+export const listMessages = (db, handled = 0) =>
+  db.prepare('SELECT * FROM messages WHERE handled = ? ORDER BY created_at DESC').all(handled);
+
+export const markMessageHandled = (db, id) =>
+  db.prepare('UPDATE messages SET handled = 1 WHERE id = ?').run(id).changes > 0;
 
 /* --------------------------------------------------------------- settings -- */
 

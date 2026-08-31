@@ -130,6 +130,18 @@
   --calpage-month-size: 28px;
   --cal-hairline: #f0f0f0;
 
+  /* --- forms ------------------------------------------------------------- */
+  --field-size: 16px;
+  --field-text: rgb(0 0 0 / 0.7);
+  --field-border: rgb(0 0 0 / 0.25);
+  --field-radius: 3px;
+  --field-pad: 10px 14px;
+  --field-gap: 18px;
+  --field-textarea-height: 120px;
+  --form-accent: #066aab;      /* the live submit button */
+  --form-submit-size: 17px;
+  --form-required: #b3261e;
+
   /* --- expanded detail panel -------------------------------------------- */
   --card-bg-hover: #a9c9d4;
   --modal-width: 1000px;
@@ -394,6 +406,66 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   text-decoration: none;
 }
 .show-more:hover { background: var(--gold); }
+
+/* ------------------------------------------------------------------ forms -- */
+
+.site-form { max-width: var(--measure); margin-top: 26px; }
+
+.field-row { display: flex; flex-wrap: wrap; gap: var(--field-gap); }
+.field-row .field { flex: 1 1 200px; }
+
+.field { display: block; margin: 0 0 var(--field-gap); }
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.req { color: var(--form-required); }
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  font: inherit;
+  font-size: var(--field-size);
+  color: var(--field-text);
+  background: var(--page-bg);
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+  padding: var(--field-pad);
+}
+.field textarea { min-height: var(--field-textarea-height); padding: 14px; resize: vertical; }
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--form-accent);
+  outline-offset: 1px;
+  border-color: var(--form-accent);
+}
+
+/* A field only a bot will fill in. Kept out of the tab order and off screen
+   rather than display:none, which some bots check for. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-submit {
+  font: inherit;
+  font-size: var(--form-submit-size);
+  font-weight: 500;
+  color: #fff;
+  background: var(--form-accent);
+  border: 0;
+  border-radius: var(--field-radius);
+  padding: 10px 18px;
+  cursor: pointer;
+}
+.form-submit:hover { filter: brightness(1.08); }
+.form-submit:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 /* ------------------------------------------------- calendar page (large) -- */
 

@@ -23,6 +23,7 @@ import path from 'node:path';
 import {
   openDb, validateSubmission, insertSubmission, listSubmissions,
   reviewSubmission, validateStyle, setStyle, getStyles, clearStyle, stylesAsCss,
+  validateMessage, insertMessage, listMessages, markMessageHandled,
 } from './db.js';
 
 const ROOT = path.resolve('dist');
@@ -99,6 +100,62 @@ function rebuild(reason = '') {
   });
 }
 
+/* ------------------------------------------------------------ form reply -- */
+
+const escHtml = (s) => String(s ?? '')
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+const sendPage = (res, status, html) => {
+  res.writeHead(status, { ...BASE_HEADERS, 'content-type': 'text/html; charset=utf-8' });
+  res.end(html);
+};
+
+/**
+ * The reply a plain form post gets. The contact form has to work with
+ * JavaScript off, which means the server owes the browser a real page rather
+ * than a JSON blob.
+ */
+function thanksPage(errors = []) {
+  const ok = errors.length === 0;
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${ok ? 'Thank you' : 'Please check the form'} &ndash; Early Music San Antonio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-banner">
+  <div class="container header-inner">
+    <a class="site-logo" href="/"><img src="/media/Early-Music-SA-Logo-wt.png"
+      alt="Early Music San Antonio" width="205" height="150"></a>
+  </div>
+</header>
+<main class="site-main">
+  <div class="container page-header"><h1 class="page-title">${ok ? 'Thank you' : 'Please check the form'}</h1></div>
+  <div class="container content">
+    <div class="primary wide">
+      <div class="page-prose">
+        ${ok
+          ? '<p>Your message has been sent to the volunteers who look after this site. '
+            + 'We read everything, though it may take a few days to reply.</p>'
+          : `<ul>${errors.map((e) => `<li>${escHtml(e)}</li>`).join('')}</ul>`}
+        <p><a href="/contact.html">Back to the contact page</a> &nbsp;
+           <a href="/">Back to the events</a></p>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="site-footer"><div class="container">
+  <p>Copyright ${new Date().getFullYear()} &mdash; Early Music San Antonio. All rights reserved.</p>
+</div></footer>
+</body>
+</html>
+`;
+}
+
 function readBody(req) {
   return new Promise((resolve, reject) => {
     let size = 0;
@@ -172,6 +229,38 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  // --- public: contact ---------------------------------------------------
+  if (req.method === 'POST' && pathname === '/api/contact') {
+    let raw;
+    try { raw = await readBody(req); } catch {
+      json(res, 413, { ok: false, errors: ['That message was too long.'] });
+      return true;
+    }
+    const type = req.headers['content-type'] || '';
+    const body = parseBody(raw, type);
+    const wantsHtml = !type.includes('application/json');
+    if (!body) { json(res, 400, { ok: false, errors: ['Could not read that message.'] }); return true; }
+
+    if (String(body.website_url || '').trim()) {
+      // Honeypot — accepted quietly, stored nowhere.
+      if (wantsHtml) { sendPage(res, 200, thanksPage()); return true; }
+      json(res, 200, { ok: true, id: null });
+      return true;
+    }
+
+    const { clean, errors } = validateMessage(body);
+    if (errors.length) {
+      if (wantsHtml) { sendPage(res, 400, thanksPage(errors)); return true; }
+      json(res, 400, { ok: false, errors });
+      return true;
+    }
+
+    const id = insertMessage(db, clean);
+    if (wantsHtml) { sendPage(res, 200, thanksPage()); return true; }
+    json(res, 201, { ok: true, id, message: 'Thank you — your message has been sent.' });
+    return true;
+  }
+
   // --- everything below is admin only ----------------------------------
   if (pathname.startsWith('/api/')) {
     if (!isAdmin(req)) {
@@ -192,6 +281,18 @@ async function handleApi(req, res, url) {
       return true;
     }
     json(res, 200, { ok: true, submissions: listSubmissions(db, status) });
+    return true;
+  }
+
+  if (req.method === 'GET' && pathname === '/api/messages') {
+    json(res, 200, { ok: true, messages: listMessages(db, 0) });
+    return true;
+  }
+
+  const handled = pathname.match(/^\/api\/messages\/(\d+)\/handled$/);
+  if (req.method === 'POST' && handled) {
+    const done = markMessageHandled(db, Number(handled[1]));
+    json(res, done ? 200 : 404, done ? { ok: true } : { ok: false, errors: ['No message with that id.'] });
     return true;
   }
 

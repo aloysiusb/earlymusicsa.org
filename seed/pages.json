@@ -23,5 +23,15 @@
       "We hope you will visit regularly to learn about upcoming events, and spread the word. If you have an event of Medieval, Renaissance, or Baroque music that you would like to see listed, you can submit it through <a href=\"submit.html\">our form</a>.",
       "If you are scheduling events, you can gain a larger audience by using this site to look for open dates."
     ]
+  },
+
+  "contact": {
+    "slug": "contact.html",
+    "title": "Contact Us",
+    "navLabel": "Contact Us",
+    "body": [
+      "Send us a note and it will reach the volunteers who look after this site. We read everything, though it may take a few days to reply.",
+      "If you would like an event listed, please use the <a href=\"submit.html\">event submission form</a> instead — it asks for the details we need."
+    ]
   }
 }

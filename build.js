@@ -911,9 +911,38 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
   <a href="contact.html">get in touch</a> with the event name, date and time,
   venue, performers, ticket details and a link.</em></p>`);
 
-  await simplePage('contact.html', 'Contact Us', 'contact.html', `
-  <p><em>Contact details still to be filled in &mdash; the old site used a
-  WPForms form that posted into WordPress.</em></p>`);
+  // The form posts to the server and works with JavaScript off. The honeypot
+  // is a real input, hidden from people but not from bots.
+  const contact = pages.contact;
+  await simplePage('contact.html', contact.title, 'contact.html', `
+    <div class="page-prose">
+      ${contact.body.map((p) => `<p>${p}</p>`).join('\n      ')}
+    </div>
+    <form class="site-form" method="post" action="/api/contact">
+      <div class="field-row">
+        <p class="field">
+          <label for="first_name">First name</label>
+          <input id="first_name" name="first_name" type="text" autocomplete="given-name">
+        </p>
+        <p class="field">
+          <label for="last_name">Last name</label>
+          <input id="last_name" name="last_name" type="text" autocomplete="family-name">
+        </p>
+      </div>
+      <p class="field">
+        <label for="email">Email <span class="req">*</span></label>
+        <input id="email" name="email" type="email" required autocomplete="email">
+      </p>
+      <p class="field">
+        <label for="message">Comment or message <span class="req">*</span></label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </p>
+      <p class="field honeypot" aria-hidden="true">
+        <label for="website_url">Leave this field empty</label>
+        <input id="website_url" name="website_url" type="text" tabindex="-1" autocomplete="off">
+      </p>
+      <p><button class="form-submit" type="submit">Submit</button></p>
+    </form>`);
 
   console.log(`Built ${OUT}/`);
   console.log(`  ${upcoming.length} upcoming · ${past.length} past · ${undated.length} undated`);

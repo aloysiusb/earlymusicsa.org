@@ -12,6 +12,7 @@ import { spawn } from 'node:child_process';
 import {
   openDb, validateSubmission, insertSubmission, listSubmissions,
   reviewSubmission, approvedEvents, validateStyle, setStyle, getStyles, stylesAsCss,
+  validateMessage, insertMessage, listMessages, markMessageHandled,
 } from './db.js';
 
 let passed = 0, failed = 0;
@@ -100,6 +101,22 @@ check('history keeps both values',
 
 const css = stylesAsCss(db);
 check('emits a stylesheet', css.includes(':root{') && css.includes('--gold: #a07800;'), css);
+
+// --- contact messages ---
+check('a message needs an email', validateMessage({ message: 'hi' }).errors.length > 0);
+check('a message needs a body', validateMessage({ email: 'a@b.co' }).errors.length > 0);
+check('rejects a malformed address', validateMessage({ email: 'not-an-email', message: 'hi' }).errors.length > 0);
+const msg = validateMessage({
+  first_name: 'Ada', last_name: 'Lovelace', email: 'ada@example.org',
+  message: 'Line one.\nLine two.',
+});
+check('accepts a good message', msg.errors.length === 0, msg.errors.join('; '));
+check('keeps line breaks in the message body', msg.clean.message.includes('\n'));
+insertMessage(db, msg.clean);
+check('message reaches the queue', listMessages(db, 0).length === 1);
+check('marking handled clears it', markMessageHandled(db, listMessages(db, 0)[0].id)
+  && listMessages(db, 0).length === 0);
+
 db.close();
 
 // --- HTTP ---
@@ -156,6 +173,32 @@ try {
     body: JSON.stringify({ styles: { '--x': 'red;}body{display:none' } }),
   });
   check('style write rejects an injection attempt', styleBad.status === 400);
+
+  const contactForm = await fetch(`${base}/api/contact`, {
+    method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: 'email=form@example.org&message=sent+without+javascript',
+  });
+  const contactHtml = await contactForm.text();
+  check('a plain form post gets a real page back, not JSON',
+    contactForm.status === 200 && contactHtml.includes('Thank you') && contactHtml.includes('<!doctype html'));
+
+  const contactBad = await fetch(`${base}/api/contact`, {
+    method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: 'message=no+address',
+  });
+  check('a form post missing an address is refused with a page', contactBad.status === 400);
+
+  const before = await (await fetch(`${base}/api/messages`, { headers: { 'x-admin-token': 'test-token' } })).json();
+  await fetch(`${base}/api/contact`, {
+    method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: 'email=bot@example.org&message=spam&website_url=http://spam',
+  });
+  const after = await (await fetch(`${base}/api/messages`, { headers: { 'x-admin-token': 'test-token' } })).json();
+  check('the contact honeypot stores nothing',
+    after.messages.length === before.messages.length, `${before.messages.length} -> ${after.messages.length}`);
+
+  const msgNoAuth = await fetch(`${base}/api/messages`);
+  check('the message queue needs a token', msgNoAuth.status === 401);
 
   const cssRes = await fetch(`${base}/style-overrides.css`);
   const cssText = await cssRes.text();
