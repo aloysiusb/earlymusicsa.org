@@ -78,7 +78,8 @@
   --content-top: 50px;
   --content-bottom: 70px;
 
-  --banner-height: 155px;
+  --banner-height: 185px;
+  --banner-overlay: rgba(0, 33, 43, 0.66);   /* the wash over the header photo */
   --banner-position: 24% 42%;
   /* The live site reserves only 65px for its 155px fixed banner, which leaves
      its own <h1> hidden underneath. Reserving the full height keeps the
@@ -224,6 +225,19 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   background-position: var(--banner-position);
   background-repeat: no-repeat;
 }
+
+/* A wash over the photograph so the white logo and menu stay readable whatever
+   part of the image happens to sit behind them. */
+.site-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--banner-overlay);
+  pointer-events: none;
+}
+/* The logo and menu sit above the wash. */
+.site-banner .header-inner { position: relative; z-index: 1; }
+
 /* The header container spans the full width, unlike the content below it. */
 .site-banner .header-inner { max-width: none; }
 
@@ -255,7 +269,6 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   font-size: var(--nav-size);
   font-weight: var(--nav-weight);
   text-decoration: none;
-  text-shadow: 0 1px 3px rgb(0 0 0 / 0.45);
 }
 .main-nav a:hover,
 .main-nav a[aria-current='page'] { text-decoration: underline; }
