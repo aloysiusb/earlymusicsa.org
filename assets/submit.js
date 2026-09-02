@@ -140,4 +140,38 @@
       });
     });
   }
+
+  /* ------------------------------------------------------------- the image -- */
+
+  // Show the chosen file before it is sent, so a wrong picture is obvious.
+  var fileInput = $('#image_file');
+  var preview = $('#image-preview');
+  if (fileInput && preview) {
+    fileInput.addEventListener('change', function () {
+      var f = fileInput.files && fileInput.files[0];
+      if (!f) { preview.hidden = true; preview.innerHTML = ''; return; }
+      if (f.size > 8 * 1024 * 1024) {
+        preview.innerHTML = '<p class="field-hint">That image is over 8MB. Please choose a smaller one.</p>';
+        preview.hidden = false;
+        return;
+      }
+      var url = URL.createObjectURL(f);
+      preview.innerHTML = '<img alt="" src="' + url + '">'
+        + '<span class="field-hint">' + f.name + ' &mdash; '
+        + Math.round(f.size / 1024) + 'KB</span>';
+      preview.hidden = false;
+    });
+  }
+
+  /* ------------------------------------------------------------ the colour -- */
+
+  // Keep the swatch and the hex field saying the same thing.
+  var colour = $('#color');
+  var colourHex = $('#color_hex');
+  if (colour && colourHex) {
+    colour.addEventListener('input', function () { colourHex.value = colour.value; });
+    colourHex.addEventListener('input', function () {
+      if (/^#[0-9a-fA-F]{6}$/.test(colourHex.value)) colour.value = colourHex.value;
+    });
+  }
 })();

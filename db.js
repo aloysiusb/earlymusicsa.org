@@ -58,7 +58,8 @@ export function openDb(file = DB_PATH) {
       repeat_note     TEXT,
       link_new_window INTEGER NOT NULL DEFAULT 0,
       location_lat    REAL,
-      location_lon    REAL
+      location_lon    REAL,
+      color           TEXT
     );
 
     -- Geocoding results, cached so the same venue is only ever looked up once.
@@ -130,6 +131,7 @@ function migrate(db) {
       link_new_window: 'INTEGER NOT NULL DEFAULT 0',
       location_lat: 'REAL',
       location_lon: 'REAL',
+      color: 'TEXT',
       spam_reasons: 'TEXT',
     },
     messages: { handled: 'INTEGER NOT NULL DEFAULT 0' },
@@ -152,7 +154,7 @@ export const SUBMISSION_FIELDS = [
   'no_end_time', 'repeating', 'repeat_note',
   'location_name', 'location_address', 'location_lat', 'location_lon',
   'organizer_name', 'performers', 'tickets', 'website', 'link_new_window',
-  'image_url', 'event_types', 'submitter_name', 'submitter_email',
+  'image_url', 'event_types', 'color', 'submitter_name', 'submitter_email',
 ];
 
 /** Fields stored as 0/1 rather than text. */
@@ -161,7 +163,7 @@ const NUMBERS = new Set(['location_lat', 'location_lon']);
 
 const LIMITS = {
   title: 200, subtitle: 200, description: 5000, start_local: 40, end_local: 40,
-  repeat_note: 300, event_types: 400,
+  repeat_note: 300, event_types: 400, color: 20,
   location_name: 200, location_address: 300, organizer_name: 200,
   performers: 1000, tickets: 300, website: 500, image_url: 500,
   submitter_name: 120, submitter_email: 200,
@@ -221,15 +223,21 @@ export function validateSubmission(raw) {
   if (clean.end_local && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(clean.end_local)) {
     errors.push('The end date and time is not in a format we recognise.');
   }
-  for (const f of ['website', 'image_url']) {
-    if (clean[f] && !/^https?:\/\//i.test(clean[f])) {
-      errors.push('Links must start with http:// or https://');
-      break;
-    }
+  if (clean.website && !/^https?:\/\//i.test(clean.website)) {
+    errors.push('The website link must start with http:// or https://');
+  }
+  // image_url holds either a link someone typed or the path of a file they
+  // uploaded, which the server writes itself after checking the bytes.
+  if (clean.image_url
+      && !/^https?:\/\//i.test(clean.image_url)
+      && !/^\/uploads\/[0-9a-f-]{36}\.(jpg|png|gif|webp)$/.test(clean.image_url)) {
+    errors.push('The image link must start with http:// or https://');
   }
   if (clean.submitter_email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(clean.submitter_email)) {
     errors.push('That email address does not look right.');
   }
+
+  if (clean.color && !/^#[0-9a-fA-F]{6}$/.test(clean.color)) clean.color = '';
 
   clean.start_local = withSiteOffset(clean.start_local);
   clean.end_local = withSiteOffset(clean.end_local);
@@ -281,7 +289,7 @@ export function approvedEvents(db) {
     endUnix: s.end_local ? Math.floor(Date.parse(s.end_local) / 1000) : null,
     allDay: !!s.all_day,
     instances: null,
-    color: null,
+    color: s.color || null,
     textTone: 'light',
     location: s.location_name
       ? { id: null, name: s.location_name, rawName: s.location_name,

@@ -968,7 +968,7 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
       Baroque music in and around San Antonio. A volunteer checks every
       submission before it appears.</p>
     </div>
-    <form class="site-form form-evo" id="submit-form" method="post" action="/api/submit">
+    <form class="site-form form-evo" id="submit-form" method="post" action="/api/submit" enctype="multipart/form-data">
 
       <p class="field">
         <label for="title">Event Name <span class="req">*</span></label>
@@ -1060,10 +1060,23 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
         <label for="link_new_window">Open in new window</label>
       </p>
       <p class="field">
-        <label for="image_url">Event Image</label>
+        <label for="image_file">Event Image</label>
+        <input id="image_file" name="image_file" type="file" accept="image/jpeg,image/png,image/gif,image/webp">
+        <span class="field-hint">A poster or photo &mdash; JPEG, PNG, GIF or WebP, up to 8MB.</span>
+      </p>
+      <div class="image-preview" id="image-preview" hidden></div>
+      <p class="field">
+        <label for="image_url">&hellip; or link to one instead</label>
         <input id="image_url" name="image_url" type="url" maxlength="500" placeholder="https://">
-        <span class="field-hint">A link to a poster or photo. To send a file instead,
-        <a href="contact.html">get in touch</a> and we will add it for you.</span>
+      </p>
+
+      <p class="field">
+        <label for="color">Event Colour</label>
+        <span class="colour-row">
+          <input id="color" name="color" type="color" value="#b3d1db">
+          <input id="color_hex" type="text" value="#b3d1db" maxlength="7" spellcheck="false" aria-label="Event colour as a hex value">
+        </span>
+        <span class="field-hint">The colour of this event card and its mark in the calendar.</span>
       </p>
 
       <h2 class="form-section">Event Organizer Fields</h2>

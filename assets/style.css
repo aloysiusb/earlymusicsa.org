@@ -569,6 +569,15 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   border-bottom: 1px solid var(--evoform-border);
 }
 
+.image-preview { margin: 0 0 var(--field-gap); }
+.image-preview img { max-width: 320px; border-radius: var(--evoform-textarea-radius); border: 1px solid var(--evoform-border); }
+
+.colour-row { display: flex; align-items: center; gap: 10px; }
+.colour-row input[type="color"] { width: 52px; min-height: 42px; padding: 2px; cursor: pointer; }
+.colour-row input[type="text"] { width: 8em; }
+
+.form-evo input[type="file"] { padding: 10px 12px; background: var(--page-bg); }
+
 .venue-map { margin: 0 0 var(--field-gap); border-radius: var(--evoform-textarea-radius); overflow: hidden; border: 1px solid var(--evoform-border); }
 .venue-map .staticmap { height: 240px; }
 

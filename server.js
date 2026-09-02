@@ -20,6 +20,7 @@ import { stat, mkdir, writeFile } from 'node:fs/promises';
 import { timingSafeEqual, randomUUID } from 'node:crypto';
 import { execFile } from 'node:child_process';
 import path from 'node:path';
+import { boundaryOf, parseMultipart, sniffImage } from './multipart.js';
 import {
   openDb, validateSubmission, insertSubmission, listSubmissions,
   reviewSubmission, validateStyle, setStyle, getStyles, clearStyle, stylesAsCss,
@@ -30,6 +31,11 @@ const ROOT = path.resolve('dist');
 const PORT = Number(process.argv[2] || process.env.PORT || 4173);
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
 const MAX_BODY = 256 * 1024;
+const MAX_UPLOAD = 8 * 1024 * 1024;
+
+// Uploads live beside the database, which on Render is the persistent disk.
+const UPLOAD_DIR = process.env.UPLOAD_DIR
+  || path.join(path.dirname(process.env.DB_PATH || '.'), 'uploads');
 
 const db = openDb();
 
@@ -159,18 +165,40 @@ function thanksPage(errors = [], kind = 'message') {
 `;
 }
 
-function readBody(req) {
+function readBuffer(req, max = MAX_BODY) {
   return new Promise((resolve, reject) => {
     let size = 0;
     const chunks = [];
     req.on('data', (c) => {
       size += c.length;
-      if (size > MAX_BODY) { reject(new Error('too large')); req.destroy(); return; }
+      if (size > max) { reject(new Error('too large')); req.destroy(); return; }
       chunks.push(c);
     });
-    req.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+    req.on('end', () => resolve(Buffer.concat(chunks)));
     req.on('error', reject);
   });
+}
+
+const readBody = (req, max) => readBuffer(req, max).then((b) => b.toString('utf8'));
+
+/**
+ * Save an uploaded image beside the database, which on Render is the persistent
+ * disk — so an upload survives a deploy exactly as a submission does.
+ *
+ * The file is identified by its leading bytes, not by what the browser claimed
+ * and not by the extension: a .jpg can contain anything. The stored name is one
+ * we generate, so nothing a submitter types reaches the filesystem.
+ */
+async function saveUpload(file) {
+  const kind = sniffImage(file.data);
+  if (!kind) return { error: 'That file did not look like a JPEG, PNG, GIF or WebP image.' };
+  if (file.data.length > MAX_UPLOAD) {
+    return { error: `Images need to be under ${Math.round(MAX_UPLOAD / 1024 / 1024)}MB.` };
+  }
+  const name = `${randomUUID()}.${kind.ext}`;
+  await mkdir(UPLOAD_DIR, { recursive: true });
+  await writeFile(path.join(UPLOAD_DIR, name), file.data);
+  return { url: `/uploads/${name}` };
 }
 
 /**
@@ -222,13 +250,38 @@ async function handleApi(req, res, url) {
 
   // --- public: submit an event -----------------------------------------
   if (req.method === 'POST' && pathname === '/api/submit') {
-    let raw;
-    try { raw = await readBody(req); } catch {
+    const type = req.headers['content-type'] || '';
+    const boundary = boundaryOf(type);
+
+    let body;
+    let upload = null;
+    try {
+      if (boundary) {
+        // A form carrying a file: read as bytes and allow the larger cap.
+        const parsed = parseMultipart(await readBuffer(req, MAX_UPLOAD + 256 * 1024), boundary);
+        body = parsed.fields;
+        const picked = parsed.files.find((f) => f.field === 'image_file');
+        if (picked) {
+          const saved = await saveUpload(picked);
+          if (saved.error) {
+            if (!type.includes('application/json')) { sendPage(res, 400, thanksPage([saved.error])); return true; }
+            json(res, 400, { ok: false, errors: [saved.error] });
+            return true;
+          }
+          upload = saved.url;
+        }
+      } else {
+        body = parseBody(await readBody(req), type);
+      }
+    } catch {
       json(res, 413, { ok: false, errors: ['That submission was too large.'] });
       return true;
     }
-    const body = parseBody(raw, req.headers['content-type'] || '');
     if (!body) { json(res, 400, { ok: false, errors: ['Could not read that submission.'] }); return true; }
+
+    // An uploaded file wins over a typed link, since it is the more deliberate
+    // of the two.
+    if (upload) body.image_url = upload;
 
     // Honeypot: a field no person sees, so anything filling it is a bot.
     // Accepted silently, so the bot has nothing to learn from the response.
@@ -257,6 +310,24 @@ async function handleApi(req, res, url) {
       flagged: spamReasons.length > 0,
       message: 'Thank you — your event has been sent for review.',
     });
+    return true;
+  }
+
+  /* --- public: an uploaded image -----------------------------------------
+   * Served from the disk beside the database. The name is one we generated and
+   * the type comes from the extension we chose, never from anything the
+   * submitter supplied.
+   */
+  const uploadReq = pathname.match(/^\/uploads\/([0-9a-f-]{36}\.(jpg|png|gif|webp))$/);
+  if (req.method === 'GET' && uploadReq) {
+    const file = path.join(UPLOAD_DIR, uploadReq[1]);
+    if (!existsSync(file)) { res.writeHead(404, BASE_HEADERS).end(); return true; }
+    res.writeHead(200, {
+      ...BASE_HEADERS,
+      'content-type': TYPES[path.extname(file)] || 'application/octet-stream',
+      'cache-control': 'public, max-age=31536000, immutable',
+    });
+    createReadStream(file).pipe(res);
     return true;
   }
 

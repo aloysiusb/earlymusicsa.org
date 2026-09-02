@@ -9,6 +9,7 @@ import { rm, mkdtemp } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
+import { boundaryOf, parseMultipart, sniffImage } from './multipart.js';
 import {
   openDb, validateSubmission, insertSubmission, listSubmissions,
   reviewSubmission, approvedEvents, validateStyle, setStyle, getStyles, stylesAsCss,
@@ -117,6 +118,65 @@ check('a submitted 7:30pm still reads as 7:30pm',
 check('rejects an end time before the start',
   validateSubmission({ title: 'X', start_local: '2026-12-05T20:00', end_local: '2026-12-05T19:00' })
     .errors.some((e) => /before the start/.test(e)));
+
+// --- multipart parsing and image sniffing ---
+check('reads the boundary from a content-type',
+  boundaryOf('multipart/form-data; boundary=----abc123') === '----abc123');
+check('reads a quoted boundary',
+  boundaryOf('multipart/form-data; boundary="x y"') === 'x y');
+check('no boundary on a plain post', boundaryOf('application/json') === null);
+
+const B = '----test';
+const png = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 1, 2, 3, 4, 5, 6]);
+const part = (headers) => Buffer.from(`--${B}\r\n${headers}\r\n\r\n`);
+const multi = Buffer.concat([
+  part('Content-Disposition: form-data; name="title"'), Buffer.from('A Concert\r\n'),
+  part('Content-Disposition: form-data; name="event_types"'), Buffer.from('baroque\r\n'),
+  part('Content-Disposition: form-data; name="event_types"'), Buffer.from('choral\r\n'),
+  part('Content-Disposition: form-data; name="image_file"; filename="p.png"\r\nContent-Type: image/png'),
+  png,
+  Buffer.from(`\r\n--${B}--\r\n`),
+]);
+
+const parsed = parseMultipart(multi, B);
+check('parses a text field', parsed.fields.title === 'A Concert', parsed.fields.title);
+check('joins repeated fields', parsed.fields.event_types === 'baroque,choral', parsed.fields.event_types);
+check('finds the uploaded file', parsed.files.length === 1 && parsed.files[0].filename === 'p.png');
+// The usual way a hand-rolled parser breaks uploads is by round-tripping the
+// bytes through a string, so this compares them exactly.
+check('keeps the file bytes byte-for-byte', parsed.files[0].data.equals(png),
+  `${parsed.files[0].data.length} bytes vs ${png.length}`);
+
+const empty = Buffer.concat([
+  part('Content-Disposition: form-data; name="image_file"; filename=""'),
+  Buffer.from(`\r\n--${B}--\r\n`),
+]);
+check('an empty file input is not treated as a file',
+  parseMultipart(empty, B).files.length === 0);
+
+check('recognises a PNG', sniffImage(png)?.ext === 'png');
+check('recognises a JPEG',
+  sniffImage(Buffer.from([0xff, 0xd8, 0xff, 0, 0, 0, 0, 0, 0, 0, 0, 0]))?.ext === 'jpg');
+check('recognises a GIF', sniffImage(Buffer.from('GIF89a padding here'))?.ext === 'gif');
+// A file's name and its declared type are both things the submitter controls.
+check('refuses a text file claiming to be an image',
+  sniffImage(Buffer.from('this is definitely not a png at all')) === null);
+
+// --- event colour ---
+check('accepts a hex colour',
+  validateSubmission({ title: 'X', start_local: '2026-10-01T19:30', color: '#4a035c' })
+    .clean.color === '#4a035c');
+check('drops a colour that is not a hex value',
+  validateSubmission({ title: 'X', start_local: '2026-10-01T19:30', color: 'red; drop table' })
+    .clean.color === '');
+check('accepts an uploaded image path',
+  validateSubmission({
+    title: 'X', start_local: '2026-10-01T19:30',
+    image_url: '/uploads/7243d237-57d2-4983-ab58-730c1d671c95.png',
+  }).errors.length === 0);
+check('still refuses a junk image link',
+  validateSubmission({ title: 'X', start_local: '2026-10-01T19:30', image_url: 'javascript:alert(1)' })
+    .errors.length > 0);
 
 // --- contact messages ---
 check('a message needs an email', validateMessage({ message: 'hi' }).errors.length > 0);

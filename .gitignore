@@ -6,3 +6,6 @@ dist/
 *.sqlite
 *.sqlite-wal
 *.sqlite-shm
+
+# uploaded event images live on the Render disk, not in git
+uploads/
