@@ -82,6 +82,8 @@ scrape.js            one-time export from the live WordPress site
 build.js             data/events.json -> dist/  (the static site)
 server.js            serves dist/ + the submissions and style API (node:http)
 db.js                SQLite schema and helpers (node:sqlite, no deps)
+tiles.js             mirrors the OpenStreetMap tiles each venue map needs
+assets/submit.js     the Submit page: field toggles, venue picker, live map
 audit.js             finds EventON fields the export is dropping
 test-db.mjs          32 checks over storage, validation and the routes
 test-deploy.mjs      rehearses the Render setup: disk-mounted DB, rebuilds

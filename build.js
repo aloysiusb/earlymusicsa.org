@@ -9,9 +9,10 @@
  *   node build.js --home   # just the home page (fast, for styling work)
  */
 
-import { mkdir, readFile, writeFile, copyFile, rm, readdir } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, copyFile, cp, rm, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
+import { tilePlan, tileFile, TILE, TILE_DIR } from './tiles.js';
 
 const OUT = 'dist';
 const SITE_NAME = 'Early Music San Antonio';
@@ -237,25 +238,35 @@ ${body}
 
 <script>
 /* The detail panel opens, closes and locks page scrolling entirely in CSS,
-   through :target and :has(). This handles the two things CSS cannot: closing
-   on Escape, and loading a panel's map only once that panel is opened. */
-(function () {
-  function loadMap() {
-    var open = document.querySelector('.event-modal:target');
-    if (!open) return;
-    open.querySelectorAll('iframe[data-src]').forEach(function (f) {
-      f.src = f.getAttribute('data-src');
-      f.removeAttribute('data-src');
-    });
-  }
-  addEventListener('hashchange', loadMap);
-  loadMap();
-  addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && location.hash) {
-      history.replaceState(null, '', location.pathname + location.search);
-    }
+   through :target and :has(). Two things CSS cannot do are handled here.
+ *
+ * The map tiles inside a panel carry data-src rather than src. A panel starts
+ * display:none, and an image in a display:none container is never fetched —
+ * loading="lazy" does not help, it simply never fires. So the tiles are filled
+ * in when their panel opens. A year page holds a dozen panels; loading every
+ * map up front would be a couple of megabytes nobody asked for.
+ *
+ * With JavaScript off there is no map in the panel, but the event's own page
+ * carries the same map with a plain src, so the information is never lost. */
+function showMaps() {
+  var open = document.querySelector('.event-modal:target');
+  if (!open) return;
+  open.querySelectorAll('img[data-src]').forEach(function (img) {
+    img.src = img.getAttribute('data-src');
+    img.removeAttribute('data-src');
   });
-})();
+}
+addEventListener('hashchange', showMaps);
+// :target does not resolve while the document is still parsing, so arriving on
+// a link straight to an open panel needs the load event too, not just this call.
+addEventListener('DOMContentLoaded', showMaps);
+showMaps();
+
+addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && location.hash) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+});
 </script>
 
 <footer class="site-footer">
@@ -369,18 +380,33 @@ const panel = (name, heading, inner, cls = '') =>
  * needs a key with billing enabled; OpenStreetMap needs neither, and EventON
  * already geocoded every venue so the coordinates come free.
  */
-function mapPanel(loc) {
+function mapPanel(loc, depth, { defer = false } = {}) {
   if (!loc?.lat) return '';
-  const d = 0.005;
-  const bbox = [loc.lon - d, loc.lat - d, loc.lon + d, loc.lat + d].map((n) => n.toFixed(6)).join(',');
-  const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${loc.lat},${loc.lon}`;
-  // Held in data-src so a page full of closed panels makes no map requests at
-  // all — `loading="lazy"` does not help here, because a hidden iframe still
-  // fetches. The script swaps it in when its panel opens. Without JavaScript
-  // the map is skipped and the "Get directions" link carries the same info.
+
+  // Built from tiles mirrored by tiles.js and served from our own domain.
+  //
+  // This was an OpenStreetMap iframe. That handed every visitor's map to a
+  // third party: the embed loads its own code and tiles, and if any of that is
+  // slow or blocked the map is a grey box we cannot see into or fix. Composing
+  // the tiles ourselves means the map is just images — it renders or it
+  // obviously does not, it needs no script, and it makes no outside request.
+  const plan = tilePlan(loc.lat, loc.lon);
+  const missing = plan.tiles.filter((t) => !existsSync(path.join(TILE_DIR, tileFile(t))));
+  if (missing.length) return '';   // run `node tiles.js` and it appears
+
+  const root = '../'.repeat(depth);
+  const imgs = plan.tiles.map((t) =>
+    `<img ${defer ? 'data-src' : 'src'}="${root}media/tiles/${tileFile(t)}" alt=""`
+    + ` width="${TILE}" height="${TILE}">`).join('');
+
   return `<section class="panel panel-map">
-      <iframe data-src="${esc(src)}" title="Map showing ${esc(loc.name)}"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="staticmap">
+        <div class="staticmap-plane" style="left:calc(50% - ${plan.px.toFixed(1)}px);top:calc(50% - ${plan.py.toFixed(1)}px)">${imgs}</div>
+        <span class="staticmap-pin" aria-hidden="true"></span>
+        <span class="staticmap-label">${esc(loc.name)}</span>
+        <a class="staticmap-credit" href="https://www.openstreetmap.org/copyright"
+           target="_blank" rel="noopener">&copy; OpenStreetMap contributors</a>
+      </div>
     </section>`;
 }
 
@@ -443,7 +469,7 @@ function eventModal(ev, depth) {
     </div>
     <div class="modal-body">
       ${pair(figure, details)}
-      ${mapPanel(loc)}
+      ${mapPanel(loc, depth, { defer: true })}
       ${location}
       ${pair(performers, learnMore)}
       ${tickets}
@@ -629,7 +655,7 @@ async function main() {
   await mkdir(OUT, { recursive: true });
   await copyFile('assets/style.css', path.join(OUT, 'style.css'));
   // The volunteer tools: not linked from the public nav, but served alongside.
-  for (const f of ['admin.html', 'admin.css', 'admin.js']) {
+  for (const f of ['admin.html', 'admin.css', 'admin.js', 'submit.js']) {
     await copyFile(path.join('assets', f), path.join(OUT, f));
   }
 
@@ -638,11 +664,9 @@ async function main() {
   if (keepMedia) {
     copied = (await readdir(path.join(OUT, 'media'))).length;
   } else if (existsSync('media')) {
-    await mkdir(path.join(OUT, 'media'), { recursive: true });
-    for (const name of await readdir('media')) {
-      await copyFile(path.join('media', name), path.join(OUT, 'media', name));
-      copied++;
-    }
+    // Recursive: media/ now holds a tiles/ subdirectory as well as the images.
+    await cp('media', path.join(OUT, 'media'), { recursive: true });
+    copied = (await readdir(path.join(OUT, 'media'))).length;
   }
 
   // A repeating event is one record with several dates, and it appears once
@@ -865,6 +889,9 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
       ${ev.website ? `<a href="${esc(ev.website)}" rel="noopener">Event website</a> &nbsp; ` : ''}
       ${p ? `<a href="${esc(ev.slug)}.ics">Add to calendar</a>` : ''}
     </p>
+    ${mapPanel(ev.location, 1)}
+    <p>
+    </p>
   </div>
   <aside class="sidebar">${calendarWidget(p?.year || focusDate.year, p?.month || focusDate.month, byDay, 1)}</aside>
 </div>`,
@@ -911,84 +938,151 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
       ${about.body.map((p) => `<p>${p}</p>`).join('\n      ')}
     </div>`);
 
-  // Venue and organiser suggestions come from the real archive, so a submitter
-  // picking an existing one spells it the way every other listing does.
-  const venueList = JSON.parse(await readFile('data/locations.json', 'utf8'))
-    .map((l) => l.name).sort();
-  const organiserList = JSON.parse(await readFile('data/organizers.json', 'utf8'))
-    .map((o) => o.name).filter((n) => !n.includes('@')).sort();
-  const datalist = (id, items) =>
-    `<datalist id="${id}">${items.map((v) => `<option value="${esc(v)}"></option>`).join('')}</datalist>`;
+  // Saved venues and organisers come from the real archive, and the venue list
+  // carries coordinates so choosing one shows its map straight away.
+  const venueRows = JSON.parse(await readFile('data/locations.json', 'utf8'));
+  const venueCoords = new Map();
+  for (const ev of live) {
+    const l = ev.location;
+    if (l && l.name && l.lat && !venueCoords.has(l.name)) venueCoords.set(l.name, [l.lat, l.lon]);
+  }
+  const venues = venueRows.map((l) => {
+    const c = venueCoords.get(l.name) || [];
+    return {
+      name: l.name,
+      address: (l.addresses && l.addresses[0]) || '',
+      lat: c[0] || null,
+      lon: c[1] || null,
+    };
+  }).sort((a, b) => a.name.localeCompare(b.name));
 
+  const organisers = JSON.parse(await readFile('data/organizers.json', 'utf8'))
+    .map((o) => o.name).filter((n) => !n.includes('@')).sort();
+
+  const types = JSON.parse(await readFile('data/event-types.json', 'utf8'));
+
+  // Field for field in the same order as EventON's own submission form.
   await simplePage('submit.html', 'Submit Your Event', 'submit.html', `
     <div class="page-prose">
       <p>Listings are free. We list concerts of Medieval, Renaissance and
-      Baroque music in and around San Antonio.</p>
-      <p>Send it in and a volunteer will check it over before it appears.
-      Fields marked <span class="req">*</span> are the ones we cannot do without.</p>
+      Baroque music in and around San Antonio. A volunteer checks every
+      submission before it appears.</p>
     </div>
-    <form class="site-form form-evo" method="post" action="/api/submit">
+    <form class="site-form form-evo" id="submit-form" method="post" action="/api/submit">
+
       <p class="field">
-        <label for="title">Event name <span class="req">*</span></label>
+        <label for="title">Event Name <span class="req">*</span></label>
         <input id="title" name="title" type="text" required maxlength="200">
       </p>
-      <div class="field-row">
-        <p class="field">
-          <label for="start_local">Starts <span class="req">*</span></label>
-          <input id="start_local" name="start_local" type="datetime-local" required>
-        </p>
-        <p class="field">
-          <label for="end_local">Ends</label>
-          <input id="end_local" name="end_local" type="datetime-local">
-          <span class="field-hint">Leave blank if there is no set end time.</span>
-        </p>
-      </div>
+
+      <p class="field">
+        <label for="start_local">Event Start Date/Time <span class="req">*</span></label>
+        <input id="start_local" name="start_local" type="datetime-local" required>
+      </p>
+
+      <p class="field" data-when="has-end">
+        <label for="end_local">Event End Date/Time</label>
+        <input id="end_local" name="end_local" type="datetime-local">
+      </p>
+
       <p class="field checkbox">
         <input id="all_day" name="all_day" type="checkbox" value="1">
-        <label for="all_day">This runs all day</label>
+        <label for="all_day">All Day Event</label>
       </p>
+      <p class="field checkbox">
+        <input id="no_end_time" name="no_end_time" type="checkbox" value="1">
+        <label for="no_end_time">No end time</label>
+      </p>
+      <p class="field checkbox">
+        <input id="repeating" name="repeating" type="checkbox" value="1">
+        <label for="repeating">This is a repeating event</label>
+      </p>
+      <p class="field" data-when="repeating" hidden>
+        <label for="repeat_note">When does it repeat?</label>
+        <input id="repeat_note" name="repeat_note" type="text" maxlength="300"
+               placeholder="e.g. every Friday in October">
+        <span class="field-hint">Tell us in your own words and a volunteer will set it up.</span>
+      </p>
+
       <p class="field">
-        <label for="description">Description</label>
-        <textarea id="description" name="description" rows="5" maxlength="5000"></textarea>
+        <label for="subtitle">Event Sub Title</label>
+        <input id="subtitle" name="subtitle" type="text" maxlength="200">
       </p>
+
+      <p class="field">
+        <label for="description">Event Description</label>
+        <textarea id="description" name="description" rows="6" maxlength="5000"></textarea>
+      </p>
+
       <p class="field">
         <label for="performers">Performers</label>
         <input id="performers" name="performers" type="text" maxlength="1000">
       </p>
+
+      <h2 class="form-section">Event Location Fields</h2>
+      <p class="field">
+        <label for="venue_select">Select a venue we already list</label>
+        <select id="venue_select">
+          <option value="">Choose a saved venue, or fill in the fields below</option>
+          ${venues.map((v, i) => `<option value="${i}">${esc(v.name)}</option>`).join('')}
+        </select>
+      </p>
       <div class="field-row">
         <p class="field">
-          <label for="location_name">Venue</label>
-          <input id="location_name" name="location_name" type="text" list="venues" maxlength="200">
-          <span class="field-hint">Start typing &mdash; venues we already list will suggest themselves.</span>
+          <label for="location_name">Venue name</label>
+          <input id="location_name" name="location_name" type="text" maxlength="200">
         </p>
         <p class="field">
           <label for="location_address">Venue address</label>
           <input id="location_address" name="location_address" type="text" maxlength="300">
         </p>
       </div>
-      <div class="field-row">
-        <p class="field">
-          <label for="organizer_name">Presented by</label>
-          <input id="organizer_name" name="organizer_name" type="text" list="organisers" maxlength="200">
-        </p>
-        <p class="field">
-          <label for="tickets">Ticket information</label>
-          <input id="tickets" name="tickets" type="text" maxlength="300"
-                 placeholder="e.g. $30 general, $10 student, or Free">
-        </p>
-      </div>
-      <div class="field-row">
-        <p class="field">
-          <label for="website">Event website</label>
-          <input id="website" name="website" type="url" maxlength="500" placeholder="https://">
-        </p>
-        <p class="field">
-          <label for="image_url">Poster or photo (link)</label>
-          <input id="image_url" name="image_url" type="url" maxlength="500" placeholder="https://">
-        </p>
+      <p class="field">
+        <button type="button" class="ghost" id="venue-lookup">Show this venue on a map</button>
+        <span class="field-hint" id="venue-map-note" hidden></span>
+      </p>
+      <div class="venue-map" id="venue-map" hidden></div>
+      <input type="hidden" id="location_lat" name="location_lat">
+      <input type="hidden" id="location_lon" name="location_lon">
+
+      <h2 class="form-section">Tickets and links</h2>
+      <p class="field">
+        <label for="tickets">Ticket Information</label>
+        <input id="tickets" name="tickets" type="text" maxlength="300"
+               placeholder="e.g. &#36;30 general, &#36;10 student, or Free">
+      </p>
+      <p class="field">
+        <label for="website">Website</label>
+        <input id="website" name="website" type="url" maxlength="500" placeholder="https://">
+      </p>
+      <p class="field checkbox">
+        <input id="link_new_window" name="link_new_window" type="checkbox" value="1">
+        <label for="link_new_window">Open in new window</label>
+      </p>
+      <p class="field">
+        <label for="image_url">Event Image</label>
+        <input id="image_url" name="image_url" type="url" maxlength="500" placeholder="https://">
+        <span class="field-hint">A link to a poster or photo. To send a file instead,
+        <a href="contact.html">get in touch</a> and we will add it for you.</span>
+      </p>
+
+      <h2 class="form-section">Event Organizer Fields</h2>
+      <p class="field">
+        <label for="organizer_name">Presented by</label>
+        <input id="organizer_name" name="organizer_name" type="text" list="organisers" maxlength="200">
+        <datalist id="organisers">${organisers.map((o) => `<option value="${esc(o)}"></option>`).join('')}</datalist>
+      </p>
+
+      <h2 class="form-section">Select the Event Type Category</h2>
+      <p class="field">
+        <label for="type-filter">Filter the list</label>
+        <input id="type-filter" type="search" placeholder="Type to narrow ${types.length} categories">
+      </p>
+      <div class="type-grid">
+        ${types.map((t) => `<label class="type-option"><input type="checkbox" name="event_types" value="${esc(t.slug)}"> ${esc(t.name)}</label>`).join('\n        ')}
       </div>
 
-      <h2 class="section-heading form-section">About you</h2>
+      <h2 class="form-section">About you</h2>
       <div class="field-row">
         <p class="field">
           <label for="submitter_name">Your name</label>
@@ -1000,14 +1094,15 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
           <span class="field-hint">Only so we can ask if something is unclear.</span>
         </p>
       </div>
+
       <p class="field honeypot" aria-hidden="true">
         <label for="website_url">Leave this field empty</label>
         <input id="website_url" name="website_url" type="text" tabindex="-1" autocomplete="off">
       </p>
       <p><button class="form-submit" type="submit">Submit event</button></p>
-      ${datalist('venues', venueList)}
-      ${datalist('organisers', organiserList)}
-    </form>`, { wide: true });
+    </form>
+    <script>window.EMSA_VENUES = ${JSON.stringify(venues)};</script>
+    <script src="submit.js"></script>`, { wide: true });
 
   // The form posts to the server and works with JavaScript off. The honeypot
   // is a real input, hidden from people but not from bots.

@@ -48,7 +48,26 @@ export function openDb(file = DB_PATH) {
 
       submitter_name  TEXT,
       submitter_email TEXT,
-      spam_reasons    TEXT             -- populated by the same heuristics scrape.js uses
+      spam_reasons    TEXT,            -- populated by the same heuristics scrape.js uses
+
+      -- The rest of what EventON's own form collects.
+      subtitle        TEXT,
+      event_types     TEXT,            -- comma-separated type slugs
+      no_end_time     INTEGER NOT NULL DEFAULT 0,
+      repeating       INTEGER NOT NULL DEFAULT 0,
+      repeat_note     TEXT,
+      link_new_window INTEGER NOT NULL DEFAULT 0,
+      location_lat    REAL,
+      location_lon    REAL
+    );
+
+    -- Geocoding results, cached so the same venue is only ever looked up once.
+    CREATE TABLE IF NOT EXISTS geocache (
+      query      TEXT PRIMARY KEY,
+      lat        REAL,
+      lon        REAL,
+      label      TEXT,
+      created_at TEXT NOT NULL
     );
 
     CREATE INDEX IF NOT EXISTS idx_submissions_status
@@ -86,20 +105,63 @@ export function openDb(file = DB_PATH) {
     CREATE INDEX IF NOT EXISTS idx_style_history_key ON style_history(key);
   `);
 
+  migrate(db);
   return db;
+}
+
+/**
+ * `CREATE TABLE IF NOT EXISTS` does nothing to a table that already exists, so
+ * columns added later never appear on a database created by an earlier
+ * version — inserts then fail with "SQL logic error". Adding them here keeps
+ * an existing database, and the submissions already in it, working across a
+ * deploy. SQLite's ALTER TABLE ADD COLUMN is cheap and non-destructive.
+ */
+function migrate(db) {
+  const columns = (table) =>
+    new Set(db.prepare(`PRAGMA table_info(${table})`).all().map((r) => r.name));
+
+  const wanted = {
+    submissions: {
+      subtitle: 'TEXT',
+      event_types: 'TEXT',
+      no_end_time: 'INTEGER NOT NULL DEFAULT 0',
+      repeating: 'INTEGER NOT NULL DEFAULT 0',
+      repeat_note: 'TEXT',
+      link_new_window: 'INTEGER NOT NULL DEFAULT 0',
+      location_lat: 'REAL',
+      location_lon: 'REAL',
+      spam_reasons: 'TEXT',
+    },
+    messages: { handled: 'INTEGER NOT NULL DEFAULT 0' },
+  };
+
+  for (const [table, cols] of Object.entries(wanted)) {
+    const have = columns(table);
+    for (const [name, type] of Object.entries(cols)) {
+      if (have.has(name)) continue;
+      db.exec(`ALTER TABLE ${table} ADD COLUMN ${name} ${type}`);
+    }
+  }
 }
 
 /* ------------------------------------------------------------ submissions -- */
 
 /** Only these may be written by the public form. */
 export const SUBMISSION_FIELDS = [
-  'title', 'description', 'start_local', 'end_local', 'all_day',
-  'location_name', 'location_address', 'organizer_name', 'performers',
-  'tickets', 'website', 'image_url', 'submitter_name', 'submitter_email',
+  'title', 'subtitle', 'description', 'start_local', 'end_local', 'all_day',
+  'no_end_time', 'repeating', 'repeat_note',
+  'location_name', 'location_address', 'location_lat', 'location_lon',
+  'organizer_name', 'performers', 'tickets', 'website', 'link_new_window',
+  'image_url', 'event_types', 'submitter_name', 'submitter_email',
 ];
 
+/** Fields stored as 0/1 rather than text. */
+const FLAGS = new Set(['all_day', 'no_end_time', 'repeating', 'link_new_window']);
+const NUMBERS = new Set(['location_lat', 'location_lon']);
+
 const LIMITS = {
-  title: 200, description: 5000, start_local: 40, end_local: 40,
+  title: 200, subtitle: 200, description: 5000, start_local: 40, end_local: 40,
+  repeat_note: 300, event_types: 400,
   location_name: 200, location_address: 300, organizer_name: 200,
   performers: 1000, tickets: 300, website: 500, image_url: 500,
   submitter_name: 120, submitter_email: 200,
@@ -144,7 +206,8 @@ export function validateSubmission(raw) {
   for (const f of SUBMISSION_FIELDS) {
     let v = raw[f];
     if (v === undefined || v === null) v = '';
-    if (f === 'all_day') { clean[f] = v === true || v === 'on' || v === '1' ? 1 : 0; continue; }
+    if (FLAGS.has(f)) { clean[f] = v === true || v === 'on' || v === '1' ? 1 : 0; continue; }
+    if (NUMBERS.has(f)) { const n = Number(v); clean[f] = Number.isFinite(n) && n !== 0 ? n : null; continue; }
     v = String(v).replace(/\s+/g, ' ').trim().slice(0, LIMITS[f] ?? 500);
     clean[f] = v;
   }
@@ -248,6 +311,53 @@ const escapeHtml = (s) => String(s)
 const slugify = (s) => String(s).normalize('NFKD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/[^a-z0-9 _-]/g, '').trim()
   .replace(/[\s_]+/g, '-').replace(/-+/g, '-').replace(/^-+|-+$/g, '');
+
+/* -------------------------------------------------------------- geocoding -- */
+
+/**
+ * Turn a venue address into coordinates, so the submit form can show a map for
+ * a place we have never listed before.
+ *
+ * Uses OpenStreetMap's Nominatim: free, no key, no billing — the thing the old
+ * site's Google embed needed and did not have. Their terms ask for at most one
+ * request a second and a real User-Agent, so every result is cached here and
+ * the same address is never looked up twice.
+ */
+const NOMINATIM_UA = 'earlymusicsa.org (concert listings; one lookup per submitted venue)';
+let lastLookup = 0;
+
+export async function geocode(db, query) {
+  const q = String(query || '').replace(/\s+/g, ' ').trim().slice(0, 300);
+  if (q.length < 4) return null;
+
+  const hit = db.prepare('SELECT lat, lon, label FROM geocache WHERE query = ?').get(q);
+  if (hit) return hit.lat == null ? null : hit;
+
+  // One request per second, as Nominatim asks.
+  const wait = Math.max(0, 1100 - (Date.now() - lastLookup));
+  if (wait) await new Promise((r) => setTimeout(r, wait));
+  lastLookup = Date.now();
+
+  let found = null;
+  try {
+    const url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q='
+      + encodeURIComponent(q);
+    const res = await fetch(url, { headers: { 'user-agent': NOMINATIM_UA } });
+    if (res.ok) {
+      const [first] = await res.json();
+      if (first) {
+        found = { lat: Number(first.lat), lon: Number(first.lon), label: first.display_name };
+      }
+    }
+  } catch { /* leave found null; a miss is cached too, so we stop re-asking */ }
+
+  db.prepare(`INSERT INTO geocache (query, lat, lon, label, created_at) VALUES (?, ?, ?, ?, ?)
+              ON CONFLICT(query) DO UPDATE SET lat = excluded.lat, lon = excluded.lon,
+              label = excluded.label, created_at = excluded.created_at`)
+    .run(q, found?.lat ?? null, found?.lon ?? null, found?.label ?? null, new Date().toISOString());
+
+  return found;
+}
 
 /* --------------------------------------------------------------- messages -- */
 

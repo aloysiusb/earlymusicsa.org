@@ -16,14 +16,14 @@
 
 import { createServer } from 'node:http';
 import { createReadStream, existsSync } from 'node:fs';
-import { stat } from 'node:fs/promises';
+import { stat, mkdir, writeFile } from 'node:fs/promises';
 import { timingSafeEqual, randomUUID } from 'node:crypto';
 import { execFile } from 'node:child_process';
 import path from 'node:path';
 import {
   openDb, validateSubmission, insertSubmission, listSubmissions,
   reviewSubmission, validateStyle, setStyle, getStyles, clearStyle, stylesAsCss,
-  validateMessage, insertMessage, listMessages, markMessageHandled,
+  validateMessage, insertMessage, listMessages, markMessageHandled, geocode,
 } from './db.js';
 
 const ROOT = path.resolve('dist');
@@ -173,12 +173,30 @@ function readBody(req) {
   });
 }
 
-/** Accepts JSON or a plain form post, so the form works without script. */
+/**
+ * Accepts JSON or a plain form post, so the forms work without script.
+ *
+ * Repeated names are joined rather than overwritten — the submit form's event
+ * type checkboxes all post as `event_types`, and Object.fromEntries would keep
+ * only the last one ticked.
+ */
 function parseBody(raw, contentType = '') {
   if (contentType.includes('application/json')) {
-    try { return JSON.parse(raw || '{}'); } catch { return null; }
+    try {
+      const parsed = JSON.parse(raw || '{}');
+      for (const [k, v] of Object.entries(parsed)) {
+        if (Array.isArray(v)) parsed[k] = v.join(',');
+      }
+      return parsed;
+    } catch { return null; }
   }
-  return Object.fromEntries(new URLSearchParams(raw));
+  const params = new URLSearchParams(raw);
+  const out = {};
+  for (const key of new Set(params.keys())) {
+    const all = params.getAll(key);
+    out[key] = all.length > 1 ? all.join(',') : all[0];
+  }
+  return out;
 }
 
 /* ---------------------------------------------------------------- routes -- */
@@ -239,6 +257,50 @@ async function handleApi(req, res, url) {
       flagged: spamReasons.length > 0,
       message: 'Thank you — your event has been sent for review.',
     });
+    return true;
+  }
+
+  /* --- public: map tiles -------------------------------------------------
+   * Serves a mirrored tile if we have it, and fetches then keeps it if we do
+   * not. A visitor's browser therefore only ever talks to this domain, and a
+   * venue looked up on the submit form has its tiles mirrored from then on, so
+   * the public pages get them for free on the next build.
+   */
+  const tileReq = pathname.match(/^\/api\/tile\/(\d{1,2})\/(\d{1,7})\/(\d{1,7})\.png$/);
+  if (req.method === 'GET' && tileReq) {
+    const [, z, x, y] = tileReq;
+    const file = path.join('media', 'tiles', `${z}-${x}-${y}.png`);
+    const headers = {
+      ...BASE_HEADERS,
+      'content-type': 'image/png',
+      'cache-control': 'public, max-age=31536000, immutable',
+    };
+    if (existsSync(file)) {
+      res.writeHead(200, headers);
+      createReadStream(file).pipe(res);
+      return true;
+    }
+    try {
+      const upstream = await fetch(`https://tile.openstreetmap.org/${z}/${x}/${y}.png`, {
+        headers: { 'user-agent': 'earlymusicsa.org map tiles (static site)' },
+      });
+      if (!upstream.ok) throw new Error(`HTTP ${upstream.status}`);
+      const buf = Buffer.from(await upstream.arrayBuffer());
+      await mkdir(path.dirname(file), { recursive: true });
+      await writeFile(file, buf);
+      res.writeHead(200, headers);
+      res.end(buf);
+    } catch {
+      res.writeHead(404, BASE_HEADERS).end();
+    }
+    return true;
+  }
+
+  // --- public: look up a venue so the submit form can show its map --------
+  if (req.method === 'GET' && pathname === '/api/geocode') {
+    const q = url.searchParams.get('q') || '';
+    const found = await geocode(db, q);
+    json(res, 200, found ? { ok: true, ...found } : { ok: false });
     return true;
   }
 

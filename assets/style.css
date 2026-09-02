@@ -171,6 +171,8 @@
   --panel-pad: 18px;
   --panel-gap: 14px;
   --map-height: 260px;
+  --map-tile: 256px;
+  --map-backing: #e8e4dd;
   --rule: #e2e4e6;
 
   --banner-image: url('media/Giovanni_Pauolo_2000x400.jpg');
@@ -550,6 +552,36 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   border-bottom: 1px solid var(--evoform-border);
 }
 
+.venue-map { margin: 0 0 var(--field-gap); border-radius: var(--evoform-textarea-radius); overflow: hidden; border: 1px solid var(--evoform-border); }
+.venue-map .staticmap { height: 240px; }
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 4px 14px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 12px 14px;
+  margin-bottom: var(--field-gap);
+  border: 1px solid var(--evoform-border);
+  border-radius: var(--evoform-textarea-radius);
+}
+.type-option { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.type-option input { width: auto; min-height: 0; }
+
+.form-evo select {
+  width: 100%;
+  font: inherit;
+  font-size: var(--evoform-field-size);
+  color: var(--evoform-field-text);
+  background: var(--page-bg);
+  border: 1px solid var(--evoform-border);
+  border-radius: var(--evoform-radius);
+  padding: var(--evoform-pad);
+  min-height: var(--evoform-field-height);
+  line-height: 1.2;
+}
+
 /* ------------------------------------------------- calendar page (large) -- */
 
 /* The full-width calendar. Seven equal columns; each event shows in its day as
@@ -897,13 +929,54 @@ body:has(.event-modal:target) { overflow: hidden; }
 }
 .pill:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
 
-/* Map comes from OpenStreetMap: no API key, no billing, nothing to renew. */
+/* The map is a grid of OpenStreetMap tiles, mirrored onto our own domain and
+   composited by the browser — no API key, no billing, no iframe, and nothing
+   third-party that can fail at page load. The plane is offset so the venue
+   sits dead centre, behind the pin. */
 .panel-map { padding: 0; overflow: hidden; }
-.panel-map iframe {
-  display: block;
-  width: 100%;
+
+.staticmap {
+  position: relative;
   height: var(--map-height);
-  border: 0;
+  overflow: hidden;
+  background: var(--map-backing);
+}
+.staticmap-plane {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(3, var(--map-tile));
+  width: calc(var(--map-tile) * 3);
+  line-height: 0;
+}
+.staticmap-plane img { display: block; width: var(--map-tile); height: var(--map-tile); }
+
+.staticmap-pin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 1px 6px rgb(0 0 0 / 0.45);
+}
+
+.staticmap-label,
+.staticmap-credit {
+  position: absolute;
+  bottom: 0;
+  font-size: 11px;
+  padding: 3px 8px;
+  background: rgb(255 255 255 / 0.88);
+}
+.staticmap-label { left: 0; border-radius: 0 var(--panel-radius) 0 0; font-weight: 700; }
+.staticmap-credit {
+  right: 0;
+  border-radius: var(--panel-radius) 0 0 0;
+  color: var(--ink-soft);
+  text-decoration: none;
 }
 
 /* --------------------------------------------------------- calendar box -- */
