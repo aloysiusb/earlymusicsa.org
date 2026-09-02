@@ -183,3 +183,73 @@ button:disabled { opacity: 0.5; cursor: default; }
   .style-row code { grid-column: 1 / -1; }
   .rows .row { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* --- editing events ------------------------------------------------------- */
+
+/* Search results are a dense list, so they stay scannable at 400 events. */
+.queue-item.compact { padding: 10px 14px; margin-bottom: 8px; }
+.queue-item.compact h3 { font-size: 16px; margin-bottom: 2px; }
+.queue-item.compact .when { margin-bottom: 6px; }
+.queue-item.compact .queue-actions { margin: 0; }
+.queue-item.compact .ghost { padding: 4px 12px; font-size: 14px; }
+
+.tag {
+  display: inline-block;
+  padding: 1px 7px;
+  margin-left: 4px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--rule);
+  color: var(--ink-soft);
+}
+.tag.warn { background: var(--form-required); color: #fff; }
+
+.editor-card {
+  padding: 20px 22px;
+  border: 2px solid var(--ink-soft);
+  border-radius: var(--card-radius, 10px);
+  margin-top: 18px;
+}
+.editor-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.editor-card .site-form { margin-top: 16px; }
+
+.editor-card .field { margin-bottom: 14px; }
+.editor-card .field label { display: block; font-size: 14px; margin-bottom: 4px; }
+.editor-card .field input[type='text'],
+.editor-card .field input[type='datetime-local'],
+.editor-card .field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 15px;
+  padding: 8px 10px;
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+}
+.editor-card .field textarea { resize: vertical; }
+
+/* A left bar marks the fields that no longer follow the original listing. */
+.editor-card .field.changed {
+  border-left: 3px solid var(--form-required);
+  padding-left: 10px;
+  margin-left: -13px;
+}
+
+.editor-card .field.checkbox { display: flex; align-items: center; gap: 8px; }
+.editor-card .field.checkbox label { margin: 0; }
+
+.colour-row { display: flex; align-items: center; gap: 10px; }
+.colour-row input[type='color'] {
+  width: 46px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--field-border);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+}
+.colour-row input[type='text'] { width: 9rem; }
+
+#event-search { width: 100%; max-width: 34rem; }

@@ -103,6 +103,23 @@ export function openDb(file = DB_PATH) {
       updated_at TEXT NOT NULL
     );
 
+    -- Edits to archived events, kept as overrides so data/events.json stays
+    -- exactly as it came off the old site.
+    CREATE TABLE IF NOT EXISTS event_edits (
+      event_id   TEXT PRIMARY KEY,
+      patch      TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS event_edit_history (
+      id         INTEGER PRIMARY KEY AUTOINCREMENT,
+      event_id   TEXT NOT NULL,
+      patch      TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_event_edit_history ON event_edit_history(event_id);
+
     CREATE INDEX IF NOT EXISTS idx_style_history_key ON style_history(key);
   `);
 
@@ -319,6 +336,134 @@ const escapeHtml = (s) => String(s)
 const slugify = (s) => String(s).normalize('NFKD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/[^a-z0-9 _-]/g, '').trim()
   .replace(/[\s_]+/g, '-').replace(/-+/g, '-').replace(/^-+|-+$/g, '');
+
+/* ------------------------------------------------------------ event edits -- */
+
+/**
+ * Edits are stored as overrides rather than by rewriting data/events.json.
+ *
+ * The export stays exactly as it came off the old site: diffable, in git, and
+ * safe to regenerate with scrape.js. An edit records only the fields actually
+ * changed, so anything left alone still follows the source. Reverting is
+ * deleting a row, and every version is kept in the history table.
+ */
+export const EDITABLE_FIELDS = [
+  'title', 'subtitle', 'description', 'start', 'end', 'allDay',
+  'locationName', 'locationAddress', 'organizerName',
+  'performers', 'tickets', 'website', 'image', 'color', 'hidden',
+];
+
+const EDIT_LIMITS = {
+  title: 200, subtitle: 200, description: 10000, start: 40, end: 40,
+  locationName: 200, locationAddress: 300, organizerName: 200,
+  performers: 1000, tickets: 300, website: 500, image: 500, color: 20,
+};
+const EDIT_FLAGS = new Set(['allDay', 'hidden']);
+
+export function validateEventPatch(raw) {
+  const clean = {};
+  const errors = [];
+
+  for (const [key, value] of Object.entries(raw || {})) {
+    if (!EDITABLE_FIELDS.includes(key)) continue;   // silently drop anything else
+    if (EDIT_FLAGS.has(key)) { clean[key] = value === true || value === 1 || value === '1'; continue; }
+
+    let v = String(value ?? '');
+    v = key === 'description' ? v.replace(/\r\n/g, '\n').trim() : v.replace(/\s+/g, ' ').trim();
+    clean[key] = v.slice(0, EDIT_LIMITS[key] ?? 500);
+  }
+
+  // Descriptions arrive as WordPress HTML and go back onto the page as HTML.
+  // Someone typing plain prose should not have to write tags, and an ampersand
+  // they type must not turn into markup, so a tagless description is escaped
+  // and its blank-line blocks become paragraphs.
+  if (clean.description && !/<[a-z][^>]*>/i.test(clean.description)) {
+    clean.description = clean.description
+      .split(/\n\s*\n/)
+      .map((para) => para.trim())
+      .filter(Boolean)
+      .map((para) => `<p>${escapeHtml(para).replace(/\n/g, '<br>')}</p>`)
+      .join('\n');
+  }
+
+  if ('title' in clean && !clean.title) errors.push('An event needs a name.');
+  for (const k of ['start', 'end']) {
+    if (clean[k] && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(clean[k])) {
+      errors.push(`The ${k === 'start' ? 'start' : 'end'} time is not in a format we recognise.`);
+    } else if (clean[k]) {
+      clean[k] = withSiteOffset(clean[k]);
+    }
+  }
+  if (clean.start && clean.end && Date.parse(clean.end) < Date.parse(clean.start)) {
+    errors.push('The end time is before the start time.');
+  }
+  if (clean.color && !/^#[0-9a-fA-F]{6}$/.test(clean.color)) {
+    errors.push('The colour needs to be a hex value like #b3d1db.');
+  }
+  for (const k of ['website', 'image']) {
+    if (clean[k] && !/^https?:\/\//i.test(clean[k])
+        && !/^\/uploads\/[0-9a-f-]{36}\.(jpg|png|gif|webp)$/.test(clean[k])) {
+      errors.push('Links must start with http:// or https://');
+      break;
+    }
+  }
+  return { clean, errors };
+}
+
+export function setEventEdit(db, eventId, patch) {
+  const now = new Date().toISOString();
+  const json = JSON.stringify(patch);
+  db.prepare(`INSERT INTO event_edits (event_id, patch, updated_at) VALUES (?, ?, ?)
+              ON CONFLICT(event_id) DO UPDATE SET patch = excluded.patch,
+              updated_at = excluded.updated_at`).run(String(eventId), json, now);
+  db.prepare('INSERT INTO event_edit_history (event_id, patch, updated_at) VALUES (?, ?, ?)')
+    .run(String(eventId), json, now);
+}
+
+export const getEventEdits = (db) =>
+  new Map(db.prepare('SELECT event_id, patch FROM event_edits').all()
+    .map((r) => [r.event_id, JSON.parse(r.patch)]));
+
+export const clearEventEdit = (db, eventId) =>
+  db.prepare('DELETE FROM event_edits WHERE event_id = ?').run(String(eventId)).changes > 0;
+
+/** Lay an edit over one event record, returning a new object. */
+export function applyEventPatch(ev, patch) {
+  if (!patch) return ev;
+  const out = { ...ev };
+  const map = {
+    title: 'title', subtitle: 'subtitle', description: 'description',
+    performers: 'performers', tickets: 'tickets', website: 'website',
+    image: 'image', color: 'color',
+  };
+  for (const [key, field] of Object.entries(map)) {
+    if (key in patch) out[field] = patch[key];
+  }
+  if ('description' in patch) {
+    out.descriptionText = String(patch.description).replace(/<[^>]*>/g, ' ')
+      .replace(/\s+/g, ' ').trim();
+  }
+  if ('allDay' in patch) out.allDay = !!patch.allDay;
+  if ('hidden' in patch) out.hidden = !!patch.hidden;
+
+  for (const k of ['start', 'end']) {
+    if (!(k in patch)) continue;
+    out[k] = patch[k] || null;
+    out[`${k}Unix`] = patch[k] ? Math.floor(Date.parse(patch[k]) / 1000) : null;
+  }
+  if ('locationName' in patch || 'locationAddress' in patch) {
+    out.location = {
+      ...(ev.location || { id: null, lat: null, lon: null }),
+      name: 'locationName' in patch ? patch.locationName : ev.location?.name || '',
+      address: 'locationAddress' in patch ? patch.locationAddress : ev.location?.address || '',
+    };
+    if (!out.location.name) out.location = null;
+  }
+  if ('organizerName' in patch) {
+    out.organizer = patch.organizerName ? { id: null, name: patch.organizerName } : null;
+  }
+  return out;
+}
 
 /* -------------------------------------------------------------- geocoding -- */
 

@@ -15,7 +15,7 @@
  */
 
 import { createServer } from 'node:http';
-import { createReadStream, existsSync } from 'node:fs';
+import { createReadStream, existsSync, readFileSync } from 'node:fs';
 import { stat, mkdir, writeFile } from 'node:fs/promises';
 import { timingSafeEqual, randomUUID } from 'node:crypto';
 import { execFile } from 'node:child_process';
@@ -25,6 +25,8 @@ import {
   openDb, validateSubmission, insertSubmission, listSubmissions,
   reviewSubmission, validateStyle, setStyle, getStyles, clearStyle, stylesAsCss,
   validateMessage, insertMessage, listMessages, markMessageHandled, geocode,
+  validateEventPatch, setEventEdit, getEventEdits, clearEventEdit, applyEventPatch,
+  approvedEvents,
 } from './db.js';
 
 const ROOT = path.resolve('dist');
@@ -180,6 +182,16 @@ function readBuffer(req, max = MAX_BODY) {
 }
 
 const readBody = (req, max) => readBuffer(req, max).then((b) => b.toString('utf8'));
+
+/**
+ * The archive the edit screen works over: the exported events plus anything
+ * approved through the queue. Read fresh each time rather than cached, so an
+ * approval is editable straight away.
+ */
+function loadArchive() {
+  const exported = JSON.parse(readFileSync('data/events.json', 'utf8')).events;
+  return [...exported, ...approvedEvents(db)];
+}
 
 /**
  * Save an uploaded image beside the database, which on Render is the persistent
@@ -440,6 +452,76 @@ async function handleApi(req, res, url) {
     const done = markMessageHandled(db, Number(handled[1]));
     json(res, done ? 200 : 404, done ? { ok: true } : { ok: false, errors: ['No message with that id.'] });
     return true;
+  }
+
+
+  /* --- admin: the event archive ------------------------------------------
+   * Edits are overrides. data/events.json is never rewritten, so the export
+   * stays diffable and a re-scrape cannot be clobbered by an edit.
+   */
+  if (req.method === 'GET' && pathname === '/api/events') {
+    const q = (url.searchParams.get('q') || '').toLowerCase().trim();
+    const edits = getEventEdits(db);
+    const all = loadArchive();
+    const matched = all
+      .filter((ev) => !q
+        || ev.title.toLowerCase().includes(q)
+        || (ev.location?.name || '').toLowerCase().includes(q)
+        || (ev.organizer?.name || '').toLowerCase().includes(q)
+        || String(ev.start || '').startsWith(q))
+      .sort((a, b) => (b.startUnix ?? 0) - (a.startUnix ?? 0));
+
+    json(res, 200, {
+      ok: true,
+      total: matched.length,
+      events: matched.slice(0, 60).map((ev) => {
+        const merged = applyEventPatch(ev, edits.get(String(ev.id)));
+        return {
+          id: ev.id,
+          title: merged.title,
+          start: merged.start,
+          venue: merged.location?.name || '',
+          edited: edits.has(String(ev.id)),
+          hidden: !!merged.hidden,
+        };
+      }),
+    });
+    return true;
+  }
+
+  const oneEvent = pathname.match(/^\/api\/events\/([\w.-]+)$/);
+  if (oneEvent) {
+    const id = oneEvent[1];
+    const original = loadArchive().find((ev) => String(ev.id) === id);
+    if (!original) { json(res, 404, { ok: false, errors: ['No event with that id.'] }); return true; }
+    const edits = getEventEdits(db);
+
+    if (req.method === 'GET') {
+      json(res, 200, {
+        ok: true,
+        patch: edits.get(id) || {},
+        event: applyEventPatch(original, edits.get(id)),
+        original,
+      });
+      return true;
+    }
+
+    if (req.method === 'PUT') {
+      const body = parseBody(await readBody(req), req.headers['content-type'] || '') || {};
+      const { clean, errors } = validateEventPatch(body.patch || body);
+      if (errors.length) { json(res, 400, { ok: false, errors }); return true; }
+      setEventEdit(db, id, clean);
+      rebuild(`edited event ${id}`);
+      json(res, 200, { ok: true, patch: clean, event: applyEventPatch(original, clean), rebuilding: true });
+      return true;
+    }
+
+    if (req.method === 'DELETE') {
+      const removed = clearEventEdit(db, id);
+      if (removed) rebuild(`reverted event ${id}`);
+      json(res, 200, { ok: true, reverted: removed, event: original, rebuilding: removed });
+      return true;
+    }
   }
 
   const review = pathname.match(/^\/api\/submissions\/(\d+)\/(approve|reject)$/);

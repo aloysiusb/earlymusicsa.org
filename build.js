@@ -626,19 +626,30 @@ async function main() {
   // time. The database is optional — without it the site still builds, which
   // is what lets Render deploy the public pages as a plain static site.
   let approved = [];
+  let edits = new Map();
+  let applyPatch = (ev) => ev;
   const dbFile = process.env.DB_PATH || 'earlymusicsa.sqlite';
   if (existsSync(dbFile)) {
     try {
-      const { openDb, approvedEvents } = await import('./db.js');
+      const { openDb, approvedEvents, getEventEdits, applyEventPatch } = await import('./db.js');
       const db = openDb(dbFile);
       approved = approvedEvents(db);
+      edits = getEventEdits(db);
+      applyPatch = applyEventPatch;
       db.close();
     } catch (err) {
       console.warn(`  note: could not read ${dbFile} (${err.message}); building without it`);
     }
   }
 
-  const live = [...events, ...approved].filter((e) => !e.suspectedSpam);
+  // Edits are overrides laid over the export, so data/events.json is never
+  // rewritten and any edit can be undone. `hidden` takes an event off the site
+  // without deleting anything.
+  const live = [...events, ...approved]
+    .map((e) => (edits.has(String(e.id)) ? applyPatch(e, edits.get(String(e.id))) : e))
+    .filter((e) => !e.suspectedSpam && !e.hidden);
+
+  if (edits.size) console.log(`  ${edits.size} event(s) carry an edit`);
 
   const keepMedia = SKIP_MEDIA && existsSync(path.join(OUT, 'media'));
 

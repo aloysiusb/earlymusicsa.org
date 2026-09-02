@@ -77,6 +77,10 @@ needs that.
 - **Submit form, moderation and style editor done** (2026-08-30). The public
   submit form needs no JavaScript; the volunteer tools at /admin.html do, which
   is the one place on the site that is true.
+- **Event edit mode done** (2026-09-02). Any archived event can be changed from
+  /admin.html without touching `data/events.json`. See
+  "Editing events" below — the design is deliberate and worth reading before
+  changing it.
 - **Still to do:** search, and filtering by type/venue/organizer.
 
 ## Layout
@@ -158,15 +162,24 @@ dependencies**, following the wall-family pattern (see `C:\Users\xnytr\Claude\se
 
 ```bash
 npm start          # serve dist/ + the API on :4173
-npm test           # 32 checks over storage, validation and the HTTP routes
+npm test           # 99 checks over storage, validation, routes and edits
 ```
 
-Two tables, and deliberately only two:
+Everything in it is something that changes at runtime:
 
 - **`submissions`** — events sent through the public form, awaiting moderation.
   Approved rows are merged into the listings by `build.js` at build time.
+- **`messages`** — what the Contact form collected.
 - **`style_settings`** (+ `style_history`) — the design tokens the style-editing
-  page will write. Every change is kept, so a bad edit can be walked back.
+  page writes. Every change is kept, so a bad edit can be walked back.
+- **`event_edits`** (+ `event_edit_history`) — changes to archived events, held
+  as overrides rather than rewritten into the export. See "Editing events".
+- **`geocache`** — venue coordinates already looked up, so Nominatim is asked
+  once per address and never again.
+
+`db.js` runs a `migrate()` on open. **`CREATE TABLE IF NOT EXISTS` does not add
+a column to a table that already exists** — that is how a live database gets a
+"SQL logic error" after a deploy. New columns go in `migrate()`, not the DDL.
 
 The event archive stays in `data/events.json`. It is the export of a site that
 no longer changes, and belongs in git where it is diffable and backed up —
@@ -192,13 +205,15 @@ Render generated (service → Environment). The token is held in `sessionStorage
 for that tab, or `localStorage` if "keep me signed in" is ticked, and is never
 written into the page.
 
-Three tabs:
+Four tabs:
 
 - **Events awaiting review** — the full submission, with anything the spam
   heuristics flagged called out. Approving rebuilds the site immediately, so the
   event is live within seconds.
 - **Messages** — what the Contact form collected, with a reply-by-email link and
   a "dealt with" button.
+- **Edit events** — search the archive, open an event, change whatever needs
+  changing. Described in full below.
 - **Style** — the design tokens, grouped as Colours / Type / Layout. Native
   `<input type="color">` swatches beside a text field, following the reference
   panel in `The-Lemmon-Dociere`; no raw HSL sliders. Typing previews live on the
@@ -386,6 +401,58 @@ its full height so the H1 is not hidden; maps come from OpenStreetMap.
 Note the live site sets white text on `#b3d1db`, which is about 1.7:1 contrast —
 well below WCAG AA. Reproduced faithfully because that is what was asked for,
 but `--card-text` is a single token if it should ever be darkened.
+
+## Editing events
+
+The site is built from `data/events.json`, which is the export of a WordPress
+site that no longer changes. That file is the record, it lives in git, and
+`scrape.js` can regenerate it. So an edit must never be written back into it.
+
+**Edits are overrides.** `event_edits` holds one row per event, a JSON patch of
+just the fields somebody actually changed. `build.js` lays each patch over its
+event on the way to `dist/` and never touches the export. That buys three
+things worth keeping:
+
+- Undo is deleting a row. Nothing is lost and nothing has to be re-scraped.
+- A field nobody touched still follows the source, so a later re-scrape
+  improves it rather than being overwritten by a stale copy.
+- `data/events.json` stays diffable. A test asserts it comes out byte for byte
+  unchanged after a full edit/save/hide/revert loop.
+
+The editable fields are the `EDITABLE_FIELDS` list in `db.js`; anything else in
+a request is dropped silently rather than rejected. `validateEventPatch()`
+enforces the length limits, checks the dates parse and run forwards, checks the
+colour is a hex value, and checks links look like links. `applyEventPatch()`
+does the laying-on, including the nested shapes — `locationName` becomes
+`location.name`, and clearing a venue name nulls the whole location.
+
+**`hidden`** takes an event off the site without deleting anything: `build.js`
+filters it out, its page and its calendar chip go, and unticking the box brings
+it all back.
+
+**Slugs never change.** An edited title does not move the page, so links people
+already have keep working.
+
+**A description typed as prose stays prose.** Descriptions are WordPress HTML
+and go back onto the page as HTML, so a tagless one is escaped and its
+blank-line blocks wrapped in `<p>` — an ampersand somebody types cannot become
+markup, and nobody has to write tags.
+
+**The form sends only what differs.** Every box is pre-filled with the current
+value, so a naive save would freeze all fifteen fields as overrides. Each input
+carries `data-orig` and the save compares against it; emptying a box that had
+something in it clears that field, and a box left alone is not sent at all.
+
+Routes (all admin):
+
+```
+GET    /api/events?q=      search the archive, 60 results, newest first
+GET    /api/events/:id     the merged event, its patch, and the untouched original
+PUT    /api/events/:id     save a patch, then rebuild
+DELETE /api/events/:id     drop the patch, then rebuild
+```
+
+`test-edits.mjs` walks the whole loop against a real server: 27 checks.
 
 ## Conventions
 

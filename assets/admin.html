@@ -42,6 +42,7 @@
   <nav class="admin-tabs" role="tablist">
     <button role="tab" aria-selected="true"  data-panel="p-events">Events awaiting review <span class="count" id="c-events">0</span></button>
     <button role="tab" aria-selected="false" data-panel="p-messages">Messages <span class="count" id="c-messages">0</span></button>
+    <button role="tab" aria-selected="false" data-panel="p-edit">Edit events</button>
     <button role="tab" aria-selected="false" data-panel="p-style">Style</button>
   </nav>
 
@@ -53,6 +54,19 @@
 
   <section id="p-messages" class="admin-panel" hidden>
     <div id="messages-list" class="queue"></div>
+  </section>
+
+  <section id="p-edit" class="admin-panel" hidden>
+    <p class="muted">Search the archive, then change whatever needs changing.
+    Edits are kept separately from the original listing, so any of them can be
+    undone later. Saving rebuilds the site straight away.</p>
+    <p class="field">
+      <label for="event-search">Find an event</label>
+      <input id="event-search" type="search" placeholder="Title, venue, organiser, or a date like 2024-11">
+    </p>
+    <p class="muted" id="event-count"></p>
+    <div id="event-results" class="queue"></div>
+    <div id="event-editor" hidden></div>
   </section>
 
   <section id="p-style" class="admin-panel" hidden>
