@@ -28,6 +28,7 @@ import {
   validateEventPatch, setEventEdit, getEventEdits, clearEventEdit, applyEventPatch,
   approvedEvents,
 } from './db.js';
+import { notify, submissionNotice, messageNotice, mailConfigured, mailConfig } from './mailer.js';
 
 const ROOT = path.resolve('dist');
 const PORT = Number(process.argv[2] || process.env.PORT || 4173);
@@ -315,6 +316,12 @@ async function handleApi(req, res, url) {
     }
 
     const { id, spamReasons } = insertSubmission(db, clean);
+
+
+    // Fire and forget. The submission is stored; a mail server having a bad day
+    // must not cost the visitor their thank-you page.
+    notify(submissionNotice({ ...clean, spam_reasons: spamReasons.join(', ') }));
+
     if (wantsHtml) { sendPage(res, 200, thanksPage([], 'event')); return true; }
     json(res, 201, {
       ok: true,
@@ -414,6 +421,9 @@ async function handleApi(req, res, url) {
     }
 
     const id = insertMessage(db, clean);
+
+    notify(messageNotice(clean));
+
     if (wantsHtml) { sendPage(res, 200, thanksPage()); return true; }
     json(res, 201, { ok: true, id, message: 'Thank you — your message has been sent.' });
     return true;
@@ -608,6 +618,9 @@ createServer(async (req, res) => {
   console.log(ADMIN_TOKEN
     ? '  admin routes enabled'
     : '  admin routes CLOSED — set ADMIN_TOKEN to enable them');
+  console.log(mailConfigured()
+    ? `  emailing ${mailConfig().to.length} recipient(s) when something arrives`
+    : '  nobody is emailed when something arrives (set SMTP_HOST, SMTP_USER, SMTP_PASS, MAIL_FROM, MAIL_TO)');
 
   // The deploy-time build runs before the disk is mounted, so anything already
   // approved is missing from the pages this process is about to serve.

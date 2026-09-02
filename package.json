@@ -9,7 +9,7 @@
     "scrape:images": "node scrape.js --images",
     "build": "node build.js",
     "start": "node server.js",
-    "test": "node test-db.mjs && node test-deploy.mjs && node test-edits.mjs",
+    "test": "node test-db.mjs && node test-deploy.mjs && node test-edits.mjs && node test-mail.mjs",
     "audit": "node audit.js"
   },
   "engines": {

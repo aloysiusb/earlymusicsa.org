@@ -85,6 +85,9 @@ needs that.
   opens a larger zoomable view. Needs `GOOGLE_MAPS_KEY`; without it the tiles
   stand alone and the click opens Google Maps in a new tab, so the site is
   complete either way. See "Maps".
+- **Notification email done** (2026-09-02). A submission or a contact message
+  emails whoever is listed in `MAIL_TO`. Optional: with the SMTP variables
+  unset nothing is sent and nothing breaks. See "Telling somebody".
 - **Still to do:** search, and filtering by type/venue/organizer.
 
 ## Layout
@@ -166,7 +169,7 @@ dependencies**, following the wall-family pattern (see `C:\Users\xnytr\Claude\se
 
 ```bash
 npm start          # serve dist/ + the API on :4173
-npm test           # 99 checks over storage, validation, routes and edits
+npm test           # 134 checks over storage, validation, routes, edits and mail
 ```
 
 Everything in it is something that changes at runtime:
@@ -534,6 +537,60 @@ looked fine on desktop, where the banner is `fixed` and therefore positioned.
 
 If you touch the banner's `position` at any breakpoint, check the wash's height
 equals the banner's, at 375px and 768px, with the menu both shut and open.
+
+## Telling somebody
+
+Submissions and contact messages land in the database and wait. That only works
+if a volunteer remembers to look, which is a poor thing to rely on — a concert
+submitted in good time can sit unseen until its date has passed. `mailer.js`
+sends a short note the moment something arrives.
+
+```bash
+SMTP_HOST=mail.example.com
+SMTP_PORT=587          # STARTTLS; 465 for TLS from the first byte
+SMTP_USER=volunteer@earlymusicsa.org
+SMTP_PASS=...
+MAIL_FROM=volunteer@earlymusicsa.org
+MAIL_TO=one@example.org, two@example.org    # comma-separated, one RCPT each
+```
+
+**Optional by design.** With any of those missing, `mailConfigured()` is false,
+nothing is sent, and the site behaves exactly as it did before. The queue on
+/admin.html is still the record; email is a convenience laid on top of it. The
+server says which state it is in at boot.
+
+**SMTP rather than a provider's HTTP API.** SMTP is universal, so this works
+with the mailbox that already exists on the domain: no new account, no API key,
+and no DNS records to add next to the ones carrying the group's real mail
+(see the DNS notes — that zone is not to be experimented with). Any sending
+service speaks SMTP too, so switching is four variables, not a rewrite.
+
+### Two things that must stay true
+
+**A failure must never reach the visitor.** `notify()` is fire-and-forget: it
+never throws and never delays the response. Whatever prompted it is already
+stored by the time it runs, so a mail server that is down, slow, or holding a
+mistyped password costs a log line and nothing else. There is a test that
+submits a form against a dead mail host and asserts a 201 comes back
+immediately.
+
+**The password only crosses TLS.** On 587 the client insists STARTTLS is
+offered, upgrades, and starts the conversation again on the encrypted socket;
+on 465 it is encrypted from the first byte. The single exception is a host on
+loopback, which is how `test-mail.mjs` holds a real SMTP conversation with a
+fake server — nothing leaves the machine, so there is nothing to protect. That
+exception is deliberately keyed to the address rather than a flag, so there is
+no setting anybody could switch on against a real server.
+
+### The client
+
+Hand-written, since the project takes no dependencies. Worth knowing if you
+touch it: a reply can run to several lines and ends at the first line with a
+*space* after the code, not a hyphen; AUTH PLAIN is used when the server offers
+it and AUTH LOGIN otherwise; each recipient needs its own RCPT TO; a body line
+starting with a dot must be doubled or the message ends early there; and a
+non-ASCII subject needs RFC 2047 or it arrives as mojibake. All five have tests,
+against a fake server that speaks both AUTH dialects and can be told to refuse.
 
 ## Conventions
 
