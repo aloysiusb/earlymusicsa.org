@@ -178,6 +178,13 @@
   --map-height: 260px;
   --map-tile: 256px;
   --map-backing: #e8e4dd;
+  --map-zoom-bg: rgb(255 255 255 / 0.92);
+  --map-zoom-ink: #1c1c1c;
+  --mapbox-scrim: rgb(0 0 0 / 0.62);
+  --mapbox-width: 900px;
+  --mapbox-height: 74vh;
+  --mapbox-radius: 10px;
+  --mapbox-head: #00212b;
   --rule: #e2e4e6;
 
   --banner-image: url('media/Giovanni_Pauolo_2000x400.jpg');
@@ -1004,6 +1011,105 @@ body:has(.event-modal:target) { overflow: hidden; }
   border-radius: var(--panel-radius) 0 0 0;
   color: var(--ink-soft);
   text-decoration: none;
+}
+
+/* The whole map is the link. It sits under the credit so that stays clickable
+   on its own -- the credit is a condition of using the tiles. */
+.staticmap-open {
+  position: absolute;
+  inset: 0;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: zoom-in;
+}
+.staticmap-credit { z-index: 1; }
+
+.staticmap-zoom {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: var(--map-zoom-bg);
+  color: var(--map-zoom-ink);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.28);
+}
+.staticmap-open:hover .staticmap-zoom,
+.staticmap-open:focus-visible .staticmap-zoom { background: #fff; }
+.staticmap-open:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
+
+/* ------------------------------------------------------- the larger map -- */
+
+/* Opened by the one script the site ships. The iframe has no src until it is
+   opened, so no request reaches Google until somebody asks for a map. */
+.mapbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.mapbox[hidden] { display: none; }
+.mapbox-scrim { position: absolute; inset: 0; background: var(--mapbox-scrim); }
+
+.mapbox-frame {
+  position: relative;
+  width: min(var(--mapbox-width), 100%);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--mapbox-radius);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 18px 50px rgb(0 0 0 / 0.4);
+}
+
+.mapbox-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 12px 8px 12px 16px;
+  background: var(--mapbox-head);
+  color: #fff;
+  font-weight: 700;
+}
+.mapbox-close {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  font-size: 24px;
+  line-height: 1;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+.mapbox-close:hover { background: rgb(255 255 255 / 0.18); }
+
+.mapbox-map {
+  display: block;
+  width: 100%;
+  height: var(--mapbox-height);
+  border: 0;
+}
+
+.mapbox-foot { margin: 0; padding: 10px 16px; font-size: 14px; }
+
+/* The page behind must not scroll while the map is over it. */
+.mapbox-open, .mapbox-open body { overflow: hidden; }
+
+@media (max-width: 640px) {
+  .mapbox { padding: 0; }
+  .mapbox-frame { width: 100%; height: 100%; max-height: 100%; border-radius: 0; }
+  .mapbox-map { height: 100%; flex: 1; }
 }
 
 /* --------------------------------------------------------- calendar box -- */

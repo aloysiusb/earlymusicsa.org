@@ -81,6 +81,9 @@ needs that.
   /admin.html without touching `data/events.json`. See
   "Editing events" below — the design is deliberate and worth reading before
   changing it.
+- **Larger maps done** (2026-09-02). Clicking a venue map opens a zoomable
+  Google map on the page. Needs `GOOGLE_MAPS_KEY`; without it the map is still
+  a link to Google Maps, so the site is complete either way. See "Maps".
 - **Still to do:** search, and filtering by type/venue/organizer.
 
 ## Layout
@@ -453,6 +456,56 @@ DELETE /api/events/:id     drop the patch, then rebuild
 ```
 
 `test-edits.mjs` walks the whole loop against a real server: 27 checks.
+
+## Maps
+
+There are two maps, and the split is deliberate.
+
+**On the page: static OpenStreetMap tiles.** `tiles.js` mirrors them to
+`media/tiles/` and `mapPanel()` composes a 3x3 grid with the venue centred
+under a pin. No API key, no billing, no iframe, no script, and no third-party
+request when a visitor loads the page. It renders or it obviously does not.
+
+**On click: a real Google map, zoomable.** The static map is wrapped in a plain
+link to Google Maps. When `GOOGLE_MAPS_KEY` is set at build time the link also
+carries `data-embed`, and the site's one script upgrades the click into a panel
+holding a Maps Embed iframe. **The iframe gets its `src` at the moment it
+opens, never before** — until somebody asks for a map, nothing reaches Google —
+and the `src` is removed on close so the map stops.
+
+Order of fallback, worst case first: no key -> the link goes to Google Maps in a
+new tab. No JavaScript -> same. Google unreachable -> the static tiles are still
+the map. Nothing here can leave a visitor with a grey box.
+
+### The key
+
+```bash
+GOOGLE_MAPS_KEY=...    # Render -> service -> Environment
+```
+
+It is the **Maps Embed API** key, not the Maps JavaScript one — the embed is the
+free product and needs no script of Google's on the page.
+
+**The key is public once the page ships.** That is unavoidable for any map
+embed and is not the thing to worry about; the restriction is. In the Google
+console it must be limited by HTTP referrer to `earlymusicsa.org/*` and
+`www.earlymusicsa.org/*`, and by API to the Maps Embed API alone. Restricting
+it is what protects it, not hiding it. Do not put it in the repo.
+
+The embed URL asks for the venue by name and address so Google shows its place
+card, but pins `center` to the coordinates EventON geocoded, which are the
+authoritative ones.
+
+**A build says which mode it is in** — "1660 maps, all clickable" versus
+"...1660 of them zoomable on the page" — and warns if an embed URL was built
+without a key, or a map was built without an embed when a key was set.
+
+### While in here: Escape
+
+Closing a panel used to be `history.replaceState`, which tidies the URL but
+**does not recompute `:target`** — so Escape appeared to do nothing. The hash
+has to be cleared first, then the URL tidied. If you touch that handler, test it
+by pressing Escape, not by reading the URL.
 
 ## Conventions
 

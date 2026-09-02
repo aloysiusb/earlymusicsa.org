@@ -262,10 +262,70 @@ addEventListener('hashchange', showMaps);
 addEventListener('DOMContentLoaded', showMaps);
 showMaps();
 
-addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && location.hash) {
-    history.replaceState(null, '', location.pathname + location.search);
+/* Clicking a map opens a bigger one you can zoom and drag.
+
+   The link works on its own -- it goes to Google Maps in a new tab -- so this
+   only upgrades it, and only for maps built with a key. The iframe's src is
+   set at the moment of opening, never before: until somebody asks for a map,
+   this site makes no request to Google at all. */
+var mapbox = null;
+
+function closeMapbox() {
+  if (!mapbox || mapbox.hidden) return;
+  mapbox.hidden = true;
+  mapbox.querySelector('iframe').removeAttribute('src');   // stop the map
+  document.documentElement.classList.remove('mapbox-open');
+  if (mapbox.returnTo) { mapbox.returnTo.focus(); mapbox.returnTo = null; }
+}
+
+function openMapbox(link) {
+  if (!mapbox) {
+    mapbox = document.createElement('div');
+    mapbox.className = 'mapbox';
+    mapbox.hidden = true;
+    mapbox.innerHTML =
+      '<div class="mapbox-scrim"></div>' +
+      '<div class="mapbox-frame" role="dialog" aria-modal="true" aria-label="Map">' +
+        '<p class="mapbox-head"><span class="mapbox-title"></span>' +
+        '<button type="button" class="mapbox-close" aria-label="Close the map">&times;</button></p>' +
+        '<iframe class="mapbox-map" title="Map" allowfullscreen ' +
+        'referrerpolicy="no-referrer-when-downgrade"></iframe>' +
+        '<p class="mapbox-foot"></p>' +
+      '</div>';
+    document.body.appendChild(mapbox);
+    mapbox.querySelector('.mapbox-scrim').addEventListener('click', closeMapbox);
+    mapbox.querySelector('.mapbox-close').addEventListener('click', closeMapbox);
   }
+
+  mapbox.querySelector('.mapbox-title').textContent = link.dataset.place || 'Map';
+  mapbox.querySelector('.mapbox-foot').innerHTML =
+    '<a href="' + link.getAttribute('href') + '" target="_blank" rel="noopener">Open in Google Maps</a>';
+  mapbox.querySelector('iframe').src = link.dataset.embed;
+  mapbox.hidden = false;
+  mapbox.returnTo = link;
+  document.documentElement.classList.add('mapbox-open');
+  mapbox.querySelector('.mapbox-close').focus();
+}
+
+addEventListener('click', function (e) {
+  var link = e.target.closest && e.target.closest('.staticmap-open[data-embed]');
+  if (!link) return;
+  // Let a middle-click or a modified click open Google Maps in a tab, the way
+  // any other link would.
+  if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  e.preventDefault();
+  openMapbox(link);
+});
+
+addEventListener('keydown', function (e) {
+  if (e.key !== 'Escape') return;
+  if (mapbox && !mapbox.hidden) { closeMapbox(); return; }   // the map first
+  if (!location.hash) return;
+  // Clearing the hash is what actually closes the panel: :target is not
+  // recomputed by replaceState, so tidying the URL alone left the panel open.
+  // Clear it first, then tidy, which leaves no stray '#' behind.
+  location.hash = '';
+  history.replaceState(null, '', location.pathname + location.search);
 });
 </script>
 
@@ -399,15 +459,65 @@ function mapPanel(loc, depth, { defer = false } = {}) {
     `<img ${defer ? 'data-src' : 'src'}="${root}media/tiles/${tileFile(t)}" alt=""`
     + ` width="${TILE}" height="${TILE}">`).join('');
 
+  // The static map is the map. Clicking it opens a larger, zoomable Google one
+  // -- as a plain link to Google Maps, which the script upgrades to a panel on
+  // the page when a key was set at build time. With no key, no script, or no
+  // network to Google, the link still goes somewhere useful.
+  const embed = embedMapUrl(loc);
+  const zoomable = embed ? ` data-embed="${esc(embed)}"` : '';
+
   return `<section class="panel panel-map">
       <div class="staticmap">
-        <div class="staticmap-plane" style="left:calc(50% - ${plan.px.toFixed(1)}px);top:calc(50% - ${plan.py.toFixed(1)}px)">${imgs}</div>
-        <span class="staticmap-pin" aria-hidden="true"></span>
-        <span class="staticmap-label">${esc(loc.name)}</span>
+        <a class="staticmap-open" href="${esc(placeUrl(loc))}" target="_blank" rel="noopener"${zoomable}
+           data-place="${esc(loc.name)}" aria-label="Open a larger map of ${esc(loc.name)}">
+          <div class="staticmap-plane" style="left:calc(50% - ${plan.px.toFixed(1)}px);top:calc(50% - ${plan.py.toFixed(1)}px)">${imgs}</div>
+          <span class="staticmap-pin" aria-hidden="true"></span>
+          <span class="staticmap-label">${esc(loc.name)}</span>
+          <span class="staticmap-zoom" aria-hidden="true">Larger map</span>
+        </a>
         <a class="staticmap-credit" href="https://www.openstreetmap.org/copyright"
            target="_blank" rel="noopener">&copy; OpenStreetMap contributors</a>
       </div>
     </section>`;
+}
+
+/**
+ * The Google Maps Embed API key, read at build time.
+ *
+ * It is optional on purpose. Without it the maps stay exactly as they are and
+ * clicking one opens Google Maps in a new tab, so a plain static build with no
+ * secrets set still produces a complete site. Set GOOGLE_MAPS_KEY on the server
+ * (Render -> Environment) to get the zoomable map on the page instead.
+ *
+ * The key is public once the page ships -- that is unavoidable for a map embed
+ * and is why it must be restricted, by HTTP referrer and to the Embed API, in
+ * the Google console. Restricting it is what protects it, not hiding it.
+ */
+const MAPS_KEY = process.env.GOOGLE_MAPS_KEY || '';
+
+/** Where a venue is, in words Google can search for. */
+const placeQuery = (loc) => [loc?.name, loc?.address].filter(Boolean).join(', ');
+
+/** The plain Google Maps page for a venue -- no key needed. */
+const placeUrl = (loc) => (loc?.lat
+  ? `https://www.google.com/maps/search/?api=1&query=${loc.lat},${loc.lon}`
+  : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(placeQuery(loc))}`);
+
+/**
+ * The embeddable map for a venue, or '' when no key is set.
+ *
+ * `q` is the address so the map shows the venue's own place card, while
+ * `center` holds the view to the coordinates EventON geocoded, which are the
+ * authoritative ones. If the address is missing, the coordinates do both jobs.
+ */
+function embedMapUrl(loc) {
+  if (!MAPS_KEY || !loc?.lat) return '';
+  const q = placeQuery(loc) || `${loc.lat},${loc.lon}`;
+  return 'https://www.google.com/maps/embed/v1/place'
+    + `?key=${encodeURIComponent(MAPS_KEY)}`
+    + `&q=${encodeURIComponent(q)}`
+    + `&center=${loc.lat},${loc.lon}`
+    + '&zoom=16';
 }
 
 const directionsUrl = (loc) => loc?.lat
@@ -1211,6 +1321,29 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
   } else {
     console.log('  every card opens a panel that exists');
   }
+
+  // Every map must be a working link whether or not a key was set, and the
+  // embed must appear only when one was -- a key leaking into a keyless build,
+  // or a map that opens nothing, would both be silent failures.
+  let maps = 0, embeds = 0, linkless = 0;
+  for (const file of await walk(OUT)) {
+    if (!file.endsWith('.html')) continue;
+    const html = await readFile(file, 'utf8');
+    for (const tag of html.match(/<a class="staticmap-open"[^>]*>/g) || []) {
+      maps++;
+      if (!/href="https:\/\//.test(tag)) linkless++;
+      if (tag.includes('data-embed=')) embeds++;
+    }
+  }
+  if (linkless) {
+    console.warn(`  WARNING: ${linkless} map(s) link nowhere`);
+  } else if (maps) {
+    console.log(MAPS_KEY
+      ? `  ${maps} maps, all clickable, ${embeds} of them zoomable on the page`
+      : `  ${maps} maps, all clickable (set GOOGLE_MAPS_KEY to make them zoomable)`);
+  }
+  if (!MAPS_KEY && embeds) console.warn(`  WARNING: ${embeds} embed URL(s) built without a key`);
+  if (MAPS_KEY && maps !== embeds) console.warn(`  WARNING: ${maps - embeds} map(s) missing their embed`);
 }
 
 main().catch((err) => { console.error(err); process.exit(1); });
