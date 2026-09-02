@@ -141,6 +141,20 @@
   --form-accent: #066aab;      /* the live submit button */
   --form-submit-size: 17px;
   --form-required: #b3261e;
+
+  /* The Submit page's fields, taken from EventON's own form. */
+  --evoform-field-size: 14px;
+  --evoform-field-height: 42px;
+  --evoform-field-text: #666666;
+  --evoform-border: #dddddd;
+  --evoform-radius: 20px;           /* pill-shaped, as on the live form */
+  --evoform-textarea-radius: 10px;
+  --evoform-textarea-height: 164px;
+  --evoform-pad: 12px 15px;
+  --evoform-label-size: 14px;
+  --evoform-label-weight: 700;
+  --evoform-label-color: #202124;
+
   --admin-bg: #f2f3f5;
   --rule-strong: #cfd3d7;
   --ink-faint: #6b7075;
@@ -475,6 +489,66 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 }
 .form-submit:hover { filter: brightness(1.08); }
 .form-submit:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* The Submit page copies EventON's form rather than the WPForms one the
+   Contact page uses: pill-shaped fields, smaller bold labels, softer borders.
+   Two genuinely different looks on the live site, so two here. */
+.form-evo { max-width: 760px; }
+
+.form-evo .field label,
+.form-evo .field > label {
+  font-size: var(--evoform-label-size);
+  font-weight: var(--evoform-label-weight);
+  color: var(--evoform-label-color);
+}
+
+.form-evo .field input,
+.form-evo .field textarea,
+.form-evo .field select {
+  font-size: var(--evoform-field-size);
+  color: var(--evoform-field-text);
+  border: 1px solid var(--evoform-border);
+  border-radius: var(--evoform-radius);
+  padding: var(--evoform-pad);
+  min-height: var(--evoform-field-height);
+  /* The body leading would make a 42px field 47px tall. */
+  line-height: 1.2;
+}
+.form-evo .field textarea {
+  border-radius: var(--evoform-textarea-radius);
+  min-height: var(--evoform-textarea-height);
+}
+.form-evo .field input:focus-visible,
+.form-evo .field textarea:focus-visible {
+  border-color: var(--form-accent);
+  outline: 2px solid var(--form-accent);
+  outline-offset: 1px;
+}
+.form-evo .field input::placeholder,
+.form-evo .field textarea::placeholder { color: #9aa0a6; }
+
+/* Checkboxes keep a normal square box; the pill radius is for text fields. */
+.form-evo .field.checkbox input {
+  min-height: 0;
+  border-radius: 3px;
+  padding: 0;
+}
+
+.form-evo .field-hint { font-size: 12px; }
+
+.form-evo .form-submit {
+  border-radius: var(--evoform-radius);
+  padding: 13px 26px;
+}
+
+.form-evo .form-section {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: none;
+  color: var(--evoform-label-color);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--evoform-border);
+}
 
 /* ------------------------------------------------- calendar page (large) -- */
 

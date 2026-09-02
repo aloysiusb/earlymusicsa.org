@@ -878,16 +878,17 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
   // Interior pages keep the sidebar calendar, as the live site does.
   // The page title sits in its own row spanning the container, not inside the
   // article column — which is how the live site fits a long title on one line.
-  const simplePage = (file, title, current, inner) => write(file, page({
+  // `wide` drops the sidebar, which is how the live Submit page is laid out.
+  const simplePage = (file, title, current, inner, { wide = false } = {}) => write(file, page({
     title, current,
     body: `<div class="container page-header">
   <h1 class="page-title">${esc(title)}</h1>
 </div>
 <div class="container content">
-  <div class="primary">
+  <div class="primary${wide ? ' wide' : ''}">
     ${inner}
   </div>
-  <aside class="sidebar">${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}</aside>
+  ${wide ? '' : `<aside class="sidebar">${calendarWidget(focusDate.year, focusDate.month, byDay, 0)}</aside>`}
 </div>`,
   }));
 
@@ -926,7 +927,7 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
       <p>Send it in and a volunteer will check it over before it appears.
       Fields marked <span class="req">*</span> are the ones we cannot do without.</p>
     </div>
-    <form class="site-form" method="post" action="/api/submit">
+    <form class="site-form form-evo" method="post" action="/api/submit">
       <p class="field">
         <label for="title">Event name <span class="req">*</span></label>
         <input id="title" name="title" type="text" required maxlength="200">
@@ -1006,7 +1007,7 @@ ${list.map((e) => eventModal(e, 1)).join('\n')}`,
       <p><button class="form-submit" type="submit">Submit event</button></p>
       ${datalist('venues', venueList)}
       ${datalist('organisers', organiserList)}
-    </form>`);
+    </form>`, { wide: true });
 
   // The form posts to the server and works with JavaScript off. The honeypot
   // is a real input, hidden from people but not from bots.
