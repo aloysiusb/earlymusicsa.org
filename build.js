@@ -251,9 +251,9 @@ ${body}
 function showMaps() {
   var open = document.querySelector('.event-modal:target');
   if (!open) return;
-  open.querySelectorAll('img[data-src]').forEach(function (img) {
-    img.src = img.getAttribute('data-src');
-    img.removeAttribute('data-src');
+  open.querySelectorAll('[data-src]').forEach(function (el) {
+    el.src = el.getAttribute('data-src');
+    el.removeAttribute('data-src');
   });
 }
 addEventListener('hashchange', showMaps);
@@ -466,17 +466,37 @@ function mapPanel(loc, depth, { defer = false } = {}) {
   const embed = embedMapUrl(loc);
   const zoomable = embed ? ` data-embed="${esc(embed)}"` : '';
 
+  // Three layers, and each one is a working map on its own.
+  //
+  // The mirrored tiles paint first, from our own domain, with no script and no
+  // outside request -- so there is a map before anything third-party is asked
+  // for, and still a map if Google never answers. Google's own map then loads
+  // over them and takes the interaction. The button sits above both, because an
+  // iframe swallows clicks and the reader still needs a way to a bigger view.
+  //
+  // Inside a detail panel the iframe carries data-src rather than src: a panel
+  // is display:none until opened, and an iframe with a src loads regardless,
+  // which would mean a Google request for every event on the page.
+  const srcAttr = defer ? 'data-src' : 'src';
+  const frame = embed
+    ? `<iframe class="staticmap-live" ${srcAttr}="${esc(embed)}" title="Map of ${esc(loc.name)}"
+           loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>`
+    : '';
+
   return `<section class="panel panel-map">
-      <div class="staticmap">
+      <div class="staticmap${embed ? ' has-live' : ''}">
+        <div class="staticmap-plane" style="left:calc(50% - ${plan.px.toFixed(1)}px);top:calc(50% - ${plan.py.toFixed(1)}px)">${imgs}</div>
+        <span class="staticmap-pin" aria-hidden="true"></span>
+        ${frame}
+        <span class="staticmap-label">${esc(loc.name)}</span>
         <a class="staticmap-open" href="${esc(placeUrl(loc))}" target="_blank" rel="noopener"${zoomable}
            data-place="${esc(loc.name)}" aria-label="Open a larger map of ${esc(loc.name)}">
-          <div class="staticmap-plane" style="left:calc(50% - ${plan.px.toFixed(1)}px);top:calc(50% - ${plan.py.toFixed(1)}px)">${imgs}</div>
-          <span class="staticmap-pin" aria-hidden="true"></span>
-          <span class="staticmap-label">${esc(loc.name)}</span>
-          <span class="staticmap-zoom" aria-hidden="true">Larger map</span>
+          <span class="staticmap-zoom">Larger map</span>
         </a>
-        <a class="staticmap-credit" href="https://www.openstreetmap.org/copyright"
-           target="_blank" rel="noopener">&copy; OpenStreetMap contributors</a>
+        <a class="staticmap-credit" href="${embed
+          ? 'https://www.google.com/maps'
+          : 'https://www.openstreetmap.org/copyright'}"
+           target="_blank" rel="noopener">${embed ? 'Google Maps' : '&copy; OpenStreetMap contributors'}</a>
       </div>
     </section>`;
 }

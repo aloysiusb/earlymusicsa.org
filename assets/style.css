@@ -1013,8 +1013,9 @@ body:has(.event-modal:target) { overflow: hidden; }
   text-decoration: none;
 }
 
-/* The whole map is the link. It sits under the credit so that stays clickable
-   on its own -- the credit is a condition of using the tiles. */
+/* With no key there is no Google frame, so the whole tile map is the link.
+   It sits under the credit so that stays clickable on its own -- the credit is
+   a condition of using the tiles. */
 .staticmap-open {
   position: absolute;
   inset: 0;
@@ -1024,6 +1025,36 @@ body:has(.event-modal:target) { overflow: hidden; }
   cursor: zoom-in;
 }
 .staticmap-credit { z-index: 1; }
+
+/* Google's map, laid over the tiles.
+
+   The tiles stay underneath rather than being replaced. They come from our own
+   domain and need no script, so a map is on the page immediately and stays
+   there if the frame is blocked or never arrives. Once Google's map paints it
+   covers them and takes the interaction -- it pans and zooms in place. */
+.staticmap-live {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 1;
+}
+
+/* Google draws its own marker, name and attribution inside the frame, so ours
+   would only be duplicates sitting on top of its controls. */
+.staticmap.has-live .staticmap-pin,
+.staticmap.has-live .staticmap-label,
+.staticmap.has-live .staticmap-credit { display: none; }
+
+/* The frame swallows clicks, so the way to a bigger map has to sit above it
+   and be only as large as itself. */
+.staticmap.has-live .staticmap-open {
+  inset: 8px 8px auto auto;
+  z-index: 2;
+  cursor: pointer;
+}
+.staticmap.has-live .staticmap-zoom { position: static; display: block; }
 
 .staticmap-zoom {
   position: absolute;
@@ -1232,8 +1263,11 @@ body:has(.event-modal:target) { overflow: hidden; }
     gap: 10px;
     padding: 10px 0 20px;
   }
-  /* Once the menu can open, the banner has to grow with it. */
-  .site-banner { position: static; height: auto; }
+  /* Once the menu can open, the banner has to grow with it. Relative, not
+     static: the wash is an absolutely positioned ::after, so without a
+     positioned banner to sit in it escapes and sizes itself to the viewport,
+     dropping a dark film over the top screenful of the page. */
+  .site-banner { position: relative; height: auto; }
   .site-main { padding-top: 0; }
   .header-inner { flex-wrap: wrap; height: auto; min-height: var(--banner-height); }
 }

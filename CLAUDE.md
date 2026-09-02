@@ -81,9 +81,10 @@ needs that.
   /admin.html without touching `data/events.json`. See
   "Editing events" below — the design is deliberate and worth reading before
   changing it.
-- **Larger maps done** (2026-09-02). Clicking a venue map opens a zoomable
-  Google map on the page. Needs `GOOGLE_MAPS_KEY`; without it the map is still
-  a link to Google Maps, so the site is complete either way. See "Maps".
+- **Maps are Google's** (2026-09-02), over the mirrored tiles, and clicking one
+  opens a larger zoomable view. Needs `GOOGLE_MAPS_KEY`; without it the tiles
+  stand alone and the click opens Google Maps in a new tab, so the site is
+  complete either way. See "Maps".
 - **Still to do:** search, and filtering by type/venue/organizer.
 
 ## Layout
@@ -459,23 +460,37 @@ DELETE /api/events/:id     drop the patch, then rebuild
 
 ## Maps
 
-There are two maps, and the split is deliberate.
+The map on the page is Google's, and it is built in three layers. Each layer is
+a working map on its own, which is the whole point of the arrangement.
 
-**On the page: static OpenStreetMap tiles.** `tiles.js` mirrors them to
+**Underneath: static OpenStreetMap tiles.** `tiles.js` mirrors them to
 `media/tiles/` and `mapPanel()` composes a 3x3 grid with the venue centred
-under a pin. No API key, no billing, no iframe, no script, and no third-party
-request when a visitor loads the page. It renders or it obviously does not.
+under a pin. They come from our own domain, need no key and no script, and
+paint immediately — so there is a map on the page before anything third-party
+has been asked for, and still a map if the frame is blocked or never arrives.
+(If Google answers with an *error* page, that error is what shows; the tiles
+cover the loading gap and outright blocking, not a bad key.)
 
-**On click: a real Google map, zoomable.** The static map is wrapped in a plain
-link to Google Maps. When `GOOGLE_MAPS_KEY` is set at build time the link also
-carries `data-embed`, and the site's one script upgrades the click into a panel
-holding a Maps Embed iframe. **The iframe gets its `src` at the moment it
-opens, never before** — until somebody asks for a map, nothing reaches Google —
-and the `src` is removed on close so the map stops.
+**Over them: a Maps Embed iframe.** Present only when `GOOGLE_MAPS_KEY` was set
+at build time. Once it paints it covers the tiles and takes the interaction, so
+the map pans and zooms in place. Google draws its own marker, venue name and
+attribution, so ours are hidden under `.has-live` rather than sitting on top of
+its controls.
 
-Order of fallback, worst case first: no key -> the link goes to Google Maps in a
-new tab. No JavaScript -> same. Google unreachable -> the static tiles are still
-the map. Nothing here can leave a visitor with a grey box.
+**Above both: the "Larger map" button.** An iframe swallows clicks, so the way
+to a bigger view has to sit above it and be only as large as itself. It opens a
+panel holding the same embed at `--mapbox-width`.
+
+**Inside a detail panel the iframe carries `data-src`, not `src`.** A panel is
+`display:none` until opened and an iframe with a `src` loads anyway — that would
+be a request to Google for every event on a page nobody opened. The script fills
+it in when the panel opens, and the larger map's frame likewise only gets its
+`src` at the moment it opens, and loses it on close so the map stops.
+
+Order of fallback, worst case first: no key -> tiles, and the click opens Google
+Maps in a new tab. No JavaScript -> same, and event pages still carry their map
+directly. Google unreachable -> the tiles are still the map. Nothing here leaves
+a visitor with a grey box.
 
 ### The key
 
@@ -506,6 +521,19 @@ Closing a panel used to be `history.replaceState`, which tidies the URL but
 **does not recompute `:target`** — so Escape appeared to do nothing. The hash
 has to be cleared first, then the URL tidied. If you touch that handler, test it
 by pressing Escape, not by reading the URL.
+
+### The banner wash
+
+The wash over the header photo is `.site-banner::after`, absolutely positioned
+with `inset: 0`. At <=782px the banner switches out of `position: fixed` so it
+can grow with the open menu — and it must become **`relative`, not `static`**.
+Static leaves the wash with no positioned ancestor, so it resolves against the
+initial containing block and sizes itself to the *viewport*: a dark film over
+the whole first screenful, ending in a hard edge partway down the page. It
+looked fine on desktop, where the banner is `fixed` and therefore positioned.
+
+If you touch the banner's `position` at any breakpoint, check the wash's height
+equals the banner's, at 375px and 768px, with the menu both shut and open.
 
 ## Conventions
 
