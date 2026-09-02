@@ -169,7 +169,7 @@ dependencies**, following the wall-family pattern (see `C:\Users\xnytr\Claude\se
 
 ```bash
 npm start          # serve dist/ + the API on :4173
-npm test           # 134 checks over storage, validation, routes, edits and mail
+npm test           # 156 checks over storage, validation, routes, edits, mail and limits
 ```
 
 Everything in it is something that changes at runtime:
@@ -605,6 +605,48 @@ it and AUTH LOGIN otherwise; each recipient needs its own RCPT TO; a body line
 starting with a dot must be doubled or the message ends early there; and a
 non-ASCII subject needs RFC 2047 or it arrives as mojibake. All five have tests,
 against a fake server that speaks both AUTH dialects and can be told to refuse.
+
+## Spam, and why there is no CAPTCHA
+
+Three layers, none of which asks a visitor to prove anything.
+
+**A honeypot** on both forms — a field no person sees. Anything filling it gets
+a cheerful 200 and is stored nowhere, so a bot learns nothing from the reply.
+It is answered *before* the rate limiter for the same reason.
+
+**Heuristics** in , matched against the fake-conference spam that
+was already reaching the old site. They only ever *flag*; they never reject. A
+flagged submission is called out in the queue and in the notification email,
+because a real concert can trip them.
+
+**Moderation** is the actual defence. Nothing reaches the site without a
+volunteer approving it, so spam that gets through costs ten seconds.
+
+A CAPTCHA was considered and rejected. It taxes the genuine submitter — an
+elderly concert organiser listing a recital is precisely the person who gets
+stuck on one — and it buys little when nothing publishes unreviewed.
+
+### The cap
+
+What that left open was volume, which  closes: 10 submissions an
+hour and 30 a day per visitor, 5 and 15 for the contact form. Generous, because
+a venue listing a whole season in one sitting is a real thing; the daily figure
+is what actually stops a flood.
+
+Three things to keep true if you touch it:
+
+- **A refused request must not be counted.** Otherwise somebody hammering the
+  form keeps pushing their own window forward and is locked out for ever.
+- **The visitor is identified by , else the *rightmost*
+   entry** — that list is one a caller can prepend to, so the
+  leftmost value is whatever they claimed. Taking the left one would let anybody
+  lock anybody else out.
+- **A refusal explains itself.** Somebody who has genuinely filled in several
+  events gets a real message saying when to come back and that nothing was lost,
+  not a bare 429.
+
+Counting is in memory, so a restart forgets it. That is deliberate: this exists
+to stop a flood, not to keep a ledger.
 
 ## Conventions
 

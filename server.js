@@ -29,6 +29,7 @@ import {
   approvedEvents,
 } from './db.js';
 import { notify, submissionNotice, messageNotice, mailConfigured, mailConfig } from './mailer.js';
+import { take, clientKey, waitInWords } from './ratelimit.js';
 
 const ROOT = path.resolve('dist');
 const PORT = Number(process.argv[2] || process.env.PORT || 4173);
@@ -82,6 +83,20 @@ function tokenOk(supplied) {
 const isAdmin = (req) => tokenOk(req.headers['x-admin-token']);
 
 /* --------------------------------------------------------------- rebuild -- */
+
+/**
+ * Refuse politely, and say when to come back.
+ *
+ * A person who has genuinely filled in several events in one sitting must be
+ * able to tell what happened, so this is a real message rather than a bare 429.
+ */
+function tooMany(res, verdict, wantsHtml) {
+  const words = waitInWords(verdict.retryAfter);
+  const message = `That is as many as we can take from one visitor for now — please try again ${words}. Nothing you have already sent has been lost.`;
+  res.setHeader('Retry-After', String(verdict.retryAfter));
+  if (wantsHtml) { sendPage(res, 429, thanksPage([message])); return; }
+  json(res, 429, { ok: false, errors: [message], retryAfter: verdict.retryAfter });
+}
 
 /**
  * Regenerate the static pages.
@@ -308,6 +323,9 @@ async function handleApi(req, res, url) {
     }
 
     const wantsHtml = !(req.headers['content-type'] || '').includes('application/json');
+    const verdict = take('submit', clientKey(req));
+    if (!verdict.ok) { tooMany(res, verdict, wantsHtml); return true; }
+
     const { clean, errors } = validateSubmission(body);
     if (errors.length) {
       if (wantsHtml) { sendPage(res, 400, thanksPage(errors)); return true; }
@@ -412,6 +430,9 @@ async function handleApi(req, res, url) {
       json(res, 200, { ok: true, id: null });
       return true;
     }
+
+    const verdict = take('contact', clientKey(req));
+    if (!verdict.ok) { tooMany(res, verdict, wantsHtml); return true; }
 
     const { clean, errors } = validateMessage(body);
     if (errors.length) {
