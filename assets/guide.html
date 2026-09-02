@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Running earlymusicsa.org</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root {
+  --ground:      #fbfaf6;
+  --surface:     #ffffff;
+  --surface-alt: #f4f2ea;
+  --ink:         #1b1f24;
+  --ink-soft:    #4c4f55;
+  --ink-faint:   #767066;
+  --rule:        #e3ded1;
+  --gold:        #9e7e00;
+  --gold-soft:   #f3ecd4;
+  --masthead-bg:  #00212b;
+  --masthead-ink: #f4f2ea;
+  --masthead-dim: #ded9cc;
+  --masthead-key: #c9a227;
+  --blue:        #066aab;
+  --blue-soft:   #e6f0f7;
+  --warn:        #8a3324;
+  --warn-soft:   #f8ece8;
+  --shadow:      0 1px 2px rgb(27 31 36 / 0.06), 0 8px 24px rgb(27 31 36 / 0.06);
+
+  --measure: 34rem;
+  --step-size: 1.0625rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:      #14171a;
+    --surface:     #1c2024;
+    --surface-alt: #23272c;
+    --ink:         #e9e6df;
+    --ink-soft:    #b3aea4;
+    --ink-faint:   #8d877c;
+    --rule:        #33383e;
+    --gold:        #d9b93f;
+    --gold-soft:   #2e2a1c;
+    --masthead-bg:  #0e2730;
+    --masthead-ink: #e9e6df;
+    --masthead-dim: #b6c2c7;
+    --masthead-key: #d9b93f;
+    --blue:        #6fb3e0;
+    --blue-soft:   #1a2630;
+    --warn:        #e08b76;
+    --warn-soft:   #2c1e1a;
+    --shadow:      0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.32);
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground:      #14171a;
+  --surface:     #1c2024;
+  --surface-alt: #23272c;
+  --ink:         #e9e6df;
+  --ink-soft:    #b3aea4;
+  --ink-faint:   #8d877c;
+  --rule:        #33383e;
+  --gold:        #d9b93f;
+  --gold-soft:   #2e2a1c;
+  --masthead-bg:  #0e2730;
+  --masthead-ink: #e9e6df;
+  --masthead-dim: #b6c2c7;
+  --masthead-key: #d9b93f;
+  --blue:        #6fb3e0;
+  --blue-soft:   #1a2630;
+  --warn:        #e08b76;
+  --warn-soft:   #2c1e1a;
+  --shadow:      0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.32);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+}
+
+/* ---------------------------------------------------------------- header -- */
+
+.masthead {
+  background: var(--masthead-bg);
+  color: var(--masthead-ink);
+  padding: 3.5rem 1.5rem 3rem;
+  margin-bottom: 3rem;
+}
+.masthead-inner { max-width: var(--measure); margin: 0 auto; }
+
+.eyebrow {
+  font-family: Raleway, system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--masthead-key);
+  margin: 0 0 0.75rem;
+}
+
+.masthead h1 {
+  font-family: Raleway, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  line-height: 1.15;
+  text-wrap: balance;
+  margin: 0 0 1rem;
+}
+
+.masthead p {
+  margin: 0;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: var(--masthead-dim);
+  max-width: 30rem;
+}
+
+/* ------------------------------------------------------------- structure -- */
+
+h2 {
+  font-family: Raleway, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  text-wrap: balance;
+  color: var(--ink);
+  margin: 3.5rem 0 0.25rem;
+  padding-top: 1.75rem;
+  border-top: 2px solid var(--gold);
+}
+h2:first-of-type { margin-top: 0; }
+
+h3 {
+  font-family: Raleway, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.1875rem;
+  line-height: 1.3;
+  margin: 2.25rem 0 0.5rem;
+  color: var(--ink);
+}
+
+p { margin: 0 0 1.1rem; }
+
+a { color: var(--blue); text-underline-offset: 0.15em; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.lede { font-size: 1.1875rem; color: var(--ink-soft); }
+
+strong { font-weight: 600; }
+
+/* ------------------------------------------------------------- contents -- */
+
+.contents {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 3rem;
+}
+.contents h2 {
+  border: 0;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.contents ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: Raleway, system-ui, sans-serif;
+  font-size: 1rem;
+}
+.contents a { text-decoration: none; font-weight: 600; }
+.contents a:hover { text-decoration: underline; }
+.contents span { color: var(--ink-faint); font-weight: 400; }
+
+/* ---------------------------------------------------------------- steps -- */
+
+ol.steps {
+  counter-reset: step;
+  list-style: none;
+  margin: 1.5rem 0 1.75rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+ol.steps > li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 3rem;
+  font-size: var(--step-size);
+  line-height: 1.6;
+}
+
+ol.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: -0.1em;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  color: var(--gold);
+  font-family: Raleway, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+ol.steps > li p { margin: 0.35rem 0 0; font-size: 1rem; color: var(--ink-soft); }
+
+ul.plain {
+  margin: 1.25rem 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+ul.plain li { padding-left: 0.35rem; }
+ul.plain li::marker { color: var(--gold); }
+
+/* -------------------------------------------------------------- callouts -- */
+
+.note {
+  border-left: 3px solid var(--blue);
+  background: var(--blue-soft);
+  padding: 1.1rem 1.35rem;
+  margin: 1.75rem 0;
+  border-radius: 0 4px 4px 0;
+}
+.note p:last-child { margin-bottom: 0; }
+.note .tag {
+  display: block;
+  font-family: Raleway, system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.4rem;
+}
+
+.note.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+.note.warn .tag { color: var(--warn); }
+
+.note.calm { border-left-color: var(--gold); background: var(--gold-soft); }
+.note.calm .tag { color: var(--gold); }
+
+/* ---------------------------------------------------------------- inline -- */
+
+.ui {
+  font-family: Raleway, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9em;
+  background: var(--surface-alt);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  white-space: nowrap;
+}
+
+.url {
+  font-family: Raleway, system-ui, sans-serif;
+  font-size: 0.95em;
+  word-break: break-all;
+}
+
+/* --------------------------------------------------------------- closing -- */
+
+.signoff {
+  margin-top: 4rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-faint);
+  font-size: 0.9375rem;
+}
+
+/* ----------------------------------------------------------------- print -- */
+
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .masthead { background: none; color: #000; padding: 0 0 1rem; border-bottom: 3px solid #000; }
+  .masthead p, .eyebrow { color: #333; }
+  .contents { display: none; }
+  h2 { break-after: avoid; }
+  ol.steps > li { break-inside: avoid; }
+  .note { break-inside: avoid; border: 1px solid #999; background: none; }
+  a { color: #000; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="eyebrow">Early Music San Antonio</p>
+    <h1>Running the website</h1>
+    <p>Everything you need to approve an event, fix a mistake, read a message,
+    or change how the site looks. Nothing here can break the site.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="contents">
+    <h2>What you can do</h2>
+    <ol>
+      <li><a href="#signin">Sign in</a> <span>— once per device</span></li>
+      <li><a href="#approve">Approve an event someone sent in</a></li>
+      <li><a href="#edit">Fix or change an event</a></li>
+      <li><a href="#hide">Take an event off the site</a></li>
+      <li><a href="#messages">Read messages from the Contact form</a></li>
+      <li><a href="#style">Change how the site looks</a></li>
+      <li><a href="#where">Where things go</a> <span>— and who gets told</span></li>
+    </ol>
+  </nav>
+
+  <h2 id="signin">Sign in</h2>
+
+  <p class="lede">There is one page where all of this happens. It isn't linked
+  from the menu, so nobody finds it by accident — you go to it directly.</p>
+
+  <ol class="steps">
+    <li>
+      Go to <span class="url">www.earlymusicsa.org/admin.html</span>
+      <p>Bookmark it. That's the only address you need.</p>
+    </li>
+    <li>
+      Paste in the admin password and tick <span class="ui">Keep me signed in on this device</span>
+      <p>Then you won't have to do it again on that computer or iPad.</p>
+    </li>
+    <li>
+      You'll see four tabs across the top. Those are the four things you can do.
+    </li>
+  </ol>
+
+  <div class="note calm">
+    <span class="tag">You both have the same access</span>
+    <p>There's one password and you share it. Whatever one of you can do, the
+    other can do — approving, editing, hiding, all of it. So if one of you is not
+    up to it on a given day, the other can simply do it instead, and nothing has
+    to be handed over.</p>
+  </div>
+
+  <div class="note">
+    <span class="tag">Getting the password</span>
+    <p>Ask whoever set the site up for it — it is not written down in this guide on purpose.
+    Treat it like a house key: it's fine on your own devices, but don't email it
+    or send it in a text.</p>
+  </div>
+
+  <h2 id="approve">Approve an event someone sent in</h2>
+
+  <p>When somebody fills in the <strong>Submit Your Event</strong> form, the
+  event does <em>not</em> go on the site straight away. It waits for one of you
+  to look at it. That's what the first tab is for.</p>
+
+  <ol class="steps">
+    <li>
+      Open the <span class="ui">Events awaiting review</span> tab
+      <p>The number beside it is how many are waiting. If it says 0, there's
+      nothing to do.</p>
+    </li>
+    <li>
+      Read the event
+      <p>You'll see everything the person typed — the date, the venue, who's
+      performing, ticket prices, and their own name and email in case you need
+      to ask them something.</p>
+    </li>
+    <li>
+      Press <span class="ui">Approve and publish</span>
+      <p>The event appears on the site within a few seconds. You don't need to
+      do anything else.</p>
+    </li>
+  </ol>
+
+  <p>If it's spam or clearly not an early music concert, press
+  <span class="ui">Reject</span> instead. Nothing is sent to the person either
+  way — approving or rejecting is silent.</p>
+
+  <div class="note warn">
+    <span class="tag">Read anything flagged</span>
+    <p>Some submissions arrive with a red note saying they look like spam. That's
+    a guess, not a verdict — a real concert can be flagged by mistake. Read it
+    before you decide.</p>
+  </div>
+
+  <h2 id="edit">Fix or change an event</h2>
+
+  <p>Any event on the site can be changed — including the hundreds that came
+  across from the old website. A wrong time, a misspelled name, a venue that
+  moved. Both of you have exactly the same access here.</p>
+
+  <ol class="steps">
+    <li>
+      Open the <span class="ui">Edit events</span> tab
+    </li>
+    <li>
+      Type in the search box to find it
+      <p>You can search by the event name, the venue, who's presenting it, or a
+      date like <span class="ui">2024-11</span> for November 2024.</p>
+    </li>
+    <li>
+      Press <span class="ui">Edit</span> beside the one you want
+    </li>
+    <li>
+      Change whatever needs changing, then press <span class="ui">Save and rebuild</span>
+      <p>The site updates within a few seconds. You can change the name, date and
+      time, description, performers, venue and address, who's presenting, ticket
+      information, the website link, the picture, and the colour it shows in on
+      the calendar.</p>
+    </li>
+  </ol>
+
+  <div class="note calm">
+    <span class="tag">You cannot lose anything</span>
+    <p>Your changes are kept <em>separately</em> from the original listing —
+    the original is never overwritten. There's a button on every event called
+    <span class="ui">Undo all edits to this event</span>, and it puts the event
+    back exactly as it was, no matter how long ago you changed it or how many
+    times.</p>
+    <p>So if you're not sure whether to touch something: touch it. It's
+    reversible.</p>
+  </div>
+
+  <p>Two small things worth knowing. Boxes you don't touch keep following the
+  original listing, so you only ever change what you actually typed in. And
+  renaming an event doesn't break links people already have — the web address
+  stays the same.</p>
+
+  <h3>Writing a description</h3>
+
+  <p>Just type normally. Leave a blank line between paragraphs and it will come
+  out as paragraphs on the page. You don't need to know any code.</p>
+
+  <h2 id="hide">Take an event off the site</h2>
+
+  <p>Sometimes a concert is cancelled, or something was posted that shouldn't
+  have been. You don't delete it — you hide it.</p>
+
+  <ol class="steps">
+    <li>Find the event in <span class="ui">Edit events</span> and press <span class="ui">Edit</span></li>
+    <li>
+      Tick <span class="ui">Hide this event from the site</span> at the bottom
+    </li>
+    <li>
+      Press <span class="ui">Save and rebuild</span>
+      <p>It disappears from the listings, the calendar and its own page within a
+      few seconds.</p>
+    </li>
+  </ol>
+
+  <p>Untick the same box to bring it back. Nothing was ever thrown away.</p>
+
+  <h2 id="messages">Read messages from the Contact form</h2>
+
+  <p>When somebody writes in through the <strong>Contact Us</strong> page, their
+  message lands in the second tab.</p>
+
+  <ol class="steps">
+    <li>Open the <span class="ui">Messages</span> tab</li>
+    <li>
+      Read the message, and press <span class="ui">Reply by email</span> to
+      answer it
+      <p>That opens your normal email program with their address already filled
+      in. You reply as you would to anyone.</p>
+    </li>
+    <li>
+      Press <span class="ui">Mark as dealt with</span> so it stops showing
+      <p>This only tidies your list. It doesn't send the person anything.</p>
+    </li>
+  </ol>
+
+  <h2 id="style">Change how the site looks</h2>
+
+  <p>The fourth tab, <span class="ui">Style</span>, holds the site's design —
+  colours, type sizes, spacing — as a list of single settings you can adjust.</p>
+
+  <ul class="plain">
+    <li>Colours have a little swatch you click to open a colour picker.</li>
+    <li>Changes preview on the page as you type, so you can see them before committing.</li>
+    <li><span class="ui">Save changes</span> makes them permanent, and they follow you between your computer, phone and iPad.</li>
+    <li><span class="ui">Undo my unsaved edits</span> throws away anything you haven't saved yet.</li>
+  </ul>
+
+  <div class="note calm">
+    <span class="tag">It can't be broken from here</span>
+    <p>Every setting is a single design value — a colour, a size, a spacing.
+    There's nothing on that tab that can break the layout or take the site down.
+    Have a play.</p>
+  </div>
+
+  <h2 id="where">Where things go, and who gets told</h2>
+
+  <p>Short version: you don't have to remember anything. Here's what happens
+  when somebody uses one of the forms.</p>
+
+  <div class="note">
+    <span class="tag">You'll both get an email</span>
+    <p>When somebody submits an event or writes in through the Contact page,
+    <strong>you are both emailed straight away</strong> — you don't have to
+    remember to check anything.</p>
+    <p>The email has the whole thing in it: the event's date, venue and who sent
+    it, or the message and the person's address. So you can read it on your phone
+    and decide whether it needs doing now or can wait. There's a link at the
+    bottom that takes you to the page where you approve it.</p>
+  </div>
+
+  <p>Two things worth knowing about those emails. They're a convenience, not the
+  record — everything is still safely in the list on the admin page, so if an
+  email goes astray or gets swept into junk, nothing is lost. And they go out
+  silently: the person who submitted the event isn't told anything, either when
+  it arrives or when you approve it.</p>
+
+  <p>Whoever should receive them can be changed at any time — one of you, both
+  of you, or somebody else entirely.</p>
+
+  <h3>What happens to your own email address</h3>
+
+  <p>Nothing on the site publishes it. Contact messages arrive with the sender's
+  address so you can reply to them, and that's the only email the site handles at
+  all. Submitters' names and addresses are stored privately for you to see in the
+  admin page — they never appear on the public site.</p>
+
+  <h3>If something looks wrong</h3>
+
+  <ul class="plain">
+    <li><strong>An edit didn't appear.</strong> Give it ten seconds and refresh the page — the site rebuilds itself after each save.</li>
+    <li><strong>You've been signed out.</strong> The password changed, or you're on a device where you didn't tick "keep me signed in". Sign in again.</li>
+    <li><strong>Anything else.</strong> Nothing you do in the admin page can take the site down or lose the events, so it can always wait until whoever set the site up can look at it.</li>
+  </ul>
+
+  <p class="signoff">Early Music San Antonio · volunteer guide · September 2026<br>
+  The public site is at www.earlymusicsa.org — the admin page is at
+  www.earlymusicsa.org/admin.html</p>
+
+</div>
+</body>
+</html>

@@ -796,7 +796,7 @@ async function main() {
   await mkdir(OUT, { recursive: true });
   await copyFile('assets/style.css', path.join(OUT, 'style.css'));
   // The volunteer tools: not linked from the public nav, but served alongside.
-  for (const f of ['admin.html', 'admin.css', 'admin.js', 'submit.js']) {
+  for (const f of ['admin.html', 'admin.css', 'admin.js', 'submit.js', 'guide.html']) {
     await copyFile(path.join('assets', f), path.join(OUT, f));
   }
 

@@ -253,3 +253,7 @@ button:disabled { opacity: 0.5; cursor: default; }
 .colour-row input[type='text'] { width: 9rem; }
 
 #event-search { width: 100%; max-width: 34rem; }
+
+/* A way back to the written instructions, from the page they describe. */
+.admin-help { margin: -6px 0 18px; font-size: 15px; }
+.admin-help a { color: var(--form-accent); }

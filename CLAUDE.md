@@ -205,6 +205,20 @@ anything filling it gets a cheerful 200 and is not stored.
 it is absent the site still builds, which is what keeps a plain static deploy
 working.
 
+### The written guide — /guide.html
+
+The instructions the volunteers actually follow, at `assets/guide.html`, copied
+into `dist/` by the build and linked from the top of the admin page. `noindex`,
+and nothing public links to it.
+
+It is a self-contained document — its own inline CSS and its own light/dark
+palette, unlike the rest of the site, which is light only. That is deliberate:
+it is a thing to be read rather than a page of the site, and it may well be read
+late at night on a phone.
+
+If the tools change, change this too. A guide describing buttons that are no
+longer there is worse than no guide.
+
 ### The volunteer tools — /admin.html
 
 Not linked from the public nav, and `noindex`. Sign in with the `ADMIN_TOKEN`
