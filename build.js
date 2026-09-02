@@ -747,7 +747,7 @@ ${calendarWidget(focusDate.year, focusDate.month, byDay, 0, { nextEvent: upcomin
   <div class="primary wide">
     <div class="cal-buttons">
       ${monthJump(months, ym, 1)}
-      <a class="cal-button" href="${calLanding}.html">Current Month</a>
+      ${ym === calLanding ? '' : `<a class="cal-button" href="${calLanding}.html">Current Month</a>`}
     </div>
     <div class="cal-month-line cal-month-line-lg">
       <span class="cal-month-title">${MONTHS[m - 1]}, ${y}</span>

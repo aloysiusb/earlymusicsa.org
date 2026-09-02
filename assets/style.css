@@ -122,12 +122,16 @@
   --cal-radius: 10px;
 
   /* --- calendar page, the full-width grid -------------------------------- */
-  --calpage-cell: 45px;
-  --calpage-cell-events: 66px;
-  --calpage-day-size: 16px;
+  --calpage-cell: 91px;            /* an empty row on the live calendar */
+  --calpage-cell-events: 111px;    /* a row with something on */
+  --calpage-cell-pad: 30px 0;
+  --calpage-day-size: 20px;
+  --calpage-day-weight: 700;
   --calpage-dayname-size: 14px;
+  --calpage-dayname-weight: 700;
   --calpage-chip-size: 10px;
-  --calpage-month-size: 28px;
+  --calpage-chip-radius: 5px;
+  --calpage-month-size: 26px;
   --cal-hairline: #f0f0f0;
 
   /* --- forms ------------------------------------------------------------- */
@@ -592,7 +596,7 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 .cal-daynames.cal-daynames-lg { border-radius: var(--cal-radius) var(--cal-radius) 0 0; overflow: hidden; }
 .cal-daynames.cal-daynames-lg div {
   font-size: var(--calpage-dayname-size);
-  font-weight: 400;
+  font-weight: var(--calpage-dayname-weight);
   padding: 10px 0;
 }
 
@@ -610,10 +614,11 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 .calday {
   margin: 0;
   min-height: var(--calpage-cell);
-  padding: 10px 6px;
+  padding: var(--calpage-cell-pad);
   background: var(--cal-day-bg);
   color: var(--cal-day-text);
   font-size: var(--calpage-day-size);
+  font-weight: var(--calpage-day-weight);
   line-height: 1.2;
   border: 1px solid var(--cal-hairline);
   border-width: 0 1px 1px 0;
@@ -630,7 +635,7 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   font-size: var(--calpage-chip-size);
   line-height: 1.5;
   padding: 1px 5px;
-  border-radius: 3px;
+  border-radius: var(--calpage-chip-radius);
   text-decoration: none;
   overflow: hidden;
   text-overflow: ellipsis;

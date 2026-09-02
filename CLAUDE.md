@@ -62,10 +62,14 @@ needs that.
   the Render blueprint switched to a web service with a persistent disk.
   Still needed on top of it: the submit form UI, the moderation screen, the
   style-editing page, and a decision on how to deploy the server.
-- **Calendar done** (2026-08-30), matched to the live page: full width, no
-  sidebar, seven columns of 157px cells (45px, 66px when a day has something
-  on), and each event shown in its day as a 10px chip in that event own
-  colour. Jump Months is a <details> panel of every month that has events.
+- **Calendar done** (2026-08-30, re-matched 2026-09-02): full width, no
+  sidebar, seven columns of 157px cells - 91px for an empty row, 111px where
+  something is on, 30px padding, day numbers 20px/700. Each event shows in its
+  day as a 10px chip with a 5px radius in that event own colour. Month title
+  26px/800. Current Month is hidden while you are on the current month, as on
+  the live page. Jump Months is a <details> panel of every month with events.
+  Note the live calendar measured differently in August than in September;
+  re-measure rather than trusting older numbers.
 - **Contact done** (2026-08-30) and the form actually works: it posts to the
   server, stores into a messages table, and returns a real thank-you page so it
   functions with JavaScript off. Honeypot included. Volunteers read the queue at
