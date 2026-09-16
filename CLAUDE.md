@@ -94,10 +94,41 @@ needs that.
   now says to paste into the box marked **Admin token**, matching what
   `admin.html` actually labels it; it previously said "admin password", which is
   the kind of small mismatch that produces a phone call.
-- **Still to do:** search, and filtering by type/venue/organizer. Also a
-  read-only "All events" tab for the tools page — a sortable table of every
-  event with a CSV export, requested by Leslie, who is used to reviewing data in
-  tabular form. Read-only by design; editing stays in the existing editor.
+- **Still to do:** search, and filtering by type/venue/organizer.
+
+## Roadmap — the volunteer tools
+
+Agreed 2026-09-16. Goal: give Leslie (and whoever follows her) control over as
+many attributes as possible, without her ever needing a developer. Ship one
+phase a week; each is independently useful, so stopping after any of them leaves
+nothing half-built.
+
+**The spine, which already exists and must not be broken.** Imported data in
+`data/*.json` is never mutated. Every editor change is a *patch* in SQLite keyed
+to the thing it changes, with a history table behind it, merged at build time by
+`applyEventPatch()`. That is why "Undo all edits to this event" works no matter
+how long ago or how many times. Everything below extends this pattern rather
+than working around it.
+
+1. **All Events table.** Read-only, sortable, filterable, record count, CSV
+   export, plus a download of the SQLite file for anyone who wants to open it in
+   DB Browser. Leslie asked for this; she reviewed data in tabular form for
+   years and a table is how she verifies things are right. It also becomes the
+   navigation backbone for everything after it.
+2. **Venues and Organizers.** `location_edits` and `organizer_edits`, same patch
+   pattern, same history, same undo. Two new tabs. Today a venue address only
+   exists as free text per event, so correcting one means editing every event at
+   that venue — 83 venues, 62 organizers. Biggest single jump in editing power.
+3. **Image picker.** Browse the existing library visually rather than pasting a
+   URL into `Image link`. Thumbnail grid, search, click to attach.
+4. **Restructure the shell.** At seven tabs a flat row stops working. Group into
+   Content / Inbox / Appearance, with a landing view showing what needs
+   attention.
+
+**Standing invitation to Leslie:** if she wants to edit an attribute that is not
+exposed, add it. `EDITABLE_FIELDS` and `validateEventPatch` in `db.js` are the
+two places to touch. The thirteen current fields are what was needed at the
+time, not a design limit.
 
 ## Layout
 
