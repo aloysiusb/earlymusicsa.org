@@ -257,3 +257,46 @@ button:disabled { opacity: 0.5; cursor: default; }
 /* A way back to the written instructions, from the page they describe. */
 .admin-help { margin: -6px 0 18px; font-size: 15px; }
 .admin-help a { color: var(--form-accent); }
+
+/* --------------------------------------------------------- all events -- */
+/* A plain table. It scrolls sideways on a phone rather than reflowing,
+   because a table people are scanning should keep its columns. */
+
+.table-bar {
+  display: flex; flex-wrap: wrap; gap: 10px 16px;
+  align-items: center; justify-content: space-between;
+  margin: 12px 0;
+}
+
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+table.data {
+  width: 100%; border-collapse: collapse;
+  font-size: 15px; line-height: 1.45;
+}
+
+table.data th, table.data td {
+  text-align: left; vertical-align: top;
+  padding: 8px 12px; border-bottom: 1px solid var(--rule, #e3ded3);
+}
+
+table.data thead th {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--card-bg, #fff);
+  border-bottom: 2px solid var(--gold, #b08d3f);
+  padding: 0;
+}
+
+table.data thead th button {
+  width: 100%; text-align: left;
+  padding: 10px 12px; border: 0; background: none;
+  font: inherit; font-weight: 700; color: inherit;
+  cursor: pointer;
+}
+
+table.data thead th button:hover { color: var(--gold-deep, #8a6d2b); }
+table.data thead th button:focus-visible { outline: 2px solid var(--gold, #b08d3f); outline-offset: -2px; }
+
+table.data tbody tr:hover { background: rgba(0, 0, 0, 0.025); }
+table.data td.nowrap { white-space: nowrap; }
+table.data .muted { font-size: 13px; }

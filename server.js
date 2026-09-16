@@ -520,6 +520,37 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  // --- every event, every column: the "All events" table ------------------
+  //
+  // Deliberately separate from /api/events, which is the type-ahead for the
+  // editor and caps at 60. This one returns the lot, merged, so the table can
+  // sort and filter in the browser without a round trip per keystroke.
+  if (req.method === 'GET' && pathname === '/api/events/all') {
+    const edits = getEventEdits(db);
+    const rows = loadArchive()
+      .sort((a, b) => (b.startUnix ?? 0) - (a.startUnix ?? 0))
+      .map((ev) => {
+        const m = applyEventPatch(ev, edits.get(String(ev.id)));
+        return {
+          id: ev.id,
+          title: m.title || '',
+          start: m.start || '',
+          end: m.end || '',
+          subtitle: m.subtitle || '',
+          performers: m.performers || '',
+          venue: m.location?.name || '',
+          address: m.location?.address || '',
+          organizer: m.organizer?.name || '',
+          tickets: m.tickets || '',
+          website: m.website || '',
+          edited: edits.has(String(ev.id)),
+          hidden: !!m.hidden,
+        };
+      });
+    json(res, 200, { ok: true, total: rows.length, events: rows });
+    return true;
+  }
+
   const oneEvent = pathname.match(/^\/api\/events\/([\w.-]+)$/);
   if (oneEvent) {
     const id = oneEvent[1];

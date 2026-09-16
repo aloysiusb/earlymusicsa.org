@@ -110,11 +110,16 @@ to the thing it changes, with a history table behind it, merged at build time by
 how long ago or how many times. Everything below extends this pattern rather
 than working around it.
 
-1. **All Events table.** Read-only, sortable, filterable, record count, CSV
-   export, plus a download of the SQLite file for anyone who wants to open it in
-   DB Browser. Leslie asked for this; she reviewed data in tabular form for
-   years and a table is how she verifies things are right. It also becomes the
-   navigation backbone for everything after it.
+1. ~~**All Events table.**~~ **Done 2026-09-16.** New `All events` tab: every
+   event in one table, sortable by any column, a filter box that searches every
+   field, a live "13 of 419 shown" count, and a CSV export that respects the
+   current filter (BOM-prefixed so Excel opens the accents correctly). Backed by
+   `GET /api/events/all`, deliberately separate from `/api/events` — that one is
+   the editor's type-ahead and caps at 60. Fetched once, then sorted and
+   filtered in the browser: 419 rows is small enough that a round trip per
+   keystroke would be slower, and it keeps query-building off the server.
+   Read-only by design; editing stays in `Edit events`. Still to add here: a
+   download of the SQLite file for anyone who wants to open it in DB Browser.
 2. **Venues and Organizers.** `location_edits` and `organizer_edits`, same patch
    pattern, same history, same undo. Two new tabs. Today a venue address only
    exists as free text per event, so correcting one means editing every event at

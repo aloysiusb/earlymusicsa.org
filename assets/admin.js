@@ -80,6 +80,7 @@
       Array.prototype.forEach.call(document.querySelectorAll('.admin-panel'), function (p) {
         p.hidden = p.id !== btn.dataset.panel;
       });
+      if (btn.dataset.panel === 'p-all') loadAllEvents();
     });
   });
 
@@ -468,6 +469,127 @@
     });
     renderStyle();
     $('style-saved').hidden = true;
+  });
+
+  /* ----------------------------------------------------------- all events -- */
+  /* One fetch, then sorting and filtering happen here in the browser. The
+   * archive is a few hundred rows — small enough that a round trip per
+   * keystroke would be slower than doing it locally, and it keeps the server
+   * free of query-building it would otherwise have to validate. */
+
+  var ALL_COLS = [
+    ['start',     'Date'],
+    ['title',     'Event'],
+    ['venue',     'Venue'],
+    ['organizer', 'Presented by'],
+    ['performers','Performers'],
+    ['tickets',   'Tickets'],
+    ['status',    'Status'],
+  ];
+
+  var allRows = null;          // null until loaded, then the full array
+  var allSort = { col: 'start', dir: -1 };
+
+  function statusOf(r) {
+    return (r.hidden ? 'Hidden' : 'On the site') + (r.edited ? ' · edited' : '');
+  }
+
+  function allValue(row, col) {
+    return col === 'status' ? statusOf(row) : (row[col] == null ? '' : String(row[col]));
+  }
+
+  function prettyDate(iso) {
+    if (!iso) return '—';
+    return String(iso).slice(0, 16).replace('T', ' ');
+  }
+
+  function visibleRows() {
+    var q = $('all-filter').value.toLowerCase().trim();
+    var rows = !q ? allRows.slice() : allRows.filter(function (r) {
+      return ALL_COLS.some(function (c) {
+        return allValue(r, c[0]).toLowerCase().indexOf(q) !== -1;
+      }) || String(r.id).indexOf(q) !== -1;
+    });
+    rows.sort(function (a, b) {
+      var x = allValue(a, allSort.col).toLowerCase();
+      var y = allValue(b, allSort.col).toLowerCase();
+      return x < y ? -allSort.dir : x > y ? allSort.dir : 0;
+    });
+    return rows;
+  }
+
+  function renderAll() {
+    if (!allRows) return;
+    var rows = visibleRows();
+    var total = allRows.length;
+
+    $('all-count').textContent = rows.length === total
+      ? total + ' event' + (total === 1 ? '' : 's')
+      : rows.length + ' of ' + total + ' shown';
+
+    if (!rows.length) { $('all-wrap').innerHTML = '<p class="muted">Nothing matched.</p>'; return; }
+
+    var head = ALL_COLS.map(function (c) {
+      var on = allSort.col === c[0];
+      return '<th scope="col"><button type="button" data-col="' + c[0] + '"' +
+        (on ? ' aria-sort="' + (allSort.dir === 1 ? 'ascending' : 'descending') + '"' : '') +
+        '>' + esc(c[1]) + (on ? '<span aria-hidden="true">' + (allSort.dir === 1 ? ' ▲' : ' ▼') + '</span>' : '') +
+        '</button></th>';
+    }).join('');
+
+    var body = rows.map(function (r) {
+      return '<tr>' +
+        '<td class="nowrap">' + esc(prettyDate(r.start)) + '</td>' +
+        '<td>' + esc(r.title) + (r.subtitle ? '<br><span class="muted">' + esc(r.subtitle) + '</span>' : '') + '</td>' +
+        '<td>' + esc(r.venue) + '</td>' +
+        '<td>' + esc(r.organizer) + '</td>' +
+        '<td>' + esc(r.performers) + '</td>' +
+        '<td>' + esc(r.tickets) + '</td>' +
+        '<td class="nowrap">' + esc(statusOf(r)) + '</td>' +
+      '</tr>';
+    }).join('');
+
+    $('all-wrap').innerHTML =
+      '<table class="data"><thead><tr>' + head + '</tr></thead><tbody>' + body + '</tbody></table>';
+  }
+
+  function loadAllEvents() {
+    if (allRows) return;                       // only ever fetched once
+    api('/api/events/all').then(function (d) {
+      allRows = (d && d.events) || [];
+      renderAll();
+    });
+  }
+
+  $('all-filter').addEventListener('input', renderAll);
+
+  $('all-wrap').addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-col]');
+    if (!btn) return;
+    var col = btn.dataset.col;
+    if (allSort.col === col) allSort.dir = -allSort.dir;
+    else { allSort.col = col; allSort.dir = col === 'start' ? -1 : 1; }
+    renderAll();
+  });
+
+  $('all-csv').addEventListener('click', function () {
+    if (!allRows) return;
+    var cell = function (v) { return '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"'; };
+    var lines = [ALL_COLS.map(function (c) { return cell(c[1]); }).join(',')];
+    visibleRows().forEach(function (r) {
+      lines.push(ALL_COLS.map(function (c) {
+        return cell(c[0] === 'start' ? prettyDate(r.start) : allValue(r, c[0]));
+      }).join(','));
+    });
+    // The BOM is what makes Excel open UTF-8 accents correctly.
+    var blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'early-music-events-' + new Date().toISOString().slice(0, 10) + '.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
   });
 
   /* ------------------------------------------------------------------ boot -- */
