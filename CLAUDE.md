@@ -88,7 +88,16 @@ needs that.
 - **Notification email done** (2026-09-02). A submission or a contact message
   emails whoever is listed in `MAIL_TO`. Optional: with the SMTP variables
   unset nothing is sent and nothing breaks. See "Telling somebody".
-- **Still to do:** search, and filtering by type/venue/organizer.
+- **Guide expanded** (2026-09-16). `assets/guide.html` gained an "Everything you
+  can change" list naming all thirteen editable event fields — the prose summary
+  it replaced omitted `Sub title` and was vague about `Ends`. The sign-in step
+  now says to paste into the box marked **Admin token**, matching what
+  `admin.html` actually labels it; it previously said "admin password", which is
+  the kind of small mismatch that produces a phone call.
+- **Still to do:** search, and filtering by type/venue/organizer. Also a
+  read-only "All events" tab for the tools page — a sortable table of every
+  event with a CSV export, requested by Leslie, who is used to reviewing data in
+  tabular form. Read-only by design; editing stays in the existing editor.
 
 ## Layout
 
