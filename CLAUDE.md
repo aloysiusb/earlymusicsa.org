@@ -631,9 +631,30 @@ Outgoing   mail.earlymusicsa.org   465 SSL-TLS  (or 587 STARTTLS)
 Username   the whole address, not the part before the @
 ```
 
-Never port 25 — it is filtered on that host. Webmail at
-`https://webmail.earlymusicsa.org` bypasses the client entirely and is the
-quickest way to prove a mailbox is healthy.
+Never port 25 — it is filtered on that host.
+
+### Webmail is at :2096, and only at :2096
+
+Webmail bypasses the mail client entirely, which makes it the quickest way to
+prove a mailbox is healthy — but reach it on the cPanel port:
+
+```
+https://mail.earlymusicsa.org:2096      webmail   — 200, Roundcube login
+https://mail.earlymusicsa.org:2083      cPanel    — 200
+https://webmail.earlymusicsa.org        500 Internal Server Error, from nginx
+```
+
+Measured 2026-09-18. The `webmail.` subdomain on 443 goes through Bluehost's
+nginx and the leftover WordPress vhost, which now answers **500** — and that
+error page names `earlymusicsa-org.qtz.bhi.mybluehost.me` and invites you to
+write to the server administrator, so it reads like a mail failure. It is not
+one. Port 2096 is cpsrvd and skips that stack entirely: it serves the
+cPanel/Roundcube login and sets its session cookies normally. Plain
+`https://mail.earlymusicsa.org/` is no use either — that vhost only redirects to
+`www`, which is Render now.
+
+**So a 500 at `webmail.earlymusicsa.org` says nothing about the mail.** Retest on
+:2096 before concluding anything.
 
 ### AutoSSL will lose the web names on renewal
 
