@@ -597,6 +597,55 @@ looked fine on desktop, where the banner is `fixed` and therefore positioned.
 If you touch the banner's `position` at any breakpoint, check the wash's height
 equals the banner's, at 375px and 768px, with the menu both shut and open.
 
+## The DNS notes
+
+Measured 2026-09-18 against 1.1.1.1. **The web moved to Render; the mail did
+not.** Two different machines now answer for this domain, and confusing them is
+how the group's email breaks.
+
+| Name | Points at | Runs |
+|---|---|---|
+| `earlymusicsa.org` (A) | `216.24.57.1` | Render — the static site, **web only** |
+| `www` (CNAME) | `earlymusicsa.org` | as above |
+| MX, priority 10 | `mail.earlymusicsa.org` | — |
+| `mail` / `webmail` / `autodiscover` / `cpanel` (A) | `162.241.253.117` | Bluehost cPanel — **all the mail** |
+
+SPF is `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all`. The
+`a` term now authorises Render's IP as a sender, which is harmless but no longer
+means anything; leave it alone regardless — **this zone carries the group's real
+mail and is not to be experimented with.**
+
+### The trap this sets
+
+cPanel hosts hand out `earlymusicsa.org` as the incoming/outgoing server name,
+and that used to be the same box as the mail. Since the cutover it is Render,
+which answers on 80/443 and **nothing else** — 993, 995, 143, 110, 587 and 465
+are all dead there. Any mail client still configured with the bare domain stops
+collecting mail the day DNS moves, silently, with the mailbox itself untouched.
+
+The mailbox is fine; only the address the client dials is wrong. Correct it to:
+
+```
+Incoming   mail.earlymusicsa.org   993 IMAP / 995 POP3, SSL-TLS
+Outgoing   mail.earlymusicsa.org   465 SSL-TLS  (or 587 STARTTLS)
+Username   the whole address, not the part before the @
+```
+
+Never port 25 — it is filtered on that host. Webmail at
+`https://webmail.earlymusicsa.org` bypasses the client entirely and is the
+quickest way to prove a mailbox is healthy.
+
+### AutoSSL will lose the web names on renewal
+
+The Let's Encrypt cert Dovecot presents (issued 2026-08-10, expires
+**2026-11-08**) covers `earlymusicsa.org` and `www.earlymusicsa.org` alongside
+`mail.`, `webmail.`, `cpanel.` and the old `earlymusicsa-org.qtz.bhi.mybluehost.me`
+staging names. cPanel validates those over HTTP, and the two web names no longer
+resolve to that box, so AutoSSL will fail for them and reissue without them.
+The `mail.` name still resolves there and should survive — but check webmail
+still loads clean shortly after 2026-11-08, because if the renewal fails
+outright every mail client starts throwing certificate warnings at once.
+
 ## Telling somebody
 
 Submissions and contact messages land in the database and wait. That only works
