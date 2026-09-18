@@ -671,97 +671,116 @@ outright every mail client starts throwing certificate warnings at once.
 
 Decided 2026-09-18: the Bluehost account is not being renewed. The site is
 already on Render. The mailbox is not, and **the zone is not either** — see the
-DNS notes above. Chosen plan: **Cloudflare for DNS, Cloudflare Email Routing to
-forward the domain's mail to a Gmail account, and no domain mailbox afterwards.**
+DNS notes above.
 
-Cloudflare Email Routing is free, accepts mail on its own MX records and forwards
-each address to a verified destination. That covers receiving. It does not give
-Leslie a mailbox and it does not, by itself, let her *send* as
-`leslie@earlymusicsa.org` — replies will come from her Gmail address. That is the
-accepted trade for not paying for mail hosting.
+**The plan: Cloudflare for DNS (free), Purelymail for the mail ($10/year).**
+
+Purelymail prices flat per account, not per mailbox — `leslie@`, `volunteer@`
+and anything else all fit in the $10. It does real IMAP, POP3 and SMTP, so
+Leslie keeps the mail client she already has and still sends *as*
+`leslie@earlymusicsa.org`. That last part is why a free forwarding service was
+rejected: forwarding delivers her mail but makes every reply come from a Gmail
+address, and she should not have to explain that to people.
+
+Known trade, in their own words on their site: small operation, no 24/7 support,
+and occasionally an obscure receiving server will block their mail for a day or
+two. **If a bounce ever appears months from now, read that sentence again before
+assuming the configuration is broken.**
 
 ### Order matters, and this order is not negotiable
 
 **1. Find the registrar logins first.** Nothing below is possible without them,
 and this is the step most likely to stall. `earlymusicsa.org` is registered at
-**Hostopia Canada Corp**, a wholesale registrar that is almost always resold
-under somebody else's brand — so the login is probably not at "hostopia.com" but
-at whichever company the group actually bought the domain from. It is also
-flagged `client transfer prohibited`. That lock does **not** block a nameserver
-change, only a transfer to another registrar, so it is not in the way here.
-`sundancefirearms.com` is at **Network Solutions**, paid to 2027-01-04.
+**Hostopia Canada Corp**, a wholesale registrar almost always resold under
+somebody else's brand — so the login is probably not at "hostopia.com" but at
+whichever company the group actually bought the domain from. It is also flagged
+`client transfer prohibited`. That lock blocks a *transfer* to another
+registrar, not a nameserver change, so it is not in the way here.
 
-**2. Add both zones to Cloudflare while Bluehost is still answering.**
-Cloudflare imports the existing records by scanning the live zone. Do this
-*before* cancelling anything or the import comes back empty and every record has
-to be retyped from memory. Compare what it imported against the DNS notes above
-and fix anything missing by hand.
+**2. Add the zone to Cloudflare while Bluehost is still answering.** Cloudflare
+imports the records by scanning the live zone. Do this *before* cancelling
+anything or the import comes back empty and every record has to be retyped from
+memory. Compare what it imported against the DNS notes above and fix by hand
+whatever it missed.
 
-**3. Change the nameservers at each registrar to Cloudflare's.** Wait for it to
-take — Cloudflare says when the zone is active. At this point **nothing has
-actually moved**: the site is still on Render, the mail is still on Bluehost.
-Only the machine answering DNS questions has changed. Verify the site loads and
-mail still arrives before going further. This step alone removes the single
-point of failure, and it is safe to stop here for a while.
+**3. Change the nameservers at the registrar to Cloudflare's.** Wait until
+Cloudflare says the zone is active. At this point **nothing has actually
+moved** — the site is still on Render, the mail is still on Bluehost. Only the
+machine answering DNS questions has changed. Verify the site loads and mail
+still arrives before going further. This step alone removes the single point of
+failure and it is safe to stop here for weeks.
 
-**4. Get Leslie's existing mail off the server. Do this before touching MX.**
-Forwarding only catches mail that arrives *after* it is switched on — everything
-already in the mailbox stays on Bluehost and dies with the account. Her mail has
-not been downloading, so assume there is no local copy anywhere.
+**4. Open the Purelymail account and add the domain.** It generates the exact
+MX, SPF and DKIM records for the domain in its admin portal. **Take them from
+there and nowhere else** — not from this file, not from a blog post, not from
+memory. Mail DNS is the one thing that must never be guessed at, and those
+values can change. Add them in Cloudflare **but do not switch MX over yet** if
+the portal lets you stage it; SPF and DKIM are safe to add early, MX is the
+switch that moves live mail.
 
-- Simplest: in Gmail, *Settings → Accounts → Check mail from other accounts*,
-  POP3 from `mail.earlymusicsa.org`, port 995, SSL, full address as the
-  username. Gmail pulls the lot into the Gmail account.
-- **That only takes the INBOX.** If she has filed mail in folders, or wants
-  Sent, POP will silently leave it behind. For those, connect the account in
-  Thunderbird over IMAP (993, SSL) and drag the folders to Local Folders, or run
-  `imapsync`. Check in webmail at `https://mail.earlymusicsa.org:2096` whether
-  there are folders worth the trouble before choosing.
+**5. Copy the old mail across before touching MX.** This is the step with a
+deadline: everything in the Bluehost mailbox dies with the account, and Leslie's
+mail has not been downloading, so assume no copy exists anywhere else.
 
-**5. Turn on Email Routing for `earlymusicsa.org`.** It rewrites the MX records
-itself. Forward every address currently in use — check cPanel for the full list
-rather than guessing; at minimum Leslie's, and `volunteer@` if it exists. A
-catch-all rule to the same Gmail is worth adding so nothing silently bounces.
+Because Purelymail speaks IMAP, this is a proper folder-preserving migration
+rather than a salvage job. Connect **both** accounts in Thunderbird —
+old: `mail.earlymusicsa.org`, 993, SSL, full address as username;
+new: the server Purelymail's setup page gives — and drag the folders across.
+`imapsync` does the same thing unattended if the mailbox is large. Either way
+Sent and any filed folders come too, which a POP3 grab would have silently left
+behind. Check what is actually there first at `https://mail.earlymusicsa.org:2096`.
+
+**6. Switch the MX records to Purelymail**, having first checked cPanel for the
+full list of addresses in use rather than guessing, and created a User for each.
 Send a test message from an outside address and confirm it lands **before**
-moving on.
+going further.
 
-**6. Point `sundancefirearms.com` at Render** and cut that site over. It is a
-23-file static mirror in its own repo and carries no mail of its own — its
-published contact address is already a Gmail one.
+> **Do not add a catch-all routing rule.** Purelymail's routing rules take
+> priority over real mailboxes: a `*@earlymusicsa.org` rule would match Leslie's
+> address too, redirect her mail away, and leave her inbox permanently empty
+> while everything appears configured correctly. If a catch-all is wanted later,
+> use a Sieve filter, which can copy rather than redirect.
 
-**7. Only now, cancel Bluehost.** Leave a few days between step 5 and this, and
-watch that mail keeps arriving across that gap.
+**7. Replace the SPF record.** The current one,
+`v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all`, authorises a
+Bluehost server the group will no longer control. Swap in Purelymail's, from
+their portal. Do this *with* the MX switch, not before it, or outgoing mail
+bounces mid-move.
 
-### What breaks on this site, and what to do about it
+**8. Only now, cancel Bluehost.** Leave several days between step 6 and this,
+and watch that mail keeps arriving across the gap.
 
-`mailer.js` sends the submission and contact notifications through
-`SMTP_USER=volunteer@earlymusicsa.org` on the Bluehost server. That account
-disappears, so those four environment variables stop working and notifications
-stop.
+### The contact form keeps working
 
-This was built to survive exactly that: with any SMTP variable missing,
-`mailConfigured()` is false, nothing is sent, and nothing breaks — the queue on
-/admin.html is still the record. So the options, cheapest first:
+This is the quiet win of paying for real mail hosting. `mailer.js` sends the
+submission and contact notifications over SMTP as
+`volunteer@earlymusicsa.org` — a real mailbox before, and a real mailbox after.
+No code change and no new mechanism: point the four environment variables in
+Render's dashboard at Purelymail's SMTP host and credentials, from their setup
+page.
 
-- **Do nothing.** Clear the SMTP variables in Render. Volunteers check the queue.
-- **Point `MAIL_TO` at the Gmail and send through Gmail's SMTP**
-  (`smtp.gmail.com`, 587, STARTTLS, the Gmail address, and a Google *app
-  password* — not the account password). Four variables in the Render dashboard,
-  no code change. Set the app password in Render's own environment settings;
-  it must not be committed.
-- **Cloudflare Email Sending** also speaks SMTP and is free to verified
-  destinations, if the Gmail route is unwanted.
+```bash
+SMTP_HOST=<from Purelymail's setup page>
+SMTP_PORT=587          # or 465, whichever they publish
+SMTP_USER=volunteer@earlymusicsa.org
+SMTP_PASS=<set in Render's environment settings — never committed>
+MAIL_FROM=volunteer@earlymusicsa.org
+```
 
-Whichever is chosen, `MAIL_FROM` must be an address the sending server is
-actually allowed to send as, or the mail will be dropped as a forgery.
+`MAIL_FROM` must stay an address Purelymail is allowed to send as, or the mail
+is dropped as a forgery. Create that User in Purelymail even if nobody reads it.
 
-### And drop the stale SPF
+If the switchover leaves a gap, nothing breaks: with any SMTP variable missing
+`mailConfigured()` is false, notifications stop, and the queue on /admin.html is
+still the record. That is by design.
 
-Once mail is off Bluehost, the current record —
-`v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all` — authorises a
-server the group no longer controls. Replace it with whatever the new sending
-path requires (Cloudflare and Gmail each publish theirs) and delete the Bluehost
-IP. Do this *after* the cutover, not during it, or mail will bounce mid-move.
+### sundancefirearms.com is parked
+
+It sits on the same Bluehost account and its zone is delegated to the same
+nameservers, so **step 2 and step 3 have to be done for it as well** or the
+domain resolves to nothing. It needs no mail of its own — its published contact
+is a Gmail address. The captured site and its notes are in the
+`sundancefirearms` repo; nothing there is urgent.
 
 ## Telling somebody
 
