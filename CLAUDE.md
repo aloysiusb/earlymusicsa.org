@@ -615,6 +615,45 @@ SPF is `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all`. The
 means anything; leave it alone regardless — **this zone carries the group's real
 mail and is not to be experimented with.**
 
+### The full zone as it stood on 2026-09-18
+
+Insurance. If Cloudflare's import misses something, or the Bluehost zone stops
+answering before it is copied, this is the record. Measured against 1.1.1.1.
+
+| Type | Name | Value | Cloudflare proxy |
+|---|---|---|---|
+| A | `earlymusicsa.org` | `216.24.57.1` (Render) | DNS only |
+| CNAME | `www` | `earlymusicsa.org` | DNS only |
+| MX | `earlymusicsa.org` | `mail.earlymusicsa.org`, priority 10 | n/a |
+| A | `mail` | `162.241.253.117` | **DNS only** |
+| A | `webmail` | `162.241.253.117` | **DNS only** |
+| A | `autodiscover` | `162.241.253.117` | **DNS only** |
+| A | `autoconfig` | `162.241.253.117` | **DNS only** |
+| A | `cpanel` | `162.241.253.117` | DNS only |
+| A | `webdisk` | `162.241.253.117` | DNS only |
+| A | `ftp` | `162.241.253.117` | DNS only |
+| TXT | `earlymusicsa.org` | `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all` | n/a |
+| TXT | `default._domainkey` | `v=DKIM1; k=rsa; p=MIIBIjANBgkq…` (Bluehost's signing key, ~400 chars) | n/a |
+
+There is **no `_dmarc` record**. Nothing depends on that today; worth adding
+once mail is settled on Purelymail, not before.
+
+The DKIM value is long and is the one most likely to be corrupted by a
+copy-paste that inserts a line break or drops the trailing `;`. If outgoing mail
+starts failing authentication after the move, check that record character by
+character first.
+
+### Turn the orange cloud off for anything to do with mail
+
+The way this migration usually breaks. Cloudflare's importer defaults new `A`
+records to **proxied**, and Cloudflare proxies HTTP and HTTPS only. A proxied
+`mail` record answers with Cloudflare's own addresses, so IMAP, POP3 and SMTP
+stop dead — while the dashboard looks entirely correct.
+
+`mail`, `webmail`, `autodiscover` and `autoconfig` must be **grey cloud, DNS
+only**. So must the apex and `www` during the cutover, so that what is being
+tested is the real thing rather than Cloudflare's cache.
+
 ### The trap this sets
 
 cPanel hosts hand out `earlymusicsa.org` as the incoming/outgoing server name,
