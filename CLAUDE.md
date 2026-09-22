@@ -695,6 +695,12 @@ cPanel/Roundcube login and sets its session cookies normally. Plain
 **So a 500 at `webmail.earlymusicsa.org` says nothing about the mail.** Retest on
 :2096 before concluding anything.
 
+**Confirmed 2026-09-21: Leslie logs into :2096 fine.** So the mailbox, the
+password and the whole mail stack are healthy, and the original "email is not
+downloading" complaint was only ever her client pointed at the bare domain — which
+is Render now and runs no mail. That closes the question; do not go looking for an
+account-level fault.
+
 ### AutoSSL will lose the web names on renewal
 
 The Let's Encrypt cert Dovecot presents (issued 2026-08-10, expires
