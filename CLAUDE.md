@@ -755,30 +755,40 @@ machine answering DNS questions has changed. Verify the site loads and mail
 still arrives before going further. This step alone removes the single point of
 failure and it is safe to stop here for weeks.
 
-**4. Open the Purelymail account and add the domain.** It generates the exact
-MX, SPF and DKIM records for the domain in its admin portal. **Take them from
-there and nowhere else** — not from this file, not from a blog post, not from
-memory. Mail DNS is the one thing that must never be guessed at, and those
-values can change. Add them in Cloudflare **but do not switch MX over yet** if
-the portal lets you stage it; SPF and DKIM are safe to add early, MX is the
-switch that moves live mail.
+**4. Open the Purelymail account and add the domain.** $10/year, flat, from
+purelymail.com/signup. Adding `earlymusicsa.org` produces **seven DNS records**
+on their Add New Domain page: MX, SPF, a domain-ownership TXT, three DKIM
+records (they rotate between three signing keys), and DMARC. **Take them from
+that page and nowhere else** — the ownership value is unique to the account and
+cannot be guessed, and they say plainly they cannot add the records for you.
 
-**5. Copy the old mail across before touching MX.** This is the step with a
-deadline: everything in the Bluehost mailbox dies with the account, and Leslie's
-mail has not been downloading, so assume no copy exists anywhere else.
+Because there are seven of them, **do this after the zone is on Cloudflare**, or
+they get entered twice: once in Bluehost's cPanel Zone Editor and again in
+Cloudflare a week later.
 
-Because Purelymail speaks IMAP, this is a proper folder-preserving migration
-rather than a salvage job. Connect **both** accounts in Thunderbird —
-old: `mail.earlymusicsa.org`, 993, SSL, full address as username;
-new: the server Purelymail's setup page gives — and drag the folders across.
-`imapsync` does the same thing unattended if the mailbox is large. Either way
-Sent and any filed folders come too, which a POP3 grab would have silently left
-behind. Check what is actually there first at `https://mail.earlymusicsa.org:2096`.
+Add six of the seven and **leave the MX record until step 6**. Ownership, SPF and
+DKIM are all safe to add early — MX is the one that moves live mail. Hold DMARC
+until after the switch too: a reject policy published before SPF and DKIM are
+actually in use can bounce good mail.
 
-**6. Switch the MX records to Purelymail**, having first checked cPanel for the
-full list of addresses in use rather than guessing, and created a User for each.
-Send a test message from an outside address and confirm it lands **before**
-going further.
+**5. Port the old mail across — before MX moves, not after.** This is the step
+with a deadline: everything in the Bluehost mailbox dies with the account, and
+Leslie's mail was not downloading, so assume no copy exists anywhere else.
+
+Purelymail has a **mail porting tool** in the account portal that pulls over IMAP
+from the old host. It works perfectly well while MX still points at Bluehost —
+that is the whole point of doing it now. Point it at `mail.earlymusicsa.org`,
+port 993, SSL, full address as the username. Folders and Sent come too, which a
+POP3 grab would silently have left behind.
+
+Thunderbird with both accounts connected does the same job by hand if the tool
+struggles, and `imapsync` does it unattended for a large mailbox.
+
+**6. Create a User for every address, then switch MX.** Get the real list from
+cPanel → Email Accounts rather than guessing; any address without a matching
+User starts bouncing the moment MX moves. Watch for `volunteer@` — the site's
+contact form sends as that address. Then add the MX record, send a test from an
+outside account, and confirm it lands.
 
 > **Do not add a catch-all routing rule.** Purelymail's routing rules take
 > priority over real mailboxes: a `*@earlymusicsa.org` rule would match Leslie's
@@ -786,14 +796,25 @@ going further.
 > while everything appears configured correctly. If a catch-all is wanted later,
 > use a Sieve filter, which can copy rather than redirect.
 
-**7. Replace the SPF record.** The current one,
+**7. Delete the Bluehost SPF, add Purelymail's DMARC.** The old record,
 `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all`, authorises a
-Bluehost server the group will no longer control. Swap in Purelymail's, from
-their portal. Do this *with* the MX switch, not before it, or outgoing mail
-bounces mid-move.
+server the group will no longer control, and the old DKIM key at
+`default._domainkey` is likewise dead. Remove both once mail is flowing.
 
-**8. Only now, cancel Bluehost.** Leave several days between step 6 and this,
-and watch that mail keeps arriving across the gap.
+**8. Re-point the mail clients.** Leslie's settings change one more time — this
+is why she was warned:
+
+```
+Incoming   imap.purelymail.com   993   SSL/TLS
+Outgoing   smtp.purelymail.com   465   SSL/TLS   (or 587 STARTTLS)
+Username   the full address
+```
+
+If two-factor authentication is switched on for the account, mail clients need an
+**App Password**, not the account password. That applies to the contact form too.
+
+**9. Only now, cancel Bluehost.** Leave several days after step 6 and watch that
+mail keeps arriving across the gap.
 
 ### The contact form keeps working
 
@@ -801,12 +822,12 @@ This is the quiet win of paying for real mail hosting. `mailer.js` sends the
 submission and contact notifications over SMTP as
 `volunteer@earlymusicsa.org` — a real mailbox before, and a real mailbox after.
 No code change and no new mechanism: point the four environment variables in
-Render's dashboard at Purelymail's SMTP host and credentials, from their setup
-page.
+Render's dashboard at Purelymail instead. If the account has two-factor
+authentication on, SMTP_PASS must be an App Password, not the account password.
 
 ```bash
-SMTP_HOST=<from Purelymail's setup page>
-SMTP_PORT=587          # or 465, whichever they publish
+SMTP_HOST=smtp.purelymail.com
+SMTP_PORT=587          # STARTTLS; 465 for TLS from the first byte
 SMTP_USER=volunteer@earlymusicsa.org
 SMTP_PASS=<set in Render's environment settings — never committed>
 MAIL_FROM=volunteer@earlymusicsa.org
