@@ -636,7 +636,7 @@ answering before it is copied, this is the record. Measured against 1.1.1.1.
 | TXT | `default._domainkey` | `v=DKIM1; k=rsa; p=MIIBIjANBgkq…` (Bluehost's signing key, ~400 chars) | n/a |
 
 There is **no `_dmarc` record**. Nothing depends on that today; worth adding
-once mail is settled on Purelymail, not before.
+once mail is settled on Google Workspace, not before.
 
 The DKIM value is long and is the one most likely to be corrupted by a
 copy-paste that inserts a line break or drops the trailing `;`. If outgoing mail
@@ -701,6 +701,15 @@ downloading" complaint was only ever her client pointed at the bare domain — w
 is Render now and runs no mail. That closes the question; do not go looking for an
 account-level fault.
 
+**Decided 2026-09-24: do not reconfigure her client now.** The settings above
+would fix it, but the mail is moving to Google Workspace within weeks and the
+client would then need changing a second time — two rounds of fiddly remote
+settings surgery with somebody who will not enjoy either. She uses webmail on
+:2096 in the meantime and the client gets set up once, at step 10, as a fresh
+account rather than an edited broken one. Editing beats re-adding almost never
+here: macOS Mail and Outlook grey out or silently revert the incoming hostname,
+while iOS Mail and Thunderbird let it be changed.
+
 ### AutoSSL will lose the web names on renewal
 
 The Let's Encrypt cert Dovecot presents (issued 2026-08-10, expires
@@ -718,23 +727,56 @@ Decided 2026-09-18: the Bluehost account is not being renewed. The site is
 already on Render. The mailbox is not, and **the zone is not either** — see the
 DNS notes above.
 
-**The plan: Cloudflare for DNS (free), Purelymail for the mail ($10/year).**
+**The plan: Cloudflare for DNS (free), Google Workspace for Nonprofits for the
+mail (also free).**
 
-Purelymail prices flat per account, not per mailbox — `leslie@`, `volunteer@`
-and anything else all fit in the $10. It does real IMAP, POP3 and SMTP, so
-Leslie keeps the mail client she already has and still sends *as*
-`leslie@earlymusicsa.org`. That last part is why a free forwarding service was
-rejected: forwarding delivers her mail but makes every reply come from a Gmail
-address, and she should not have to explain that to people.
+Revised 2026-09-24. Purelymail at $10/year was the plan until the group's
+501(c)(3) status came up: **Workspace for Nonprofits is free, for every user, not
+discounted.** So the only argument for the paid host disappeared. Gmail is also
+already familiar to Leslie and to whoever follows her, and the Admin console has
+a real IMAP migration tool, which makes step 6 below far safer than a
+drag-and-drop.
 
-Known trade, in their own words on their site: small operation, no 24/7 support,
-and occasionally an obscure receiving server will block their mail for a day or
-two. **If a bounce ever appears months from now, read that sentence again before
-assuming the configuration is broken.**
+Because the licences are free, **every address gets its own real user** —
+`leslie@`, `volunteer@` and anything else. No alias tricks, and `volunteer@` can
+authenticate to SMTP as itself, which the contact form needs.
+
+> **The society gets its own Workspace — not a domain added to a personal one.**
+> Adding `earlymusicsa.org` as a secondary domain on somebody's existing paid
+> Workspace would work and would cost a licence per mailbox, but it also makes
+> that person the permanent administrator of a nonprofit's email: their account
+> holds the group's mail, its identity and every password-reset route. If they
+> ever step back from the organisation, untangling that is painful. A separate
+> free Workspace avoids it for nothing.
+>
+> Also do not confuse Google's two ways of adding a domain. A **domain alias** is
+> free but only mirrors existing users onto the new name — it gives Leslie
+> nothing unless she is already a user. A **secondary domain** has independent
+> users, which is what a separate Workspace gives by default anyway.
+
+Known trade: the free tier is the Business Starter equivalent — 30GB per user, no
+Vault, no advanced retention. Ample here.
 
 ### Order matters, and this order is not negotiable
 
-**1. Find the registrar logins first.** Nothing below is possible without them,
+**1. Apply to Google for Nonprofits — do this before anything else.** It is the
+only step with a queue in front of it: eligibility is validated against the
+group's 501(c)(3) status through Percent, and approval takes anywhere from a few
+days to a few weeks. Everything from step 6 on waits for it, so a day lost here
+is a day lost at the end. Steps 2 to 5 do not wait — run them while it sits in
+the queue.
+
+It needs the organisation's **EIN** and its **501(c)(3) determination letter**,
+and it must be submitted by somebody authorised to represent the society — Leslie
+or a board member, not a contractor.
+
+**2. Find out when the Bluehost account actually lapses.** This is the real
+deadline and **it is still unknown** — nothing in this repo records it. The
+mailbox dies with the account, and step 6 has to finish before that date. If
+Bluehost lapses before Workspace is approved, the mail history is gone. Get the
+date from Bluehost's billing page and write it down here.
+
+**3. Find the registrar logins.** Nothing below is possible without them,
 and this is the step most likely to stall. `earlymusicsa.org` is registered at
 **Hostopia Canada Corp**, a wholesale registrar almost always resold under
 somebody else's brand — so the login is probably not at "hostopia.com" but at
@@ -742,99 +784,112 @@ whichever company the group actually bought the domain from. It is also flagged
 `client transfer prohibited`. That lock blocks a *transfer* to another
 registrar, not a nameserver change, so it is not in the way here.
 
-**2. Add the zone to Cloudflare while Bluehost is still answering.** Cloudflare
+**4. Add the zone to Cloudflare while Bluehost is still answering.** Cloudflare
 imports the records by scanning the live zone. Do this *before* cancelling
 anything or the import comes back empty and every record has to be retyped from
 memory. Compare what it imported against the DNS notes above and fix by hand
 whatever it missed.
 
-**3. Change the nameservers at the registrar to Cloudflare's.** Wait until
+**5. Change the nameservers at the registrar to Cloudflare's.** Wait until
 Cloudflare says the zone is active. At this point **nothing has actually
 moved** — the site is still on Render, the mail is still on Bluehost. Only the
 machine answering DNS questions has changed. Verify the site loads and mail
 still arrives before going further. This step alone removes the single point of
 failure and it is safe to stop here for weeks.
 
-**4. Open the Purelymail account and add the domain.** $10/year, flat, from
-purelymail.com/signup. Adding `earlymusicsa.org` produces **seven DNS records**
-on their Add New Domain page: MX, SPF, a domain-ownership TXT, three DKIM
-records (they rotate between three signing keys), and DMARC. **Take them from
-that page and nowhere else** — the ownership value is unique to the account and
-cannot be guessed, and they say plainly they cannot add the records for you.
+**6. Once Workspace is approved, add the domain and create the users.** Verify
+ownership with the TXT record the Admin console hands out — take it from that page
+and nowhere else, it is unique to the account. Do this **after** the zone is on
+Cloudflare or the records get entered twice: once in Bluehost's cPanel Zone
+Editor and again in Cloudflare a week later.
 
-Because there are seven of them, **do this after the zone is on Cloudflare**, or
-they get entered twice: once in Bluehost's cPanel Zone Editor and again in
-Cloudflare a week later.
+Get the real list of addresses from cPanel → Email Accounts rather than guessing.
+Any address without a matching user starts bouncing the moment MX moves. Watch
+for `volunteer@` — the site's contact form sends as that address. Licences are
+free here, so make every one a real user.
 
-Add six of the seven and **leave the MX record until step 6**. Ownership, SPF and
-DKIM are all safe to add early — MX is the one that moves live mail. Hold DMARC
-until after the switch too: a reject policy published before SPF and DKIM are
-actually in use can bounce good mail.
+Add the ownership TXT and generate the DKIM key now, but **leave MX until step
+8**. DKIM is safe early; MX is the one that moves live mail. Hold DMARC back
+too — a reject policy published before SPF and DKIM are actually in use can
+bounce good mail.
 
-**5. Port the old mail across — before MX moves, not after.** This is the step
-with a deadline: everything in the Bluehost mailbox dies with the account, and
-Leslie's mail was not downloading, so assume no copy exists anywhere else.
+**7. Port the old mail across — before MX moves, not after.** Everything in the
+Bluehost mailbox dies with the account, and Leslie's mail was not downloading, so
+assume no copy exists anywhere else.
 
-Purelymail has a **mail porting tool** in the account portal that pulls over IMAP
-from the old host. It works perfectly well while MX still points at Bluehost —
-that is the whole point of doing it now. Point it at `mail.earlymusicsa.org`,
-port 993, SSL, full address as the username. Folders and Sent come too, which a
-POP3 grab would silently have left behind.
+Use the Admin console's **Data Migration Service**, which pulls over IMAP from the
+old host. It works while MX still points at Bluehost — that is the whole point of
+doing it now. Point it at `mail.earlymusicsa.org`, port 993, SSL, full address as
+the username. Folders and Sent come too.
 
-Thunderbird with both accounts connected does the same job by hand if the tool
-struggles, and `imapsync` does it unattended for a large mailbox.
+> **First confirm her client is not POP3 with delete-from-server.** The migration
+> service can only copy what is still on the server. If cPanel's default left her
+> on POP3 with deletion on, years of mail exist **only on her hard drive** and the
+> service will happily migrate a nearly empty mailbox. In that case use
+> Thunderbird with both accounts connected and drag the local folders across
+> instead. A screenshot of her account settings answers this before it matters.
 
-**6. Create a User for every address, then switch MX.** Get the real list from
-cPanel → Email Accounts rather than guessing; any address without a matching
-User starts bouncing the moment MX moves. Watch for `volunteer@` — the site's
-contact form sends as that address. Then add the MX record, send a test from an
-outside account, and confirm it lands.
+`imapsync` does the same job unattended if the service struggles on a large
+mailbox.
 
-> **Do not add a catch-all routing rule.** Purelymail's routing rules take
-> priority over real mailboxes: a `*@earlymusicsa.org` rule would match Leslie's
-> address too, redirect her mail away, and leave her inbox permanently empty
-> while everything appears configured correctly. If a catch-all is wanted later,
-> use a Sieve filter, which can copy rather than redirect.
+**8. Switch MX to Google.** Add Google's MX records, send a test from an outside
+account, and confirm it lands. Test in both directions before moving on.
 
-**7. Delete the Bluehost SPF, add Purelymail's DMARC.** The old record,
+**9. Replace the Bluehost SPF, then add DMARC.** The old record,
 `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all`, authorises a
 server the group will no longer control, and the old DKIM key at
-`default._domainkey` is likewise dead. Remove both once mail is flowing.
+`default._domainkey` is likewise dead. Replace SPF with:
 
-**8. Re-point the mail clients.** Leslie's settings change one more time — this
+```
+v=spf1 include:_spf.google.com ~all
+```
+
+Publish the DKIM key generated in step 6, and only then add `_dmarc`.
+
+**10. Re-point the mail clients.** Leslie's settings change one more time — this
 is why she was warned:
 
 ```
-Incoming   imap.purelymail.com   993   SSL/TLS
-Outgoing   smtp.purelymail.com   465   SSL/TLS   (or 587 STARTTLS)
+Incoming   imap.gmail.com   993   SSL/TLS
+Outgoing   smtp.gmail.com   465   SSL/TLS   (or 587 STARTTLS)
 Username   the full address
 ```
 
-If two-factor authentication is switched on for the account, mail clients need an
-**App Password**, not the account password. That applies to the contact form too.
+Better still, she may not need a client at all — Gmail's web interface covers what
+webmail was covering during the gap. If she does keep a client, and 2-step
+verification is on, it needs an **App Password**, not the account password.
 
-**9. Only now, cancel Bluehost.** Leave several days after step 6 and watch that
+**11. Only now, cancel Bluehost.** Leave several days after step 8 and watch that
 mail keeps arriving across the gap.
 
 ### The contact form keeps working
 
-This is the quiet win of paying for real mail hosting. `mailer.js` sends the
+This is the quiet win of keeping real mail hosting. `mailer.js` sends the
 submission and contact notifications over SMTP as
 `volunteer@earlymusicsa.org` — a real mailbox before, and a real mailbox after.
 No code change and no new mechanism: point the four environment variables in
-Render's dashboard at Purelymail instead. If the account has two-factor
-authentication on, SMTP_PASS must be an App Password, not the account password.
+Render's dashboard at Google instead.
 
 ```bash
-SMTP_HOST=smtp.purelymail.com
+SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587          # STARTTLS; 465 for TLS from the first byte
 SMTP_USER=volunteer@earlymusicsa.org
-SMTP_PASS=<set in Render's environment settings — never committed>
+SMTP_PASS=<App Password, set in Render's environment settings — never committed>
 MAIL_FROM=volunteer@earlymusicsa.org
 ```
 
-`MAIL_FROM` must stay an address Purelymail is allowed to send as, or the mail
-is dropped as a forgery. Create that User in Purelymail even if nobody reads it.
+**Google requires an App Password here, not an option.** Plain account passwords
+are refused for SMTP, and an App Password can only be created once **2-step
+verification is switched on for the `volunteer@` account**. Do that before
+touching Render or the form will silently stop sending.
+
+`MAIL_FROM` must stay an address Google is allowed to send as, or the mail is
+dropped as a forgery. Since it authenticates *as* `volunteer@`, that means
+`volunteer@` has to be a real user — not a group and not an alias on somebody
+else's account. Create it even if nobody reads it.
+
+Worth knowing: Workspace caps outbound at roughly 2,000 messages a day, which
+this form will never approach.
 
 If the switchover leaves a gap, nothing breaks: with any SMTP variable missing
 `mailConfigured()` is false, notifications stop, and the queue on /admin.html is
@@ -843,7 +898,7 @@ still the record. That is by design.
 ### sundancefirearms.com is parked
 
 It sits on the same Bluehost account and its zone is delegated to the same
-nameservers, so **step 2 and step 3 have to be done for it as well** or the
+nameservers, so **step 4 and step 5 have to be done for it as well** or the
 domain resolves to nothing. It needs no mail of its own — its published contact
 is a Gmail address. The captured site and its notes are in the
 `sundancefirearms` repo; nothing there is urgent.
