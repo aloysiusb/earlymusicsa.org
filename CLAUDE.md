@@ -615,10 +615,14 @@ SPF is `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all`. The
 means anything; leave it alone regardless — **this zone carries the group's real
 mail and is not to be experimented with.**
 
-### The full zone as it stood on 2026-09-18
+### The full zone, as Cloudflare's import actually read it on 2026-09-24
 
-Insurance. If Cloudflare's import misses something, or the Bluehost zone stops
-answering before it is copied, this is the record. Measured against 1.1.1.1.
+Insurance. If the Bluehost zone stops answering before it is copied, this is the
+record. First measured against 1.1.1.1 on 2026-09-18, then **corrected on
+2026-09-24 against Cloudflare's own import, which found 18 records — four more
+than were measured by hand.** The four are marked new below; the scan missed
+nothing, so the earlier worry about it dropping `autoconfig` and `webdisk` did not
+materialise.
 
 | Type | Name | Value | Cloudflare proxy |
 |---|---|---|---|
@@ -629,11 +633,25 @@ answering before it is copied, this is the record. Measured against 1.1.1.1.
 | A | `webmail` | `162.241.253.117` | **DNS only** |
 | A | `autodiscover` | `162.241.253.117` | **DNS only** |
 | A | `autoconfig` | `162.241.253.117` | **DNS only** |
+| CNAME | `imap` | `mail.earlymusicsa.org` | **DNS only** — new |
+| CNAME | `pop` | `mail.earlymusicsa.org` | **DNS only** — new |
+| CNAME | `smtp` | `mail.earlymusicsa.org` | **DNS only** — new |
 | A | `cpanel` | `162.241.253.117` | DNS only |
+| A | `whm` | `162.241.253.117` | DNS only — new |
 | A | `webdisk` | `162.241.253.117` | DNS only |
 | A | `ftp` | `162.241.253.117` | DNS only |
+| A | `localhost` | `127.0.0.1` | n/a — cPanel litter, harmless |
+| SRV | `_autodiscover._tcp` | `0 0 443 cpanelemaildiscovery.cpanel.net` | n/a — new |
 | TXT | `earlymusicsa.org` | `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all` | n/a |
 | TXT | `default._domainkey` | `v=DKIM1; k=rsa; p=MIIBIjANBgkq…` (Bluehost's signing key, ~400 chars) | n/a |
+
+**The three mail CNAMEs are the important find.** `imap`, `pop` and `smtp` all
+point at `mail.earlymusicsa.org`, and they arrive from the importer **proxied**.
+Any client configured against `imap.earlymusicsa.org` or `smtp.earlymusicsa.org`
+breaks exactly as one pointed at a proxied `mail` would — and because these names
+were never in the hand-measured table, they are easy to leave orange. They are
+also worth checking against Leslie's settings screenshot: her client may well be
+using one of them rather than `mail.` itself.
 
 There is **no `_dmarc` record**. Nothing depends on that today; worth adding
 once mail is settled on Purelymail, not before.
@@ -643,6 +661,13 @@ copy-paste that inserts a line break or drops the trailing `;`. If outgoing mail
 starts failing authentication after the move, check that record character by
 character first.
 
+**Confirmed 2026-09-24: the import carried it across intact.** Cloudflare split it
+into two adjacent quoted strings, which is normal for a TXT value over 255 bytes
+and resolves as one concatenated string — not corruption, and not to be "fixed"
+into a single quoted run. It opens `v=DKIM1; k=rsa; p=MII…` and closes
+`…IDAQAB;` with the trailing semicolon present. This key is Bluehost's and gets
+deleted at step 9 regardless, so it needs no further care.
+
 ### Turn the orange cloud off for anything to do with mail
 
 The way this migration usually breaks. Cloudflare's importer defaults new `A`
@@ -650,9 +675,21 @@ records to **proxied**, and Cloudflare proxies HTTP and HTTPS only. A proxied
 `mail` record answers with Cloudflare's own addresses, so IMAP, POP3 and SMTP
 stop dead — while the dashboard looks entirely correct.
 
-`mail`, `webmail`, `autodiscover` and `autoconfig` must be **grey cloud, DNS
-only**. So must the apex and `www` during the cutover, so that what is being
-tested is the real thing rather than Cloudflare's cache.
+The complete list that must be **grey cloud, DNS only** — thirteen rows, every
+proxied record the 2026-09-24 import produced:
+
+```
+A      mail  webmail  autodiscover  autoconfig  cpanel  whm  webdisk  ftp
+CNAME  imap  pop  smtp  www
+A      earlymusicsa.org   (the apex)
+```
+
+The apex and `www` belong on that list during the cutover too, so that what is
+being tested is the real thing rather than Cloudflare's cache. When it is done,
+nothing in the zone reads "Proxied".
+
+`localhost`, the `MX`, the `SRV` and both `TXT` records arrive as DNS only already
+and need no attention.
 
 ### The trap this sets
 
