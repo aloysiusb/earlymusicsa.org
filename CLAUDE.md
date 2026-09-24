@@ -759,13 +759,27 @@ relying on either.
 > and she will read that as the mail breaking again. Finishing before then avoids
 > the question; extending into November means warning her first.
 
-**2. Find the registrar logins.** Nothing below is possible without them,
-and this is the step most likely to stall. `earlymusicsa.org` is registered at
-**Hostopia Canada Corp**, a wholesale registrar almost always resold under
-somebody else's brand — so the login is probably not at "hostopia.com" but at
-whichever company the group actually bought the domain from. It is also flagged
-`client transfer prohibited`. That lock blocks a *transfer* to another
-registrar, not a nameserver change, so it is not in the way here.
+**2. Registrar access — resolved.** Nothing below is possible without it,
+**Resolved 2026-09-24: the domain is managed through APlus.net, and access is in
+hand.** That confirms the whois rather than contradicting it — APlus.net is a
+Hostopia brand, which is why the registrar reads **Hostopia Canada Corp**, a
+wholesale registrar resold under other companies' names. This was expected to be
+the step most likely to stall; it is not in the way.
+
+The nameserver change in step 4 happens **in APlus.net's control panel, not
+Bluehost's.** Bluehost's DNS screens will keep showing the old zone and offering to
+edit it; that is the hosting account's copy and changing it there does nothing once
+the nameservers have moved.
+
+The domain is flagged `client transfer prohibited`. That lock blocks a *transfer*
+to another registrar, not a nameserver change, so it is not in the way either — and
+there is no need to transfer the domain at all here.
+
+**The domain renewal was paid on 2026-09-24**, so the registration itself is not at
+risk and nothing below is racing it. Keep the two clocks separate: the **domain** is
+paid at APlus.net and safe, while the **Bluehost hosting** is a different bill on a
+different schedule and is what holds the mailbox. Cancelling Bluehost at step 10
+does not touch the domain.
 
 **3. Add the zone to Cloudflare while Bluehost is still answering.** Cloudflare
 imports the records by scanning the live zone. Do this *before* cancelling
