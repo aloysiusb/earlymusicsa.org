@@ -743,10 +743,21 @@ assuming the configuration is broken.**
 
 ### Order matters, and this order is not negotiable
 
-**1. Find out when the Bluehost account actually lapses.** This is the real
-deadline and **it is still unknown** — nothing here records it. The mailbox dies
-with the account and step 6 has to finish before that date. Get it from Bluehost's
-billing page and write it down here.
+**1. Know when the Bluehost account lapses.** The mailbox is deleted with the
+account, so step 6 has to finish before that date.
+
+**Another month was paid on 2026-09-24, so the floor is roughly 2026-10-24.**
+Still to confirm: whether that is a **recurring monthly subscription** or a single
+month bought outright. Recurring means there is no cliff — the mail stays alive
+until somebody deliberately cancels, which is the safest arrangement available
+here. A one-off month means a hard stop in late October. Check which it is before
+relying on either.
+
+> **Watch 2026-11-08 if this runs past late October.** That is when the cert
+> expires (see AutoSSL above), and Leslie is living in webmail until step 9. A
+> failed renewal would start throwing certificate warnings at her mid-migration,
+> and she will read that as the mail breaking again. Finishing before then avoids
+> the question; extending into November means warning her first.
 
 **2. Find the registrar logins.** Nothing below is possible without them,
 and this is the step most likely to stall. `earlymusicsa.org` is registered at
