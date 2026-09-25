@@ -929,6 +929,42 @@ If two-factor authentication is switched on for the account, mail clients need a
 **10. Only now, cancel Bluehost.** Leave several days after step 7 and watch that
 mail keeps arriving across the gap.
 
+### The Purelymail records, as issued 2026-09-25
+
+Account exists; domain added. These came from Purelymail's Add New Domain page.
+`@` means the bare domain.
+
+| Type | Name | Value | When |
+|---|---|---|---|
+| TXT | `@` | `purelymail_ownership_proof=e81e0e20cc543da7dddfad6d3c2632121c3020ddde7fe973ad0ee490ccc0874a8a2e80a669f9f957a005ed043cdc4b14fa774d45a58b6c98b375bb4a6a6c552f` | now — verifies the domain |
+| CNAME | `purelymail1._domainkey` | `key1.dkimroot.purelymail.com` | any time, harmless |
+| CNAME | `purelymail2._domainkey` | `key2.dkimroot.purelymail.com` | any time, harmless |
+| CNAME | `purelymail3._domainkey` | `key3.dkimroot.purelymail.com` | any time, harmless |
+| MX | `@` | `mailserver.purelymail.com`, priority 10 | **the switch** — edit the existing MX, never add a second |
+| TXT (SPF) | `@` | merge, see below | with the MX switch |
+| CNAME | `_dmarc` | `dmarcroot.purelymail.com` | after mail is confirmed flowing |
+| CNAME | `autoconfig` | `autoconfig.purelymail.com` | after the switch — replaces the Bluehost A record |
+| SRV | `_autodiscover._tcp` | `0 0 443 autodiscover.purelymail.com` | after the switch — replaces the cPanel SRV |
+
+**One SPF record only.** Adding Purelymail's as a second TXT breaks SPF for both.
+During the changeover, edit the existing one to authorise both senders:
+
+```
+v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com include:_spf.purelymail.com ~all
+```
+
+Once Bluehost is cancelled, cut it to `v=spf1 include:_spf.purelymail.com ~all`.
+
+**Before the MX switch:** create a Purelymail user for every address (at least
+`leslie@` and `volunteer@`), and tell Leslie that new mail will stop appearing in
+the `:2096` webmail and arrive in Purelymail's webmail instead. Her old mail stays
+on Bluehost, reachable for porting, until the account is cancelled.
+
+**Blocked on the Claude side as of 2026-09-25:** `api.cloudflare.com` is denied by
+the environment's network policy and no `CLOUDFLARE_API_TOKEN` is set. With both
+added to the *EarlyMusicSa email* environment (and a fresh session), every
+Cloudflare row above can be done by Claude directly.
+
 ### The contact form keeps working
 
 This is the quiet win of paying for real mail hosting. `mailer.js` sends the
