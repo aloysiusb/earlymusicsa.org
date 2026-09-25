@@ -764,6 +764,36 @@ Decided 2026-09-18: the Bluehost account is not being renewed. The site is
 already on Render. The mailbox is not, and **the zone is not either** — see the
 DNS notes above.
 
+### Progress as of 2026-09-25
+
+Steps 1 to 5 are **done**. What remains is the mailbox and Sundance's DNS.
+
+| | |
+|---|---|
+| Bluehost lapse date | another month paid 2026-09-24, so ~2026-10-24 |
+| Registrar | **APlus.net**, access in hand |
+| Domain renewal | paid 2026-09-24, not at risk |
+| Cloudflare | **active** — `elle.ns.cloudflare.com`, `renan.ns.cloudflare.com` |
+| Proxy status | all 13 records grey-clouded and verified answering real IPs |
+| DNSSEC | confirmed off (no DS, no DNSKEY, checked at two resolvers) |
+| HostNexus | cancelled — a fourth service nobody needed |
+| Leslie | emailed 2026-09-25 for her client settings and the address list |
+
+**Cloudflare was verified before and after the nameserver switch**, by querying
+its nameservers directly: apex to Render, `mail`/`webmail` to
+`162.241.253.117`, `imap`/`smtp` as CNAMEs to `mail`, MX at priority 10, SPF
+intact, DKIM 411 characters ending `IDAQAB;`. No Cloudflare proxy addresses
+anywhere. Both zones served identical answers through the cutover, so no mail
+was at risk at any point.
+
+**Bluehost now has exactly one job left: the earlymusicsa mailbox.** Both static
+sites have left it (see the Sundance and Carolynn Heil sections below).
+
+**Leslie's mailbox may be nearly empty.** Her working address is
+`lprovence@sbcglobal.net`; the `@earlymusicsa.org` mailbox appears to have been
+created around 2026-09-02, so step 7 may have almost nothing to port and the
+POP3-versus-IMAP question may not matter. Her settings photo settles it.
+
 **The plan: Cloudflare for DNS (free), Purelymail for the mail ($10/year).**
 
 Purelymail prices flat per account, not per mailbox — `leslie@`, `volunteer@`
@@ -929,9 +959,9 @@ It sits on the same Bluehost account and its zone is delegated to the same
 nameservers, so **step 3 and step 4 have to be done for it as well** or the
 domain resolves to nothing.
 
-**Recovered 2026-09-24.** The site was pulled out of cPanel
-(`public_html/website_ecdc3156`) and now lives at
-**`aloysiusb/sundancefirearms`** (public, `main`), ready to deploy as a Render
+**Live on Render as of 2026-09-25: https://sundancefirearms.onrender.com**
+The site was pulled out of cPanel (`public_html/website_ecdc3156`) and lives at
+**`aloysiusb/sundancefirearms`** (public, `main`), deployed as a Render
 static site — plain HTML, CSS, jQuery and images, no PHP, no WordPress, no
 database, so no build step. All 21 local asset references in `index.html` were
 checked and resolve on a case-sensitive filesystem, so the mixed-case filenames
@@ -964,10 +994,54 @@ but **look in cPanel → Email Accounts filtered to `sundancefirearms.com` befor
 the account is cancelled.** A real mailbox there dies with Bluehost exactly as
 Leslie's would.
 
+**Three deploys failed before it worked, for one reason.** The Render service
+had `publishPath` set to `build` while the site sat at the repo root, so every
+deploy reported "the GitHub repository is empty". Service type, branch and build
+command were all correct from the start; only that one field was wrong. The site
+now lives in `build/` to match it. If the service is ever recreated, set the
+publish directory to `.` and keep the files at the root instead.
+
 **The registrar is unknown.** Nameservers say Bluehost answers DNS, which does not
 say who the name is registered with — Bluehost resells, and GoDaddy was the other
 guess. Settle it at `lookup.icann.org` and write the answer here; the nameserver
 change in step 4 happens wherever that turns out to be.
+
+### carolynnheilinteriors — also off Bluehost
+
+**Live on Render as of 2026-09-25: https://carolynn-heil.onrender.com**
+
+The third site on that cPanel account (`public_html/website_c0f50c30`), recovered
+the same night and pushed to **`aloysiusb/CarolynnHeil`** (`main`). Plain HTML and
+images, no build step. Kept as portfolio work rather than as a client's live
+site — the designer and the client are no longer in contact, so nothing here is
+waiting on her.
+
+**The homepage was nearly the wrong file.** The archive held three candidates:
+`index.html` (a Coming Soon placeholder), `index_bk.html`, and `CH-index` with no
+extension. The last two are the same page apart from one line — `index_bk.html`
+carries `<meta name="robots" content="noindex, nofollow">`, which marks it as the
+staging copy. `CH-index` was the intended production homepage and is now
+`index.html`; the placeholder is kept as `coming-soon.html`.
+
+**Two pages referenced across the site do not exist:** `about.html` (linked from
+every page) and `golden-section-palette.html` (footer). Their links are commented
+out rather than deleted — restoring them is a matter of removing the comment
+markers.
+
+**Two carousel images on the Hallam Residence page were broken and are fixed.**
+`HalWilliams2017-0741_2.jpg` was referenced with an underscore where the file uses
+a dot; `HalWilliams2017-0748.jpg` ("Guest Bath") is not in the archive at all and
+its entry was removed. `HalWilliams2017-0684.jpg` was unused and is another view
+of the primary bedroom, so it now fills the gap — its caption was written from the
+photograph and is the only copy on the site not by the original author.
+
+`settings.html` is a colour picker that drives the palette across every page. It
+was reachable only by typing the URL and is now linked from the footer,
+deliberately kept.
+
+**Every page carries `noindex`,** and `robots.txt` serves `Disallow: /`. The site
+is reachable by link and stays out of search results, which is what portfolio work
+of somebody else's business should do.
 
 ## Telling somebody
 
