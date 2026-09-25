@@ -615,10 +615,14 @@ SPF is `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all`. The
 means anything; leave it alone regardless — **this zone carries the group's real
 mail and is not to be experimented with.**
 
-### The full zone as it stood on 2026-09-18
+### The full zone, as Cloudflare's import actually read it on 2026-09-24
 
-Insurance. If Cloudflare's import misses something, or the Bluehost zone stops
-answering before it is copied, this is the record. Measured against 1.1.1.1.
+Insurance. If the Bluehost zone stops answering before it is copied, this is the
+record. First measured against 1.1.1.1 on 2026-09-18, then **corrected on
+2026-09-24 against Cloudflare's own import, which found 18 records — four more
+than were measured by hand.** The four are marked new below; the scan missed
+nothing, so the earlier worry about it dropping `autoconfig` and `webdisk` did not
+materialise.
 
 | Type | Name | Value | Cloudflare proxy |
 |---|---|---|---|
@@ -629,11 +633,25 @@ answering before it is copied, this is the record. Measured against 1.1.1.1.
 | A | `webmail` | `162.241.253.117` | **DNS only** |
 | A | `autodiscover` | `162.241.253.117` | **DNS only** |
 | A | `autoconfig` | `162.241.253.117` | **DNS only** |
+| CNAME | `imap` | `mail.earlymusicsa.org` | **DNS only** — new |
+| CNAME | `pop` | `mail.earlymusicsa.org` | **DNS only** — new |
+| CNAME | `smtp` | `mail.earlymusicsa.org` | **DNS only** — new |
 | A | `cpanel` | `162.241.253.117` | DNS only |
+| A | `whm` | `162.241.253.117` | DNS only — new |
 | A | `webdisk` | `162.241.253.117` | DNS only |
 | A | `ftp` | `162.241.253.117` | DNS only |
+| A | `localhost` | `127.0.0.1` | n/a — cPanel litter, harmless |
+| SRV | `_autodiscover._tcp` | `0 0 443 cpanelemaildiscovery.cpanel.net` | n/a — new |
 | TXT | `earlymusicsa.org` | `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all` | n/a |
 | TXT | `default._domainkey` | `v=DKIM1; k=rsa; p=MIIBIjANBgkq…` (Bluehost's signing key, ~400 chars) | n/a |
+
+**The three mail CNAMEs are the important find.** `imap`, `pop` and `smtp` all
+point at `mail.earlymusicsa.org`, and they arrive from the importer **proxied**.
+Any client configured against `imap.earlymusicsa.org` or `smtp.earlymusicsa.org`
+breaks exactly as one pointed at a proxied `mail` would — and because these names
+were never in the hand-measured table, they are easy to leave orange. They are
+also worth checking against Leslie's settings screenshot: her client may well be
+using one of them rather than `mail.` itself.
 
 There is **no `_dmarc` record**. Nothing depends on that today; worth adding
 once mail is settled on Purelymail, not before.
@@ -643,6 +661,13 @@ copy-paste that inserts a line break or drops the trailing `;`. If outgoing mail
 starts failing authentication after the move, check that record character by
 character first.
 
+**Confirmed 2026-09-24: the import carried it across intact.** Cloudflare split it
+into two adjacent quoted strings, which is normal for a TXT value over 255 bytes
+and resolves as one concatenated string — not corruption, and not to be "fixed"
+into a single quoted run. It opens `v=DKIM1; k=rsa; p=MII…` and closes
+`…IDAQAB;` with the trailing semicolon present. This key is Bluehost's and gets
+deleted at step 9 regardless, so it needs no further care.
+
 ### Turn the orange cloud off for anything to do with mail
 
 The way this migration usually breaks. Cloudflare's importer defaults new `A`
@@ -650,9 +675,21 @@ records to **proxied**, and Cloudflare proxies HTTP and HTTPS only. A proxied
 `mail` record answers with Cloudflare's own addresses, so IMAP, POP3 and SMTP
 stop dead — while the dashboard looks entirely correct.
 
-`mail`, `webmail`, `autodiscover` and `autoconfig` must be **grey cloud, DNS
-only**. So must the apex and `www` during the cutover, so that what is being
-tested is the real thing rather than Cloudflare's cache.
+The complete list that must be **grey cloud, DNS only** — thirteen rows, every
+proxied record the 2026-09-24 import produced:
+
+```
+A      mail  webmail  autodiscover  autoconfig  cpanel  whm  webdisk  ftp
+CNAME  imap  pop  smtp  www
+A      earlymusicsa.org   (the apex)
+```
+
+The apex and `www` belong on that list during the cutover too, so that what is
+being tested is the real thing rather than Cloudflare's cache. When it is done,
+nothing in the zone reads "Proxied".
+
+`localhost`, the `MX`, the `SRV` and both `TXT` records arrive as DNS only already
+and need no attention.
 
 ### The trap this sets
 
@@ -701,6 +738,15 @@ downloading" complaint was only ever her client pointed at the bare domain — w
 is Render now and runs no mail. That closes the question; do not go looking for an
 account-level fault.
 
+**Decided 2026-09-24: do not reconfigure her client now.** The settings above
+would fix it, but the mail is moving to Purelymail within weeks and the client
+would then need changing a second time — two rounds of fiddly remote settings
+surgery with somebody who will not enjoy either. She uses webmail on :2096 in the
+meantime and the client gets set up once, at step 9, as a fresh account rather
+than an edited broken one. Editing beats re-adding almost never here: macOS Mail
+and Outlook grey out or silently revert the incoming hostname, while iOS Mail and
+Thunderbird let it be changed.
+
 ### AutoSSL will lose the web names on renewal
 
 The Let's Encrypt cert Dovecot presents (issued 2026-08-10, expires
@@ -718,6 +764,36 @@ Decided 2026-09-18: the Bluehost account is not being renewed. The site is
 already on Render. The mailbox is not, and **the zone is not either** — see the
 DNS notes above.
 
+### Progress as of 2026-09-25
+
+Steps 1 to 5 are **done**. What remains is the mailbox and Sundance's DNS.
+
+| | |
+|---|---|
+| Bluehost lapse date | another month paid 2026-09-24, so ~2026-10-24 |
+| Registrar | **APlus.net**, access in hand |
+| Domain renewal | paid 2026-09-24, not at risk |
+| Cloudflare | **active** — `elle.ns.cloudflare.com`, `renan.ns.cloudflare.com` |
+| Proxy status | all 13 records grey-clouded and verified answering real IPs |
+| DNSSEC | confirmed off (no DS, no DNSKEY, checked at two resolvers) |
+| HostNexus | cancelled — a fourth service nobody needed |
+| Leslie | emailed 2026-09-25 for her client settings and the address list |
+
+**Cloudflare was verified before and after the nameserver switch**, by querying
+its nameservers directly: apex to Render, `mail`/`webmail` to
+`162.241.253.117`, `imap`/`smtp` as CNAMEs to `mail`, MX at priority 10, SPF
+intact, DKIM 411 characters ending `IDAQAB;`. No Cloudflare proxy addresses
+anywhere. Both zones served identical answers through the cutover, so no mail
+was at risk at any point.
+
+**Bluehost now has exactly one job left: the earlymusicsa mailbox.** Both static
+sites have left it (see the Sundance and Carolynn Heil sections below).
+
+**Leslie's mailbox may be nearly empty.** Her working address is
+`lprovence@sbcglobal.net`; the `@earlymusicsa.org` mailbox appears to have been
+created around 2026-09-02, so step 7 may have almost nothing to port and the
+POP3-versus-IMAP question may not matter. Her settings photo settles it.
+
 **The plan: Cloudflare for DNS (free), Purelymail for the mail ($10/year).**
 
 Purelymail prices flat per account, not per mailbox — `leslie@`, `volunteer@`
@@ -734,28 +810,58 @@ assuming the configuration is broken.**
 
 ### Order matters, and this order is not negotiable
 
-**1. Find the registrar logins first.** Nothing below is possible without them,
-and this is the step most likely to stall. `earlymusicsa.org` is registered at
-**Hostopia Canada Corp**, a wholesale registrar almost always resold under
-somebody else's brand — so the login is probably not at "hostopia.com" but at
-whichever company the group actually bought the domain from. It is also flagged
-`client transfer prohibited`. That lock blocks a *transfer* to another
-registrar, not a nameserver change, so it is not in the way here.
+**1. Know when the Bluehost account lapses.** The mailbox is deleted with the
+account, so step 6 has to finish before that date.
 
-**2. Add the zone to Cloudflare while Bluehost is still answering.** Cloudflare
+**Another month was paid on 2026-09-24, so the floor is roughly 2026-10-24.**
+Still to confirm: whether that is a **recurring monthly subscription** or a single
+month bought outright. Recurring means there is no cliff — the mail stays alive
+until somebody deliberately cancels, which is the safest arrangement available
+here. A one-off month means a hard stop in late October. Check which it is before
+relying on either.
+
+> **Watch 2026-11-08 if this runs past late October.** That is when the cert
+> expires (see AutoSSL above), and Leslie is living in webmail until step 9. A
+> failed renewal would start throwing certificate warnings at her mid-migration,
+> and she will read that as the mail breaking again. Finishing before then avoids
+> the question; extending into November means warning her first.
+
+**2. Registrar access — resolved.** Nothing below is possible without it,
+**Resolved 2026-09-24: the domain is managed through APlus.net, and access is in
+hand.** That confirms the whois rather than contradicting it — APlus.net is a
+Hostopia brand, which is why the registrar reads **Hostopia Canada Corp**, a
+wholesale registrar resold under other companies' names. This was expected to be
+the step most likely to stall; it is not in the way.
+
+The nameserver change in step 4 happens **in APlus.net's control panel, not
+Bluehost's.** Bluehost's DNS screens will keep showing the old zone and offering to
+edit it; that is the hosting account's copy and changing it there does nothing once
+the nameservers have moved.
+
+The domain is flagged `client transfer prohibited`. That lock blocks a *transfer*
+to another registrar, not a nameserver change, so it is not in the way either — and
+there is no need to transfer the domain at all here.
+
+**The domain renewal was paid on 2026-09-24**, so the registration itself is not at
+risk and nothing below is racing it. Keep the two clocks separate: the **domain** is
+paid at APlus.net and safe, while the **Bluehost hosting** is a different bill on a
+different schedule and is what holds the mailbox. Cancelling Bluehost at step 10
+does not touch the domain.
+
+**3. Add the zone to Cloudflare while Bluehost is still answering.** Cloudflare
 imports the records by scanning the live zone. Do this *before* cancelling
 anything or the import comes back empty and every record has to be retyped from
 memory. Compare what it imported against the DNS notes above and fix by hand
 whatever it missed.
 
-**3. Change the nameservers at the registrar to Cloudflare's.** Wait until
+**4. Change the nameservers at the registrar to Cloudflare's.** Wait until
 Cloudflare says the zone is active. At this point **nothing has actually
 moved** — the site is still on Render, the mail is still on Bluehost. Only the
 machine answering DNS questions has changed. Verify the site loads and mail
 still arrives before going further. This step alone removes the single point of
 failure and it is safe to stop here for weeks.
 
-**4. Open the Purelymail account and add the domain.** $10/year, flat, from
+**5. Open the Purelymail account and add the domain.** $10/year, flat, from
 purelymail.com/signup. Adding `earlymusicsa.org` produces **seven DNS records**
 on their Add New Domain page: MX, SPF, a domain-ownership TXT, three DKIM
 records (they rotate between three signing keys), and DMARC. **Take them from
@@ -766,12 +872,12 @@ Because there are seven of them, **do this after the zone is on Cloudflare**, or
 they get entered twice: once in Bluehost's cPanel Zone Editor and again in
 Cloudflare a week later.
 
-Add six of the seven and **leave the MX record until step 6**. Ownership, SPF and
+Add six of the seven and **leave the MX record until step 7**. Ownership, SPF and
 DKIM are all safe to add early — MX is the one that moves live mail. Hold DMARC
 until after the switch too: a reject policy published before SPF and DKIM are
 actually in use can bounce good mail.
 
-**5. Port the old mail across — before MX moves, not after.** This is the step
+**6. Port the old mail across — before MX moves, not after.** This is the step
 with a deadline: everything in the Bluehost mailbox dies with the account, and
 Leslie's mail was not downloading, so assume no copy exists anywhere else.
 
@@ -781,10 +887,17 @@ that is the whole point of doing it now. Point it at `mail.earlymusicsa.org`,
 port 993, SSL, full address as the username. Folders and Sent come too, which a
 POP3 grab would silently have left behind.
 
+> **First confirm her client is not POP3 with delete-from-server.** The porting
+> tool can only copy what is still on the server. If cPanel's default left her on
+> POP3 with deletion on, years of mail exist **only on her hard drive** and the
+> tool will happily port a nearly empty mailbox. In that case use Thunderbird and
+> drag the local folders across instead. A screenshot of her account settings
+> answers this before it matters.
+
 Thunderbird with both accounts connected does the same job by hand if the tool
 struggles, and `imapsync` does it unattended for a large mailbox.
 
-**6. Create a User for every address, then switch MX.** Get the real list from
+**7. Create a User for every address, then switch MX.** Get the real list from
 cPanel → Email Accounts rather than guessing; any address without a matching
 User starts bouncing the moment MX moves. Watch for `volunteer@` — the site's
 contact form sends as that address. Then add the MX record, send a test from an
@@ -796,12 +909,12 @@ outside account, and confirm it lands.
 > while everything appears configured correctly. If a catch-all is wanted later,
 > use a Sieve filter, which can copy rather than redirect.
 
-**7. Delete the Bluehost SPF, add Purelymail's DMARC.** The old record,
+**8. Delete the Bluehost SPF, add Purelymail's DMARC.** The old record,
 `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all`, authorises a
 server the group will no longer control, and the old DKIM key at
 `default._domainkey` is likewise dead. Remove both once mail is flowing.
 
-**8. Re-point the mail clients.** Leslie's settings change one more time — this
+**9. Re-point the mail clients.** Leslie's settings change one more time — this
 is why she was warned:
 
 ```
@@ -813,8 +926,52 @@ Username   the full address
 If two-factor authentication is switched on for the account, mail clients need an
 **App Password**, not the account password. That applies to the contact form too.
 
-**9. Only now, cancel Bluehost.** Leave several days after step 6 and watch that
+**10. Only now, cancel Bluehost.** Leave several days after step 7 and watch that
 mail keeps arriving across the gap.
+
+### The Purelymail records, as issued 2026-09-25
+
+Account exists; domain added. These came from Purelymail's Add New Domain page.
+`@` means the bare domain.
+
+| Type | Name | Value | When |
+|---|---|---|---|
+| TXT | `@` | `purelymail_ownership_proof=e81e0e20cc543da7dddfad6d3c2632121c3020ddde7fe973ad0ee490ccc0874a8a2e80a669f9f957a005ed043cdc4b14fa774d45a58b6c98b375bb4a6a6c552f` | now — verifies the domain |
+| CNAME | `purelymail1._domainkey` | `key1.dkimroot.purelymail.com` | any time, harmless |
+| CNAME | `purelymail2._domainkey` | `key2.dkimroot.purelymail.com` | any time, harmless |
+| CNAME | `purelymail3._domainkey` | `key3.dkimroot.purelymail.com` | any time, harmless |
+| MX | `@` | `mailserver.purelymail.com`, priority 10 | **the switch** — edit the existing MX, never add a second |
+| TXT (SPF) | `@` | merge, see below | with the MX switch |
+| CNAME | `_dmarc` | `dmarcroot.purelymail.com` | after mail is confirmed flowing |
+| CNAME | `autoconfig` | `autoconfig.purelymail.com` | after the switch — replaces the Bluehost A record |
+| SRV | `_autodiscover._tcp` | `0 0 443 autodiscover.purelymail.com` | after the switch — replaces the cPanel SRV |
+
+**2026-09-25: the MX was switched early and reverted.** It pointed at
+`mailserver.purelymail.com` for a short window before the ownership TXT was in
+place, so Purelymail had not verified the domain and was likely refusing mail.
+It was set back to `mail.earlymusicsa.org` and confirmed live at Cloudflare,
+1.1.1.1 and 8.8.8.8. If Leslie reports a bounce from that night, this is why —
+the sender needs to resend. **Order next time: ownership TXT → Check DNS records
+→ create users → only then the MX.**
+
+**One SPF record only.** Adding Purelymail's as a second TXT breaks SPF for both.
+During the changeover, edit the existing one to authorise both senders:
+
+```
+v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com include:_spf.purelymail.com ~all
+```
+
+Once Bluehost is cancelled, cut it to `v=spf1 include:_spf.purelymail.com ~all`.
+
+**Before the MX switch:** create a Purelymail user for every address (at least
+`leslie@` and `volunteer@`), and tell Leslie that new mail will stop appearing in
+the `:2096` webmail and arrive in Purelymail's webmail instead. Her old mail stays
+on Bluehost, reachable for porting, until the account is cancelled.
+
+**Blocked on the Claude side as of 2026-09-25:** `api.cloudflare.com` is denied by
+the environment's network policy and no `CLOUDFLARE_API_TOKEN` is set. With both
+added to the *EarlyMusicSa email* environment (and a fresh session), every
+Cloudflare row above can be done by Claude directly.
 
 ### The contact form keeps working
 
@@ -840,13 +997,95 @@ If the switchover leaves a gap, nothing breaks: with any SMTP variable missing
 `mailConfigured()` is false, notifications stop, and the queue on /admin.html is
 still the record. That is by design.
 
-### sundancefirearms.com is parked
+### sundancefirearms.com is moving to Render
 
 It sits on the same Bluehost account and its zone is delegated to the same
-nameservers, so **step 2 and step 3 have to be done for it as well** or the
-domain resolves to nothing. It needs no mail of its own — its published contact
-is a Gmail address. The captured site and its notes are in the
-`sundancefirearms` repo; nothing there is urgent.
+nameservers, so **step 3 and step 4 have to be done for it as well** or the
+domain resolves to nothing.
+
+**Live on Render as of 2026-09-25: https://sundancefirearms.onrender.com**
+The site was pulled out of cPanel (`public_html/website_ecdc3156`) and lives at
+**`aloysiusb/sundancefirearms`** (public, `main`), deployed as a Render
+static site — plain HTML, CSS, jQuery and images, no PHP, no WordPress, no
+database, so no build step. All 21 local asset references in `index.html` were
+checked and resolve on a case-sensitive filesystem, so the mixed-case filenames
+(`AR-15-1.jpg`) will not break the move.
+
+Three things were dropped from the capture, all orphaned from `index.html`:
+
+- **`vp/`** — an entirely unrelated site, "Paintings and Jewelry Examples for
+  Virginia Payson", that was being served under `sundancefirearms.com`. Nothing
+  linked to it and the ~20 images it referenced were not on the server, so it
+  had been broken for some time. The two HTML files are still in the cPanel
+  capture if anyone ever wants them; they are useless without the images.
+- The WOWSlider demo pages (`wowslider.html`, `-howto`, `-iframe`).
+- `images/mandala-sundance-firearms.psd`, a Photoshop source on a public server.
+
+**It may have mail after all — check before cancelling.** The note here used to
+say it needs no mail of its own, on the strength of the site publishing a Gmail
+address (`sundancefirearmsllc@gmail.com`). That is still what the site shows, but
+the zone tells a different story, measured 2026-09-24:
+
+| Type | Value |
+|---|---|
+| NS | `ns1.bluehost.com`, `ns2.bluehost.com` |
+| A | `162.241.253.117` — the same cPanel box as the mail |
+| MX | `0 mail.sundancefirearms.com`, `10 sundancefirearms.com` |
+| TXT | `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all` |
+
+Someone configured mail for this domain. It may be nothing but a cPanel default,
+but **look in cPanel → Email Accounts filtered to `sundancefirearms.com` before
+the account is cancelled.** A real mailbox there dies with Bluehost exactly as
+Leslie's would.
+
+**Three deploys failed before it worked, for one reason.** The Render service
+had `publishPath` set to `build` while the site sat at the repo root, so every
+deploy reported "the GitHub repository is empty". Service type, branch and build
+command were all correct from the start; only that one field was wrong. The site
+now lives in `build/` to match it. If the service is ever recreated, set the
+publish directory to `.` and keep the files at the root instead.
+
+**The registrar is unknown.** Nameservers say Bluehost answers DNS, which does not
+say who the name is registered with — Bluehost resells, and GoDaddy was the other
+guess. Settle it at `lookup.icann.org` and write the answer here; the nameserver
+change in step 4 happens wherever that turns out to be.
+
+### carolynnheilinteriors — also off Bluehost
+
+**Live on Render as of 2026-09-25: https://carolynn-heil.onrender.com**
+
+The third site on that cPanel account (`public_html/website_c0f50c30`), recovered
+the same night and pushed to **`aloysiusb/CarolynnHeil`** (`main`). Plain HTML and
+images, no build step. Kept as portfolio work rather than as a client's live
+site — the designer and the client are no longer in contact, so nothing here is
+waiting on her.
+
+**The homepage was nearly the wrong file.** The archive held three candidates:
+`index.html` (a Coming Soon placeholder), `index_bk.html`, and `CH-index` with no
+extension. The last two are the same page apart from one line — `index_bk.html`
+carries `<meta name="robots" content="noindex, nofollow">`, which marks it as the
+staging copy. `CH-index` was the intended production homepage and is now
+`index.html`; the placeholder is kept as `coming-soon.html`.
+
+**Two pages referenced across the site do not exist:** `about.html` (linked from
+every page) and `golden-section-palette.html` (footer). Their links are commented
+out rather than deleted — restoring them is a matter of removing the comment
+markers.
+
+**Two carousel images on the Hallam Residence page were broken and are fixed.**
+`HalWilliams2017-0741_2.jpg` was referenced with an underscore where the file uses
+a dot; `HalWilliams2017-0748.jpg` ("Guest Bath") is not in the archive at all and
+its entry was removed. `HalWilliams2017-0684.jpg` was unused and is another view
+of the primary bedroom, so it now fills the gap — its caption was written from the
+photograph and is the only copy on the site not by the original author.
+
+`settings.html` is a colour picker that drives the palette across every page. It
+was reachable only by typing the URL and is now linked from the footer,
+deliberately kept.
+
+**Every page carries `noindex`,** and `robots.txt` serves `Disallow: /`. The site
+is reachable by link and stays out of search results, which is what portfolio work
+of somebody else's business should do.
 
 ## Telling somebody
 
