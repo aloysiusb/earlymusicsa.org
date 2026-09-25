@@ -923,13 +923,51 @@ If the switchover leaves a gap, nothing breaks: with any SMTP variable missing
 `mailConfigured()` is false, notifications stop, and the queue on /admin.html is
 still the record. That is by design.
 
-### sundancefirearms.com is parked
+### sundancefirearms.com is moving to Render
 
 It sits on the same Bluehost account and its zone is delegated to the same
 nameservers, so **step 3 and step 4 have to be done for it as well** or the
-domain resolves to nothing. It needs no mail of its own — its published contact
-is a Gmail address. The captured site and its notes are in the
-`sundancefirearms` repo; nothing there is urgent.
+domain resolves to nothing.
+
+**Recovered 2026-09-24.** The site was pulled out of cPanel
+(`public_html/website_ecdc3156`) and now lives at
+**`aloysiusb/sundancefirearms`** (public, `main`), ready to deploy as a Render
+static site — plain HTML, CSS, jQuery and images, no PHP, no WordPress, no
+database, so no build step. All 21 local asset references in `index.html` were
+checked and resolve on a case-sensitive filesystem, so the mixed-case filenames
+(`AR-15-1.jpg`) will not break the move.
+
+Three things were dropped from the capture, all orphaned from `index.html`:
+
+- **`vp/`** — an entirely unrelated site, "Paintings and Jewelry Examples for
+  Virginia Payson", that was being served under `sundancefirearms.com`. Nothing
+  linked to it and the ~20 images it referenced were not on the server, so it
+  had been broken for some time. The two HTML files are still in the cPanel
+  capture if anyone ever wants them; they are useless without the images.
+- The WOWSlider demo pages (`wowslider.html`, `-howto`, `-iframe`).
+- `images/mandala-sundance-firearms.psd`, a Photoshop source on a public server.
+
+**It may have mail after all — check before cancelling.** The note here used to
+say it needs no mail of its own, on the strength of the site publishing a Gmail
+address (`sundancefirearmsllc@gmail.com`). That is still what the site shows, but
+the zone tells a different story, measured 2026-09-24:
+
+| Type | Value |
+|---|---|
+| NS | `ns1.bluehost.com`, `ns2.bluehost.com` |
+| A | `162.241.253.117` — the same cPanel box as the mail |
+| MX | `0 mail.sundancefirearms.com`, `10 sundancefirearms.com` |
+| TXT | `v=spf1 ip4:162.241.253.117 a mx include:websitewelcome.com ~all` |
+
+Someone configured mail for this domain. It may be nothing but a cPanel default,
+but **look in cPanel → Email Accounts filtered to `sundancefirearms.com` before
+the account is cancelled.** A real mailbox there dies with Bluehost exactly as
+Leslie's would.
+
+**The registrar is unknown.** Nameservers say Bluehost answers DNS, which does not
+say who the name is registered with — Bluehost resells, and GoDaddy was the other
+guess. Settle it at `lookup.icann.org` and write the answer here; the nameserver
+change in step 4 happens wherever that turns out to be.
 
 ## Telling somebody
 
