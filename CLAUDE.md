@@ -946,6 +946,14 @@ Account exists; domain added. These came from Purelymail's Add New Domain page.
 | CNAME | `autoconfig` | `autoconfig.purelymail.com` | after the switch — replaces the Bluehost A record |
 | SRV | `_autodiscover._tcp` | `0 0 443 autodiscover.purelymail.com` | after the switch — replaces the cPanel SRV |
 
+**2026-09-25: the MX was switched early and reverted.** It pointed at
+`mailserver.purelymail.com` for a short window before the ownership TXT was in
+place, so Purelymail had not verified the domain and was likely refusing mail.
+It was set back to `mail.earlymusicsa.org` and confirmed live at Cloudflare,
+1.1.1.1 and 8.8.8.8. If Leslie reports a bounce from that night, this is why —
+the sender needs to resend. **Order next time: ownership TXT → Check DNS records
+→ create users → only then the MX.**
+
 **One SPF record only.** Adding Purelymail's as a second TXT breaks SPF for both.
 During the changeover, edit the existing one to authorise both senders:
 
