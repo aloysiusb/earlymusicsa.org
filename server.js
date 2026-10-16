@@ -364,7 +364,7 @@ async function handleApi(req, res, url) {
       'content-type': TYPES[path.extname(file)] || 'application/octet-stream',
       'cache-control': 'public, max-age=31536000, immutable',
     });
-    createReadStream(file).pipe(res);
+    createReadStream(file).on('error', () => res.destroy()).pipe(res);
     return true;
   }
 
@@ -385,7 +385,7 @@ async function handleApi(req, res, url) {
     };
     if (existsSync(file)) {
       res.writeHead(200, headers);
-      createReadStream(file).pipe(res);
+      createReadStream(file).on('error', () => res.destroy()).pipe(res);
       return true;
     }
     try {
@@ -630,6 +630,9 @@ async function serveStatic(req, res, url) {
 
   try {
     if ((await stat(file)).isDirectory()) file = path.join(file, 'index.html');
+    // A directory without an index.html (e.g. /media/) must 404 here, not
+    // reach createReadStream: an unhandled stream error kills the process.
+    if (!(await stat(file)).isFile()) throw new Error('not a file');
   } catch {
     res.writeHead(404, { ...BASE_HEADERS, 'content-type': 'text/html; charset=utf-8' })
       .end('<h1>Page not found</h1><p><a href="/">Back to the events</a></p>');
@@ -644,7 +647,7 @@ async function serveStatic(req, res, url) {
       ? 'public, max-age=31536000, immutable'
       : 'public, max-age=0, must-revalidate',
   });
-  createReadStream(file).pipe(res);
+  createReadStream(file).on('error', () => res.destroy()).pipe(res);
 }
 
 /* ------------------------------------------------------------------ main -- */
