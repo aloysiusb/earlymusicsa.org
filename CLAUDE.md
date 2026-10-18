@@ -271,6 +271,15 @@ Render generated (service → Environment). The token is held in `sessionStorage
 for that tab, or `localStorage` if "keep me signed in" is ticked, and is never
 written into the page.
 
+**The sign-in screen links to a demo copy** at `vpayson.com/work/early-music/`
+(added 2026-10-18, with the owner's agreement). The owner's Basalt Chamber
+proposal sends reviewers to this page, and they have no token. The demo runs
+`admin.js` unchanged against an in-memory stand-in for these routes, with
+invented submissions and messages, and is explained in the `vpayson` README.
+**If you change `admin.js` or the admin routes, the demo needs re-copying**, or
+it will drift from what this page does. Keep the link unless the owner says
+otherwise.
+
 Four tabs:
 
 - **Events awaiting review** — the full submission, with anything the spam
