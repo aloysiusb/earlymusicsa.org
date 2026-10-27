@@ -954,6 +954,13 @@ It was set back to `mail.earlymusicsa.org` and confirmed live at Cloudflare,
 the sender needs to resend. **Order next time: ownership TXT → Check DNS records
 → create users → only then the MX.**
 
+**`info@earlymusicsa.org` is the main address** (confirmed by Leslie, 2026-10-27):
+it is where new event submissions go and what the newsletter is sent from.
+Create its Purelymail user before the MX switch and port its old mail along with
+`leslie@`'s — it is the mailbox most likely to hold years of history. Render's
+`MAIL_TO` was set to `info@earlymusicsa.org` the same day; notifications still
+stay off until the four SMTP variables are set against Purelymail after the switch.
+
 **One SPF record only.** Adding Purelymail's as a second TXT breaks SPF for both.
 During the changeover, edit the existing one to authorise both senders:
 
