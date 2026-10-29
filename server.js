@@ -24,7 +24,7 @@ import { boundaryOf, parseMultipart, sniffImage } from './multipart.js';
 import {
   openDb, validateSubmission, insertSubmission, listSubmissions,
   reviewSubmission, validateStyle, setStyle, getStyles, clearStyle, stylesAsCss,
-  validateMessage, insertMessage, listMessages, markMessageHandled, geocode,
+  validateMessage, messageSpamReasons, insertMessage, listMessages, markMessageHandled, geocode,
   validateEventPatch, setEventEdit, getEventEdits, clearEventEdit, applyEventPatch,
   approvedEvents,
 } from './db.js';
@@ -443,7 +443,11 @@ async function handleApi(req, res, url) {
 
     const id = insertMessage(db, clean);
 
-    notify(messageNotice(clean));
+    // Spam is kept for the admin queue but not emailed, so Leslie's inbox
+    // only sees messages that look like they came from a person.
+    const spam = messageSpamReasons(clean);
+    if (spam.length) console.log(`  not emailed (looks like spam: ${spam.join(', ')})`);
+    else notify(messageNotice(clean));
 
     if (wantsHtml) { sendPage(res, 200, thanksPage()); return true; }
     json(res, 201, { ok: true, id, message: 'Thank you — your message has been sent.' });
