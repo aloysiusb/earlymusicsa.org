@@ -533,6 +533,24 @@ export function validateMessage(raw) {
   return { clean, errors };
 }
 
+/**
+ * Why a contact-form message looks like bot spam, if it does. Flagged messages
+ * are still stored and shown in /admin.html; they are only kept out of the
+ * email notice, so a false positive costs a missed email, never a message.
+ * Patterns are taken from the spam that actually arrived in October 2026.
+ */
+export function messageSpamReasons(m) {
+  const first = (m.first_name || '').trim(), last = (m.last_name || '').trim();
+  const name = `${first} ${last}`;
+  const reasons = [];
+  if (first && first.toLowerCase() === last.toLowerCase()) reasons.push('same first and last name');
+  if (/\s/.test(first) && /\s/.test(last)) reasons.push('full name typed in both name fields');
+  if (/[a-z][A-Z]{2,}\b/.test(name)) reasons.push('name ends in stray capitals');
+  if (/https?:\/\/|www\.|\[url|<a\s/i.test(m.message || '')) reasons.push('message contains a link');
+  if (/[\u0400-\u04FF\u3040-\u30FF\u4E00-\u9FFF]/.test(`${name} ${m.message || ''}`)) reasons.push('non-Latin script');
+  return reasons;
+}
+
 export function insertMessage(db, clean) {
   const info = db.prepare(
     `INSERT INTO messages (created_at, first_name, last_name, email, message)
