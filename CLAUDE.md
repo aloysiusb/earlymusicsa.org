@@ -88,6 +88,9 @@ needs that.
 - **Notification email done** (2026-09-02). A submission or a contact message
   emails whoever is listed in `MAIL_TO`. Optional: with the SMTP variables
   unset nothing is sent and nothing breaks. See "Telling somebody".
+- **Notices go to Leslie's sbcglobal** (2026-10-28). `MAIL_TO` on Render is
+  `lprovence@sbcglobal.net`, at Leslie's request, so she sees new events and
+  messages without setting up the earlymusicsa mailbox in her Mail program.
 - **Guide expanded** (2026-09-16). `assets/guide.html` gained an "Everything you
   can change" list naming all thirteen editable event fields — the prose summary
   it replaced omitted `Sub title` and was vague about `Ends`. The sign-in step
