@@ -91,6 +91,35 @@ needs that.
 - **Notices go to Leslie's sbcglobal** (2026-10-28). `MAIL_TO` on Render is
   `lprovence@sbcglobal.net`, at Leslie's request, so she sees new events and
   messages without setting up the earlymusicsa mailbox in her Mail program.
+- **Notices confirmed reaching Leslie** (2026-10-29). Render env:
+  `SMTP_HOST=smtp.purelymail.com`, `SMTP_PORT=587`,
+  `SMTP_USER`/`MAIL_FROM=volunteer@earlymusicsa.org`,
+  `MAIL_TO=lprovence@sbcglobal.net`, `SMTP_PASS` set in the dashboard. A real
+  test through the contact form logged `emailed 1 recipient(s)` at 19:59 UTC.
+  Earlier notices had been landing in her sbcglobal Spam folder; she marked
+  them "Not spam" the same day. **Bluehost is cancelled** (owner, 2026-10-29),
+  so never point SMTP at `mail.earlymusicsa.org` again — a session did that
+  briefly on 2026-10-29 and it was reverted within minutes. Check the live env
+  before changing any SMTP variable; another session may have set it.
+- **Contact-form spam filter** (2026-10-29, PR #3). `messageSpamReasons` in
+  `db.js`: identical first/last name, a full name in both name fields, names
+  ending in stray capitals (`HableGM`, `xlJR`), links, non-Latin script.
+  Flagged messages are stored and shown in /admin.html but not emailed. Built
+  from the bot spam of late October; all ten senders caught, real names like
+  McDonald and DeLuca pass. Alongside the existing honeypot (`website_url`)
+  and per-client rate limit.
+- **Crash on `/media/` fixed** (2026-10-16, PR #2). A request for a directory
+  without `index.html` reached an unhandled `createReadStream` error and killed
+  the process (Render `server_failed`, exit 1). `serveStatic` now 404s anything
+  that is not a file, and every read stream has an error handler.
+- **`info@earlymusicsa.org` is the main address** (Leslie, 2026-10-27) for event
+  submissions and the newsletter. Before any mailbox move, give it a Purelymail
+  user or a forwarding rule to `lprovence@sbcglobal.net` (her preference: mail
+  forwarded to sbcglobal, no Mail-program setup).
+- **Gmail connector note.** On 2026-10-29 the connected Gmail was
+  `accounts@evergreenzerowaste.com`, so mail sent to Leslie went from that
+  address signed "Virginia Payson". Check which account is connected before
+  emailing her.
 - **Guide expanded** (2026-09-16). `assets/guide.html` gained an "Everything you
   can change" list naming all thirteen editable event fields — the prose summary
   it replaced omitted `Sub title` and was vague about `Ends`. The sign-in step
